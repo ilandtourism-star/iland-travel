@@ -300,10 +300,19 @@ const Home = () => {
                     <div style={{ background: '#f87171', color: 'white', width: '30px', height: '30px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                         <i className="fas fa-bell"></i>
                     </div>
-                    <div>
+                    <div style={{ flex: 1, paddingRight: '15px' }}>
                         <p style={{ margin: 0, fontSize: '0.85rem', fontWeight: 'bold' }}>{recentBooking.name}</p>
                         <p style={{ margin: 0, fontSize: '0.75rem', color: '#666' }}>Booked {recentBooking.act} <span style={{ color: '#ef4444', fontWeight: 'bold' }}>2 mins ago!</span></p>
                     </div>
+
+                    {/* Close Toast Button */}
+                    <button
+                        onClick={() => setRecentBooking(null)}
+                        style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer', position: 'absolute', top: '8px', right: '8px', fontSize: '1rem' }}
+                        title="Dismiss"
+                    >
+                        <i className="fas fa-times"></i>
+                    </button>
                 </div>
             )}
 
