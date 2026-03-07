@@ -293,7 +293,7 @@ const ActivityCard = ({
           )}
 
           {/* Social Proof / Public Observability */}
-          <div className="social-proof-avatars" style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: '10px 0 15px 0' }}>
+          <div className="social-proof-avatars" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px', margin: '10px 0 15px 0' }}>
             <div style={{ display: 'flex' }}>
               {[1, 2, 3].map((i) => (
                 <img
