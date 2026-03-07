@@ -971,6 +971,8 @@ input:focus {
 
     /* Global Header/Footer */
     .main-header {
+        position: relative;
+        /* Prevent tall mobile nav from sticking and covering hero */
         padding: 15px 20px;
         flex-direction: column;
         gap: 15px;
