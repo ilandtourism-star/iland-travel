@@ -1202,6 +1202,32 @@ input:focus {
     /* Never shrink price/button */
 }
 
+/* === SMARTPHONE / TABLET RESPONSIVE FIXES === */
+@media (max-width: 850px) {
+    .main-container {
+        grid-template-columns: 1fr;
+    }
+
+    .island-activities-grid .activity-card,
+    .package-card {
+        flex-direction: column !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    .island-activities-grid .activity-card .card-image-wrapper,
+    .card-img-container {
+        width: 100% !important;
+        min-width: 100% !important;
+        height: 250px !important;
+    }
+
+    .island-activities-grid .activity-card .card-content,
+    .card-content {
+        padding: 15px !important;
+    }
+}
+
 /* Results Styles */
 .results-header {
     margin-bottom: 15px;
