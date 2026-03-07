@@ -71,6 +71,7 @@ const Home = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [isPlaying, setIsPlaying] = useState(false);
     const [volume, setVolume] = useState(0.5); // Default volume level 50%
+    const [isAudioVisible, setIsAudioVisible] = useState(true); // Control visibility of the floating player
     const audioRef = useRef(null);
 
     // Auto-play music on load
@@ -972,64 +973,85 @@ const Home = () => {
             </audio>
 
             {/* Music Control Container */}
-            <div style={{
-                position: 'fixed',
-                bottom: '20px',
-                left: '20px',
-                zIndex: 1000,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                background: 'rgba(15, 23, 42, 0.7)',
-                padding: '8px 15px',
-                borderRadius: '30px',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(0, 255, 255, 0.2)',
-                boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
-                transition: 'all 0.3s ease'
-            }}>
-                {/* Music Toggle Button */}
-                <button
-                    onClick={toggleMusic}
-                    style={{
-                        width: '35px',
-                        height: '35px',
-                        borderRadius: '50%',
-                        background: isPlaying ? 'rgba(0, 255, 255, 0.2)' : 'transparent',
-                        border: 'none',
-                        color: isPlaying ? '#00ffff' : 'rgba(255,255,255,0.7)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        cursor: 'pointer',
-                        transition: 'all 0.2s ease',
-                    }}
-                    className="hover-scale"
-                    title={isPlaying ? "Pause Music" : "Play Music"}
-                >
-                    <i className={`fas ${isPlaying ? 'fa-volume-up' : 'fa-volume-mute'}`}></i>
-                </button>
+            {isAudioVisible && (
+                <div style={{
+                    position: 'fixed',
+                    bottom: '20px',
+                    left: '20px',
+                    zIndex: 1000,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    background: 'rgba(15, 23, 42, 0.7)',
+                    padding: '8px 15px',
+                    borderRadius: '30px',
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(0, 255, 255, 0.2)',
+                    boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+                    transition: 'all 0.3s ease'
+                }}>
+                    {/* Music Toggle Button */}
+                    <button
+                        onClick={toggleMusic}
+                        style={{
+                            width: '35px',
+                            height: '35px',
+                            borderRadius: '50%',
+                            background: isPlaying ? 'rgba(0, 255, 255, 0.2)' : 'transparent',
+                            border: 'none',
+                            color: isPlaying ? '#00ffff' : 'rgba(255,255,255,0.7)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s ease',
+                        }}
+                        className="hover-scale"
+                        title={isPlaying ? "Pause Music" : "Play Music"}
+                    >
+                        <i className={`fas ${isPlaying ? 'fa-volume-up' : 'fa-volume-mute'}`}></i>
+                    </button>
 
-                {/* Volume Slider */}
-                <input
-                    type="range"
-                    min="0"
-                    max="1"
-                    step="0.01"
-                    value={volume}
-                    onChange={handleVolumeChange}
-                    style={{
-                        width: '80px',
-                        cursor: 'pointer',
-                        accentColor: '#00ffff',
-                        height: '4px',
-                        background: 'rgba(255,255,255,0.2)',
-                        borderRadius: '2px',
-                        outline: 'none'
-                    }}
-                    title="Volume Control"
-                />
-            </div>
+                    {/* Volume Slider */}
+                    <input
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        value={volume}
+                        onChange={handleVolumeChange}
+                        style={{
+                            width: '80px',
+                            cursor: 'pointer',
+                            accentColor: '#00ffff',
+                            height: '4px',
+                            background: 'rgba(255,255,255,0.2)',
+                            borderRadius: '2px',
+                            outline: 'none'
+                        }}
+                        title="Volume Control"
+                    />
+
+                    {/* Close Button */}
+                    <button
+                        onClick={() => setIsAudioVisible(false)}
+                        style={{
+                            background: 'transparent',
+                            border: 'none',
+                            color: 'rgba(255,255,255,0.7)',
+                            cursor: 'pointer',
+                            fontSize: '1rem',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            marginLeft: '5px'
+                        }}
+                        title="Hide Audio Controls"
+                    >
+                        <i className="fas fa-times"></i>
+                    </button>
+                </div>
+            )}
         </div>
     );
 };
