@@ -976,6 +976,34 @@ input:focus {
         gap: 15px;
     }
 
+    /* Force Navbar Buttons to Wrap Gracefully on Mobile */
+    .auth-nav {
+        width: 100%;
+    }
+
+    .auth-links {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .auth-links .btn {
+        margin: 0 !important;
+        /* Reset hardcoded react margins */
+        flex: 1 1 45%;
+        /* Buttons take equal width and wrap */
+        text-align: center;
+        padding: 10px 15px;
+        font-size: 0.85rem;
+    }
+
+    /* Force Create Account to drop down fully if space is tight */
+    .auth-links .create-btn:last-child {
+        flex: 1 1 100%;
+    }
+
     .footer-container {
         flex-direction: column;
         text-align: center;
