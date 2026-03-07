@@ -339,6 +339,156 @@ const Home = () => {
                 </div>
             </div>
 
+            {/* Content Section */}
+            <div className="home-content-wrapper" style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 20px' }}>
+
+                {/* Practical Value: Live Weather & Tide Status Widget */}
+                <div className="home-weather-widget" style={{ marginBottom: '50px' }}>
+                    <div style={{
+                        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+                        borderRadius: '16px',
+                        padding: '24px',
+                        color: 'white',
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        boxShadow: '0 10px 30px rgba(0,0,0,0.15)',
+                        gap: '20px'
+                    }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                            <div style={{ background: '#0ea5e9', width: '55px', height: '55px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', boxShadow: '0 4px 15px rgba(14,165,233,0.4)', flexShrink: 0 }}>
+                                <i className="fas fa-water"></i>
+                            </div>
+                            <div>
+                                <h3 style={{ margin: 0, fontSize: '1.2rem', color: '#38bdf8', fontWeight: 'bold' }}>East Coast Sea Conditions</h3>
+                                <p style={{ margin: '4px 0 0 0', fontSize: '0.85rem', color: '#94a3b8' }}>Live Tide & Weather Advisory</p>
+                            </div>
+                        </div>
+
+                        <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap' }}>
+                            <div style={{ textAlign: 'center' }}>
+                                <p style={{ margin: 0, fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '1px' }}>Current Wave</p>
+                                <p style={{ margin: '5px 0 0 0', fontWeight: 'bold', fontSize: '1.1rem', color: '#22c55e' }}>
+                                    <i className="fas fa-check-circle"></i> Calm (0.5m)
+                                </p>
+                            </div>
+                            <div style={{ display: 'none' /* hidden for mobile space */ }} className="weather-desktop-only">
+                                <p style={{ margin: 0, fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '1px' }}>Visibility</p>
+                                <p style={{ margin: '5px 0 0 0', fontWeight: 'bold', fontSize: '1.1rem', color: '#38bdf8' }}>
+                                    <i className="fas fa-eye"></i> High (15m+)
+                                </p>
+                            </div>
+                            <div style={{ textAlign: 'center' }}>
+                                <p style={{ margin: 0, fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '1px' }}>Verdict</p>
+                                <span style={{
+                                    display: 'inline-block',
+                                    marginTop: '5px',
+                                    background: 'rgba(34, 197, 94, 0.2)',
+                                    color: '#22c55e',
+                                    padding: '4px 12px',
+                                    borderRadius: '20px',
+                                    fontSize: '0.85rem',
+                                    fontWeight: 'bold',
+                                    border: '1px solid rgba(34,197,94,0.4)'
+                                }}>
+                                    Perfect for Island Trips!
+                                </span>
+                            </div>
+                        </div>
+
+                        <button onClick={() => alert("Copied to clipboard! Share the good news with your travel buddies.")} style={{
+                            background: '#0ea5e9',
+                            border: 'none',
+                            color: 'white',
+                            padding: '10px 20px',
+                            borderRadius: '8px',
+                            cursor: 'pointer',
+                            fontWeight: '600',
+                            transition: 'all 0.3s',
+                            boxShadow: '0 4px 12px rgba(14,165,233,0.3)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px'
+                        }} onMouseOver={(e) => { e.target.style.background = '#0284c7'; e.target.style.transform = 'translateY(-2px)' }}
+                            onMouseOut={(e) => { e.target.style.background = '#0ea5e9'; e.target.style.transform = 'translateY(0)' }}>
+                            <i className="fas fa-share-alt"></i> Share Status
+                        </button>
+                    </div>
+                </div>
+
+                {/* Popular Destinations */}
+                <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
+                    <h2 className="home-section-title">Breathtaking Island Escapes (Awe & Wonder)</h2>
+                    <div className="home-grid">
+                        {/* Pulau Kapas */}
+                        <Link to="/kapas-island-day-trips" className="home-card home-card-awe">
+                            <div className="home-image-container">
+                                <img src={kapasImg} alt="Pulau Kapas" className="home-image" style={{ transition: 'all 0.8s ease' }} />
+                                <div className="home-overlay">
+                                    <span className="home-location-tag"><i className="fas fa-map-marker-alt"></i> Terengganu</span>
+                                </div>
+                            </div>
+                            <div className="home-card-content">
+                                <h3 className="home-card-title">Pulau Kapas</h3>
+                                <p className="home-card-desc">Crystal clear waters perfect for swimming & snorkeling. Known for its relaxing vibe.</p>
+                                <div className="home-tag-container">
+                                    <Link to="/kapas-snorkeling-details" className="home-tag-link" onClick={(e) => e.stopPropagation()}>Snorkeling</Link>
+                                    <Link to="/kapas-private-boat-details" className="home-tag-link" onClick={(e) => e.stopPropagation()}>Private Boat</Link>
+                                </div>
+                                <span className="home-button btn-awe-copy">Clear My Schedule, Take Me Here! 🚀</span>
+                            </div>
+                        </Link>
+
+                        {/* Pulau Redang */}
+                        <Link to="/redang-island-day-trips" className="home-card home-card-awe">
+                            <div className="home-image-container">
+                                <img src={redangImg} alt="Pulau Redang" className="home-image" style={{ transition: 'all 0.8s ease' }} />
+                                <div className="home-overlay">
+                                    <span className="home-location-tag"><i className="fas fa-map-marker-alt"></i> Terengganu</span>
+                                </div>
+                            </div>
+                            <div className="home-card-content">
+                                <h3 className="home-card-title">Pulau Redang</h3>
+                                <p className="home-card-desc">White sandy beaches and thriving marine parks. Great for luxury stays and diving.</p>
+                                <div className="home-tag-container">
+                                    <Link to="/redang-snorkeling-details" className="home-tag-link" onClick={(e) => e.stopPropagation()}>Snorkeling</Link>
+                                    <Link to="/redang-squid-jigging-details" className="home-tag-link" onClick={(e) => e.stopPropagation()}>Squid Jigging</Link>
+                                </div>
+                                <span className="home-button btn-awe-copy">Escape Reality Now 🌊</span>
+                            </div>
+                        </Link>
+
+                        {/* Pulau Perhentian */}
+                        <Link to="/perhentian-island-day-trips" className="home-card home-card-awe">
+                            <div className="home-image-container">
+                                <img src={perhentianImg} alt="Pulau Perhentian" className="home-image" style={{ transition: 'all 0.8s ease' }} />
+                                <div className="home-overlay">
+                                    <span className="home-location-tag"><i className="fas fa-map-marker-alt"></i> Terengganu</span>
+                                </div>
+                            </div>
+                            <div className="home-card-content">
+                                <h3 className="home-card-title">Pulau Perhentian</h3>
+                                <p className="home-card-desc">A paradise for backpackers and nature lovers. Vibrant coral reefs and jungle trails.</p>
+                                <div className="home-tag-container">
+                                    <Link to="/perhentian-snorkeling-details" className="home-tag-link" onClick={(e) => e.stopPropagation()}>Snorkeling</Link>
+                                </div>
+                                <span className="home-button btn-awe-copy">Unlock the Backpackers Paradise 🎒</span>
+                            </div>
+                        </Link>
+                    </div>
+                </div>
+
+                <div className="home-section" style={{ padding: '0' }}>
+                    <h2 className="home-section-title">Top Snorkeling and Island Hopping Packages</h2>
+                    <div className="home-grid">
+                        {dynamicActivities.map(item => (
+                            <ActivityCard key={item.id} {...item} />
+                        ))}
+                    </div>
+                </div>
+            </div>
+
             {/* Side-Scrolling Wall of Fame Section */}
             <div className="wof-scroll-section" style={{ background: '#0f172a', padding: '30px 0', borderBottom: '1px solid rgba(0, 255, 255, 0.1)' }}>
                 <style>
@@ -356,6 +506,20 @@ const Home = () => {
                     }
                     .wof-scroll-container::-webkit-scrollbar-track {
                         background: rgba(255,255,255,0.05);
+                    }
+                                        @media (max-width: 768px) {
+                        .wof-scroll-container {
+                            flex-direction: column;
+                            overflow-x: hidden;
+                        }
+                        .wof-island-group {
+                            min-width: 100%;
+                            flex: auto;
+                            margin-bottom: 20px;
+                        }
+                        .wof-card:hover {
+                            transform: translateY(-2px);
+                        }
                     }
                     .wof-scroll-container::-webkit-scrollbar-thumb {
                         background: #00ffff;
@@ -820,156 +984,6 @@ const Home = () => {
                         </div>
                     </div>
                 )}
-            </div>
-
-            {/* Content Section */}
-            <div className="home-content-wrapper" style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 20px' }}>
-
-                {/* Practical Value: Live Weather & Tide Status Widget */}
-                <div className="home-weather-widget" style={{ marginBottom: '50px' }}>
-                    <div style={{
-                        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-                        borderRadius: '16px',
-                        padding: '24px',
-                        color: 'white',
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        boxShadow: '0 10px 30px rgba(0,0,0,0.15)',
-                        gap: '20px'
-                    }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                            <div style={{ background: '#0ea5e9', width: '55px', height: '55px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', boxShadow: '0 4px 15px rgba(14,165,233,0.4)', flexShrink: 0 }}>
-                                <i className="fas fa-water"></i>
-                            </div>
-                            <div>
-                                <h3 style={{ margin: 0, fontSize: '1.2rem', color: '#38bdf8', fontWeight: 'bold' }}>East Coast Sea Conditions</h3>
-                                <p style={{ margin: '4px 0 0 0', fontSize: '0.85rem', color: '#94a3b8' }}>Live Tide & Weather Advisory</p>
-                            </div>
-                        </div>
-
-                        <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap' }}>
-                            <div style={{ textAlign: 'center' }}>
-                                <p style={{ margin: 0, fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '1px' }}>Current Wave</p>
-                                <p style={{ margin: '5px 0 0 0', fontWeight: 'bold', fontSize: '1.1rem', color: '#22c55e' }}>
-                                    <i className="fas fa-check-circle"></i> Calm (0.5m)
-                                </p>
-                            </div>
-                            <div style={{ display: 'none' /* hidden for mobile space */ }} className="weather-desktop-only">
-                                <p style={{ margin: 0, fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '1px' }}>Visibility</p>
-                                <p style={{ margin: '5px 0 0 0', fontWeight: 'bold', fontSize: '1.1rem', color: '#38bdf8' }}>
-                                    <i className="fas fa-eye"></i> High (15m+)
-                                </p>
-                            </div>
-                            <div style={{ textAlign: 'center' }}>
-                                <p style={{ margin: 0, fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '1px' }}>Verdict</p>
-                                <span style={{
-                                    display: 'inline-block',
-                                    marginTop: '5px',
-                                    background: 'rgba(34, 197, 94, 0.2)',
-                                    color: '#22c55e',
-                                    padding: '4px 12px',
-                                    borderRadius: '20px',
-                                    fontSize: '0.85rem',
-                                    fontWeight: 'bold',
-                                    border: '1px solid rgba(34,197,94,0.4)'
-                                }}>
-                                    Perfect for Island Trips!
-                                </span>
-                            </div>
-                        </div>
-
-                        <button onClick={() => alert("Copied to clipboard! Share the good news with your travel buddies.")} style={{
-                            background: '#0ea5e9',
-                            border: 'none',
-                            color: 'white',
-                            padding: '10px 20px',
-                            borderRadius: '8px',
-                            cursor: 'pointer',
-                            fontWeight: '600',
-                            transition: 'all 0.3s',
-                            boxShadow: '0 4px 12px rgba(14,165,233,0.3)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '8px'
-                        }} onMouseOver={(e) => { e.target.style.background = '#0284c7'; e.target.style.transform = 'translateY(-2px)' }}
-                            onMouseOut={(e) => { e.target.style.background = '#0ea5e9'; e.target.style.transform = 'translateY(0)' }}>
-                            <i className="fas fa-share-alt"></i> Share Status
-                        </button>
-                    </div>
-                </div>
-
-                {/* Popular Destinations */}
-                <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
-                    <h2 className="home-section-title">Breathtaking Island Escapes (Awe & Wonder)</h2>
-                    <div className="home-grid">
-                        {/* Pulau Kapas */}
-                        <Link to="/kapas-island-day-trips" className="home-card home-card-awe">
-                            <div className="home-image-container">
-                                <img src={kapasImg} alt="Pulau Kapas" className="home-image" style={{ transition: 'all 0.8s ease' }} />
-                                <div className="home-overlay">
-                                    <span className="home-location-tag"><i className="fas fa-map-marker-alt"></i> Terengganu</span>
-                                </div>
-                            </div>
-                            <div className="home-card-content">
-                                <h3 className="home-card-title">Pulau Kapas</h3>
-                                <p className="home-card-desc">Crystal clear waters perfect for swimming & snorkeling. Known for its relaxing vibe.</p>
-                                <div className="home-tag-container">
-                                    <Link to="/kapas-snorkeling-details" className="home-tag-link" onClick={(e) => e.stopPropagation()}>Snorkeling</Link>
-                                    <Link to="/kapas-private-boat-details" className="home-tag-link" onClick={(e) => e.stopPropagation()}>Private Boat</Link>
-                                </div>
-                                <span className="home-button btn-awe-copy">Clear My Schedule, Take Me Here! 🚀</span>
-                            </div>
-                        </Link>
-
-                        {/* Pulau Redang */}
-                        <Link to="/redang-island-day-trips" className="home-card home-card-awe">
-                            <div className="home-image-container">
-                                <img src={redangImg} alt="Pulau Redang" className="home-image" style={{ transition: 'all 0.8s ease' }} />
-                                <div className="home-overlay">
-                                    <span className="home-location-tag"><i className="fas fa-map-marker-alt"></i> Terengganu</span>
-                                </div>
-                            </div>
-                            <div className="home-card-content">
-                                <h3 className="home-card-title">Pulau Redang</h3>
-                                <p className="home-card-desc">White sandy beaches and thriving marine parks. Great for luxury stays and diving.</p>
-                                <div className="home-tag-container">
-                                    <Link to="/redang-snorkeling-details" className="home-tag-link" onClick={(e) => e.stopPropagation()}>Snorkeling</Link>
-                                    <Link to="/redang-squid-jigging-details" className="home-tag-link" onClick={(e) => e.stopPropagation()}>Squid Jigging</Link>
-                                </div>
-                                <span className="home-button btn-awe-copy">Escape Reality Now 🌊</span>
-                            </div>
-                        </Link>
-
-                        {/* Pulau Perhentian */}
-                        <Link to="/perhentian-island-day-trips" className="home-card home-card-awe">
-                            <div className="home-image-container">
-                                <img src={perhentianImg} alt="Pulau Perhentian" className="home-image" style={{ transition: 'all 0.8s ease' }} />
-                                <div className="home-overlay">
-                                    <span className="home-location-tag"><i className="fas fa-map-marker-alt"></i> Terengganu</span>
-                                </div>
-                            </div>
-                            <div className="home-card-content">
-                                <h3 className="home-card-title">Pulau Perhentian</h3>
-                                <p className="home-card-desc">A paradise for backpackers and nature lovers. Vibrant coral reefs and jungle trails.</p>
-                                <div className="home-tag-container">
-                                    <Link to="/perhentian-snorkeling-details" className="home-tag-link" onClick={(e) => e.stopPropagation()}>Snorkeling</Link>
-                                </div>
-                                <span className="home-button btn-awe-copy">Unlock the Backpackers Paradise 🎒</span>
-                            </div>
-                        </Link>
-                    </div>
-                </div>
-
-                <div className="home-section" style={{ padding: '0' }}>
-                    <h2 className="home-section-title">Top Snorkeling and Island Hopping Packages</h2>
-                    <div className="home-grid">
-                        {dynamicActivities.map(item => (
-                            <ActivityCard key={item.id} {...item} />
-                        ))}
-                    </div>
-                </div>
             </div>
 
             {/* Floating Ocean Fact Card */}
