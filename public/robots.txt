@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /partner/
+Disallow: /checkout
+Disallow: /invoice/
+Disallow: /my-bookings
+Disallow: /booking-success
+Disallow: /api/
+
+Sitemap: https://iland-app.com/sitemap.xml
