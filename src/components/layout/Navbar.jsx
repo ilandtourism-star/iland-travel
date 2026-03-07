@@ -14,10 +14,10 @@ const Navbar = () => {
 
       <nav className="auth-nav">
         <div className="auth-links">
-          <Link to="/list-your-activity" className="btn create-btn" style={{ marginRight: '10px' }}>List your activity</Link>
-          <Link to="/about" className="btn btn-text" style={{ marginRight: '10px' }}>About Us</Link>
-          <Link to="/auth" className="btn signin-btn">Sign In</Link>
-          <Link to="/auth?mode=register" className="btn create-btn">Create Account</Link>
+          <Link to="/list-your-activity" className="btn create-btn nav-item-list">List your activity</Link>
+          <Link to="/about" className="btn btn-text nav-item-about">About Us</Link>
+          <Link to="/auth" className="btn signin-btn nav-item-signin">Sign In</Link>
+          <Link to="/auth?mode=register" className="btn create-btn nav-item-create">Create Account</Link>
         </div>
       </nav>
     </header>
