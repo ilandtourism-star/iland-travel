@@ -162,22 +162,34 @@ const Home = () => {
     const location = useLocation();
     const [searchParams, setSearchParams] = useSearchParams();
 
-    // Hook to handle "back" button on phone for Share Modal - Sync State with URL
+    // --- NATIVE HISTORY TRAP FOR MOBILE BACK BUTTON ---
+    // This technique creates a "silent" history entry that the browser can pop
+    // without changing the URL or triggering a page reload.
     useEffect(() => {
-        const activeModal = searchParams.get('modal');
-        // Source of truth is now the URL parameter
-        setShowShareModal(activeModal === 'share');
-    }, [searchParams]);
+        const handlePopState = (event) => {
+            // When user hits back button, the browser pops our custom state
+            if (showShareModal) {
+                setShowShareModal(false);
+            }
+        };
+
+        window.addEventListener('popstate', handlePopState);
+        return () => window.removeEventListener('popstate', handlePopState);
+    }, [showShareModal]);
 
     const openShareModal = () => {
+        // Only push state if we haven't already (prevents stack bloating)
+        if (!showShareModal) {
+            window.history.pushState({ isModalOpen: true }, '');
+        }
         setShowShareModal(true);
-        setSearchParams({ modal: 'share' }, { replace: false });
     };
 
     const closeShareModal = () => {
         setShowShareModal(false);
-        if (searchParams.get('modal') === 'share') {
-            navigate(-1);
+        // If we are still in our custom state, go back to clean it up
+        if (window.history.state?.isModalOpen) {
+            window.history.back();
         }
     };
 

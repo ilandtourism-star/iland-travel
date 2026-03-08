@@ -92,16 +92,22 @@ const ActivityCard = ({
     // Only open gallery if there are valid images
     if (galleryImages.length > 0) {
       e.stopPropagation(); // Prevent navigating to details page if clicking image also triggers link
+
+      // Native App Behavior: Trap the hardware "Back" button without URL change
+      if (!showGallery) {
+        window.history.pushState({ modalType: 'gallery', sku: sku || title }, '');
+      }
+
       setShowGallery(true);
       setCurrentImageIndex(0);
-      setSearchParams({ modal: `gallery-${sku || title}` }, { replace: false }); // Unique SKU-based param
     }
   };
 
   const closeGallery = () => {
     setShowGallery(false);
-    if (searchParams.get('modal') === `gallery-${sku || title}`) {
-      navigate(-1); // React Router way of going back
+    // Cleanup history if we are still in our custom state
+    if (window.history.state?.modalType === 'gallery') {
+      window.history.back();
     }
   };
 
@@ -135,12 +141,13 @@ const ActivityCard = ({
     if (isBooking) {
       // Toggle the embedded booking calendar
       if (!isBookingOpen) {
+        // Native History Trap
+        window.history.pushState({ modalType: 'booking', sku: sku || title }, '');
         setIsBookingOpen(true);
-        setSearchParams({ modal: `booking-${sku || title}` }, { replace: false }); // Force PUSH with SKU
       } else {
         setIsBookingOpen(false);
-        if (searchParams.get('modal') === `booking-${sku || title}`) {
-          navigate(-1);
+        if (window.history.state?.modalType === 'booking') {
+          window.history.back();
         }
       }
     } else {
@@ -169,17 +176,17 @@ const ActivityCard = ({
     });
   };
 
-  React.useEffect(() => {
-    const activeModal = searchParams.get('modal');
+  // Mobile App Native Experience: Handle Physical Back Button centrally via PopState
+  useEffect(() => {
+    const handlePopState = (event) => {
+      // When user hits back button, the browser pops our custom state
+      if (showGallery) setShowGallery(false);
+      if (isBookingOpen) setIsBookingOpen(false);
+    };
 
-    // Force Sync state with URL - Essential for mobile handle
-    const isThisBookingOpen = activeModal === `booking-${sku || title}`;
-    const isThisGalleryOpen = activeModal === `gallery-${sku || title}`;
-
-    if (isBookingOpen !== isThisBookingOpen) setIsBookingOpen(isThisBookingOpen);
-    if (showGallery !== isThisGalleryOpen) setShowGallery(isThisGalleryOpen);
-
-  }, [searchParams, sku, title]);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [showGallery, isBookingOpen]);
 
   return (
     <>

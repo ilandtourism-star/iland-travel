@@ -10,15 +10,17 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Handle phone "back" button using URL Search Params trap - Sync State with URL
+  // Handle phone "back" button using Native History Trap
   useEffect(() => {
-    const activeModal = searchParams.get('modal');
-    const isThisModalOpen = activeModal === `card-booking-${title}`;
+    const handlePopState = (event) => {
+      if (isBookingOpen) {
+        setIsBookingOpen(false);
+      }
+    };
 
-    if (isBookingOpen !== isThisModalOpen) {
-      setIsBookingOpen(isThisModalOpen);
-    }
-  }, [searchParams, title, isBookingOpen]);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [isBookingOpen]);
 
   // Calculate total price dynamically
   const currentPrice = parseFloat(price || 0);
@@ -61,9 +63,13 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
             const newState = !isBookingOpen;
             setIsBookingOpen(newState);
             if (newState) {
-              setSearchParams({ modal: `card-booking-${title}` }, { replace: false });
-            } else if (searchParams.get('modal') === `card-booking-${title}`) {
-              navigate(-1);
+              window.history.pushState({ modalOpen: true, title }, '');
+              setIsBookingOpen(true);
+            } else {
+              setIsBookingOpen(false);
+              if (window.history.state?.modalOpen) {
+                window.history.back();
+              }
             }
           }}
           style={{ background: 'none', border: 'none', color: '#007bff', cursor: 'pointer', textDecoration: 'underline' }}
@@ -97,8 +103,8 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
               <button
                 className="choose-btn"
                 onClick={() => {
+                  window.history.pushState({ modalOpen: true, title }, '');
                   setIsBookingOpen(true);
-                  setSearchParams({ modal: `card-booking-${title}` }, { replace: false });
                 }}
                 style={{
                   backgroundColor: 'DarkTurquoise',

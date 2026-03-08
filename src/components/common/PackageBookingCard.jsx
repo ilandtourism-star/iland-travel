@@ -59,16 +59,17 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
   const [adultCount, setAdultCount] = useState(1);
   const [childCount, setChildCount] = useState(0);
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
-
+  // Handle phone "back" button using Native History Trap
   useEffect(() => {
-    const activeModal = searchParams.get('modal');
-    const isThisModalOpen = activeModal === `card-booking-${title}`;
+    const handlePopState = (event) => {
+      if (isBookingOpen) {
+        setIsBookingOpen(false);
+      }
+    };
 
-    if (isBookingOpen !== isThisModalOpen) {
-      setIsBookingOpen(isThisModalOpen);
-    }
-  }, [searchParams, title, isBookingOpen]);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [isBookingOpen]);
 
   const totalPrice = pricingType === 'unit'
     ? parseFloat(price).toFixed(2)
@@ -167,8 +168,8 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
               <button
                 className="choose-btn"
                 onClick={() => {
+                  window.history.pushState({ modalOpen: true, title }, '');
                   setIsBookingOpen(true);
-                  setSearchParams({ modal: `card-booking-${title}` }, { replace: false });
                 }}
                 style={{ background: 'DarkTurquoise', color: 'white', border: 'none', padding: '10px 24px', borderRadius: '6px', fontWeight: '600', cursor: 'pointer' }}
               >
@@ -184,8 +185,8 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
             <span className="pkg-title" style={{ fontSize: '1.2em', fontWeight: '700' }}>{title}</span>
             <button onClick={() => {
               setIsBookingOpen(false);
-              if (searchParams.get('modal') === `card-booking-${title}`) {
-                navigate(-1);
+              if (window.history.state?.modalOpen) {
+                window.history.back();
               }
             }} style={{ background: 'none', border: 'none', fontSize: '1.5em', cursor: 'pointer', color: '#999' }}>×</button>
           </div>
