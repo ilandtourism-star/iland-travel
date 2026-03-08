@@ -92,16 +92,12 @@ const ActivityCard = ({
       e.stopPropagation(); // Prevent navigating to details page if clicking image also triggers link
       setShowGallery(true);
       setCurrentImageIndex(0);
-      window.location.hash = 'gallery';
+      window.history.pushState(null, '', window.location.href);
     }
   };
 
   const closeGallery = () => {
-    if (window.location.hash === '#gallery') {
-      window.history.back(); // This will trigger hashchange and set showGallery to false
-    } else {
-      setShowGallery(false);
-    }
+    setShowGallery(false);
   };
 
   const nextImage = (e) => {
@@ -135,13 +131,9 @@ const ActivityCard = ({
       // Toggle the embedded booking calendar
       if (!isBookingOpen) {
         setIsBookingOpen(true);
-        window.location.hash = 'booking';
+        window.history.pushState(null, '', window.location.href);
       } else {
-        if (window.location.hash === '#booking') {
-          window.history.back(); // Triggers hashchange
-        } else {
-          setIsBookingOpen(false);
-        }
+        setIsBookingOpen(false);
       }
     } else {
       // Navigate to details page
@@ -170,18 +162,17 @@ const ActivityCard = ({
   };
 
   React.useEffect(() => {
-    const handleHashChange = () => {
-      // If user presses physical back button, hash will change
-      if (window.location.hash !== '#booking' && isBookingOpen) {
+    const handlePopState = (e) => {
+      // If user presses physical back button, catch the event and close modals
+      if (isBookingOpen) {
         setIsBookingOpen(false);
-      }
-      if (window.location.hash !== '#gallery' && showGallery) {
+      } else if (showGallery) {
         setShowGallery(false);
       }
     };
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, [isBookingOpen, showGallery]);
 
   return (
