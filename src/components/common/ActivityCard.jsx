@@ -94,7 +94,7 @@ const ActivityCard = ({
       e.stopPropagation(); // Prevent navigating to details page if clicking image also triggers link
       setShowGallery(true);
       setCurrentImageIndex(0);
-      setSearchParams({ modal: 'gallery-open' }); // Replaces Vanilla DOM Hash
+      setSearchParams({ modal: 'gallery-open' }, { replace: false }); // Force PUSH entry for back button to work
     }
   };
 
@@ -136,7 +136,7 @@ const ActivityCard = ({
       // Toggle the embedded booking calendar
       if (!isBookingOpen) {
         setIsBookingOpen(true);
-        setSearchParams({ modal: 'booking-open' }); // URL Param
+        setSearchParams({ modal: 'booking-open' }, { replace: false }); // Force PUSH
       } else {
         setIsBookingOpen(false);
         if (searchParams.get('modal') === 'booking-open') {

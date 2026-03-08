@@ -172,7 +172,7 @@ const Home = () => {
 
     const openShareModal = () => {
         setShowShareModal(true);
-        setSearchParams({ modal: 'share' });
+        setSearchParams({ modal: 'share' }, { replace: false });
     };
 
     const closeShareModal = () => {

@@ -59,7 +59,7 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
             const newState = !isBookingOpen;
             setIsBookingOpen(newState);
             if (newState) {
-              setSearchParams({ modal: 'card-booking' });
+              setSearchParams({ modal: 'card-booking' }, { replace: false });
             } else if (searchParams.get('modal') === 'card-booking') {
               navigate(-1);
             }
@@ -96,7 +96,7 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
                 className="choose-btn"
                 onClick={() => {
                   setIsBookingOpen(true);
-                  setSearchParams({ modal: 'card-booking' });
+                  setSearchParams({ modal: 'card-booking' }, { replace: false });
                 }}
                 style={{
                   backgroundColor: 'DarkTurquoise',

@@ -166,7 +166,7 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
                 className="choose-btn"
                 onClick={() => {
                   setIsBookingOpen(true);
-                  setSearchParams({ modal: 'card-booking' });
+                  setSearchParams({ modal: 'card-booking' }, { replace: false });
                 }}
                 style={{ background: 'DarkTurquoise', color: 'white', border: 'none', padding: '10px 24px', borderRadius: '6px', fontWeight: '600', cursor: 'pointer' }}
               >
