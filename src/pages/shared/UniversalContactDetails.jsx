@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useToast } from '../../components/common/Toast';
 import { secureFetch } from '../../lib/api';
+import { countries } from '../../lib/countries';
+import { useRef } from 'react';
 
 const UniversalContactDetails = () => {
     const { addToast } = useToast();
@@ -23,6 +25,9 @@ const UniversalContactDetails = () => {
     const [formData, setFormData] = useState({
         firstname: '', lastname: '', email: '', country: '', code: '+60', mobile: ''
     });
+    const [showCountryDropdown, setShowCountryDropdown] = useState(false);
+    const [countrySearch, setCountrySearch] = useState('');
+    const dropdownRef = useRef(null);
 
     useEffect(() => {
         if (!location.state) {
@@ -37,11 +42,29 @@ const UniversalContactDetails = () => {
                 .then(data => setPackageData(data))
                 .catch(err => console.error("Error fetching package data:", err));
         }
+
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setShowCountryDropdown(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
     }, [location, navigate, addToast, vacation_sku]);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
+
+    const handleCountrySelect = (c) => {
+        setFormData({ ...formData, country: c.name, code: c.dial_code });
+        setShowCountryDropdown(false);
+        setCountrySearch('');
+    };
+
+    const filteredCountries = countries.filter(c =>
+        c.name.toLowerCase().includes(countrySearch.toLowerCase())
+    );
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -169,19 +192,43 @@ const UniversalContactDetails = () => {
                                 <i className="fas fa-envelope input-icon"></i>
                             </div>
 
-                            <div className="input-group">
+                            <div className="input-group" ref={dropdownRef}>
                                 <input
                                     type="text"
                                     name="country"
                                     id="country_residence"
-                                    autoComplete="country-name"
+                                    autoComplete="off"
                                     placeholder=" "
-                                    onChange={handleChange}
-                                    value={formData.country}
+                                    onFocus={() => setShowCountryDropdown(true)}
+                                    onChange={(e) => {
+                                        setCountrySearch(e.target.value);
+                                        setFormData({ ...formData, country: e.target.value });
+                                    }}
+                                    value={showCountryDropdown ? countrySearch : formData.country}
                                     required
                                 />
                                 <label htmlFor="country_residence">Country/Region of residence</label>
-                                <i className="fas fa-globe input-icon"></i>
+                                <i className="fas fa-globe input-icon" style={{ cursor: 'pointer' }} onClick={() => setShowCountryDropdown(!showCountryDropdown)}></i>
+
+                                {showCountryDropdown && (
+                                    <div className="country-dropdown">
+                                        {filteredCountries.length > 0 ? (
+                                            filteredCountries.map((c) => (
+                                                <div
+                                                    key={c.code}
+                                                    className="country-item"
+                                                    onClick={() => handleCountrySelect(c)}
+                                                >
+                                                    <span className="flag">{c.flag}</span>
+                                                    <span className="name">{c.name}</span>
+                                                    <span className="dial-code">{c.dial_code}</span>
+                                                </div>
+                                            ))
+                                        ) : (
+                                            <div className="no-results">No countries found</div>
+                                        )}
+                                    </div>
+                                )}
                             </div>
 
                             <div className="form-row phone-row">
