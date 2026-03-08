@@ -160,6 +160,28 @@ const Home = () => {
     const [showShareModal, setShowShareModal] = useState(false);
     const navigate = useNavigate();
 
+    // Hook to handle "back" button on phone for Share Modal
+    useEffect(() => {
+        const handlePopState = () => {
+            if (showShareModal) setShowShareModal(false);
+        };
+
+        if (showShareModal) window.addEventListener('popstate', handlePopState);
+        return () => window.removeEventListener('popstate', handlePopState);
+    }, [showShareModal]);
+
+    const openShareModal = () => {
+        window.history.pushState({ modalOpen: true }, '');
+        setShowShareModal(true);
+    };
+
+    const closeShareModal = () => {
+        setShowShareModal(false);
+        if (window.history.state && window.history.state.modalOpen) {
+            window.history.back();
+        }
+    };
+
     const handleSearch = () => {
         navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
     };
@@ -752,7 +774,7 @@ const Home = () => {
                     <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', margin: '5px 0 20px' }}>Meet our most frequent island explorers this month!</p>
 
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
-                        <button className="wof-share-btn" onClick={() => setShowShareModal(true)}>
+                        <button className="wof-share-btn" onClick={openShareModal}>
                             <i className="fas fa-share-alt"></i> Share This
                         </button>
                     </div>
@@ -959,7 +981,7 @@ const Home = () => {
                 </div>
                 {/* Share Modal */}
                 {showShareModal && (
-                    <div className="wof-modal-overlay" onClick={() => setShowShareModal(false)}>
+                    <div className="wof-modal-overlay" onClick={closeShareModal}>
                         <div className="wof-modal" onClick={e => e.stopPropagation()}>
                             <h3 className="wof-modal-title">Share Wall of Fame</h3>
                             <div className="wof-share-options">
@@ -980,7 +1002,7 @@ const Home = () => {
                                     <span className="share-label">Copy Link</span>
                                 </div>
                             </div>
-                            <button className="close-modal-btn" onClick={() => setShowShareModal(false)}>Close</button>
+                            <button className="close-modal-btn" onClick={closeShareModal}>Close</button>
                         </div>
                     </div>
                 )}

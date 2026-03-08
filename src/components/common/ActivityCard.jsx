@@ -90,12 +90,18 @@ const ActivityCard = ({
     // Only open gallery if there are valid images
     if (galleryImages.length > 0) {
       e.stopPropagation(); // Prevent navigating to details page if clicking image also triggers link
+      window.history.pushState({ galleryOpen: true }, '');
       setShowGallery(true);
       setCurrentImageIndex(0);
     }
   };
 
-  const closeGallery = () => setShowGallery(false);
+  const closeGallery = () => {
+    setShowGallery(false);
+    if (window.history.state && window.history.state.galleryOpen) {
+      window.history.back();
+    }
+  };
 
   const nextImage = (e) => {
     e.stopPropagation();
@@ -126,7 +132,15 @@ const ActivityCard = ({
   const handleButtonClick = () => {
     if (isBooking) {
       // Toggle the embedded booking calendar
-      setIsBookingOpen(!isBookingOpen);
+      if (!isBookingOpen) {
+        window.history.pushState({ bookingOpen: true }, '');
+        setIsBookingOpen(true);
+      } else {
+        setIsBookingOpen(false);
+        if (window.history.state && window.history.state.bookingOpen) {
+          window.history.back();
+        }
+      }
     } else {
       // Navigate to details page
       navigate(link);
@@ -152,6 +166,19 @@ const ActivityCard = ({
       }
     });
   };
+
+  React.useEffect(() => {
+    const handlePopState = (e) => {
+      // If user presses physical back button, close active modals/widgets
+      if (isBookingOpen) setIsBookingOpen(false);
+      if (showGallery) setShowGallery(false);
+    };
+
+    if (isBookingOpen || showGallery) {
+      window.addEventListener('popstate', handlePopState);
+    }
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [isBookingOpen, showGallery]);
 
   return (
     <>
