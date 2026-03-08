@@ -65,7 +65,7 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
   const slugify = (text) => text?.toString().toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-') || '';
   const entityId = slugify(title);
 
-  const isBookingOpen = (searchParams.get('modal') === 'package-booking' && searchParams.get('id') === entityId) || location.hash === '#package-booking';
+  const isBookingOpen = searchParams.get('modal') === 'package-booking' && searchParams.get('id') === entityId;
   // --- URL SEARCH PARAMS STRATEGY ---
   // Modal visibility is controlled by isBookingOpen derived from URL params.
 
@@ -94,6 +94,18 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
   const discountPercent = origPriceNum > 0 && origPriceNum > salePriceNum
     ? Math.round(((origPriceNum - salePriceNum) / origPriceNum) * 100)
     : 0;
+
+  // Global listener for Back Button
+  useEffect(() => {
+    const handlePopState = (event) => {
+      if (isBookingOpen) {
+        setSearchParams({});
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [isBookingOpen, setSearchParams]);
 
   return (
     <div className={`package-booking-card ${isBookingOpen ? 'expanded' : ''}`} style={{ marginBottom: '20px', border: '1px solid #e0e0e0', borderRadius: '12px', background: '#fff', maxHeight: 'none', overflow: 'visible', maxWidth: 'none', height: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -166,8 +178,9 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
               <button
                 className="choose-btn"
                 onClick={() => {
-                  // Hard Routing: Explicit navigate with hash backup
-                  navigate(`${location.pathname}?modal=package-booking&id=${entityId}#package-booking`, { replace: false });
+                  // Native Trap: Push fake state
+                  setSearchParams({ modal: 'package-booking', id: entityId });
+                  window.history.pushState({ modal: 'package-booking', id: entityId }, "");
                 }}
                 style={{ background: 'DarkTurquoise', color: 'white', border: 'none', padding: '10px 24px', borderRadius: '6px', fontWeight: '600', cursor: 'pointer' }}
               >
@@ -183,7 +196,11 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
             <span className="pkg-title" style={{ fontSize: '1.2em', fontWeight: '700' }}>{title}</span>
             <button onClick={() => {
               if (isBookingOpen) {
-                navigate(-1);
+                if (window.history.state?.modal === 'package-booking') {
+                  window.history.back();
+                } else {
+                  setSearchParams({});
+                }
               }
             }} style={{ background: 'none', border: 'none', fontSize: '1.5em', cursor: 'pointer', color: '#999' }}>×</button>
           </div>

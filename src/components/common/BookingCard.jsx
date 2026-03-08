@@ -11,7 +11,7 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
   const slugify = (text) => text?.toString().toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-') || '';
   const entityId = slugify(title || sku);
 
-  const isBookingOpen = (searchParams.get('modal') === 'booking' && searchParams.get('id') === entityId) || location.hash === '#booking';
+  const isBookingOpen = searchParams.get('modal') === 'booking' && searchParams.get('id') === entityId;
 
   const [selectedDate, setSelectedDate] = useState(null);
   const [adultCount, setAdultCount] = useState(1);
@@ -25,6 +25,19 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
   const currentChildPrice = parseFloat(childPrice || price || 0);
   const totalPrice = ((currentPrice * adultCount) + (currentChildPrice * childCount)).toFixed(2);
   const displayOriginalPrice = (currentPrice * 1.3).toFixed(0);
+
+  // Global listener to catch the "Back" button event for modals
+  useEffect(() => {
+    const handlePopState = (event) => {
+      if (isBookingOpen) {
+        // We caught the back button! Close the modal and stay on page.
+        setSearchParams({});
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [isBookingOpen, setSearchParams]);
 
   const handleNextStep = () => {
     if (!selectedDate) {
@@ -59,10 +72,15 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
           className="details-link"
           onClick={() => {
             if (!isBookingOpen) {
-              // Hard Routing: Explicit navigate with hash backup
-              navigate(`${location.pathname}?modal=booking&id=${entityId}#booking`, { replace: false });
+              // Native Trap: Push fake state
+              setSearchParams({ modal: 'booking', id: entityId });
+              window.history.pushState({ modal: 'booking', id: entityId }, "");
             } else {
-              navigate(-1);
+              if (window.history.state?.modal === 'booking') {
+                window.history.back();
+              } else {
+                setSearchParams({});
+              }
             }
           }}
           style={{ background: 'none', border: 'none', color: '#007bff', cursor: 'pointer', textDecoration: 'underline' }}
@@ -96,8 +114,9 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
               <button
                 className="choose-btn"
                 onClick={() => {
-                  // Hard Routing: Explicit navigate with hash backup
-                  navigate(`${location.pathname}?modal=booking&id=${entityId}#booking`, { replace: false });
+                  // Native Trap: Push fake state
+                  setSearchParams({ modal: 'booking', id: entityId });
+                  window.history.pushState({ modal: 'booking', id: entityId }, "");
                 }}
                 style={{
                   backgroundColor: 'DarkTurquoise',

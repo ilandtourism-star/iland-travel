@@ -41,8 +41,8 @@ const ActivityCard = ({
   const slugify = (text) => text?.toString().toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-') || '';
   const entityId = slugify(sku || title);
 
-  const isGalleryOpen = (searchParams.get('modal') === 'gallery' && searchParams.get('id') === entityId) || location.hash === '#gallery';
-  const isBookingOpen = (searchParams.get('modal') === 'booking' && searchParams.get('id') === entityId) || location.hash === '#booking';
+  const isGalleryOpen = searchParams.get('modal') === 'gallery' && searchParams.get('id') === entityId;
+  const isBookingOpen = searchParams.get('modal') === 'booking' && searchParams.get('id') === entityId;
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -97,16 +97,23 @@ const ActivityCard = ({
     if (galleryImages.length > 0) {
       e.stopPropagation(); // Prevent navigating to details page if clicking image also triggers link
       setCurrentImageIndex(0);
-      // Hard Routing: Explicit navigate with hash backup to force history entry
-      navigate(`${location.pathname}?modal=gallery&id=${entityId}#gallery`, { replace: false });
+      // Native Trap: Push a fake state to history
+      setSearchParams({ modal: 'gallery', id: entityId });
+      window.history.pushState({ modal: 'gallery', id: entityId }, "");
     }
   };
 
   const closeGallery = () => {
     if (isGalleryOpen) {
-      navigate(-1);
+      if (window.history.state?.modal === 'gallery') {
+        window.history.back();
+      } else {
+        setSearchParams({});
+      }
     }
   };
+
+
 
   const nextImage = (e) => {
     e.stopPropagation();
@@ -138,16 +145,34 @@ const ActivityCard = ({
     if (isBooking) {
       // Toggle the embedded booking calendar
       if (!isBookingOpen) {
-        // Hard Routing: Explicit navigate with hash backup
-        navigate(`${location.pathname}?modal=booking&id=${entityId}#booking`, { replace: false });
+        // Native Trap: Push fake state
+        setSearchParams({ modal: 'booking', id: entityId });
+        window.history.pushState({ modal: 'booking', id: entityId }, "");
       } else {
-        navigate(-1);
+        if (window.history.state?.modal === 'booking') {
+          window.history.back();
+        } else {
+          setSearchParams({});
+        }
       }
     } else {
       // Navigate to details page
       navigate(link);
     }
   };
+
+  // Global listener to catch the "Back" button event for modals
+  useEffect(() => {
+    const handlePopState = (event) => {
+      if (isGalleryOpen || isBookingOpen) {
+        // We caught the back button! Close the modal and stay on page.
+        setSearchParams({});
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [isGalleryOpen, isBookingOpen, setSearchParams]);
 
   const handleNextStep = () => {
     if (!selectedDate) {

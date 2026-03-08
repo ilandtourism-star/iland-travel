@@ -162,19 +162,39 @@ const Home = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
 
-    // --- HARD ROUTING STRATEGY FOR MOBILE BACK BUTTON ---
-    const isShareModalOpen = searchParams.get('modal') === 'share' || location.hash === '#share';
+    // --- NATIVE POPSTATE TRAP FOR REALME / ANDROID BACK BUTTON ---
+    const isShareModalOpen = searchParams.get('modal') === 'share';
 
     const openShareModal = () => {
-        // Force a history entry using explicit navigate + hash backup
-        navigate(`${location.pathname}?modal=share#share`, { replace: false });
+        // 1. Update URL visually for links/consistency
+        setSearchParams({ modal: 'share' });
+        // 2. Push a fake state to the browser history to TRAP the next back button press
+        window.history.pushState({ modal: 'share' }, "");
     };
 
     const closeShareModal = () => {
         if (isShareModalOpen) {
-            navigate(-1);
+            // If we are closing via UI (X button), we need to clear the fake history entry
+            if (window.history.state?.modal === 'share') {
+                window.history.back();
+            } else {
+                setSearchParams({});
+            }
         }
     };
+
+    // Global listener to catch the "Back" button event
+    useEffect(() => {
+        const handlePopState = (event) => {
+            if (isShareModalOpen) {
+                // We caught the back button! Close the modal and stay on page.
+                setSearchParams({});
+            }
+        };
+
+        window.addEventListener('popstate', handlePopState);
+        return () => window.removeEventListener('popstate', handlePopState);
+    }, [isShareModalOpen, setSearchParams]);
 
     const handleSearch = () => {
         navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
