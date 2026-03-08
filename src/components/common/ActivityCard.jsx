@@ -93,14 +93,14 @@ const ActivityCard = ({
       e.stopPropagation(); // Prevent navigating to details page if clicking image also triggers link
       setShowGallery(true);
       setCurrentImageIndex(0);
-      navigate(location.pathname + location.search + '#gallery_' + title.replace(/\s+/g, '-').toLowerCase());
+      window.history.pushState({ modalOpen: 'gallery' }, ''); // Add a fake history entry
     }
   };
 
   const closeGallery = () => {
     setShowGallery(false);
-    if (location.hash.includes('gallery')) {
-      navigate(-1);
+    if (window.history.state && window.history.state.modalOpen) {
+      window.history.back(); // Optional cleanly remove the fake history if closed via button
     }
   };
 
@@ -135,11 +135,11 @@ const ActivityCard = ({
       // Toggle the embedded booking calendar
       if (!isBookingOpen) {
         setIsBookingOpen(true);
-        navigate(location.pathname + location.search + '#booking_' + title.replace(/\s+/g, '-').toLowerCase());
+        window.history.pushState({ modalOpen: 'booking' }, ''); // Fake history state
       } else {
         setIsBookingOpen(false);
-        if (location.hash.includes('booking')) {
-          navigate(-1);
+        if (window.history.state && window.history.state.modalOpen) {
+          window.history.back();
         }
       }
     } else {
@@ -169,14 +169,21 @@ const ActivityCard = ({
   };
 
   React.useEffect(() => {
-    // Use React Router's location to detect back navigation
-    if (isBookingOpen && !location.hash.includes('booking')) {
-      setIsBookingOpen(false);
+    const handlePopState = (e) => {
+      // If user presses physical back button, popstate fires.
+      if (isBookingOpen) {
+        setIsBookingOpen(false); // Close modal
+      } else if (showGallery) {
+        setShowGallery(false); // Close gallery
+      }
+    };
+
+    // Only attach listener if a modal is actually open
+    if (isBookingOpen || showGallery) {
+      window.addEventListener('popstate', handlePopState);
+      return () => window.removeEventListener('popstate', handlePopState);
     }
-    if (showGallery && !location.hash.includes('gallery')) {
-      setShowGallery(false);
-    }
-  }, [location.hash, isBookingOpen, showGallery]);
+  }, [isBookingOpen, showGallery]);
 
   return (
     <>
