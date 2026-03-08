@@ -6,7 +6,12 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
   const navigate = useNavigate();
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
-  const isBookingOpen = searchParams.get('modal') === 'booking' && searchParams.get('id') === title;
+
+  // Helper to slugify IDs for URL stability
+  const slugify = (text) => text?.toString().toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-') || '';
+  const entityId = slugify(title || sku);
+
+  const isBookingOpen = (searchParams.get('modal') === 'booking' && searchParams.get('id') === entityId) || location.hash === '#booking';
 
   const [selectedDate, setSelectedDate] = useState(null);
   const [adultCount, setAdultCount] = useState(1);
