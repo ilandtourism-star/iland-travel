@@ -175,7 +175,7 @@ const KapasIslandDayTrips = () => {
             backgroundImage: 'none'
           }}>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15876.326887560868!2d103.19358211247472!3d5.195574514210086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b7b7a66b595213%3A0xc3af87c2fb2540d5!2sJeti%20Marang!5e0!3m2!1sen!2smy!4v1709776512345!5m2!1sen!2smy"
+              src="https://www.google.com/maps?q=Jeti%20Marang%20Terengganu&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
