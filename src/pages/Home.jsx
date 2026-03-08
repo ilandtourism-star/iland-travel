@@ -162,13 +162,12 @@ const Home = () => {
     const location = useLocation();
     const [searchParams, setSearchParams] = useSearchParams();
 
-    // Hook to handle "back" button on phone for Share Modal
+    // Hook to handle "back" button on phone for Share Modal - Sync State with URL
     useEffect(() => {
         const activeModal = searchParams.get('modal');
-        if (showShareModal && activeModal !== 'share') {
-            setShowShareModal(false);
-        }
-    }, [searchParams, showShareModal]);
+        // Source of truth is now the URL parameter
+        setShowShareModal(activeModal === 'share');
+    }, [searchParams]);
 
     const openShareModal = () => {
         setShowShareModal(true);

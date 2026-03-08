@@ -10,13 +10,15 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Handle phone "back" button using URL Search Params trap
+  // Handle phone "back" button using URL Search Params trap - Sync State with URL
   useEffect(() => {
     const activeModal = searchParams.get('modal');
-    if (isBookingOpen && activeModal !== 'card-booking') {
-      setIsBookingOpen(false);
+    const isThisModalOpen = activeModal === `card-booking-${title}`;
+
+    if (isBookingOpen !== isThisModalOpen) {
+      setIsBookingOpen(isThisModalOpen);
     }
-  }, [searchParams, isBookingOpen]);
+  }, [searchParams, title, isBookingOpen]);
 
   // Calculate total price dynamically
   const currentPrice = parseFloat(price || 0);
@@ -59,8 +61,8 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
             const newState = !isBookingOpen;
             setIsBookingOpen(newState);
             if (newState) {
-              setSearchParams({ modal: 'card-booking' }, { replace: false });
-            } else if (searchParams.get('modal') === 'card-booking') {
+              setSearchParams({ modal: `card-booking-${title}` }, { replace: false });
+            } else if (searchParams.get('modal') === `card-booking-${title}`) {
               navigate(-1);
             }
           }}
@@ -96,7 +98,7 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
                 className="choose-btn"
                 onClick={() => {
                   setIsBookingOpen(true);
-                  setSearchParams({ modal: 'card-booking' }, { replace: false });
+                  setSearchParams({ modal: `card-booking-${title}` }, { replace: false });
                 }}
                 style={{
                   backgroundColor: 'DarkTurquoise',

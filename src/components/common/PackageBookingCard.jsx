@@ -63,10 +63,12 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
 
   useEffect(() => {
     const activeModal = searchParams.get('modal');
-    if (isBookingOpen && activeModal !== 'card-booking') {
-      setIsBookingOpen(false);
+    const isThisModalOpen = activeModal === `card-booking-${title}`;
+
+    if (isBookingOpen !== isThisModalOpen) {
+      setIsBookingOpen(isThisModalOpen);
     }
-  }, [searchParams, isBookingOpen]);
+  }, [searchParams, title, isBookingOpen]);
 
   const totalPrice = pricingType === 'unit'
     ? parseFloat(price).toFixed(2)
@@ -166,7 +168,7 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
                 className="choose-btn"
                 onClick={() => {
                   setIsBookingOpen(true);
-                  setSearchParams({ modal: 'card-booking' }, { replace: false });
+                  setSearchParams({ modal: `card-booking-${title}` }, { replace: false });
                 }}
                 style={{ background: 'DarkTurquoise', color: 'white', border: 'none', padding: '10px 24px', borderRadius: '6px', fontWeight: '600', cursor: 'pointer' }}
               >
@@ -182,7 +184,7 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
             <span className="pkg-title" style={{ fontSize: '1.2em', fontWeight: '700' }}>{title}</span>
             <button onClick={() => {
               setIsBookingOpen(false);
-              if (searchParams.get('modal') === 'card-booking') {
+              if (searchParams.get('modal') === `card-booking-${title}`) {
                 navigate(-1);
               }
             }} style={{ background: 'none', border: 'none', fontSize: '1.5em', cursor: 'pointer', color: '#999' }}>×</button>

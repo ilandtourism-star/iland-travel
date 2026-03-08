@@ -94,13 +94,13 @@ const ActivityCard = ({
       e.stopPropagation(); // Prevent navigating to details page if clicking image also triggers link
       setShowGallery(true);
       setCurrentImageIndex(0);
-      setSearchParams({ modal: 'gallery-open' }, { replace: false }); // Force PUSH entry for back button to work
+      setSearchParams({ modal: `gallery-${sku || title}` }, { replace: false }); // Unique SKU-based param
     }
   };
 
   const closeGallery = () => {
     setShowGallery(false);
-    if (searchParams.get('modal') === 'gallery-open') {
+    if (searchParams.get('modal') === `gallery-${sku || title}`) {
       navigate(-1); // React Router way of going back
     }
   };
@@ -136,10 +136,10 @@ const ActivityCard = ({
       // Toggle the embedded booking calendar
       if (!isBookingOpen) {
         setIsBookingOpen(true);
-        setSearchParams({ modal: 'booking-open' }, { replace: false }); // Force PUSH
+        setSearchParams({ modal: `booking-${sku || title}` }, { replace: false }); // Force PUSH with SKU
       } else {
         setIsBookingOpen(false);
-        if (searchParams.get('modal') === 'booking-open') {
+        if (searchParams.get('modal') === `booking-${sku || title}`) {
           navigate(-1);
         }
       }
@@ -172,15 +172,14 @@ const ActivityCard = ({
   React.useEffect(() => {
     const activeModal = searchParams.get('modal');
 
-    // Native Back Button Interceptor for Mobile App
-    if (isBookingOpen && activeModal !== 'booking-open') {
-      setIsBookingOpen(false);
-    }
-    if (showGallery && activeModal !== 'gallery-open') {
-      setShowGallery(false);
-    }
+    // Force Sync state with URL - Essential for mobile handle
+    const isThisBookingOpen = activeModal === `booking-${sku || title}`;
+    const isThisGalleryOpen = activeModal === `gallery-${sku || title}`;
 
-  }, [searchParams, isBookingOpen, showGallery]);
+    if (isBookingOpen !== isThisBookingOpen) setIsBookingOpen(isThisBookingOpen);
+    if (showGallery !== isThisGalleryOpen) setShowGallery(isThisGalleryOpen);
+
+  }, [searchParams, sku, title]);
 
   return (
     <>
