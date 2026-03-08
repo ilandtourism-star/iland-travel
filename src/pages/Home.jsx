@@ -1027,7 +1027,8 @@ const Home = () => {
 
             {/* Background Music */}
             <audio ref={audioRef} loop autoPlay>
-                {/* Sila masukkan URL atau path muzik sebenar anda di sini */}
+                {/* Menggunakan URL remote untuk memastikan audio berfungsi di Render tanpa memuat naik fail besar (626MB) */}
+                <source src="https://assets.mixkit.co/active_storage/sfx/2513/2513-preview.mp3" type="audio/mpeg" />
                 <source src="/assets/audio/wave.m4a" type="audio/mp4" />
             </audio>
 
