@@ -36,8 +36,13 @@ const ActivityCard = ({
   const navigate = useNavigate();
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
-  const isGalleryOpen = searchParams.get('modal') === 'gallery' && searchParams.get('id') === (sku || title);
-  const isBookingOpen = searchParams.get('modal') === 'booking' && searchParams.get('id') === (sku || title);
+
+  // Helper to slugify IDs for URL stability
+  const slugify = (text) => text?.toString().toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-') || '';
+  const entityId = slugify(sku || title);
+
+  const isGalleryOpen = (searchParams.get('modal') === 'gallery' && searchParams.get('id') === entityId) || location.hash === '#gallery';
+  const isBookingOpen = (searchParams.get('modal') === 'booking' && searchParams.get('id') === entityId) || location.hash === '#booking';
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -92,7 +97,8 @@ const ActivityCard = ({
     if (galleryImages.length > 0) {
       e.stopPropagation(); // Prevent navigating to details page if clicking image also triggers link
       setCurrentImageIndex(0);
-      setSearchParams({ modal: 'gallery', id: sku || title });
+      // Hard Routing: Explicit navigate with hash backup to force history entry
+      navigate(`${location.pathname}?modal=gallery&id=${entityId}#gallery`, { replace: false });
     }
   };
 
@@ -132,7 +138,8 @@ const ActivityCard = ({
     if (isBooking) {
       // Toggle the embedded booking calendar
       if (!isBookingOpen) {
-        setSearchParams({ modal: 'booking', id: sku || title });
+        // Hard Routing: Explicit navigate with hash backup
+        navigate(`${location.pathname}?modal=booking&id=${entityId}#booking`, { replace: false });
       } else {
         navigate(-1);
       }

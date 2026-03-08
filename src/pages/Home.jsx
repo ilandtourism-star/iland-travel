@@ -162,11 +162,12 @@ const Home = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
 
-    // --- URL SEARCH PARAMS STRATEGY FOR MOBILE BACK BUTTON ---
-    const isShareModalOpen = searchParams.get('modal') === 'share';
+    // --- HARD ROUTING STRATEGY FOR MOBILE BACK BUTTON ---
+    const isShareModalOpen = searchParams.get('modal') === 'share' || location.hash === '#share';
 
     const openShareModal = () => {
-        setSearchParams({ modal: 'share' });
+        // Force a history entry using explicit navigate + hash backup
+        navigate(`${location.pathname}?modal=share#share`, { replace: false });
     };
 
     const closeShareModal = () => {

@@ -54,12 +54,8 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
           className="details-link"
           onClick={() => {
             if (!isBookingOpen) {
-              setSearchParams(prev => {
-                const next = new URLSearchParams(prev);
-                next.set('modal', 'booking');
-                next.set('id', title);
-                return next;
-              });
+              // Hard Routing: Explicit navigate with hash backup
+              navigate(`${location.pathname}?modal=booking&id=${entityId}#booking`, { replace: false });
             } else {
               navigate(-1);
             }
@@ -95,7 +91,8 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
               <button
                 className="choose-btn"
                 onClick={() => {
-                  setSearchParams({ modal: 'booking', id: title });
+                  // Hard Routing: Explicit navigate with hash backup
+                  navigate(`${location.pathname}?modal=booking&id=${entityId}#booking`, { replace: false });
                 }}
                 style={{
                   backgroundColor: 'DarkTurquoise',

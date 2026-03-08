@@ -60,7 +60,12 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
   const navigate = useNavigate();
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
-  const isBookingOpen = searchParams.get('modal') === 'package-booking' && searchParams.get('id') === title;
+
+  // Helper to slugify IDs for URL stability
+  const slugify = (text) => text?.toString().toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-') || '';
+  const entityId = slugify(title);
+
+  const isBookingOpen = (searchParams.get('modal') === 'package-booking' && searchParams.get('id') === entityId) || location.hash === '#package-booking';
   // --- URL SEARCH PARAMS STRATEGY ---
   // Modal visibility is controlled by isBookingOpen derived from URL params.
 
@@ -161,7 +166,8 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
               <button
                 className="choose-btn"
                 onClick={() => {
-                  setSearchParams({ modal: 'package-booking', id: title });
+                  // Hard Routing: Explicit navigate with hash backup
+                  navigate(`${location.pathname}?modal=package-booking&id=${entityId}#package-booking`, { replace: false });
                 }}
                 style={{ background: 'DarkTurquoise', color: 'white', border: 'none', padding: '10px 24px', borderRadius: '6px', fontWeight: '600', cursor: 'pointer' }}
               >
