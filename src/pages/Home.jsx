@@ -166,18 +166,18 @@ const Home = () => {
             if (showShareModal) setShowShareModal(false);
         };
 
-        if (showShareModal) window.addEventListener('popstate', handlePopState);
+        window.addEventListener('popstate', handlePopState);
         return () => window.removeEventListener('popstate', handlePopState);
     }, [showShareModal]);
 
     const openShareModal = () => {
-        window.history.pushState({ modalOpen: true }, '');
         setShowShareModal(true);
+        window.history.pushState({ modalOpen: true }, '', window.location.pathname + '#share');
     };
 
     const closeShareModal = () => {
         setShowShareModal(false);
-        if (window.history.state && window.history.state.modalOpen) {
+        if (window.location.hash === '#share') {
             window.history.back();
         }
     };
