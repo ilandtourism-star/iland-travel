@@ -162,33 +162,27 @@ const Home = () => {
     const location = useLocation();
 
 
-    // --- NATIVE HISTORY TRAP FOR MOBILE BACK BUTTON ---
-    // This technique creates a "silent" history entry that the browser can pop
-    // without changing the URL or triggering a page reload.
+    // --- HARD HASH TRAP FOR MOBILE BACK BUTTON ---
     useEffect(() => {
-        const handlePopState = (event) => {
-            // When user hits back button, the browser pops our custom state
-            if (showShareModal) {
+        const handleHashChange = () => {
+            // If the hash is gone but modal is still showing, user hit "Back"
+            if (showShareModal && !window.location.hash.includes('#share')) {
                 setShowShareModal(false);
             }
         };
 
-        window.addEventListener('popstate', handlePopState);
-        return () => window.removeEventListener('popstate', handlePopState);
+        window.addEventListener('hashchange', handleHashChange);
+        return () => window.removeEventListener('hashchange', handleHashChange);
     }, [showShareModal]);
 
     const openShareModal = () => {
-        // Only push state if we haven't already (prevents stack bloating)
-        if (!showShareModal) {
-            window.history.pushState({ isModalOpen: true }, '');
-        }
         setShowShareModal(true);
+        window.location.hash = 'share';
     };
 
     const closeShareModal = () => {
         setShowShareModal(false);
-        // If we are still in our custom state, go back to clean it up
-        if (window.history.state?.isModalOpen) {
+        if (window.location.hash.includes('#share')) {
             window.history.back();
         }
     };

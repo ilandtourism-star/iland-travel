@@ -92,20 +92,16 @@ const ActivityCard = ({
     if (galleryImages.length > 0) {
       e.stopPropagation(); // Prevent navigating to details page if clicking image also triggers link
 
-      // Native App Behavior: Trap the hardware "Back" button without URL change
-      if (!showGallery) {
-        window.history.pushState({ modalType: 'gallery', sku: sku || title }, '');
-      }
-
+      // Hard Hash Trap for Mobile Hardware Back Button
       setShowGallery(true);
       setCurrentImageIndex(0);
+      window.location.hash = `gallery-${sku || title}`.replace(/\s+/g, '-');
     }
   };
 
   const closeGallery = () => {
     setShowGallery(false);
-    // Cleanup history if we are still in our custom state
-    if (window.history.state?.modalType === 'gallery') {
+    if (window.location.hash.includes('gallery')) {
       window.history.back();
     }
   };
@@ -140,12 +136,11 @@ const ActivityCard = ({
     if (isBooking) {
       // Toggle the embedded booking calendar
       if (!isBookingOpen) {
-        // Native History Trap
-        window.history.pushState({ modalType: 'booking', sku: sku || title }, '');
         setIsBookingOpen(true);
+        window.location.hash = `booking-${sku || title}`.replace(/\s+/g, '-');
       } else {
         setIsBookingOpen(false);
-        if (window.history.state?.modalType === 'booking') {
+        if (window.location.hash.includes('booking')) {
           window.history.back();
         }
       }
@@ -175,16 +170,17 @@ const ActivityCard = ({
     });
   };
 
-  // Mobile App Native Experience: Handle Physical Back Button centrally via PopState
+  // Hard Hash Trap Listener for Mobile Hardware Back Button
   useEffect(() => {
-    const handlePopState = (event) => {
-      // When user hits back button, the browser pops our custom state
-      if (showGallery) setShowGallery(false);
-      if (isBookingOpen) setIsBookingOpen(false);
+    const handleHashChange = () => {
+      // If hash is gone but modal is open, user hit hardware back button
+      const hash = window.location.hash;
+      if (showGallery && !hash.includes('gallery')) setShowGallery(false);
+      if (isBookingOpen && !hash.includes('booking')) setIsBookingOpen(false);
     };
 
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, [showGallery, isBookingOpen]);
 
   return (

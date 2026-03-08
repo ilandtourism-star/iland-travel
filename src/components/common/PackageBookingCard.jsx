@@ -59,16 +59,17 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
   const [adultCount, setAdultCount] = useState(1);
   const [childCount, setChildCount] = useState(0);
   const navigate = useNavigate();
-  // Handle phone "back" button using Native History Trap
+  // Handle phone "back" button using Hard Hash Trap
   useEffect(() => {
-    const handlePopState = (event) => {
-      if (isBookingOpen) {
+    const handleHashChange = () => {
+      // If hash is gone but modal is open, user hit hardware back button
+      if (isBookingOpen && !window.location.hash.includes('package-booking')) {
         setIsBookingOpen(false);
       }
     };
 
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, [isBookingOpen]);
 
   const totalPrice = pricingType === 'unit'
@@ -168,8 +169,8 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
               <button
                 className="choose-btn"
                 onClick={() => {
-                  window.history.pushState({ modalOpen: true, title }, '');
                   setIsBookingOpen(true);
+                  window.location.hash = `package-booking-${title}`.replace(/\s+/g, '-');
                 }}
                 style={{ background: 'DarkTurquoise', color: 'white', border: 'none', padding: '10px 24px', borderRadius: '6px', fontWeight: '600', cursor: 'pointer' }}
               >
@@ -185,7 +186,7 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
             <span className="pkg-title" style={{ fontSize: '1.2em', fontWeight: '700' }}>{title}</span>
             <button onClick={() => {
               setIsBookingOpen(false);
-              if (window.history.state?.modalOpen) {
+              if (window.location.hash.includes('package-booking')) {
                 window.history.back();
               }
             }} style={{ background: 'none', border: 'none', fontSize: '1.5em', cursor: 'pointer', color: '#999' }}>×</button>

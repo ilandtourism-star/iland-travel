@@ -9,16 +9,17 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
   const [childCount, setChildCount] = useState(0);
   const navigate = useNavigate();
 
-  // Handle phone "back" button using Native History Trap
+  // Handle phone "back" button using Hard Hash Trap
   useEffect(() => {
-    const handlePopState = (event) => {
-      if (isBookingOpen) {
+    const handleHashChange = () => {
+      // If hash is gone but modal is open, user hit hardware back button
+      if (isBookingOpen && !window.location.hash.includes('card-booking')) {
         setIsBookingOpen(false);
       }
     };
 
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, [isBookingOpen]);
 
   // Calculate total price dynamically
@@ -62,11 +63,11 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
             const newState = !isBookingOpen;
             setIsBookingOpen(newState);
             if (newState) {
-              window.history.pushState({ modalOpen: true, title }, '');
               setIsBookingOpen(true);
+              window.location.hash = `card-booking-${title}`.replace(/\s+/g, '-');
             } else {
               setIsBookingOpen(false);
-              if (window.history.state?.modalOpen) {
+              if (window.location.hash.includes('card-booking')) {
                 window.history.back();
               }
             }
@@ -102,8 +103,8 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
               <button
                 className="choose-btn"
                 onClick={() => {
-                  window.history.pushState({ modalOpen: true, title }, '');
                   setIsBookingOpen(true);
+                  window.location.hash = `card-booking-${title}`.replace(/\s+/g, '-');
                 }}
                 style={{
                   backgroundColor: 'DarkTurquoise',
