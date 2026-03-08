@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import CalendarWidget from './CalendarWidget';
 
 const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features, image, rating, reviews, badge }) => {
@@ -8,6 +8,15 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
   const [adultCount, setAdultCount] = useState(1);
   const [childCount, setChildCount] = useState(0);
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // Handle phone "back" button using URL Search Params trap
+  useEffect(() => {
+    const activeModal = searchParams.get('modal');
+    if (isBookingOpen && activeModal !== 'card-booking') {
+      setIsBookingOpen(false);
+    }
+  }, [searchParams, isBookingOpen]);
 
   // Calculate total price dynamically
   const currentPrice = parseFloat(price || 0);
@@ -46,7 +55,15 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
         <span className="pkg-title" style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>{title}</span>
         <button
           className="details-link"
-          onClick={() => setIsBookingOpen(!isBookingOpen)}
+          onClick={() => {
+            const newState = !isBookingOpen;
+            setIsBookingOpen(newState);
+            if (newState) {
+              setSearchParams({ modal: 'card-booking' });
+            } else if (searchParams.get('modal') === 'card-booking') {
+              navigate(-1);
+            }
+          }}
           style={{ background: 'none', border: 'none', color: '#007bff', cursor: 'pointer', textDecoration: 'underline' }}
         >
           {isBookingOpen ? 'Close' : 'See details >'}
@@ -77,7 +94,10 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
             <div className="action-btn">
               <button
                 className="choose-btn"
-                onClick={() => setIsBookingOpen(true)}
+                onClick={() => {
+                  setIsBookingOpen(true);
+                  setSearchParams({ modal: 'card-booking' });
+                }}
                 style={{
                   backgroundColor: 'DarkTurquoise',
                   color: 'white',

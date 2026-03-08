@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 // Calendar Widget Component
 const CalendarWidget = ({ onSelect, selectedDate }) => {
@@ -59,6 +59,14 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
   const [adultCount, setAdultCount] = useState(1);
   const [childCount, setChildCount] = useState(0);
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    const activeModal = searchParams.get('modal');
+    if (isBookingOpen && activeModal !== 'card-booking') {
+      setIsBookingOpen(false);
+    }
+  }, [searchParams, isBookingOpen]);
 
   const totalPrice = pricingType === 'unit'
     ? parseFloat(price).toFixed(2)
@@ -156,7 +164,10 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
             <div className="action-btn">
               <button
                 className="choose-btn"
-                onClick={() => setIsBookingOpen(true)}
+                onClick={() => {
+                  setIsBookingOpen(true);
+                  setSearchParams({ modal: 'card-booking' });
+                }}
                 style={{ background: 'DarkTurquoise', color: 'white', border: 'none', padding: '10px 24px', borderRadius: '6px', fontWeight: '600', cursor: 'pointer' }}
               >
                 Ticket
@@ -169,7 +180,12 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
         <div className="booking-view" style={{ padding: '20px' }}>
           <div className="card-row top-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
             <span className="pkg-title" style={{ fontSize: '1.2em', fontWeight: '700' }}>{title}</span>
-            <button onClick={() => setIsBookingOpen(false)} style={{ background: 'none', border: 'none', fontSize: '1.5em', cursor: 'pointer', color: '#999' }}>×</button>
+            <button onClick={() => {
+              setIsBookingOpen(false);
+              if (searchParams.get('modal') === 'card-booking') {
+                navigate(-1);
+              }
+            }} style={{ background: 'none', border: 'none', fontSize: '1.5em', cursor: 'pointer', color: '#999' }}>×</button>
           </div>
           <hr className="booking-divider" style={{ border: '0', borderTop: '1px solid #eee', margin: '20px 0' }} />
 

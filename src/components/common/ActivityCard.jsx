@@ -94,14 +94,14 @@ const ActivityCard = ({
       e.stopPropagation(); // Prevent navigating to details page if clicking image also triggers link
       setShowGallery(true);
       setCurrentImageIndex(0);
-      window.location.hash = 'gallery-open'; // Adds hash without React Router navigation
+      setSearchParams({ modal: 'gallery-open' }); // Replaces Vanilla DOM Hash
     }
   };
 
   const closeGallery = () => {
     setShowGallery(false);
-    if (window.location.hash === '#gallery-open') {
-      window.history.back(); // Soft BOM regression
+    if (searchParams.get('modal') === 'gallery-open') {
+      navigate(-1); // React Router way of going back
     }
   };
 
@@ -136,11 +136,11 @@ const ActivityCard = ({
       // Toggle the embedded booking calendar
       if (!isBookingOpen) {
         setIsBookingOpen(true);
-        window.location.hash = 'booking-open'; // Vanilla DOM hash
+        setSearchParams({ modal: 'booking-open' }); // URL Param
       } else {
         setIsBookingOpen(false);
-        if (window.location.hash === '#booking-open') {
-          window.history.back();
+        if (searchParams.get('modal') === 'booking-open') {
+          navigate(-1);
         }
       }
     } else {
@@ -170,19 +170,17 @@ const ActivityCard = ({
   };
 
   React.useEffect(() => {
-    const handleHashChange = (e) => {
-      // Native Back Button Interceptor
-      if (isBookingOpen && window.location.hash !== '#booking-open') {
-        setIsBookingOpen(false);
-      }
-      if (showGallery && window.location.hash !== '#gallery-open') {
-        setShowGallery(false);
-      }
-    };
+    const activeModal = searchParams.get('modal');
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [isBookingOpen, showGallery]);
+    // Native Back Button Interceptor for Mobile App
+    if (isBookingOpen && activeModal !== 'booking-open') {
+      setIsBookingOpen(false);
+    }
+    if (showGallery && activeModal !== 'gallery-open') {
+      setShowGallery(false);
+    }
+
+  }, [searchParams, isBookingOpen, showGallery]);
 
   return (
     <>
