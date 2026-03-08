@@ -163,24 +163,24 @@ const Home = () => {
 
     // Hook to handle "back" button on phone for Share Modal
     useEffect(() => {
-        const handlePopState = () => {
-            if (showShareModal) setShowShareModal(false);
+        const handleHashChange = (e) => {
+            if (showShareModal && window.location.hash !== '#share-open') {
+                setShowShareModal(false);
+            }
         };
 
-        if (showShareModal) {
-            window.addEventListener('popstate', handlePopState);
-            return () => window.removeEventListener('popstate', handlePopState);
-        }
+        window.addEventListener('hashchange', handleHashChange);
+        return () => window.removeEventListener('hashchange', handleHashChange);
     }, [showShareModal]);
 
     const openShareModal = () => {
         setShowShareModal(true);
-        window.history.pushState({ modalOpen: 'share' }, ''); // Fake history state
+        window.location.hash = 'share-open'; // Native hash without React Router
     };
 
     const closeShareModal = () => {
         setShowShareModal(false);
-        if (window.history.state && window.history.state.modalOpen) {
+        if (window.location.hash === '#share-open') {
             window.history.back();
         }
     };
