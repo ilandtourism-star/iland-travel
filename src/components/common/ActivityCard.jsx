@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { jsPDF } from 'jspdf';
 import PackageBookingCard from './PackageBookingCard';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import CalendarWidget from './CalendarWidget';
 import SeasonNotifyForm from './SeasonNotifyForm';
 
@@ -35,11 +35,11 @@ const ActivityCard = ({
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [showGallery, setShowGallery] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const isGalleryOpen = searchParams.get('modal') === 'gallery' && searchParams.get('id') === (sku || title);
+  const isBookingOpen = searchParams.get('modal') === 'booking' && searchParams.get('id') === (sku || title);
 
-  // Booking / Calendar State
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedDate, setSelectedDate] = useState(null);
   const [adultCount, setAdultCount] = useState(1);
   const [childCount, setChildCount] = useState(0);
@@ -91,17 +91,13 @@ const ActivityCard = ({
     // Only open gallery if there are valid images
     if (galleryImages.length > 0) {
       e.stopPropagation(); // Prevent navigating to details page if clicking image also triggers link
-
-      // State-Based Trap for Mobile Hardware Back Button
-      setShowGallery(true);
       setCurrentImageIndex(0);
-      navigate(location.pathname, { state: { ...location.state, modal: `gallery-${sku || title}` }, replace: false });
+      setSearchParams({ modal: 'gallery', id: sku || title });
     }
   };
 
   const closeGallery = () => {
-    setShowGallery(false);
-    if (location.state?.modal?.startsWith('gallery-')) {
+    if (isGalleryOpen) {
       navigate(-1);
     }
   };
@@ -136,13 +132,9 @@ const ActivityCard = ({
     if (isBooking) {
       // Toggle the embedded booking calendar
       if (!isBookingOpen) {
-        setIsBookingOpen(true);
-        navigate(location.pathname, { state: { ...location.state, modal: `booking-${sku || title}` }, replace: false });
+        setSearchParams({ modal: 'booking', id: sku || title });
       } else {
-        setIsBookingOpen(false);
-        if (location.state?.modal?.startsWith('booking-')) {
-          navigate(-1);
-        }
+        navigate(-1);
       }
     } else {
       // Navigate to details page
@@ -170,17 +162,8 @@ const ActivityCard = ({
     });
   };
 
-  // State-Based Trap Listener for Mobile Hardware Back Button
-  useEffect(() => {
-    const modalKey = location.state?.modal;
-    // If modal is showing but corresponding state is gone (user hit hardware back)
-    if (showGallery && modalKey !== `gallery-${sku || title}`) {
-      setShowGallery(false);
-    }
-    if (isBookingOpen && modalKey !== `booking-${sku || title}`) {
-      setIsBookingOpen(false);
-    }
-  }, [location.state, showGallery, isBookingOpen, sku, title]);
+  // --- URL SEARCH PARAMS STRATEGY ---
+  // Pure URL routing, handled by the UI checks above. No sync effect needed.
 
   return (
     <>
@@ -660,7 +643,7 @@ const ActivityCard = ({
       </div>
 
       {/* Lightbox Gallery Modal */}
-      {showGallery && (
+      {isGalleryOpen && (
         <div style={{
           position: 'fixed',
           top: 0,

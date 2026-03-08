@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import CalendarWidget from './CalendarWidget';
 
 const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features, image, rating, reviews, badge }) => {
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const isBookingOpen = searchParams.get('modal') === 'booking' && searchParams.get('id') === title;
+
   const [selectedDate, setSelectedDate] = useState(null);
   const [adultCount, setAdultCount] = useState(1);
   const [childCount, setChildCount] = useState(0);
-  const navigate = useNavigate();
-  const location = useLocation();
 
-  // Handle phone "back" button using State-Based History Trap
-  useEffect(() => {
-    // If modal is showing but corresponding state is gone (user hit hardware back)
-    if (isBookingOpen && location.state?.modal !== `card-booking-${title}`) {
-      setIsBookingOpen(false);
-    }
-  }, [location.state, isBookingOpen, title]);
+  // --- URL SEARCH PARAMS STRATEGY ---
+  // Modal visibility is controlled by isBookingOpen derived from URL params.
 
   // Calculate total price dynamically
   const currentPrice = parseFloat(price || 0);
@@ -59,11 +56,9 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
             const newState = !isBookingOpen;
             setIsBookingOpen(newState);
             if (newState) {
-              setIsBookingOpen(true);
-              navigate(location.pathname, { state: { ...location.state, modal: `card-booking-${title}` }, replace: false });
+              setSearchParams({ modal: 'booking', id: title });
             } else {
-              setIsBookingOpen(false);
-              if (location.state?.modal === `card-booking-${title}`) {
+              if (isBookingOpen) {
                 navigate(-1);
               }
             }
@@ -99,8 +94,7 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
               <button
                 className="choose-btn"
                 onClick={() => {
-                  setIsBookingOpen(true);
-                  navigate(location.pathname, { state: { ...location.state, modal: `card-booking-${title}` }, replace: false });
+                  setSearchParams({ modal: 'booking', id: title });
                 }}
                 style={{
                   backgroundColor: 'DarkTurquoise',

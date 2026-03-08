@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 
 // Import local assets
 import kapasImg from '../assets/images/kapas.png';
@@ -157,28 +157,20 @@ const Home = () => {
         window.addEventListener('storage', updateActivities);
         return () => window.removeEventListener('storage', updateActivities);
     }, []);
-    const [showShareModal, setShowShareModal] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
+    const [searchParams, setSearchParams] = useSearchParams();
 
 
-    // --- STATE-BASED HISTORY TRAP FOR MOBILE BACK BUTTON ---
-    useEffect(() => {
-        // If the state for modal is gone but modal is still showing (Back button pressed)
-        if (showShareModal && !location.state?.modalOpen) {
-            setShowShareModal(false);
-        }
-    }, [location.state, showShareModal]);
+    // --- URL SEARCH PARAMS STRATEGY FOR MOBILE BACK BUTTON ---
+    const isShareModalOpen = searchParams.get('modal') === 'share';
 
     const openShareModal = () => {
-        setShowShareModal(true);
-        // Push a state into history to trap the back button
-        navigate(location.pathname, { state: { ...location.state, modalOpen: true }, replace: false });
+        setSearchParams({ modal: 'share' });
     };
 
     const closeShareModal = () => {
-        setShowShareModal(false);
-        if (location.state?.modalOpen) {
+        if (isShareModalOpen) {
             navigate(-1);
         }
     };
@@ -981,7 +973,7 @@ const Home = () => {
                     </div>
                 </div>
                 {/* Share Modal */}
-                {showShareModal && (
+                {isShareModalOpen && (
                     <div className="wof-modal-overlay" onClick={closeShareModal}>
                         <div className="wof-modal" onClick={e => e.stopPropagation()}>
                             <h3 className="wof-modal-title">Share Wall of Fame</h3>

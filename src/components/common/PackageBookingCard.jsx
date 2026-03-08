@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 
 // Calendar Widget Component
 const CalendarWidget = ({ onSelect, selectedDate }) => {
@@ -54,19 +54,15 @@ const CalendarWidget = ({ onSelect, selectedDate }) => {
 };
 
 const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, image, rating, reviews, features, badge, pricingType = 'pax' }) => {
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [adultCount, setAdultCount] = useState(1);
   const [childCount, setChildCount] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
-  // Handle phone "back" button using State-Based History Trap
-  useEffect(() => {
-    // If modal is showing but corresponding state is gone (user hit hardware back)
-    if (isBookingOpen && location.state?.modal !== `package-booking-${title}`) {
-      setIsBookingOpen(false);
-    }
-  }, [location.state, isBookingOpen, title]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const isBookingOpen = searchParams.get('modal') === 'package-booking' && searchParams.get('id') === title;
+  // --- URL SEARCH PARAMS STRATEGY ---
+  // Modal visibility is controlled by isBookingOpen derived from URL params.
 
   const totalPrice = pricingType === 'unit'
     ? parseFloat(price).toFixed(2)
@@ -165,8 +161,7 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
               <button
                 className="choose-btn"
                 onClick={() => {
-                  setIsBookingOpen(true);
-                  navigate(location.pathname, { state: { ...location.state, modal: `package-booking-${title}` }, replace: false });
+                  setSearchParams({ modal: 'package-booking', id: title });
                 }}
                 style={{ background: 'DarkTurquoise', color: 'white', border: 'none', padding: '10px 24px', borderRadius: '6px', fontWeight: '600', cursor: 'pointer' }}
               >
@@ -181,8 +176,7 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
           <div className="card-row top-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
             <span className="pkg-title" style={{ fontSize: '1.2em', fontWeight: '700' }}>{title}</span>
             <button onClick={() => {
-              setIsBookingOpen(false);
-              if (location.state?.modal === `package-booking-${title}`) {
+              if (isBookingOpen) {
                 navigate(-1);
               }
             }} style={{ background: 'none', border: 'none', fontSize: '1.5em', cursor: 'pointer', color: '#999' }}>×</button>
