@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { jsPDF } from 'jspdf';
 import PackageBookingCard from './PackageBookingCard';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import CalendarWidget from './CalendarWidget';
 import SeasonNotifyForm from './SeasonNotifyForm';
 
@@ -34,6 +34,7 @@ const ActivityCard = ({
   ...props
 }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [showGallery, setShowGallery] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -92,14 +93,14 @@ const ActivityCard = ({
       e.stopPropagation(); // Prevent navigating to details page if clicking image also triggers link
       setShowGallery(true);
       setCurrentImageIndex(0);
-      window.location.hash = 'gallery_' + title.replace(/\s+/g, '-').toLowerCase();
+      navigate(location.pathname + location.search + '#gallery_' + title.replace(/\s+/g, '-').toLowerCase());
     }
   };
 
   const closeGallery = () => {
     setShowGallery(false);
-    if (window.location.hash.includes('gallery')) {
-      window.history.back();
+    if (location.hash.includes('gallery')) {
+      navigate(-1);
     }
   };
 
@@ -134,11 +135,11 @@ const ActivityCard = ({
       // Toggle the embedded booking calendar
       if (!isBookingOpen) {
         setIsBookingOpen(true);
-        window.location.hash = 'booking_' + title.replace(/\s+/g, '-').toLowerCase();
+        navigate(location.pathname + location.search + '#booking_' + title.replace(/\s+/g, '-').toLowerCase());
       } else {
         setIsBookingOpen(false);
-        if (window.location.hash.includes('booking')) {
-          window.history.back();
+        if (location.hash.includes('booking')) {
+          navigate(-1);
         }
       }
     } else {
@@ -168,21 +169,14 @@ const ActivityCard = ({
   };
 
   React.useEffect(() => {
-    const handleHashChange = (e) => {
-      // If user presses physical back button, catch the event and close modals
-      const currentHash = window.location.hash;
-
-      if (isBookingOpen && !currentHash.includes('booking')) {
-        setIsBookingOpen(false);
-      }
-      if (showGallery && !currentHash.includes('gallery')) {
-        setShowGallery(false);
-      }
-    };
-
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [isBookingOpen, showGallery]);
+    // Use React Router's location to detect back navigation
+    if (isBookingOpen && !location.hash.includes('booking')) {
+      setIsBookingOpen(false);
+    }
+    if (showGallery && !location.hash.includes('gallery')) {
+      setShowGallery(false);
+    }
+  }, [location.hash, isBookingOpen, showGallery]);
 
   return (
     <>
