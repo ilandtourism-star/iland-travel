@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 
 // Import local assets
 import kapasImg from '../assets/images/kapas.png';
@@ -160,28 +160,25 @@ const Home = () => {
     const [showShareModal, setShowShareModal] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
+    const [searchParams, setSearchParams] = useSearchParams();
 
     // Hook to handle "back" button on phone for Share Modal
     useEffect(() => {
-        const handleHashChange = (e) => {
-            if (showShareModal && window.location.hash !== '#share-open') {
-                setShowShareModal(false);
-            }
-        };
-
-        window.addEventListener('hashchange', handleHashChange);
-        return () => window.removeEventListener('hashchange', handleHashChange);
-    }, [showShareModal]);
+        const activeModal = searchParams.get('modal');
+        if (showShareModal && activeModal !== 'share') {
+            setShowShareModal(false);
+        }
+    }, [searchParams, showShareModal]);
 
     const openShareModal = () => {
         setShowShareModal(true);
-        window.location.hash = 'share-open'; // Native hash without React Router
+        setSearchParams({ modal: 'share' });
     };
 
     const closeShareModal = () => {
         setShowShareModal(false);
-        if (window.location.hash === '#share-open') {
-            window.history.back();
+        if (searchParams.get('modal') === 'share') {
+            navigate(-1);
         }
     };
 
