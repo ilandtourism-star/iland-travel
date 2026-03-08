@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, useNavigate, useLocation, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 // Import local assets
 import kapasImg from '../assets/images/kapas.png';
@@ -160,7 +160,7 @@ const Home = () => {
     const [showShareModal, setShowShareModal] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
-    const [searchParams, setSearchParams] = useSearchParams();
+
 
     // --- NATIVE HISTORY TRAP FOR MOBILE BACK BUTTON ---
     // This technique creates a "silent" history entry that the browser can pop

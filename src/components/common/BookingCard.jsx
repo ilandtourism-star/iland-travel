@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CalendarWidget from './CalendarWidget';
 
 const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features, image, rating, reviews, badge }) => {
@@ -8,7 +8,6 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
   const [adultCount, setAdultCount] = useState(1);
   const [childCount, setChildCount] = useState(0);
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
 
   // Handle phone "back" button using Native History Trap
   useEffect(() => {

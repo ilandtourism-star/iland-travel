@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { jsPDF } from 'jspdf';
 import PackageBookingCard from './PackageBookingCard';
-import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import CalendarWidget from './CalendarWidget';
 import SeasonNotifyForm from './SeasonNotifyForm';
 
@@ -35,7 +35,6 @@ const ActivityCard = ({
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [searchParams, setSearchParams] = useSearchParams();
   const [showGallery, setShowGallery] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 

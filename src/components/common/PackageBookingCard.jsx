@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // Calendar Widget Component
 const CalendarWidget = ({ onSelect, selectedDate }) => {
@@ -98,7 +98,7 @@ const PackageBookingCard = ({ title, price, childPrice, maxPax, checkoutLink, im
     : 0;
 
   return (
-    <div className={`package-booking-card ${isExpanded ? 'expanded' : ''}`} style={{ marginBottom: '20px', border: '1px solid #e0e0e0', borderRadius: '12px', background: '#fff', maxHeight: 'none', overflow: 'visible', maxWidth: 'none', height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <div className={`package-booking-card ${isBookingOpen ? 'expanded' : ''}`} style={{ marginBottom: '20px', border: '1px solid #e0e0e0', borderRadius: '12px', background: '#fff', maxHeight: 'none', overflow: 'visible', maxWidth: 'none', height: '100%', display: 'flex', flexDirection: 'column' }}>
       {/* Merged ActivityCard visuals when closed */}
       {!isBookingOpen ? (
         <div className="activity-card-content" style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column' }}>
