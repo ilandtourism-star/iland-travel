@@ -162,28 +162,24 @@ const Home = () => {
     const location = useLocation();
 
 
-    // --- HARD HASH TRAP FOR MOBILE BACK BUTTON ---
+    // --- STATE-BASED HISTORY TRAP FOR MOBILE BACK BUTTON ---
     useEffect(() => {
-        const handleHashChange = () => {
-            // If the hash is gone but modal is still showing, user hit "Back"
-            if (showShareModal && !window.location.hash.includes('#share')) {
-                setShowShareModal(false);
-            }
-        };
-
-        window.addEventListener('hashchange', handleHashChange);
-        return () => window.removeEventListener('hashchange', handleHashChange);
-    }, [showShareModal]);
+        // If the state for modal is gone but modal is still showing (Back button pressed)
+        if (showShareModal && !location.state?.modalOpen) {
+            setShowShareModal(false);
+        }
+    }, [location.state, showShareModal]);
 
     const openShareModal = () => {
         setShowShareModal(true);
-        window.location.hash = 'share';
+        // Push a state into history to trap the back button
+        navigate(location.pathname, { state: { ...location.state, modalOpen: true }, replace: false });
     };
 
     const closeShareModal = () => {
         setShowShareModal(false);
-        if (window.location.hash.includes('#share')) {
-            window.history.back();
+        if (location.state?.modalOpen) {
+            navigate(-1);
         }
     };
 

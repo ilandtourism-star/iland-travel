@@ -92,17 +92,17 @@ const ActivityCard = ({
     if (galleryImages.length > 0) {
       e.stopPropagation(); // Prevent navigating to details page if clicking image also triggers link
 
-      // Hard Hash Trap for Mobile Hardware Back Button
+      // State-Based Trap for Mobile Hardware Back Button
       setShowGallery(true);
       setCurrentImageIndex(0);
-      window.location.hash = `gallery-${sku || title}`.replace(/\s+/g, '-');
+      navigate(location.pathname, { state: { ...location.state, modal: `gallery-${sku || title}` }, replace: false });
     }
   };
 
   const closeGallery = () => {
     setShowGallery(false);
-    if (window.location.hash.includes('gallery')) {
-      window.history.back();
+    if (location.state?.modal?.startsWith('gallery-')) {
+      navigate(-1);
     }
   };
 
@@ -137,11 +137,11 @@ const ActivityCard = ({
       // Toggle the embedded booking calendar
       if (!isBookingOpen) {
         setIsBookingOpen(true);
-        window.location.hash = `booking-${sku || title}`.replace(/\s+/g, '-');
+        navigate(location.pathname, { state: { ...location.state, modal: `booking-${sku || title}` }, replace: false });
       } else {
         setIsBookingOpen(false);
-        if (window.location.hash.includes('booking')) {
-          window.history.back();
+        if (location.state?.modal?.startsWith('booking-')) {
+          navigate(-1);
         }
       }
     } else {
@@ -170,18 +170,17 @@ const ActivityCard = ({
     });
   };
 
-  // Hard Hash Trap Listener for Mobile Hardware Back Button
+  // State-Based Trap Listener for Mobile Hardware Back Button
   useEffect(() => {
-    const handleHashChange = () => {
-      // If hash is gone but modal is open, user hit hardware back button
-      const hash = window.location.hash;
-      if (showGallery && !hash.includes('gallery')) setShowGallery(false);
-      if (isBookingOpen && !hash.includes('booking')) setIsBookingOpen(false);
-    };
-
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [showGallery, isBookingOpen]);
+    const modalKey = location.state?.modal;
+    // If modal is showing but corresponding state is gone (user hit hardware back)
+    if (showGallery && modalKey !== `gallery-${sku || title}`) {
+      setShowGallery(false);
+    }
+    if (isBookingOpen && modalKey !== `booking-${sku || title}`) {
+      setIsBookingOpen(false);
+    }
+  }, [location.state, showGallery, isBookingOpen, sku, title]);
 
   return (
     <>

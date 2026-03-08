@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import CalendarWidget from './CalendarWidget';
 
 const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features, image, rating, reviews, badge }) => {
@@ -8,19 +8,15 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
   const [adultCount, setAdultCount] = useState(1);
   const [childCount, setChildCount] = useState(0);
   const navigate = useNavigate();
+  const location = useLocation();
 
-  // Handle phone "back" button using Hard Hash Trap
+  // Handle phone "back" button using State-Based History Trap
   useEffect(() => {
-    const handleHashChange = () => {
-      // If hash is gone but modal is open, user hit hardware back button
-      if (isBookingOpen && !window.location.hash.includes('card-booking')) {
-        setIsBookingOpen(false);
-      }
-    };
-
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [isBookingOpen]);
+    // If modal is showing but corresponding state is gone (user hit hardware back)
+    if (isBookingOpen && location.state?.modal !== `card-booking-${title}`) {
+      setIsBookingOpen(false);
+    }
+  }, [location.state, isBookingOpen, title]);
 
   // Calculate total price dynamically
   const currentPrice = parseFloat(price || 0);
@@ -64,11 +60,11 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
             setIsBookingOpen(newState);
             if (newState) {
               setIsBookingOpen(true);
-              window.location.hash = `card-booking-${title}`.replace(/\s+/g, '-');
+              navigate(location.pathname, { state: { ...location.state, modal: `card-booking-${title}` }, replace: false });
             } else {
               setIsBookingOpen(false);
-              if (window.location.hash.includes('card-booking')) {
-                window.history.back();
+              if (location.state?.modal === `card-booking-${title}`) {
+                navigate(-1);
               }
             }
           }}
@@ -104,7 +100,7 @@ const BookingCard = ({ title, price, childPrice, maxPax, checkoutLink, features,
                 className="choose-btn"
                 onClick={() => {
                   setIsBookingOpen(true);
-                  window.location.hash = `card-booking-${title}`.replace(/\s+/g, '-');
+                  navigate(location.pathname, { state: { ...location.state, modal: `card-booking-${title}` }, replace: false });
                 }}
                 style={{
                   backgroundColor: 'DarkTurquoise',
