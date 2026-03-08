@@ -92,14 +92,15 @@ const ActivityCard = ({
       e.stopPropagation(); // Prevent navigating to details page if clicking image also triggers link
       setShowGallery(true);
       setCurrentImageIndex(0);
-      window.history.pushState({ galleryOpen: true }, '', window.location.pathname + '#gallery');
+      window.location.hash = 'gallery';
     }
   };
 
   const closeGallery = () => {
-    setShowGallery(false);
     if (window.location.hash === '#gallery') {
-      window.history.back();
+      window.history.back(); // This will trigger hashchange and set showGallery to false
+    } else {
+      setShowGallery(false);
     }
   };
 
@@ -134,11 +135,12 @@ const ActivityCard = ({
       // Toggle the embedded booking calendar
       if (!isBookingOpen) {
         setIsBookingOpen(true);
-        window.history.pushState({ bookingOpen: true }, '', window.location.pathname + '#booking');
+        window.location.hash = 'booking';
       } else {
-        setIsBookingOpen(false);
         if (window.location.hash === '#booking') {
-          window.history.back();
+          window.history.back(); // Triggers hashchange
+        } else {
+          setIsBookingOpen(false);
         }
       }
     } else {
@@ -168,18 +170,18 @@ const ActivityCard = ({
   };
 
   React.useEffect(() => {
-    const handlePopState = (e) => {
-      // If user presses physical back button, close active modals/widgets
-      if (isBookingOpen) {
+    const handleHashChange = () => {
+      // If user presses physical back button, hash will change
+      if (window.location.hash !== '#booking' && isBookingOpen) {
         setIsBookingOpen(false);
       }
-      if (showGallery) {
+      if (window.location.hash !== '#gallery' && showGallery) {
         setShowGallery(false);
       }
     };
 
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, [isBookingOpen, showGallery]);
 
   return (

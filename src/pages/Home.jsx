@@ -162,12 +162,14 @@ const Home = () => {
 
     // Hook to handle "back" button on phone for Share Modal
     useEffect(() => {
-        const handlePopState = () => {
-            if (showShareModal) setShowShareModal(false);
+        const handleHashChange = () => {
+            if (window.location.hash !== '#share' && showShareModal) {
+                setShowShareModal(false);
+            }
         };
 
-        window.addEventListener('popstate', handlePopState);
-        return () => window.removeEventListener('popstate', handlePopState);
+        window.addEventListener('hashchange', handleHashChange);
+        return () => window.removeEventListener('hashchange', handleHashChange);
     }, [showShareModal]);
 
     const openShareModal = () => {
@@ -176,9 +178,10 @@ const Home = () => {
     };
 
     const closeShareModal = () => {
-        setShowShareModal(false);
         if (window.location.hash === '#share') {
-            window.history.back();
+            window.history.back(); // This triggers hashchange and closes modal
+        } else {
+            setShowShareModal(false);
         }
     };
 
