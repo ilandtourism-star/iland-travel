@@ -76,8 +76,25 @@ const PerhentianIslandDayTrips = () => {
             <div className="main-container">
 
                 <aside className="sidebar">
-                    <div className="map-box">Show on Map</div>
-
+                    <div className="map-box" style={{
+                        padding: 0,
+                        overflow: 'hidden',
+                        border: '1px solid #e0e0e0',
+                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                        backgroundImage: 'none',
+                        height: '250px'
+                    }}>
+                        <iframe
+                            src="https://www.google.com/maps?q=Kuala%20Besut%20Jetty%20Terengganu&output=embed"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            allowFullScreen=""
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title="Kuala Besut Jetty Location"
+                        ></iframe>
+                    </div>
                 </aside>
 
                 <div className="results-content">
