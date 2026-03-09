@@ -455,7 +455,7 @@ const Home = () => {
 
                 {/* Popular Destinations */}
                 <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
-                    <h2 className="home-section-title">Breathtaking Island Escapes (Awe & Wonder)</h2>
+                    <h2 className="home-section-title">Breathtaking Island Escapes</h2>
                     <div className="home-grid">
                         {/* Pulau Kapas */}
                         <Link to="/kapas-island-day-trips" className="home-card home-card-awe">
