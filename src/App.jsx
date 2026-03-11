@@ -205,12 +205,12 @@ const MainRoutes = () => (
       <Route path="/kapas-snorkeling-details" element={<SnorkelingKapas />} />
       <Route path="/book/kapas-private-boat-10pax" element={<UniversalBookingCalendar apiEndpoint="private-boat-10pax-kapas" maxPax={10} nextStepRoute="/contact-details/5-private-boat-10pax" defaultPrice="850.00" defaultTitle="5. Private Boat Trip (max 10pax)" />} />
       <Route path="/contact-details/5-private-boat-10pax" element={<UniversalContactDetails />} />
-      <Route path="/book/kapas-private-boat-15pax" element={<UniversalBookingCalendar apiEndpoint="private-boat-15pax-kapas" maxPax={15} nextStepRoute="/contact-details/5-private-boat-15pax" defaultPrice="1050.00" defaultTitle="5. Private Boat Trip (max 15pax)" />} />
-      <Route path="/contact-details/5-private-boat-15pax" element={<UniversalContactDetails />} />
-      <Route path="/book/kapas-private-boat-25pax" element={<UniversalBookingCalendar apiEndpoint="private-boat-25pax-kapas" maxPax={25} nextStepRoute="/contact-details/5-private-boat-25pax" defaultPrice="1750.00" defaultTitle="5. Private Boat Trip (max 25pax)" />} />
-      <Route path="/contact-details/5-private-boat-25pax" element={<UniversalContactDetails />} />
-      <Route path="/book/kapas-private-boat-40pax" element={<UniversalBookingCalendar apiEndpoint="private-boat-40pax-kapas" maxPax={40} nextStepRoute="/contact-details/5-private-boat-40pax" defaultPrice="2800.00" defaultTitle="5. Private Boat Trip (max 40pax)" />} />
-      <Route path="/contact-details/5-private-boat-40pax" element={<UniversalContactDetails />} />
+      <Route path="/book/kapas-private-boat-15pax" element={<UniversalBookingCalendar apiEndpoint="private-boat-15pax-kapas" maxPax={15} nextStepRoute="/contact-details/6-private-boat-15pax" defaultPrice="1050.00" defaultTitle="6. Private Boat Trip (max 15pax)" />} />
+      <Route path="/contact-details/6-private-boat-15pax" element={<UniversalContactDetails />} />
+      <Route path="/book/kapas-private-boat-25pax" element={<UniversalBookingCalendar apiEndpoint="private-boat-25pax-kapas" maxPax={25} nextStepRoute="/contact-details/7-private-boat-25pax" defaultPrice="1750.00" defaultTitle="7. Private Boat Trip (max 25pax)" />} />
+      <Route path="/contact-details/7-private-boat-25pax" element={<UniversalContactDetails />} />
+      <Route path="/book/kapas-private-boat-40pax" element={<UniversalBookingCalendar apiEndpoint="private-boat-40pax-kapas" maxPax={40} nextStepRoute="/contact-details/8-private-boat-40pax" defaultPrice="2800.00" defaultTitle="8. Private Boat Trip (max 40pax)" />} />
+      <Route path="/contact-details/8-private-boat-40pax" element={<UniversalContactDetails />} />
       <Route path="/book/kapas-relaxation" element={<UniversalBookingCalendar apiEndpoint="relax-kapas" nextStepRoute="/contact-details/1-relaxation-kapas" defaultPrice="49.00" defaultTitle="1. Relaxation" />} />
       <Route path="/contact-details/1-relaxation-kapas" element={<UniversalContactDetails />} />
       <Route path="/book/kapas-mental-escape" element={<UniversalBookingCalendar apiEndpoint="mental-escape-kapas" nextStepRoute="/contact-details/2-mental-escape-kapas" defaultPrice="59.00" defaultTitle="2. Mental Escape" />} />
@@ -219,31 +219,31 @@ const MainRoutes = () => (
       <Route path="/contact-details/3-joy-play-kapas" element={<UniversalContactDetails />} />
       <Route path="/book/kapas-mood-booster" element={<UniversalBookingCalendar apiEndpoint="mood-booster-kapas" nextStepRoute="/contact-details/4-mood-booster-kapas" defaultPrice="109.00" defaultTitle="4. Mood Booster" />} />
       <Route path="/contact-details/4-mood-booster-kapas" element={<UniversalContactDetails />} />
-      <Route path="/book/kapas-private-package-10pax" element={<UniversalBookingCalendar apiEndpoint="private-package-10pax-kapas" maxPax={10} nextStepRoute="/contact-details/6-private-boat-10pax" defaultPrice="1400.00" defaultTitle="6. Private Boat Package (max 10pax)" />} />
-      <Route path="/contact-details/6-private-boat-10pax" element={<UniversalContactDetails />} />
-      <Route path="/book/kapas-private-package-15pax" element={<UniversalBookingCalendar apiEndpoint="private-package-15pax-kapas" maxPax={15} nextStepRoute="/contact-details/6-private-boat-15pax" defaultPrice="1800.00" defaultTitle="6. Private Boat Package (max 15pax)" />} />
-      <Route path="/contact-details/6-private-boat-15pax" element={<UniversalContactDetails />} />
-      <Route path="/book/kapas-private-package-25pax" element={<UniversalBookingCalendar apiEndpoint="private-package-25pax-kapas" maxPax={25} nextStepRoute="/contact-details/6-private-boat-25pax" defaultPrice="3000.00" defaultTitle="6. Private Boat Package (max 25pax)" />} />
-      <Route path="/contact-details/6-private-boat-25pax" element={<UniversalContactDetails />} />
-      <Route path="/book/kapas-private-package-40pax" element={<UniversalBookingCalendar apiEndpoint="private-package-40pax-kapas" maxPax={40} nextStepRoute="/contact-details/6-private-boat-40pax" defaultPrice="4400.00" defaultTitle="6. Private Boat Package (max 40pax)" />} />
-      <Route path="/contact-details/6-private-boat-40pax" element={<UniversalContactDetails />} />
+      <Route path="/book/kapas-private-package-10pax" element={<UniversalBookingCalendar apiEndpoint="private-package-10pax-kapas" maxPax={10} nextStepRoute="/contact-details/9-private-boat-10pax" defaultPrice="1400.00" defaultTitle="9. Private Boat Package (max 10pax)" />} />
+      <Route path="/contact-details/9-private-boat-10pax" element={<UniversalContactDetails />} />
+      <Route path="/book/kapas-private-package-15pax" element={<UniversalBookingCalendar apiEndpoint="private-package-15pax-kapas" maxPax={15} nextStepRoute="/contact-details/10-private-boat-15pax" defaultPrice="1800.00" defaultTitle="10. Private Boat Package (max 15pax)" />} />
+      <Route path="/contact-details/10-private-boat-15pax" element={<UniversalContactDetails />} />
+      <Route path="/book/kapas-private-package-25pax" element={<UniversalBookingCalendar apiEndpoint="private-package-25pax-kapas" maxPax={25} nextStepRoute="/contact-details/11-private-boat-25pax" defaultPrice="3000.00" defaultTitle="11. Private Boat Package (max 25pax)" />} />
+      <Route path="/contact-details/11-private-boat-25pax" element={<UniversalContactDetails />} />
+      <Route path="/book/kapas-private-package-40pax" element={<UniversalBookingCalendar apiEndpoint="private-package-40pax-kapas" maxPax={40} nextStepRoute="/contact-details/12-private-boat-40pax" defaultPrice="4400.00" defaultTitle="12. Private Boat Package (max 40pax)" />} />
+      <Route path="/contact-details/12-private-boat-40pax" element={<UniversalContactDetails />} />
       <Route path="/kapas-private-boat-details" element={<PrivateBoatInKapasDetails />} />
 
       {/* PULAU REDANG */}
       <Route path="/redang-island-day-trips" element={<RedangSearchPage />} />
       <Route path="/squid-jigging-details" element={<SquidJiggingDetails />} />
       <Route path="/redang-squid-jigging-details" element={<RedangSquidJigging />} />
-      <Route path="/book/redang-squid-jigging-private" element={<UniversalBookingCalendar apiEndpoint="squid-jigging-redang" nextStepRoute="/contact-details/2-squid-jigging-redang" defaultPrice="1350.00" defaultTitle="Squid Jigging Package (Private Boat)" />} />
+      <Route path="/book/redang-squid-jigging-private" element={<UniversalBookingCalendar apiEndpoint="squid-jigging-redang" nextStepRoute="/contact-details/2-squid-jigging-redang" defaultPrice="1350.00" defaultTitle="2. Squid Jigging Package (Private Boat)" />} />
       <Route path="/contact-details/2-squid-jigging-redang" element={<UniversalContactDetails />} />
       <Route path="/redang-snorkeling-details" element={<RedangSnorkeling />} />
-      <Route path="/book/redang-snorkeling-day-trip" element={<UniversalBookingCalendar apiEndpoint="snorkeling-redang" nextStepRoute="/contact-details/1-snorkeling-redang" defaultPrice="100.00" defaultTitle="Day Trip Snorkeling (Redang)" />} />
+      <Route path="/book/redang-snorkeling-day-trip" element={<UniversalBookingCalendar apiEndpoint="snorkeling-redang" nextStepRoute="/contact-details/1-snorkeling-redang" defaultPrice="100.00" defaultTitle="1. Day Trip Snorkeling (All-In)" />} />
       <Route path="/contact-details/1-snorkeling-redang" element={<UniversalContactDetails />} />
       <Route path="/redang-island-packages" element={<RedangPackages />} />
 
       {/* PULAU PERHENTIAN */}
       <Route path="/perhentian-island-day-trips" element={<PerhentianSearchPage />} />
       <Route path="/perhentian-snorkeling-details" element={<SnorkelingPerhentian />} />
-      <Route path="/book/perhentian-snorkeling-day-trip" element={<UniversalBookingCalendar apiEndpoint="snorkeling-perhentian" nextStepRoute="/contact-details/1-snorkeling-perhentian" defaultPrice="80.00" defaultTitle="Day Trip Snorkeling (Perhentian)" />} />
+      <Route path="/book/perhentian-snorkeling-day-trip" element={<UniversalBookingCalendar apiEndpoint="snorkeling-perhentian" nextStepRoute="/contact-details/1-snorkeling-perhentian" defaultPrice="80.00" defaultTitle="1. Day Trip Snorkeling" />} />
       <Route path="/contact-details/1-snorkeling-perhentian" element={<UniversalContactDetails />} />
 
 

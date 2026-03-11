@@ -94,8 +94,8 @@ const seedVacations = () => {
             },
             {
                 sku: 'private-boat-15pax-kapas',
-                name: '',
-                description: '5. Private Boat Trip (max 15pax)',
+                name: '6. Private Boat Trip (max 15pax)',
+                description: '',
                 price: 105000,
                 island: 'Kapas',
                 category: 'boat_trip_family',
@@ -109,7 +109,7 @@ const seedVacations = () => {
             },
             {
                 sku: 'private-boat-25pax-kapas',
-                name: '5. Private Boat Trip (max 25pax)',
+                name: '7. Private Boat Trip (max 25pax)',
                 description: '',
                 price: 175000,
                 island: 'Kapas',
@@ -124,7 +124,7 @@ const seedVacations = () => {
             },
             {
                 sku: 'private-boat-40pax-kapas',
-                name: '5. Private Boat Trip (max 40pax)',
+                name: '8. Private Boat Trip (max 40pax)',
                 description: '',
                 price: 280000,
                 island: 'Kapas',
@@ -139,7 +139,7 @@ const seedVacations = () => {
             },
             {
                 sku: 'private-package-10pax-kapas',
-                name: '6. Private Boat Package (max 10pax)',
+                name: '9. Private Boat Package (max 10pax)',
                 description: '',
                 price: 140000,
                 island: 'Kapas',
@@ -156,7 +156,7 @@ const seedVacations = () => {
             },
             {
                 sku: 'private-package-15pax-kapas',
-                name: '6. Private Boat Package (max 15pax)',
+                name: '10. Private Boat Package (max 15pax)',
                 description: '',
                 price: 180000,
                 island: 'Kapas',
@@ -173,7 +173,7 @@ const seedVacations = () => {
             },
             {
                 sku: 'private-package-25pax-kapas',
-                name: '6. Private Boat Package (max 25pax)',
+                name: '11. Private Boat Package (max 25pax)',
                 description: '',
                 price: 300000,
                 island: 'Kapas',
@@ -190,7 +190,7 @@ const seedVacations = () => {
             },
             {
                 sku: 'private-package-40pax-kapas',
-                name: '6. Private Boat Package (max 40pax)',
+                name: '12. Private Boat Package (max 40pax)',
                 description: '',
                 price: 440000,
                 island: 'Kapas',
