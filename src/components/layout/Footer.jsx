@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 /**
- * Komponen Footer
- * Menampilkan maklumat syarikat, pautan pantas, aktiviti pulau, dan maklumat perhubungan.
+ * Footer Component
+ * Displays company information, quick links, island activities, and contact details.
  */
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -168,12 +168,12 @@ const Footer = () => {
       `}</style>
 
       <div className="footer-content">
-        {/* Kolum 1: Brand & Intro */}
+        {/* Column 1: Brand & Intro */}
         <div className="footer-section">
           <Link to="/" className="footer-logo">ILAND</Link>
           <p>
-            Gerbang utama anda ke syurga pulau di Terengganu. Kami menyediakan perkhidmatan 
-            bot dan pakej pelancongan terbaik untuk pengalaman percutian yang tidak dapat dilupakan.
+            Your primary gateway to island paradises in Terengganu. We provide the best 
+            boat services and tour packages for an unforgettable vacation experience.
           </p>
           <div className="social-links">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon"><i className="fab fa-facebook-f"></i></a>
@@ -183,36 +183,36 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Kolum 2: Pautan Pantas */}
+        {/* Column 2: Quick Links */}
         <div className="footer-section">
-          <h3>Pautan Pantas</h3>
+          <h3>Quick Links</h3>
           <ul>
-            <li><Link to="/">Laman Utama</Link></li>
-            <li><Link to="/search">Cari Aktiviti</Link></li>
-            <li><Link to="/about">Tentang Kami</Link></li>
-            <li><Link to="/signin">Log Masuk</Link></li>
-            <li><Link to="/signup">Daftar Akaun</Link></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/search">Search Activities</Link></li>
+            <li><Link to="/about">About Us</Link></li>
+            <li><Link to="/signin">Sign In</Link></li>
+            <li><Link to="/signup">Register Account</Link></li>
           </ul>
         </div>
 
-        {/* Kolum 3: Destinasi Popular */}
+        {/* Column 3: Popular Destinations */}
         <div className="footer-section">
-          <h3>Destinasi</h3>
+          <h3>Destinations</h3>
           <ul>
-            <li><Link to="/kapas-island-day-trips">Pulau Kapas</Link></li>
-            <li><Link to="/redang-island-day-trips">Pulau Redang</Link></li>
-            <li><Link to="/perhentian-island-day-trips">Pulau Perhentian</Link></li>
-            <li><Link to="/kapas-island-packages">Pakej Eksklusif</Link></li>
+            <li><Link to="/kapas-island-day-trips">Kapas Island</Link></li>
+            <li><Link to="/redang-island-day-trips">Redang Island</Link></li>
+            <li><Link to="/perhentian-island-day-trips">Perhentian Island</Link></li>
+            <li><Link to="/kapas-island-packages">Exclusive Packages</Link></li>
           </ul>
         </div>
 
-        {/* Kolum 4: Hubungi Kami */}
+        {/* Column 4: Contact Us */}
         <div className="footer-section">
-          <h3>Hubungi Kami</h3>
+          <h3>Contact Us</h3>
           <ul className="contact-info">
             <li>
               <i className="fas fa-map-marker-alt"></i>
-              <span>Jeti Marang, 21600 Marang,<br />Terengganu, Malaysia</span>
+              <span>Marang Jetty, 21600 Marang,<br />Terengganu, Malaysia</span>
             </li>
             <li>
               <i className="fas fa-phone"></i>
@@ -224,17 +224,17 @@ const Footer = () => {
             </li>
             <li>
               <i className="fas fa-clock"></i>
-              <span>Isnin - Ahad: 8:00 AM - 6:00 PM</span>
+              <span>Monday - Sunday: 8:00 AM - 6:00 PM</span>
             </li>
           </ul>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; {currentYear} Iland Tourism. Hak Cipta Terpelihara.</p>
+        <p>&copy; {currentYear} Iland Tourism. All Rights Reserved.</p>
         <div style={{ display: 'flex', gap: '20px' }}>
-          <Link to="/terms" style={{ color: '#888888', fontSize: '0.85rem' }}>Terma & Syarat</Link>
-          <Link to="/privacy" style={{ color: '#888888', fontSize: '0.85rem' }}>Dasar Privasi</Link>
+          <Link to="/terms" style={{ color: '#888888', fontSize: '0.85rem' }}>Terms & Conditions</Link>
+          <Link to="/privacy" style={{ color: '#888888', fontSize: '0.85rem' }}>Privacy Policy</Link>
         </div>
       </div>
     </footer>
