@@ -6,6 +6,7 @@ import { HelmetProvider } from 'react-helmet-async';
 // Import Components Layout
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import ScrollToTop from './components/common/ScrollToTop';
 
 // Import Pages (Ensure all these files exist in the pages folder)
 import Home from './pages/Home';
@@ -270,6 +271,7 @@ function App() {
   return (
     <HelmetProvider>
       <ToastProvider>
+        <ScrollToTop />
         <SubdomainRouter />
       </ToastProvider>
     </HelmetProvider>
