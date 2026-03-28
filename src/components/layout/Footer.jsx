@@ -172,7 +172,7 @@ const Footer = () => {
         <div className="footer-section">
           <Link to="/" className="footer-logo">ILAND</Link>
           <p>
-            Your primary gateway to island paradises in Terengganu. We provide the best 
+            Your primary gateway to island paradises in Terengganu. We provide the best
             boat services and tour packages for an unforgettable vacation experience.
           </p>
           <div className="social-links">
@@ -216,11 +216,11 @@ const Footer = () => {
             </li>
             <li>
               <i className="fas fa-phone"></i>
-              <span>+60 12-345 6789</span>
+              <span>+60 14-708 1346/span>
             </li>
             <li>
               <i className="fas fa-envelope"></i>
-              <span>hello@ilandtourism.com</span>
+              <span>ilandtourism@gmail.com</span>
             </li>
             <li>
               <i className="fas fa-clock"></i>
