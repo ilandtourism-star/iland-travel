@@ -18,7 +18,7 @@ const ActivityCard = ({
   link = "/checkout",
   hideBadge = false,
   badge = null,
-  buttonText = "Ticket",
+  buttonText = "Buy Now",
   hideButton = false,
   hidePrice = false,
   isBooking = false, // Default to false so View Details works
@@ -486,7 +486,7 @@ const ActivityCard = ({
                       }
                     }}
                   >
-                    {isBooking && isBookingOpen ? 'Close' : (isBooking ? buttonText : "Buy Now")}
+                    {isBooking && isBookingOpen ? 'Close' : buttonText}
                   </button>
 
                   {/* Practical Value Download Button */}
