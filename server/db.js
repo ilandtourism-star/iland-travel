@@ -19,7 +19,6 @@ try {
 
   // Seed default settings
   const seedSettings = db.prepare('INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)');
-  seedSettings.run('monsoon_months', JSON.stringify([10, 11, 0, 1]));
 
   dbHealthy = true;
 } catch (err) {

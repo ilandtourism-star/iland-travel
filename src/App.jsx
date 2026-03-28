@@ -40,7 +40,6 @@ import MyBookings from './pages/MyBookings';
 import AddVacation from './pages/admin/AddVacation';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminCapacityManager from './pages/admin/AdminCapacityManager';
-import AdminMonsoonManager from './pages/admin/AdminMonsoonManager';
 import AdminFlashSaleManager from './pages/admin/AdminFlashSaleManager';
 import ListYourActivity from './pages/List your activity business';
 import PartnerLogin from './pages/PartnerLogin';
@@ -131,7 +130,6 @@ const AdminRoutes = () => (
     <Route path="/dashboard" element={<AdminDashboard />} />
     <Route path="/add-vacation" element={<AddVacation />} />
     <Route path="/capacity" element={<AdminCapacityManager />} />
-    <Route path="/monsoon" element={<AdminMonsoonManager />} />
     <Route path="/flash-sale" element={<AdminFlashSaleManager />} />
     <Route path="/login" element={<SignIn />} />
     <Route path="*" element={<div className="p-5">Admin Page Not Found</div>} />

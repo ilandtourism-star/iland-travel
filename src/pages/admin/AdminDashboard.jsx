@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {
     CalendarDays, Users, Clock, CheckCircle2,
     LogOut, LayoutDashboard, Search, RefreshCw,
-    ChevronDown, Package, TrendingUp, Snowflake, Zap
+    ChevronDown, Package, TrendingUp, Zap
 } from 'lucide-react';
 import { secureFetch } from '../../lib/api';
 
@@ -230,17 +230,6 @@ const AdminDashboard = () => {
                         <Users size={18} /> Urus Kapasiti (Max Pax)
                     </button>
 
-                    <button
-                        onClick={() => navigate('/admin/monsoon')}
-                        style={{
-                            display: 'flex', alignItems: 'center', gap: '8px',
-                            backgroundColor: '#e53e3e', color: 'white', padding: '12px 20px',
-                            borderRadius: '12px', border: 'none', fontWeight: 600, cursor: 'pointer',
-                            boxShadow: '0 4px 6px -1px rgb(229 62 62 / 0.2)'
-                        }}
-                    >
-                        <Snowflake size={18} /> Urus Musim Monsun
-                    </button>
 
                     <button
                         onClick={() => navigate('/admin/flash-sale')}
