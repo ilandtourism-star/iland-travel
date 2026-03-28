@@ -38,7 +38,7 @@ const PerhentianIslandDayTrips = () => {
             price: v.price,
             image: v.imageUrl || "/images/perhentian island/1.png",
             link: v.sku === 'snorkeling-perhentian' ? '/book/perhentian-snorkeling-day-trip' : '/perhentian-island-day-trips',
-            buttonText: "View Details",
+            buttonText: "Buy Now",
             description: v.description,
             features: v.features,
             isInSeason: v.isInSeason,

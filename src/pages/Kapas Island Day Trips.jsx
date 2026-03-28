@@ -94,7 +94,7 @@ const KapasIslandDayTrips = () => {
         };
         return map[v.sku] || '/kapas-island-day-trips';
       })(),
-      buttonText: "View Details",
+      buttonText: "Buy Now",
       description: v.description,
       // Parse features array safely
       features: (() => {

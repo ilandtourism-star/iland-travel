@@ -486,7 +486,7 @@ const ActivityCard = ({
                       }
                     }}
                   >
-                    {isBooking && isBookingOpen ? 'Close' : (isBooking ? buttonText : "Packages details")}
+                    {isBooking && isBookingOpen ? 'Close' : (isBooking ? buttonText : "Buy Now")}
                   </button>
 
                   {/* Practical Value Download Button */}

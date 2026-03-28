@@ -44,7 +44,7 @@ const RedangIslandDayTrips = () => {
                 };
                 return map[v.sku] || '/redang-island-day-trips';
             })(),
-            buttonText: "View Details",
+            buttonText: "Buy Now",
             description: v.description,
             features: v.features,
             isInSeason: v.isInSeason,
