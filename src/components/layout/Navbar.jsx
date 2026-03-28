@@ -16,7 +16,7 @@ const Navbar = () => {
         <div className="auth-links">
           <Link to="/about" className="btn btn-text nav-item-about">About Us</Link>
           <Link to="/auth" className="btn signin-btn nav-item-signin">Sign In</Link>
-          <Link to="/auth?mode=register" className="btn create-btn nav-item-create">Create Account</Link>
+          <Link to="/auth?mode=register" className="btn create-btn nav-item-create">Register</Link>
         </div>
       </nav>
     </header>
