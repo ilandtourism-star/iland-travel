@@ -142,6 +142,16 @@ const ActivityCard = ({
     : 0;
 
   const handleButtonClick = () => {
+    // Analytics tracking
+    if (window.gtag) {
+      window.gtag('event', 'click_button', {
+        'event_category': 'Engagement',
+        'event_label': buttonText,
+        'activity_title': title,
+        'activity_sku': sku || 'no-sku'
+      });
+    }
+
     if (isBooking) {
       // Toggle the embedded booking calendar
       if (!isBookingOpen) {
