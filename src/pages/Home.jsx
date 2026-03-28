@@ -70,7 +70,7 @@ const Home = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [isPlaying, setIsPlaying] = useState(false);
-    const [volume, setVolume] = useState(0.5); // Default volume level 50%
+    const [volume, setVolume] = useState(0.05); // Default volume level 5% (Very subtle background)
     const [isAudioVisible, setIsAudioVisible] = useState(true); // Control visibility of the floating player
     const audioRef = useRef(null);
 
