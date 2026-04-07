@@ -1,8 +1,10 @@
+// --- IMPORTS ---
 import React, { useState, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ActivityCard from '../components/common/ActivityCard';
 import { useVacations } from '../hooks/useVacations';
 import { useDebounce } from '../hooks/useDebounce';
+import SEO from '../components/common/SEO';
 
 
 const RedangIslandDayTrips = () => {
@@ -59,11 +61,19 @@ const RedangIslandDayTrips = () => {
         }
     };
 
-    if (loading) return <div style={{ textAlign: 'center', padding: '100px', fontSize: '18px', color: '#64748b' }}>Memuatkan Pakej Redang...</div>;
-    if (error) return <div style={{ textAlign: 'center', padding: '100px', color: 'red' }}>Ralat: {error}</div>;
+    // --- LOGIC ---
+
+    // Handle Loading & Error States
+    if (loading) return <div className="island-page-loading">Memuatkan Pakej Redang...</div>;
+    if (error) return <div className="island-page-error">Ralat: {error}</div>;
 
     return (
         <div className="redang-page-body">
+            <SEO
+                title="Redang Island Day Trips | Crystal Clear Waters"
+                description="Experience the best snorkeling and squid jigging in Redang Island. Book your day trip now."
+                canonical="/redang-island-day-trips"
+            />
 
             <div className="hero-section">
                 <div className="search-container">
@@ -79,17 +89,10 @@ const RedangIslandDayTrips = () => {
                 </div>
             </div>
 
+            {/* --- VIEW --- */}
             <div className="main-container">
-
                 <aside className="sidebar">
-                    <div className="map-box" style={{
-                        padding: 0,
-                        overflow: 'hidden',
-                        border: '1px solid #e0e0e0',
-                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                        backgroundImage: 'none',
-                        height: '250px'
-                    }}>
+                    <div className="sidebar-map-card">
                         <iframe
                             src="https://www.google.com/maps?q=Merang%20Waterfront%20Jetty%20Terengganu&output=embed"
                             width="100%"

@@ -1,3 +1,4 @@
+// --- IMPORTS ---
 import React, { useState, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ActivityCard from '../components/common/ActivityCard';
@@ -5,19 +6,16 @@ import { useVacations } from '../hooks/useVacations';
 import { useDebounce } from '../hooks/useDebounce';
 import SEO from '../components/common/SEO';
 
-
-// Images - Cleaned up to avoid repetition
+// --- IMAGES ---
 import imgRelax from '../assets/images/kapas island/1. Relaxation Package/1.png';
 import imgMental from '../assets/images/kapas island/2. Mental Escape/1.png';
 import imgJoy from '../assets/images/kapas island/3. Joy & Playfulness (Top Pick!)/2.png';
 import imgMood from '../assets/images/kapas island/4. Mood Booster/6.png';
-
 // Private Boats
 import imgBoat10 from '../assets/images/Private Boat Trip/1.png';
 import imgBoat15 from '../assets/images/Private Boat Trip/2.png';
 import imgBoat25 from '../assets/images/Private Boat Trip/3.png';
 import imgBoat40 from '../assets/images/Private Boat Trip/4.png';
-
 // Private Packages
 import imgPkg10 from '../assets/images/Private Boat Package/1.png';
 import imgPkg15 from '../assets/images/Private Boat Package/2.png';
@@ -140,8 +138,11 @@ const KapasIslandDayTrips = () => {
     }
   };
 
-  if (loading) return <div style={{ textAlign: 'center', padding: '100px', fontSize: '18px', color: '#64748b' }}>Loading Activities...</div>;
-  if (error) return <div style={{ textAlign: 'center', padding: '100px', color: 'red' }}>Error: {error}</div>;
+  // --- LOGIC ---
+
+  // Handle Loading & Error States
+  if (loading) return <div className="island-page-loading">Memuatkan Pakej Kapas...</div>;
+  if (error) return <div className="island-page-error">Ralat: {error}</div>;
 
   return (
     <div className="kapas-page-body">
@@ -165,15 +166,10 @@ const KapasIslandDayTrips = () => {
         </div>
       </div>
 
+      {/* --- VIEW --- */}
       <div className="main-container">
         <aside className="sidebar">
-          <div className="map-box" style={{
-            padding: 0,
-            overflow: 'hidden',
-            border: '1px solid #e0e0e0',
-            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-            backgroundImage: 'none'
-          }}>
+          <div className="sidebar-map-card">
             <iframe
               src="https://www.google.com/maps?q=Jeti%20Marang%20Terengganu&output=embed"
               width="100%"
@@ -202,7 +198,7 @@ const KapasIslandDayTrips = () => {
             ))}
           </div>
 
-          <div className="info-box" style={{ marginTop: '40px', background: '#eef3fb', padding: '20px', borderRadius: '8px' }}>
+          <div className="info-box">
             <h2>Activity Details & Locations</h2>
             <dl className="info-list">
               <dt><i className="fas fa-clock"></i> Return Schedule</dt>

@@ -3674,3 +3674,18 @@ select.premium-select:hover:not(:focus) {
     height: 250px;
     border-radius: 12px;
 }
+
+.search-results-page {
+    padding-top: 100px;
+    min-height: 80vh;
+}
+
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    background: #f8fafc;
+    border-radius: 12px;
+    margin: 20px 0;
+    color: #64748b;
+    border: 1px dashed #cbd5e1;
+}

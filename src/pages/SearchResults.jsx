@@ -92,9 +92,9 @@ const SearchResults = () => {
     }, [query]);
 
     return (
-        <div className="home-container" style={{ paddingTop: '100px', minHeight: '80vh' }}>
+        <div className="home-container search-results-page">
             {/* Search Bar in Results Page */}
-            <div className="search-container" style={{ maxWidth: '800px', margin: '0 auto 40px', display: 'flex', gap: '10px', padding: '0 20px' }}>
+            <div className="search-container">
                 <input
                     type="text"
                     className="search-input"
@@ -117,7 +117,7 @@ const SearchResults = () => {
                         ))}
                     </div>
                 ) : (
-                    <div style={{ textAlign: 'center', padding: '40px' }}>
+                    <div className="no-results">
                         <p>No activities found matching your search.</p>
                     </div>
                 )}
