@@ -40,8 +40,8 @@ const PerhentianIslandDayTrips = () => {
             reviews: v.reviewCount,
             price: v.price,
             image: v.imageUrl || "/images/perhentian island/1.png",
-            link: v.sku === 'snorkeling-perhentian' 
-                ? '/book/perhentian-snorkeling-day-trip' 
+            link: v.sku === 'snorkeling-perhentian'
+                ? '/book/perhentian-snorkeling-day-trip'
                 : '/perhentian-island-day-trips',
             buttonText: "Buy Now",
             description: v.description,
@@ -54,109 +54,105 @@ const PerhentianIslandDayTrips = () => {
         // Menambah 1 lagi aktiviti secara manual (contoh: Private Boat)
         const manualActivity = {
             sku: 'private-boat-perhentian',
-            title: "2. Private Boat Trip (Exclusive)",
+            title: "2. taxi boat",
             rating: 5.0,
             reviews: 24,
-            price: 850,
+            price: 25,
             image: "/images/Private Boat Trip/21.png",
             link: "/perhentian-island-day-trips",
             buttonText: "Buy Now",
-            description: "Exclusive private boat trip for families and groups. Visit hidden gems around Perhentian at your own pace.",
-            features: [
-                { icon: "fas fa-ship", text: "PRIVATE BOAT TRANSFER" },
-                { icon: "fas fa-mask", text: "SNORKELING GEAR INCLUDED" },
-                { icon: "fas fa-camera", text: "GOPRO PHOTOS" }
-            ],
-            isInSeason: true,
-            badge: "PREMIUM"
+            description: "Experience the full splendor of the Perhentian Islands with our premier taxi boat services. We offer comprehensive island-wide exploration, taking you to every hidden corner and scenic vista to ensure you witness the true, untouched beauty of this tropical paradise.",
+
+                isInSeason: true,
+
         };
 
-        // Jika tiada carian, tambah manual activity ke dalam senarai
-        if (!debouncedSearchQuery.trim()) {
-            return [...baseActivities, manualActivity];
-        }
-
-        return baseActivities;
-    }, [data, debouncedSearchQuery]);
-
-    // --- EVENT HANDLERS ---
-    const handleSearch = (e) => {
-        e.preventDefault();
-        if (searchQuery.trim()) {
-            navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
-        }
-    };
-
-    // --- CONDITIONAL RENDERING (LOADING/ERROR) ---
-    if (loading) {
-        return (
-            <div className="island-page-loading">
-                <i className="fas fa-spinner fa-spin"></i> Memuatkan Pakej Perhentian...
-            </div>
-        );
+    // Jika tiada carian, tambah manual activity ke dalam senarai
+    if (!debouncedSearchQuery.trim()) {
+        return [...baseActivities, manualActivity];
     }
 
-    if (error) {
-        return (
-            <div className="island-page-error">
-                <i className="fas fa-exclamation-triangle"></i> Ralat: {error}
-            </div>
-        );
-    }
+    return baseActivities;
+}, [data, debouncedSearchQuery]);
 
+// --- EVENT HANDLERS ---
+const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+        navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+    }
+};
+
+// --- CONDITIONAL RENDERING (LOADING/ERROR) ---
+if (loading) {
     return (
-        <div className="perhentian-page-body">
-            
-            {/* --- HERO / SEARCH SECTION --- */}
-            <div className="hero-section">
-                <div className="search-container">
-                    <input
-                        type="text"
-                        className="search-input"
-                        placeholder="Search activities..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        onKeyPress={(e) => e.key === 'Enter' && handleSearch(e)}
-                    />
-                    <button className="search-btn" onClick={handleSearch}>SEARCH</button>
-                </div>
-            </div>
-
-            {/* --- MAIN PAGE LAYOUT --- */}
-            <div className="main-container">
-                
-                {/* Side Navigation / Info */}
-                <aside className="sidebar">
-                    <div className="sidebar-map-card">
-                        <iframe
-                            src="https://www.google.com/maps?q=Kuala%20Besut%20Jetty%20Terengganu&output=embed"
-                            width="100%"
-                            height="100%"
-                            style={{ border: 0 }}
-                            allowFullScreen=""
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                            title="Kuala Besut Jetty Location"
-                        ></iframe>
-                    </div>
-                </aside>
-
-                {/* Listing Results */}
-                <div className="results-content">
-                    <div className="results-header">
-                        <h1>Perhentian Island Day Trips: {activities.length} Activities Found</h1>
-                    </div>
-
-                    <div className="island-activities-grid">
-                        {activities.map((activity, index) => (
-                            <ActivityCard key={index} {...activity} />
-                        ))}
-                    </div>
-                </div>
-
-            </div>
+        <div className="island-page-loading">
+            <i className="fas fa-spinner fa-spin"></i> Memuatkan Pakej Perhentian...
         </div>
     );
+}
+
+if (error) {
+    return (
+        <div className="island-page-error">
+            <i className="fas fa-exclamation-triangle"></i> Ralat: {error}
+        </div>
+    );
+}
+
+return (
+    <div className="perhentian-page-body">
+
+        {/* --- HERO / SEARCH SECTION --- */}
+        <div className="hero-section">
+            <div className="search-container">
+                <input
+                    type="text"
+                    className="search-input"
+                    placeholder="Search activities..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && handleSearch(e)}
+                />
+                <button className="search-btn" onClick={handleSearch}>SEARCH</button>
+            </div>
+        </div>
+
+        {/* --- MAIN PAGE LAYOUT --- */}
+        <div className="main-container">
+
+            {/* Side Navigation / Info */}
+            <aside className="sidebar">
+                <div className="sidebar-map-card">
+                    <iframe
+                        src="https://www.google.com/maps?q=Kuala%20Besut%20Jetty%20Terengganu&output=embed"
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen=""
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title="Kuala Besut Jetty Location"
+                    ></iframe>
+                </div>
+            </aside>
+
+            {/* Listing Results */}
+            <div className="results-content">
+                <div className="results-header">
+                    <h1>Perhentian Island Day Trips: {activities.length} Activities Found</h1>
+                </div>
+
+                <div className="island-activities-grid">
+                    {activities.map((activity, index) => (
+                        <ActivityCard key={index} {...activity} />
+                    ))}
+                </div>
+            </div>
+
+        </div>
+    </div>
+);
 }
 
 export default PerhentianIslandDayTrips;
