@@ -31,6 +31,10 @@ const ActivityCard = ({
   totalSeats = 10,
   seatsLeft = 10,
   priceColor = null,
+  isTaxiBoat = false,
+  locationOptions = [],
+  defaultFrom = "",
+  defaultTo = "",
   ...props
 }) => {
   const navigate = useNavigate();
@@ -48,6 +52,10 @@ const ActivityCard = ({
   const [selectedDate, setSelectedDate] = useState(null);
   const [adultCount, setAdultCount] = useState(1);
   const [childCount, setChildCount] = useState(0);
+
+  // Taxi Boat State
+  const [fromLocation, setFromLocation] = useState(defaultFrom || (locationOptions[0] || ""));
+  const [toLocation, setToLocation] = useState(defaultTo || (locationOptions[1] || locationOptions[0] || ""));
 
   // Flash Sale Countdown Logic
   const [timeLeft, setTimeLeft] = useState("");
@@ -185,7 +193,7 @@ const ActivityCard = ({
   }, [isGalleryOpen, isBookingOpen, setSearchParams]);
 
   const handleNextStep = () => {
-    if (!selectedDate) {
+    if (isBooking && !selectedDate) {
       alert("Please select a date");
       return;
     }
@@ -199,7 +207,9 @@ const ActivityCard = ({
         adultCount,
         childCount,
         totalPrice,
-        originalPrice: displayOriginalPrice
+        originalPrice: displayOriginalPrice,
+        fromLocation: isTaxiBoat ? fromLocation : null,
+        toLocation: isTaxiBoat ? toLocation : null
       }
     });
   };
@@ -449,6 +459,45 @@ const ActivityCard = ({
                   </li>
                 ))}
               </ul>
+            </div>
+          )}
+
+          {/* 4.5 Taxi Boat Selection Bar */}
+          {isTaxiBoat && locationOptions.length > 0 && (
+            <div className="taxi-selection-bar" style={{
+              margin: '15px 0',
+              padding: '12px',
+              backgroundColor: '#f8fafc',
+              borderRadius: '8px',
+              border: '1px solid #e2e8f0'
+            }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', gap: '8px' }}>
+                <div className="select-wrapper">
+                  <label style={{ display: 'block', fontSize: '0.7rem', color: '#64748b', fontWeight: '700', marginBottom: '4px' }}>DARI (FROM)</label>
+                  <select
+                    value={fromLocation}
+                    onChange={(e) => setFromLocation(e.target.value)}
+                    style={{ width: '100%', padding: '6px', borderRadius: '4px', border: '1px solid #cbd5e1', fontSize: '0.85rem' }}
+                  >
+                    {locationOptions.map(loc => <option key={loc} value={loc}>{loc}</option>)}
+                  </select>
+                </div>
+                
+                <div style={{ paddingTop: '15px', color: '#94a3b8' }}>
+                  <i className="fas fa-arrows-alt-h"></i>
+                </div>
+
+                <div className="select-wrapper">
+                  <label style={{ display: 'block', fontSize: '0.7rem', color: '#64748b', fontWeight: '700', marginBottom: '4px' }}>KE (TO)</label>
+                  <select
+                    value={toLocation}
+                    onChange={(e) => setToLocation(e.target.value)}
+                    style={{ width: '100%', padding: '6px', borderRadius: '4px', border: '1px solid #cbd5e1', fontSize: '0.85rem' }}
+                  >
+                    {locationOptions.map(loc => <option key={loc} value={loc}>{loc}</option>)}
+                  </select>
+                </div>
+              </div>
             </div>
           )}
 
