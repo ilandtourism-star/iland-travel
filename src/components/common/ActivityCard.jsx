@@ -35,6 +35,8 @@ const ActivityCard = ({
   locationOptions = [],
   defaultFrom = "",
   defaultTo = "",
+  timeOptions = [],
+  defaultTime = "",
   ...props
 }) => {
   const navigate = useNavigate();
@@ -56,6 +58,7 @@ const ActivityCard = ({
   // Taxi Boat State
   const [fromLocation, setFromLocation] = useState(defaultFrom || (locationOptions[0] || ""));
   const [toLocation, setToLocation] = useState(defaultTo || (locationOptions[1] || locationOptions[0] || ""));
+  const [selectedTime, setSelectedTime] = useState(defaultTime || (timeOptions[0] || ""));
 
   // Flash Sale Countdown Logic
   const [timeLeft, setTimeLeft] = useState("");
@@ -209,7 +212,8 @@ const ActivityCard = ({
         totalPrice,
         originalPrice: displayOriginalPrice,
         fromLocation: isTaxiBoat ? fromLocation : null,
-        toLocation: isTaxiBoat ? toLocation : null
+        toLocation: isTaxiBoat ? toLocation : null,
+        selectedTime: isTaxiBoat ? selectedTime : null
       }
     });
   };
@@ -463,7 +467,7 @@ const ActivityCard = ({
           )}
 
           {/* 4.5 Taxi Boat Selection Bar */}
-          {isTaxiBoat && locationOptions.length > 0 && (
+          {isTaxiBoat && (locationOptions.length > 0 || timeOptions.length > 0) && (
             <div className="taxi-selection-bar" style={{
               margin: '15px 0',
               padding: '12px',
@@ -471,32 +475,45 @@ const ActivityCard = ({
               borderRadius: '8px',
               border: '1px solid #e2e8f0'
             }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', gap: '8px' }}>
-                <div className="select-wrapper">
-                  <label style={{ display: 'block', fontSize: '0.7rem', color: '#64748b', fontWeight: '700', marginBottom: '4px' }}>DARI (FROM)</label>
-                  <select
-                    value={fromLocation}
-                    onChange={(e) => setFromLocation(e.target.value)}
-                    style={{ width: '100%', padding: '6px', borderRadius: '4px', border: '1px solid #cbd5e1', fontSize: '0.85rem' }}
-                  >
-                    {locationOptions.map(loc => <option key={loc} value={loc}>{loc}</option>)}
-                  </select>
-                </div>
-                
-                <div style={{ paddingTop: '15px', color: '#94a3b8' }}>
-                  <i className="fas fa-arrows-alt-h"></i>
-                </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', alignItems: 'end', gap: '10px' }}>
+                {locationOptions.length > 0 && (
+                  <>
+                    <div className="select-wrapper">
+                      <label style={{ display: 'block', fontSize: '0.7rem', color: '#64748b', fontWeight: '700', marginBottom: '4px' }}>DARI (FROM)</label>
+                      <select
+                        value={fromLocation}
+                        onChange={(e) => setFromLocation(e.target.value)}
+                        style={{ width: '100%', padding: '6px', borderRadius: '4px', border: '1px solid #cbd5e1', fontSize: '0.85rem' }}
+                      >
+                        {locationOptions.map(loc => <option key={loc} value={loc}>{loc}</option>)}
+                      </select>
+                    </div>
 
-                <div className="select-wrapper">
-                  <label style={{ display: 'block', fontSize: '0.7rem', color: '#64748b', fontWeight: '700', marginBottom: '4px' }}>KE (TO)</label>
-                  <select
-                    value={toLocation}
-                    onChange={(e) => setToLocation(e.target.value)}
-                    style={{ width: '100%', padding: '6px', borderRadius: '4px', border: '1px solid #cbd5e1', fontSize: '0.85rem' }}
-                  >
-                    {locationOptions.map(loc => <option key={loc} value={loc}>{loc}</option>)}
-                  </select>
-                </div>
+                    <div className="select-wrapper">
+                      <label style={{ display: 'block', fontSize: '0.7rem', color: '#64748b', fontWeight: '700', marginBottom: '4px' }}>KE (TO)</label>
+                      <select
+                        value={toLocation}
+                        onChange={(e) => setToLocation(e.target.value)}
+                        style={{ width: '100%', padding: '6px', borderRadius: '4px', border: '1px solid #cbd5e1', fontSize: '0.85rem' }}
+                      >
+                        {locationOptions.map(loc => <option key={loc} value={loc}>{loc}</option>)}
+                      </select>
+                    </div>
+                  </>
+                )}
+
+                {timeOptions.length > 0 && (
+                  <div className="select-wrapper" style={{ gridColumn: locationOptions.length > 0 ? 'span 1' : 'span 3' }}>
+                    <label style={{ display: 'block', fontSize: '0.7rem', color: '#64748b', fontWeight: '700', marginBottom: '4px' }}>MASA (TIME)</label>
+                    <select
+                      value={selectedTime}
+                      onChange={(e) => setSelectedTime(e.target.value)}
+                      style={{ width: '100%', padding: '6px', borderRadius: '4px', border: '1px solid #cbd5e1', fontSize: '0.85rem', fontWeight: 'bold', color: '#0f172a' }}
+                    >
+                      {timeOptions.map(time => <option key={time} value={time}>{time}</option>)}
+                    </select>
+                  </div>
+                )}
               </div>
             </div>
           )}

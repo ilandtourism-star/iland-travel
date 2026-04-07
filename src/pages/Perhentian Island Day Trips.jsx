@@ -82,6 +82,8 @@ const PerhentianIslandDayTrips = () => {
             ],
             defaultFrom: "Fisherman Village",
             defaultTo: "Long Beach",
+            timeOptions: ["9.00 am", "1.00 pm", "4.00 pm", "12.00 am"],
+            defaultTime: "9.00 am",
             isInSeason: true,
         };
 
