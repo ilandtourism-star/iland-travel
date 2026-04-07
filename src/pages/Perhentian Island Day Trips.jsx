@@ -1,26 +1,29 @@
 import React, { useState, useMemo } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import ActivityCard from '../components/common/ActivityCard';
+import { useNavigate } from 'react-router-dom';
+
+// --- Custom Hooks ---
 import { useVacations } from '../hooks/useVacations';
 import { useDebounce } from '../hooks/useDebounce';
 
+// --- Components ---
+import ActivityCard from '../components/common/ActivityCard';
 
 const PerhentianIslandDayTrips = () => {
+    // --- HOOKS & NAVIGATION ---
     const [searchQuery, setSearchQuery] = useState('');
     const navigate = useNavigate();
-
-    // Menggunakan ViewModel Hook
-    const { vacations: data, loading, error } = useVacations('Perhentian', 'snorkeling');
-
-    // Menggunakan Debounce untuk Live Filtering
     const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
-    // Ambil data yang berkaitan sahaja
+    // Fetch data using the shared hook
+    const { vacations: data, loading, error } = useVacations('Perhentian', 'snorkeling');
+
+    // --- LOGIC: DATA FILTERING & TRANSFORMATION ---
     const activities = useMemo(() => {
         if (!data) return [];
 
         let filtered = data;
 
+        // Apply Search Filter
         if (debouncedSearchQuery.trim()) {
             const query = debouncedSearchQuery.toLowerCase();
             filtered = filtered.filter(v =>
@@ -29,7 +32,7 @@ const PerhentianIslandDayTrips = () => {
             );
         }
 
-        // Transform data for ActivityCard
+        // Transform into ActivityCard standard props
         return filtered.map(v => ({
             sku: v.sku,
             title: v.name,
@@ -37,7 +40,9 @@ const PerhentianIslandDayTrips = () => {
             reviews: v.reviewCount,
             price: v.price,
             image: v.imageUrl || "/images/perhentian island/1.png",
-            link: v.sku === 'snorkeling-perhentian' ? '/book/perhentian-snorkeling-day-trip' : '/perhentian-island-day-trips',
+            link: v.sku === 'snorkeling-perhentian' 
+                ? '/book/perhentian-snorkeling-day-trip' 
+                : '/perhentian-island-day-trips',
             buttonText: "Buy Now",
             description: v.description,
             features: v.features,
@@ -46,6 +51,7 @@ const PerhentianIslandDayTrips = () => {
         }));
     }, [data, debouncedSearchQuery]);
 
+    // --- EVENT HANDLERS ---
     const handleSearch = (e) => {
         e.preventDefault();
         if (searchQuery.trim()) {
@@ -53,12 +59,27 @@ const PerhentianIslandDayTrips = () => {
         }
     };
 
-    if (loading) return <div style={{ textAlign: 'center', padding: '100px', fontSize: '18px', color: '#64748b' }}>Memuatkan Pakej Perhentian...</div>;
-    if (error) return <div style={{ textAlign: 'center', padding: '100px', color: 'red' }}>Ralat: {error}</div>;
+    // --- CONDITIONAL RENDERING (LOADING/ERROR) ---
+    if (loading) {
+        return (
+            <div className="island-page-loading">
+                <i className="fas fa-spinner fa-spin"></i> Memuatkan Pakej Perhentian...
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="island-page-error">
+                <i className="fas fa-exclamation-triangle"></i> Ralat: {error}
+            </div>
+        );
+    }
 
     return (
         <div className="perhentian-page-body">
-
+            
+            {/* --- HERO / SEARCH SECTION --- */}
             <div className="hero-section">
                 <div className="search-container">
                     <input
@@ -73,17 +94,12 @@ const PerhentianIslandDayTrips = () => {
                 </div>
             </div>
 
+            {/* --- MAIN PAGE LAYOUT --- */}
             <div className="main-container">
-
+                
+                {/* Side Navigation / Info */}
                 <aside className="sidebar">
-                    <div className="map-box" style={{
-                        padding: 0,
-                        overflow: 'hidden',
-                        border: '1px solid #e0e0e0',
-                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                        backgroundImage: 'none',
-                        height: '250px'
-                    }}>
+                    <div className="sidebar-map-card">
                         <iframe
                             src="https://www.google.com/maps?q=Kuala%20Besut%20Jetty%20Terengganu&output=embed"
                             width="100%"
@@ -97,6 +113,7 @@ const PerhentianIslandDayTrips = () => {
                     </div>
                 </aside>
 
+                {/* Listing Results */}
                 <div className="results-content">
                     <div className="results-header">
                         <h1>Perhentian Island Day Trips: {activities.length} Activities Found</h1>
@@ -107,9 +124,8 @@ const PerhentianIslandDayTrips = () => {
                             <ActivityCard key={index} {...activity} />
                         ))}
                     </div>
-
-
                 </div>
+
             </div>
         </div>
     );
