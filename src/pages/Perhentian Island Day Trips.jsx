@@ -62,97 +62,115 @@ const PerhentianIslandDayTrips = () => {
             link: "/perhentian-island-day-trips",
             buttonText: "Buy Now",
             description: "Experience the full splendor of the Perhentian Islands with our premier taxi boat services. We offer comprehensive island-wide exploration, taking you to every hidden corner and scenic vista to ensure you witness the true, untouched beauty of this tropical paradise.",
-
-                isInSeason: true,
-
+            isTaxiBoat: true,
+            locationOptions: [
+                "Fisherman Village",
+                "Long Beach",
+                "Coral Bay",
+                "Mira Beach",
+                "Petani Beach",
+                "Tuna Bay",
+                "Abdul’s Chalet",
+                "Flora Bay",
+                "Teluk Keke",
+                "Romantic Beach",
+                "Turtle Beach",
+                "Adam & Eve Beach",
+                "D'Lagoon",
+                "Perhentian Island Resort (PIR)",
+                "Bubbles Resort"
+            ],
+            defaultFrom: "Fisherman Village",
+            defaultTo: "Long Beach",
+            isInSeason: true,
         };
 
-    // Jika tiada carian, tambah manual activity ke dalam senarai
-    if (!debouncedSearchQuery.trim()) {
-        return [...baseActivities, manualActivity];
-    }
+        // Jika tiada carian, tambah manual activity ke dalam senarai
+        if (!debouncedSearchQuery.trim()) {
+            return [...baseActivities, manualActivity];
+        }
 
-    return baseActivities;
-}, [data, debouncedSearchQuery]);
+        return baseActivities;
+    }, [data, debouncedSearchQuery]);
 
-// --- EVENT HANDLERS ---
-const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-        navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
-    }
-};
+    // --- EVENT HANDLERS ---
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (searchQuery.trim()) {
+            navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+        }
+    };
 
-// --- CONDITIONAL RENDERING (LOADING/ERROR) ---
-if (loading) {
-    return (
-        <div className="island-page-loading">
-            <i className="fas fa-spinner fa-spin"></i> Memuatkan Pakej Perhentian...
-        </div>
-    );
-}
-
-if (error) {
-    return (
-        <div className="island-page-error">
-            <i className="fas fa-exclamation-triangle"></i> Ralat: {error}
-        </div>
-    );
-}
-
-return (
-    <div className="perhentian-page-body">
-
-        {/* --- HERO / SEARCH SECTION --- */}
-        <div className="hero-section">
-            <div className="search-container">
-                <input
-                    type="text"
-                    className="search-input"
-                    placeholder="Search activities..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && handleSearch(e)}
-                />
-                <button className="search-btn" onClick={handleSearch}>SEARCH</button>
+    // --- CONDITIONAL RENDERING (LOADING/ERROR) ---
+    if (loading) {
+        return (
+            <div className="island-page-loading">
+                <i className="fas fa-spinner fa-spin"></i> Memuatkan Pakej Perhentian...
             </div>
-        </div>
+        );
+    }
 
-        {/* --- MAIN PAGE LAYOUT --- */}
-        <div className="main-container">
+    if (error) {
+        return (
+            <div className="island-page-error">
+                <i className="fas fa-exclamation-triangle"></i> Ralat: {error}
+            </div>
+        );
+    }
 
-            {/* Side Navigation / Info */}
-            <aside className="sidebar">
-                <div className="sidebar-map-card">
-                    <iframe
-                        src="https://www.google.com/maps?q=Kuala%20Besut%20Jetty%20Terengganu&output=embed"
-                        width="100%"
-                        height="100%"
-                        style={{ border: 0 }}
-                        allowFullScreen=""
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        title="Kuala Besut Jetty Location"
-                    ></iframe>
-                </div>
-            </aside>
+    return (
+        <div className="perhentian-page-body">
 
-            {/* Listing Results */}
-            <div className="results-content">
-                <div className="results-header">
-                    <h1>Perhentian Island Day Trips: {activities.length} Activities Found</h1>
-                </div>
-
-                <div className="island-activities-grid">
-                    {activities.map((activity, index) => (
-                        <ActivityCard key={index} {...activity} />
-                    ))}
+            {/* --- HERO / SEARCH SECTION --- */}
+            <div className="hero-section">
+                <div className="search-container">
+                    <input
+                        type="text"
+                        className="search-input"
+                        placeholder="Search activities..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        onKeyPress={(e) => e.key === 'Enter' && handleSearch(e)}
+                    />
+                    <button className="search-btn" onClick={handleSearch}>SEARCH</button>
                 </div>
             </div>
 
+            {/* --- MAIN PAGE LAYOUT --- */}
+            <div className="main-container">
+
+                {/* Side Navigation / Info */}
+                <aside className="sidebar">
+                    <div className="sidebar-map-card">
+                        <iframe
+                            src="https://www.google.com/maps?q=Kuala%20Besut%20Jetty%20Terengganu&output=embed"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            allowFullScreen=""
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title="Kuala Besut Jetty Location"
+                        ></iframe>
+                    </div>
+                </aside>
+
+                {/* Listing Results */}
+                <div className="results-content">
+                    <div className="results-header">
+                        <h1>Perhentian Island Day Trips: {activities.length} Activities Found</h1>
+                    </div>
+
+                    <div className="island-activities-grid">
+                        {activities.map((activity, index) => (
+                            <ActivityCard key={index} {...activity} />
+                        ))}
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
-);
+    );
 }
 
 export default PerhentianIslandDayTrips;
