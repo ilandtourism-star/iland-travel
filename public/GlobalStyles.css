@@ -3170,3 +3170,476 @@ select.premium-select:hover:not(:focus) {
         gap: 12px !important;
     }
 }
+/* ==========================================================================
+   HOME PAGE STYLES (Refactored from inline)
+   ========================================================================== */
+
+/* Wall of Fame Scroll Section */
+.wof-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 0 20px 20px;
+    scrollbar-width: thin;
+    scrollbar-color: #00ffff rgba(255,255,255,0.1);
+}
+.wof-scroll-container::-webkit-scrollbar {
+    height: 6px;
+}
+.wof-scroll-container::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+}
+@media (max-width: 768px) {
+    .wof-scroll-container {
+        flex-direction: column;
+        overflow-x: hidden;
+    }
+    .wof-island-group {
+        min-width: 100%;
+        flex: auto;
+        margin-bottom: 20px;
+    }
+    .wof-card:hover {
+        transform: translateY(-2px);
+    }
+}
+.wof-scroll-container::-webkit-scrollbar-thumb {
+    background: #00ffff;
+    border-radius: 10px;
+}
+.wof-island-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 380px;
+    flex: 1;
+    background: rgba(255,255,255,0.03);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+}
+.wof-island-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.wof-island-name {
+    color: #00ffff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+.wof-update-tag {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.5);
+}
+.wof-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    transition: all 0.2s;
+}
+.wof-card:hover {
+    background: rgba(0, 255, 255, 0.08);
+    transform: translateX(5px);
+}
+.wof-rank-badge {
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 215, 0, 0.2);
+    color: #ffd700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+.wof-user-avatar {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #00ced1 0%, #1e90ff 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: white;
+    flex-shrink: 0;
+}
+.wof-user-details {
+    flex: 1;
+}
+.wof-user-name {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0;
+}
+.wof-user-trips {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.75rem;
+    margin: 0;
+}
+.wof-user-title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+.title-1 { background: rgba(255, 215, 0, 0.1); color: #ffd700; border: 1px solid rgba(255, 215, 0, 0.2); }
+.title-2 { background: rgba(0, 255, 255, 0.1); color: #00ffff; border: 1px solid rgba(0, 255, 255, 0.2); }
+.title-3 { background: rgba(205, 127, 50, 0.1); color: #cd7f32; border: 1px solid rgba(205, 127, 50, 0.2); }
+
+/* Share functionality styles */
+.wof-share-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+.wof-share-btn:hover {
+    background: rgba(0, 255, 255, 0.2);
+    border-color: #00ffff;
+    color: #00ffff;
+    transform: translateY(-2px);
+}
+.wof-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+.wof-modal {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 24px;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 255, 255, 0.1);
+    animation: slideUp 0.3s ease;
+}
+.wof-modal-title {
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+.wof-share-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+.wof-share-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.wof-share-item:hover {
+    background: rgba(0, 255, 255, 0.1);
+    border-color: #00ffff;
+    transform: scale(1.05);
+}
+.share-icon {
+    font-size: 1.5rem;
+}
+.share-label {
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+.close-modal-btn {
+    margin-top: 25px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 8px 24px;
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes flashPulse {
+    0% { transform: scale(1); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 4px 20px rgba(239, 68, 68, 0.6); }
+    100% { transform: scale(1); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4); }
+}
+
+/* Micro-animations for AWE emotion */
+.home-card-awe {
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+.home-card-awe:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,255,255,0.15), 0 0 20px rgba(0, 123, 255, 0.2);
+    border-color: rgba(0, 255, 255, 0.3);
+}
+.home-card-awe:hover .home-image {
+    transform: scale(1.15) rotate(1deg); /* Subtle dramatic zoom */
+    filter: brightness(1.1) contrast(1.1); /* Make colors pop */
+}
+.btn-awe-copy {
+    transition: all 0.3s !important;
+    background: linear-gradient(45deg, #0ea5e9, #2563eb) !important;
+    border: none !important;
+}
+.btn-awe-copy:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(14, 165, 233, 0.4);
+    letter-spacing: 1px;
+    background: linear-gradient(45deg, #2563eb, #0ea5e9) !important;
+}
+
+/* --- Inline Styles Conversion --- */
+
+/* Environmental Trigger Banner */
+.home-trigger-banner {
+    background: linear-gradient(90deg, #ef4444 0%, #f97316 100%);
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    z-index: 50;
+    position: relative;
+}
+.home-trigger-btn {
+    background: white;
+    color: #ef4444;
+    border: none;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.home-trigger-close {
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+}
+
+/* FOMO Live Booking Toast */
+.home-booking-toast {
+    position: fixed;
+    bottom: 80px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    color: #333;
+    padding: 12px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-left: 4px solid #ef4444;
+    animation: slideUp 0.5s ease-out;
+    max-width: 300px;
+}
+.home-toast-icon {
+    background: #f87171;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.home-toast-details {
+    flex: 1;
+    padding-right: 15px;
+}
+.home-toast-close {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 1rem;
+}
+
+/* Search Container Wrapper */
+.home-search-wrapper {
+    margin-top: 30px;
+}
+
+/* Content Wrapper */
+.home-content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Practical Value: Live Weather Widget */
+.home-weather-widget-container {
+    margin-bottom: 50px;
+}
+.home-weather-inner {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-radius: 16px;
+    padding: 24px;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    gap: 20px;
+}
+.weather-icon-container {
+    background: #0ea5e9;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(14,165,233,0.4);
+    flex-shrink: 0;
+}
+.weather-text-header {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #38bdf8;
+    font-weight: bold;
+}
+.weather-text-sub {
+    margin: 4px 0 0 0;
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+.weather-info-group {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.weather-info-item {
+    text-align: center;
+}
+@media (max-width: 991px) {
+    .weather-desktop-only {
+        display: none;
+    }
+}
+.weather-info-label {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.weather-info-value {
+    margin: 5px 0 0 0;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.weather-info-value-calm { color: #22c55e; }
+.weather-info-value-high { color: #38bdf8; }
+
+.weather-verdict-badge {
+    display: inline-block;
+    margin-top: 5px;
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border: 1px solid rgba(34,197,94,0.4);
+}
+.weather-share-btn-cta {
+    background: #0ea5e9;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(14,165,233,0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.weather-share-btn-cta:hover {
+    background: #0284c7;
+    transform: translateY(-2px);
+}
+
+/* Wall of Fame Header */
+.home-wof-header {
+    padding: 0 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+}
+.home-wof-title {
+    color: white;
+    font-size: 1.2rem;
+    margin: 0;
+}
+.home-wof-desc {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.85rem;
+    margin: 5px 0 20px;
+}
+.home-wof-share-wrapper {
+    display: flex;
+    justify-content: center;
+}

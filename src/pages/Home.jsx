@@ -278,36 +278,13 @@ const Home = () => {
 
             {/* Environmental Trigger Banner */}
             {isHotDay && (
-                <div style={{
-                    background: 'linear-gradient(90deg, #ef4444 0%, #f97316 100%)',
-                    color: 'white',
-                    padding: '10px 20px',
-                    textAlign: 'center',
-                    fontSize: '0.9rem',
-                    fontWeight: '600',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '10px',
-                    zIndex: 50,
-                    position: 'relative'
-                }}>
+                <div className="home-trigger-banner">
                     <i className="fas fa-temperature-high" style={{ fontSize: '1.2rem' }}></i>
                     <span>Tired of the heat? Escape to 26°C crystal clear waters today!</span>
-                    <button style={{
-                        background: 'white',
-                        color: '#ef4444',
-                        border: 'none',
-                        padding: '4px 12px',
-                        borderRadius: '20px',
-                        fontSize: '0.8rem',
-                        fontWeight: 'bold',
-                        cursor: 'pointer',
-                        marginLeft: '10px'
-                    }} onClick={() => document.querySelector('.home-section-title').scrollIntoView({ behavior: 'smooth' })}>
+                    <button className="home-trigger-btn" onClick={() => document.querySelector('.home-section-title').scrollIntoView({ behavior: 'smooth' })}>
                         See Packages
                     </button>
-                    <button onClick={() => setIsHotDay(false)} style={{ background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.7)', cursor: 'pointer', position: 'absolute', right: '15px' }}>
+                    <button onClick={() => setIsHotDay(false)} className="home-trigger-close">
                         <i className="fas fa-times"></i>
                     </button>
                 </div>
@@ -315,28 +292,11 @@ const Home = () => {
 
             {/* FOMO Live Booking Toast */}
             {recentBooking && (
-                <div style={{
-                    position: 'fixed',
-                    bottom: '80px',
-                    left: '20px',
-                    background: 'rgba(255, 255, 255, 0.95)',
-                    backdropFilter: 'blur(10px)',
-                    color: '#333',
-                    padding: '12px 20px',
-                    borderRadius: '12px',
-                    boxShadow: '0 10px 25px rgba(0,0,0,0.15)',
-                    zIndex: 2000,
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '15px',
-                    borderLeft: '4px solid #ef4444',
-                    animation: 'slideUp 0.5s ease-out',
-                    maxWidth: '300px'
-                }}>
-                    <div style={{ background: '#f87171', color: 'white', width: '30px', height: '30px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <div className="home-booking-toast">
+                    <div className="home-toast-icon">
                         <i className="fas fa-bell"></i>
                     </div>
-                    <div style={{ flex: 1, paddingRight: '15px' }}>
+                    <div className="home-toast-details">
                         <p style={{ margin: 0, fontSize: '0.85rem', fontWeight: 'bold' }}>{recentBooking.name}</p>
                         <p style={{ margin: 0, fontSize: '0.75rem', color: '#666' }}>Booked {recentBooking.act} <span style={{ color: '#ef4444', fontWeight: 'bold' }}>2 mins ago!</span></p>
                     </div>
@@ -344,7 +304,7 @@ const Home = () => {
                     {/* Close Toast Button */}
                     <button
                         onClick={() => setRecentBooking(null)}
-                        style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer', position: 'absolute', top: '8px', right: '8px', fontSize: '1rem' }}
+                        className="home-toast-close"
                         title="Dismiss"
                     >
                         <i className="fas fa-times"></i>
@@ -361,7 +321,7 @@ const Home = () => {
                     <p className="home-hero-subtitle">Experience the best island activities: Snorkeling, Squid Jigging, and Private Boat Trips.</p>
 
                     {/* Search Container */}
-                    <div className="search-container" style={{ marginTop: '30px' }}>
+                    <div className="search-container home-search-wrapper">
                         <input
                             type="text"
                             className="search-input"
@@ -376,78 +336,46 @@ const Home = () => {
             </div>
 
             {/* Content Section */}
-            <div className="home-content-wrapper" style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 20px' }}>
+            <div className="home-content-wrapper">
 
                 {/* Practical Value: Live Weather & Tide Status Widget */}
-                <div className="home-weather-widget" style={{ marginBottom: '50px' }}>
-                    <div style={{
-                        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-                        borderRadius: '16px',
-                        padding: '24px',
-                        color: 'white',
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        boxShadow: '0 10px 30px rgba(0,0,0,0.15)',
-                        gap: '20px'
-                    }}>
+                <div className="home-weather-widget-container">
+                    <div className="home-weather-inner">
                         <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                            <div style={{ background: '#0ea5e9', width: '55px', height: '55px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', boxShadow: '0 4px 15px rgba(14,165,233,0.4)', flexShrink: 0 }}>
+                            <div className="weather-icon-container">
                                 <i className="fas fa-water"></i>
                             </div>
                             <div>
-                                <h3 style={{ margin: 0, fontSize: '1.2rem', color: '#38bdf8', fontWeight: 'bold' }}>East Coast Sea Conditions</h3>
-                                <p style={{ margin: '4px 0 0 0', fontSize: '0.85rem', color: '#94a3b8' }}>Live Tide & Weather Advisory</p>
+                                <h3 className="weather-text-header">East Coast Sea Conditions</h3>
+                                <p className="weather-text-sub">Live Tide & Weather Advisory</p>
                             </div>
                         </div>
 
-                        <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap' }}>
-                            <div style={{ textAlign: 'center' }}>
-                                <p style={{ margin: 0, fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '1px' }}>Current Wave</p>
-                                <p style={{ margin: '5px 0 0 0', fontWeight: 'bold', fontSize: '1.1rem', color: '#22c55e' }}>
+                        <div className="weather-info-group">
+                            <div className="weather-info-item">
+                                <p className="weather-info-label">Current Wave</p>
+                                <p className="weather-info-value weather-info-value-calm">
                                     <i className="fas fa-check-circle"></i> Calm (0.5m)
                                 </p>
                             </div>
-                            <div style={{ display: 'none' /* hidden for mobile space */ }} className="weather-desktop-only">
-                                <p style={{ margin: 0, fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '1px' }}>Visibility</p>
-                                <p style={{ margin: '5px 0 0 0', fontWeight: 'bold', fontSize: '1.1rem', color: '#38bdf8' }}>
+                            <div className="weather-desktop-only weather-info-item">
+                                <p className="weather-info-label">Visibility</p>
+                                <p className="weather-info-value weather-info-value-high">
                                     <i className="fas fa-eye"></i> High (15m+)
                                 </p>
                             </div>
-                            <div style={{ textAlign: 'center' }}>
-                                <p style={{ margin: 0, fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '1px' }}>Verdict</p>
-                                <span style={{
-                                    display: 'inline-block',
-                                    marginTop: '5px',
-                                    background: 'rgba(34, 197, 94, 0.2)',
-                                    color: '#22c55e',
-                                    padding: '4px 12px',
-                                    borderRadius: '20px',
-                                    fontSize: '0.85rem',
-                                    fontWeight: 'bold',
-                                    border: '1px solid rgba(34,197,94,0.4)'
-                                }}>
+                            <div className="weather-info-item">
+                                <p className="weather-info-label">Verdict</p>
+                                <span className="weather-verdict-badge">
                                     Perfect for Island Trips!
                                 </span>
                             </div>
                         </div>
 
-                        <button onClick={() => alert("Copied to clipboard! Share the good news with your travel buddies.")} style={{
-                            background: '#0ea5e9',
-                            border: 'none',
-                            color: 'white',
-                            padding: '10px 20px',
-                            borderRadius: '8px',
-                            cursor: 'pointer',
-                            fontWeight: '600',
-                            transition: 'all 0.3s',
-                            boxShadow: '0 4px 12px rgba(14,165,233,0.3)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '8px'
-                        }} onMouseOver={(e) => { e.target.style.background = '#0284c7'; e.target.style.transform = 'translateY(-2px)' }}
-                            onMouseOut={(e) => { e.target.style.background = '#0ea5e9'; e.target.style.transform = 'translateY(0)' }}>
+                        <button 
+                            onClick={() => alert("Copied to clipboard! Share the good news with your travel buddies.")} 
+                            className="weather-share-btn-cta"
+                        >
                             <i className="fas fa-share-alt"></i> Share Status
                         </button>
                     </div>
@@ -527,267 +455,11 @@ const Home = () => {
 
             {/* Side-Scrolling Wall of Fame Section */}
             <div className="wof-scroll-section" style={{ background: '#0f172a', padding: '30px 0', borderBottom: '1px solid rgba(0, 255, 255, 0.1)' }}>
-                <style>
-                    {`
-                    .wof-scroll-container {
-                        display: flex;
-                        overflow-x: auto;
-                        gap: 20px;
-                        padding: 0 20px 20px;
-                        scrollbar-width: thin;
-                        scrollbar-color: #00ffff rgba(255,255,255,0.1);
-                    }
-                    .wof-scroll-container::-webkit-scrollbar {
-                        height: 6px;
-                    }
-                    .wof-scroll-container::-webkit-scrollbar-track {
-                        background: rgba(255,255,255,0.05);
-                    }
-                                        @media (max-width: 768px) {
-                        .wof-scroll-container {
-                            flex-direction: column;
-                            overflow-x: hidden;
-                        }
-                        .wof-island-group {
-                            min-width: 100%;
-                            flex: auto;
-                            margin-bottom: 20px;
-                        }
-                        .wof-card:hover {
-                            transform: translateY(-2px);
-                        }
-                    }
-                    .wof-scroll-container::-webkit-scrollbar-thumb {
-                        background: #00ffff;
-                        border-radius: 10px;
-                    }
-                    .wof-island-group {
-                        display: flex;
-                        flex-direction: column;
-                        min-width: 380px;
-                        flex: 1;
-                        background: rgba(255,255,255,0.03);
-                        border-radius: 16px;
-                        padding: 20px;
-                        border: 1px solid rgba(0, 255, 255, 0.1);
-                    }
-                    .wof-island-header {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        margin-bottom: 15px;
-                    }
-                    .wof-island-name {
-                        color: #00ffff;
-                        font-size: 0.85rem;
-                        font-weight: 700;
-                        text-transform: uppercase;
-                        letter-spacing: 1px;
-                        margin: 0;
-                    }
-                    .wof-update-tag {
-                        font-size: 0.65rem;
-                        color: rgba(255,255,255,0.5);
-                    }
-                    .wof-card {
-                        display: flex;
-                        align-items: center;
-                        gap: 12px;
-                        background: rgba(255,255,255,0.05);
-                        padding: 10px;
-                        border-radius: 12px;
-                        margin-bottom: 8px;
-                        transition: all 0.2s;
-                    }
-                    .wof-card:hover {
-                        background: rgba(0, 255, 255, 0.08);
-                        transform: translateX(5px);
-                    }
-                    .wof-rank-badge {
-                        width: 24px;
-                        height: 24px;
-                        background: rgba(255, 215, 0, 0.2);
-                        color: #ffd700;
-                        border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 0.75rem;
-                        font-weight: 700;
-                        flex-shrink: 0;
-                    }
-                    .wof-user-avatar {
-                        width: 36px;
-                        height: 36px;
-                        background: linear-gradient(135deg, #00ced1 0%, #1e90ff 100%);
-                        border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-weight: 700;
-                        font-size: 0.85rem;
-                        color: white;
-                        flex-shrink: 0;
-                    }
-                    .wof-user-details {
-                        flex: 1;
-                    }
-                    .wof-user-name {
-                        color: white;
-                        font-size: 0.85rem;
-                        font-weight: 600;
-                        margin: 0;
-                    }
-                    .wof-user-trips {
-                        color: rgba(255,255,255,0.6);
-                        font-size: 0.75rem;
-                        margin: 0;
-                    }
-                    .wof-user-title {
-                        font-size: 0.65rem;
-                        font-weight: 700;
-                        text-transform: uppercase;
-                        letter-spacing: 0.5px;
-                        margin-top: 2px;
-                        display: inline-block;
-                        padding: 2px 6px;
-                        border-radius: 4px;
-                    }
-                    .title-1 { background: rgba(255, 215, 0, 0.1); color: #ffd700; border: 1px solid rgba(255, 215, 0, 0.2); }
-                    .title-2 { background: rgba(0, 255, 255, 0.1); color: #00ffff; border: 1px solid rgba(0, 255, 255, 0.2); }
-                    .title-3 { background: rgba(205, 127, 50, 0.1); color: #cd7f32; border: 1px solid rgba(205, 127, 50, 0.2); }
-                    
-                    /* Share functionality styles */
-                    .wof-share-btn {
-                        background: rgba(255, 255, 255, 0.1);
-                        border: 1px solid rgba(255, 255, 255, 0.2);
-                        color: white;
-                        padding: 8px 16px;
-                        border-radius: 8px;
-                        font-size: 0.85rem;
-                        cursor: pointer;
-                        display: flex;
-                        align-items: center;
-                        gap: 8px;
-                        transition: all 0.3s;
-                    }
-                    .wof-share-btn:hover {
-                        background: rgba(0, 255, 255, 0.2);
-                        border-color: #00ffff;
-                        color: #00ffff;
-                        transform: translateY(-2px);
-                    }
-                    .wof-modal-overlay {
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        background: rgba(0, 0, 0, 0.8);
-                        backdrop-filter: blur(8px);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        z-index: 1000;
-                        padding: 20px;
-                        animation: fadeIn 0.3s ease;
-                    }
-                    .wof-modal {
-                        background: rgba(30, 41, 59, 0.7);
-                        backdrop-filter: blur(20px);
-                        border: 1px solid rgba(0, 255, 255, 0.2);
-                        border-radius: 24px;
-                        padding: 30px;
-                        width: 100%;
-                        max-width: 400px;
-                        text-align: center;
-                        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 255, 255, 0.1);
-                        animation: slideUp 0.3s ease;
-                    }
-                    .wof-modal-title {
-                        color: white;
-                        font-family: 'Outfit', sans-serif;
-                        font-size: 1.5rem;
-                        margin-bottom: 20px;
-                    }
-                    .wof-share-options {
-                        display: grid;
-                        grid-template-columns: repeat(2, 1fr);
-                        gap: 15px;
-                    }
-                    .wof-share-item {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        gap: 10px;
-                        padding: 20px;
-                        background: rgba(255, 255, 255, 0.05);
-                        border: 1px solid rgba(255, 255, 255, 0.1);
-                        border-radius: 16px;
-                        cursor: pointer;
-                        transition: all 0.2s;
-                    }
-                    .wof-share-item:hover {
-                        background: rgba(0, 255, 255, 0.1);
-                        border-color: #00ffff;
-                        transform: scale(1.05);
-                    }
-                    .share-icon {
-                        font-size: 1.5rem;
-                    }
-                    .share-label {
-                        color: white;
-                        font-size: 0.8rem;
-                        font-weight: 500;
-                    }
-                    .close-modal-btn {
-                        margin-top: 25px;
-                        background: transparent;
-                        border: 1px solid rgba(255, 255, 255, 0.3);
-                        color: rgba(255, 255, 255, 0.7);
-                        padding: 8px 24px;
-                        border-radius: 100px;
-                        cursor: pointer;
-                        font-size: 0.85rem;
-                    }
-                    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-                    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-                    @keyframes flashPulse {
-                        0% { transform: scale(1); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4); }
-                        50% { transform: scale(1.05); box-shadow: 0 4px 20px rgba(239, 68, 68, 0.6); }
-                        100% { transform: scale(1); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4); }
-                    }
-                    /* Micro-animations for AWE emotion */
-                    .home-card-awe {
-                        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-                    }
-                    .home-card-awe:hover {
-                        transform: translateY(-12px) scale(1.02);
-                        box-shadow: 0 20px 40px rgba(0,255,255,0.15), 0 0 20px rgba(0, 123, 255, 0.2);
-                        border-color: rgba(0, 255, 255, 0.3);
-                    }
-                    .home-card-awe:hover .home-image {
-                        transform: scale(1.15) rotate(1deg); /* Subtle dramatic zoom */
-                        filter: brightness(1.1) contrast(1.1); /* Make colors pop */
-                    }
-                    .btn-awe-copy {
-                        transition: all 0.3s !important;
-                        background: linear-gradient(45deg, #0ea5e9, #2563eb) !important;
-                        border: none !important;
-                    }
-                    .btn-awe-copy:hover {
-                        transform: scale(1.05);
-                        box-shadow: 0 8px 20px rgba(14, 165, 233, 0.4);
-                        letter-spacing: 1px;
-                        background: linear-gradient(45deg, #2563eb, #0ea5e9) !important;
-                    }
-                    `}
-                </style>
-                <div className="section-header" style={{ padding: '0 20px', marginBottom: '20px', textAlign: 'center', position: 'relative' }}>
-                    <h2 style={{ color: 'white', fontSize: '1.2rem', margin: 0 }}>Wall of Fame - Top Travelers</h2>
-                    <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', margin: '5px 0 20px' }}>Meet our most frequent island explorers this month!</p>
+                <div className="home-wof-header">
+                    <h2 className="home-wof-title">Wall of Fame - Top Travelers</h2>
+                    <p className="home-wof-desc">Meet our most frequent island explorers this month!</p>
 
-                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <div className="home-wof-share-wrapper">
                         <button className="wof-share-btn" onClick={openShareModal}>
                             <i className="fas fa-share-alt"></i> Share This
                         </button>
