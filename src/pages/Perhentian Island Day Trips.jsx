@@ -33,7 +33,7 @@ const PerhentianIslandDayTrips = () => {
         }
 
         // Transform into ActivityCard standard props
-        return filtered.map(v => ({
+        const baseActivities = filtered.map(v => ({
             sku: v.sku,
             title: v.name,
             rating: v.rating,
@@ -49,6 +49,34 @@ const PerhentianIslandDayTrips = () => {
             isInSeason: v.isInSeason,
             badge: v.name.includes('Snorkeling') ? "Most Popular" : null
         }));
+
+        // --- MANUAL ADDITION ---
+        // Menambah 1 lagi aktiviti secara manual (contoh: Private Boat)
+        const manualActivity = {
+            sku: 'private-boat-perhentian',
+            title: "2. Private Boat Trip (Exclusive)",
+            rating: 5.0,
+            reviews: 24,
+            price: 850,
+            image: "/images/Private Boat Trip/21.png",
+            link: "/perhentian-island-day-trips",
+            buttonText: "Buy Now",
+            description: "Exclusive private boat trip for families and groups. Visit hidden gems around Perhentian at your own pace.",
+            features: [
+                { icon: "fas fa-ship", text: "PRIVATE BOAT TRANSFER" },
+                { icon: "fas fa-mask", text: "SNORKELING GEAR INCLUDED" },
+                { icon: "fas fa-camera", text: "GOPRO PHOTOS" }
+            ],
+            isInSeason: true,
+            badge: "PREMIUM"
+        };
+
+        // Jika tiada carian, tambah manual activity ke dalam senarai
+        if (!debouncedSearchQuery.trim()) {
+            return [...baseActivities, manualActivity];
+        }
+
+        return baseActivities;
     }, [data, debouncedSearchQuery]);
 
     // --- EVENT HANDLERS ---
