@@ -43,7 +43,8 @@ const RedangIslandDayTrips = () => {
                 const map = {
                     'squid-jigging-redang': '/book/redang-squid-jigging-private',
                     'snorkeling-redang': '/book/redang-snorkeling-day-trip',
-                    'skin-dive-redang': '/redang-island-day-trips'
+                    'skin-dive-redang': '/redang-island-day-trips',
+                    'free-dive-redang': '/redang-island-day-trips'
                 };
                 return map[v.sku] || '/redang-island-day-trips';
             })(),
@@ -51,7 +52,7 @@ const RedangIslandDayTrips = () => {
             description: v.description,
             features: v.features,
             isInSeason: v.isInSeason,
-            badge: v.sku.includes('snorkeling') ? "Most Popular" : (v.sku === 'skin-dive-redang' ? "Premium Experience" : null)
+            badge: v.sku.includes('snorkeling') ? "Most Popular" : (v.sku === 'skin-dive-redang' || v.sku === 'free-dive-redang' ? "Premium Experience" : null)
         }));
     }, [data, debouncedSearchQuery]);
 
