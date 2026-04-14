@@ -38,7 +38,7 @@ const RedangIslandDayTrips = () => {
             rating: v.rating,
             reviews: v.reviewCount,
             price: v.price,
-            image: v.imageUrl || (v.sku.includes('snorkeling') ? "/images/Redang island/2.jpg" : "/images/Squid Jigging/1.png"),
+            image: v.imageUrl || (v.sku.includes('snorkeling') ? "/images/Redang island/redang_snorkeling_all_in.png" : "/images/Squid Jigging/1.png"),
             link: (() => {
                 const map = {
                     'squid-jigging-redang': '/book/redang-squid-jigging-private',

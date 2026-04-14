@@ -214,7 +214,7 @@ const seedVacations = () => {
                 island: 'Redang',
                 category: 'snorkeling',
                 is_in_season: 1,
-                imageUrl: '/images/Redang island/2.jpg',
+                imageUrl: '/images/Redang island/redang_snorkeling_all_in.png',
                 features: JSON.stringify([
                     { icon: "fas fa-ship", text: "BOAT 2 WAYS" },
                     { icon: "fas fa-mask", text: "SNORKELING EQUIPMENT" },
