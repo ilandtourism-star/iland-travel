@@ -436,27 +436,31 @@ const ActivityCard = ({
               <h4>Package Options:</h4>
               <ul className="features-list">
                 {packages.map((pkg, idx) => (
-                  <li key={idx}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                        <span className="pax"><i className={pkg.icon || "fas fa-user-friends"}></i> {pkg.label}</span>
-                        <strong style={{ fontSize: '1.5em', color: '#d93025' }}>RM {pkg.price}</strong>
+                  <li key={idx} style={{ marginBottom: '15px', borderBottom: idx !== packages.length - 1 ? '1px dashed #e2e8f0' : 'none', paddingBottom: '15px' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span className="pax" style={{ fontWeight: 'bold', color: '#1e293b' }}>
+                          <i className={pkg.icon || "fas fa-user-friends"} style={{ marginRight: '8px', color: '#0ea5e9' }}></i> 
+                          {pkg.label}
+                        </span>
+                        <strong style={{ fontSize: '1.5em', color: '#ef4444' }}>RM {pkg.price}</strong>
                       </div>
                       {pkg.link && (
-                        <button
+                        <button className="btn-details"
                           onClick={() => navigate(pkg.link)}
                           style={{
-                            background: 'DarkTurquoise',
-                            color: 'white',
-                            border: 'none',
-                            padding: '12px 30px',
-                            borderRadius: '6px',
-                            cursor: 'pointer',
+                            width: '100%',
+                            transition: 'all 0.3s',
                             fontWeight: 'bold',
-                            fontSize: '1.1em'
+                            textTransform: 'uppercase',
+                            letterSpacing: '1px',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            gap: '8px'
                           }}
                         >
-                          Ticket
+                          Buy Now <i className="fas fa-arrow-right"></i>
                         </button>
                       )}
                     </div>
