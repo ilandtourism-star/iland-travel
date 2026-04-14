@@ -85,20 +85,7 @@ const ActivityCard = ({
     return () => clearInterval(timer);
   }, [isFlashSale, flashSaleEndTime]);
 
-  // Generate a random scarcity message if the item isn't on flash sale but we still want to show scarcity
-  // This adds to the 'Insider' feel
-  const [scarcityMessage, setScarcityMessage] = useState("");
-  React.useEffect(() => {
-    const messages = [
-      "Only 2 secret slots left!",
-      "Hidden spot - Fast filling",
-      "Exclusive access available",
-      "Limited to 5 guests today"
-    ];
-    // Consistent random based on title length
-    const index = title.length % messages.length;
-    setScarcityMessage(messages[index]);
-  }, [title]);
+
 
   // Use the provided images array, or fallback to the single main image if 'images' is empty
   const galleryImages = images.length > 0 ? images : [image];
@@ -226,28 +213,7 @@ const ActivityCard = ({
       <div className={`activity-card ${isBookingOpen ? 'booking-active' : ''}`} style={{ transition: 'all 0.3s ease', position: 'relative' }}>
         {badge && <div className="badge-top">{badge}</div>}
 
-        {/* Scarcity Badge (Insider/Exclusivity) */}
-        {!isFlashSale && !hideBadge && (
-          <div className="scarcity-badge" style={{
-            position: 'absolute',
-            top: '12px',
-            right: '12px',
-            backgroundColor: 'rgba(0, 0, 0, 0.7)',
-            backdropFilter: 'blur(5px)',
-            color: '#fbbf24',
-            padding: '6px 12px',
-            borderRadius: '8px',
-            fontSize: '0.7rem',
-            fontWeight: '700',
-            border: '1px solid #fbbf24',
-            zIndex: 5,
-            display: 'flex',
-            alignItems: 'center',
-            gap: '5px'
-          }}>
-            <i className="fas fa-key"></i> {scarcityMessage}
-          </div>
-        )}
+
 
         {/* Flash Sale Label */}
         {isFlashSale && (
