@@ -460,7 +460,7 @@ const ActivityCard = ({
                             gap: '8px'
                           }}
                         >
-                          Buy Now <i className="fas fa-arrow-right"></i>
+                          Buy Now
                         </button>
                       )}
                     </div>
