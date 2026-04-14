@@ -259,6 +259,25 @@ const seedVacations = () => {
                     { icon: "fas fa-user-tie", text: "SNORKLING GUIDE TO ALL POINTS" },
                     { icon: "fas fa-fish", text: "SNORKLING TRIP 5/6 POINTS" }
                 ])
+            },
+            {
+                sku: 'skin-dive-perhentian',
+                name: '2. LEARN SKINDIVING',
+                description: 'Your first step into freediving. 1.5 Hours Learning Session. Suitable for beginner to intermediate snorkelers.',
+                price: 26000,
+                childPrice: null,
+                island: 'Perhentian',
+                category: 'snorkeling',
+                is_in_season: 1,
+                imageUrl: '/images/perhentian island/learn_skindiving.png',
+                features: JSON.stringify([
+                    { icon: "fas fa-tag", text: "RM260 (with equipment) / RM220 (without)" },
+                    { icon: "fas fa-clock", text: "1.5 Hours Learning Session" },
+                    { icon: "fas fa-ship", text: "Return Boat Transfer (KB Jetty - Perhentian)" },
+                    { icon: "fas fa-water", text: "Guided shallow dive (5-10m)" },
+                    { icon: "fas fa-lungs", text: "Proper breathing & relaxations" },
+                    { icon: "fas fa-swimmer", text: "Duck dive & equalization basics" }
+                ])
             }
         ];
 

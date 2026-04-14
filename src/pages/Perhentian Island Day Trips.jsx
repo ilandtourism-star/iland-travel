@@ -42,19 +42,21 @@ const PerhentianIslandDayTrips = () => {
             image: v.imageUrl || "/images/perhentian island/1.png",
             link: v.sku === 'snorkeling-perhentian'
                 ? '/book/perhentian-snorkeling-day-trip'
-                : '/perhentian-island-day-trips',
+                : v.sku === 'skin-dive-perhentian'
+                    ? '/perhentian-island-day-trips' // Place holder for now
+                    : '/perhentian-island-day-trips',
             buttonText: "Buy Now",
             description: v.description,
             features: v.features,
             isInSeason: v.isInSeason,
-            badge: v.name.includes('Snorkeling') ? "Most Popular" : null
+            badge: v.name.includes('Snorkeling') ? "Most Popular" : (v.sku === 'skin-dive-perhentian' ? "Premium Experience" : null)
         }));
 
         // --- MANUAL ADDITION ---
         // Menambah 1 lagi aktiviti secara manual (contoh: Private Boat)
         const manualActivity = {
             sku: 'private-boat-perhentian',
-            title: "2. taxi boat",
+            title: "3. taxi boat",
             rating: 5.0,
             reviews: 24,
             price: 25,
