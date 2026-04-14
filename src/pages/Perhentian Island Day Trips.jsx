@@ -49,7 +49,7 @@ const PerhentianIslandDayTrips = () => {
             description: v.description,
             features: v.features,
             isInSeason: v.isInSeason,
-            badge: v.name.includes('Snorkeling') ? "Most Popular" : (v.sku === 'skin-dive-perhentian' || v.sku === 'skin-dive-experience-perhentian' ? "Premium Experience" : null),
+            badge: v.name.includes('Snorkeling') ? "Most Popular" : (v.sku === 'skin-dive-perhentian' || v.sku === 'skin-dive-experience-perhentian' || v.sku === 'free-dive-perhentian' ? "Premium Experience" : null),
             hideButton: v.sku === 'skin-dive-perhentian',
             hidePrice: v.sku === 'skin-dive-perhentian',
             packages: v.sku === 'skin-dive-perhentian' ? [
@@ -62,7 +62,7 @@ const PerhentianIslandDayTrips = () => {
         // Menambah 1 lagi aktiviti secara manual (contoh: Private Boat)
         const manualActivity = {
             sku: 'private-boat-perhentian',
-            title: "4. taxi boat",
+            title: "6. taxi boat",
             rating: 5.0,
             reviews: 24,
             price: 25,

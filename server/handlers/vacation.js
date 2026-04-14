@@ -296,6 +296,25 @@ const seedVacations = () => {
                     { icon: "fas fa-id-card", text: "Marine Park Fee included" },
                     { icon: "fas fa-exclamation-triangle", text: "Bring your own mask/snorkel/fins (Weight & lunch not info/provided)" }
                 ])
+            },
+            {
+                sku: 'free-dive-perhentian',
+                name: '5. PERHENTIAN FREE DIVING DAYTRIP',
+                description: 'Resort (Island), Perhentian Dive Site. Diving Points: Underwater cave (5 Meter), Police wreck (18 Meter), Underwater Corridor (5 Meter), Shark point (5 Meter). Terms & conditions: No freediving license required, participants must be able to swim & follow instructions.',
+                price: 28000,
+                childPrice: null,
+                island: 'Perhentian',
+                category: 'snorkeling',
+                is_in_season: 1,
+                imageUrl: '/images/perhentian island/perhentian_freediving.png',
+                features: JSON.stringify([
+                    { icon: "fas fa-clock", text: "1 hour dive for each point" },
+                    { icon: "fas fa-ship", text: "Return boat included" },
+                    { icon: "fas fa-id-card", text: "Marine park fees included" },
+                    { icon: "fas fa-bottle-water", text: "Free flow mineral water" },
+                    { icon: "fas fa-video", text: "Underwater footage & picture" },
+                    { icon: "fas fa-plus-circle", text: "Add on: Lunch (RM35), Drone (RM180/pax), Safety buddies (RM50)" }
+                ])
             }
         ];
 
