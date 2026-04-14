@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 const OceanFactCard = () => {
+    return null; // Temporarily disabled
+
     const [fact, setFact] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [visible, setVisible] = useState(false);

@@ -271,7 +271,6 @@ const seedVacations = () => {
                 is_in_season: 1,
                 imageUrl: '/images/perhentian island/learn_skindiving.png',
                 features: JSON.stringify([
-                    { icon: "fas fa-tag", text: "RM260 (with equipment) / RM220 (without)" },
                     { icon: "fas fa-clock", text: "1.5 Hours Learning Session" },
                     { icon: "fas fa-ship", text: "Return Boat Transfer (KB Jetty - Perhentian)" },
                     { icon: "fas fa-water", text: "Guided shallow dive (5-10m)" },

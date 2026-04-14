@@ -49,7 +49,13 @@ const PerhentianIslandDayTrips = () => {
             description: v.description,
             features: v.features,
             isInSeason: v.isInSeason,
-            badge: v.name.includes('Snorkeling') ? "Most Popular" : (v.sku === 'skin-dive-perhentian' ? "Premium Experience" : null)
+            badge: v.name.includes('Snorkeling') ? "Most Popular" : (v.sku === 'skin-dive-perhentian' ? "Premium Experience" : null),
+            hideButton: v.sku === 'skin-dive-perhentian',
+            hidePrice: v.sku === 'skin-dive-perhentian',
+            packages: v.sku === 'skin-dive-perhentian' ? [
+                { label: "With Equipment Rental", price: "260.00", link: "/book/learn-skindiving", icon: "fas fa-mask" },
+                { label: "Without Equipment", price: "220.00", link: "/book/learn-skindiving-no-eq", icon: "fas fa-user-alt" }
+            ] : []
         }));
 
         // --- MANUAL ADDITION ---
