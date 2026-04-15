@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import ActivityCard from '../components/common/ActivityCard';
 import { useVacations } from '../hooks/useVacations';
 import { useDebounce } from '../hooks/useDebounce';
+import { getActivityLink } from '../utils/activityLinks';
 import SEO from '../components/common/SEO';
 
 
@@ -37,17 +38,8 @@ const RedangIslandDayTrips = () => {
             title: v.name,
             rating: v.rating,
             reviews: v.reviewCount,
-            price: v.price,
             image: v.imageUrl || (v.sku.includes('snorkeling') ? "/images/Redang island/redang_snorkeling_all_in.png" : "/images/Squid Jigging/1.png"),
-            link: (() => {
-                const map = {
-                    'squid-jigging-redang': '/book/redang-squid-jigging-private',
-                    'snorkeling-redang': '/book/redang-snorkeling-day-trip',
-                    'skin-dive-redang': '/book/redang-skin-dive',
-                    'free-dive-redang': '/book/redang-free-diving'
-                };
-                return map[v.sku] || '/redang-island-day-trips';
-            })(),
+            link: getActivityLink(v.sku, v.island),
             buttonText: "Buy Now",
             description: v.description,
             features: v.features,

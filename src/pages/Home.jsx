@@ -14,12 +14,7 @@ import redangSnorkelImg from '../assets/images/Redang island/snorkeling2.png';
 import perhentianSnorkelImg from '../assets/images/perhentian island/snorkeling.png';
 
 // --- Components ---
-import ActivityCard from '../components/common/ActivityCard';
-import SEO from '../components/common/SEO';
-import OceanFactCard from '../components/common/OceanFactCard';
-
-// --- Data ---
-import { initialActivities, fomoBookings, wallOfFameData, wofTitles } from '../data/homeData';
+import { getActivityLink } from '../utils/activityLinks';
 
 // Helper Map for images
 const imageMap = {
@@ -48,10 +43,31 @@ const Home = () => {
     const [recentBooking, setRecentBooking] = useState(null);
 
     // --- State: Activities & Flash Sales ---
-    // Initialize activities with actual image objects
-    const activities = initialActivities.map(act => ({
+    const initialActivitiesDynamic = [
+        {
+            id: 1, sku: 'joy-play-kapas', island: 'Kapas',
+            title: "Snorkeling and island hopping in Kapas Island",
+            rating: "5.0", reviews: 200, price: "69.00", originalPrice: "89.00",
+            imageKey: 'kapasSnorkelImg', buttonText: "View Details", isFlashSale: true, totalSeats: 20, seatsLeft: 3
+        },
+        {
+            id: 2, sku: 'snorkeling-redang', island: 'Redang',
+            title: "Snorkeling in Redang Island",
+            rating: "5.0", reviews: 250, price: "120.00", originalPrice: "160.00",
+            imageKey: 'redangSnorkelImg', buttonText: "View Details", isFlashSale: true, totalSeats: 25, seatsLeft: 5
+        },
+        {
+            id: 3, sku: 'snorkeling-perhentian', island: 'Perhentian',
+            title: "Snorkeling in Perhentian Island",
+            rating: "4.8", reviews: 156, price: "100.00", originalPrice: "135.00",
+            imageKey: 'perhentianSnorkelImg', buttonText: "View Details", isFlashSale: true, totalSeats: 15, seatsLeft: 2
+        },
+    ];
+
+    const activities = initialActivitiesDynamic.map(act => ({
         ...act,
         image: imageMap[act.imageKey],
+        link: getActivityLink(act.sku, act.island),
         flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * (act.id === 1 ? 2.5 : act.id === 2 ? 4.2 : 1.8)).toISOString()
     }));
     const [dynamicActivities, setDynamicActivities] = useState(activities);

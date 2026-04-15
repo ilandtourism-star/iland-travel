@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 // --- Custom Hooks ---
 import { useVacations } from '../hooks/useVacations';
 import { useDebounce } from '../hooks/useDebounce';
+import { getActivityLink } from '../utils/activityLinks';
 
 // --- Components ---
 import ActivityCard from '../components/common/ActivityCard';
@@ -40,15 +41,7 @@ const PerhentianIslandDayTrips = () => {
             reviews: v.reviewCount,
             price: v.price,
             image: v.imageUrl || "/images/perhentian island/1.png",
-            link: (() => {
-                const map = {
-                    'snorkeling-perhentian': '/book/perhentian-snorkeling-day-trip',
-                    'skin-dive-perhentian': '/book/perhentian-learn-skindiving',
-                    'skin-dive-experience-perhentian': '/book/perhentian-skin-dive-experience',
-                    'free-dive-perhentian': '/book/perhentian-free-diving'
-                };
-                return map[v.sku] || '/perhentian-island-day-trips';
-            })(),
+            link: getActivityLink(v.sku, v.island),
             buttonText: "Buy Now",
             description: v.description,
             features: v.features,

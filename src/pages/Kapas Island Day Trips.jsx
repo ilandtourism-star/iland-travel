@@ -5,6 +5,7 @@ import ActivityCard from '../components/common/ActivityCard';
 import { useVacations } from '../hooks/useVacations';
 import { useDebounce } from '../hooks/useDebounce';
 import SEO from '../components/common/SEO';
+import { getActivityLink } from '../utils/activityLinks';
 
 // --- IMAGES ---
 import imgRelax from '../assets/images/kapas island/1. Relaxation Package/1.png';
@@ -75,23 +76,7 @@ const KapasIslandDayTrips = () => {
         };
         return imageMap[v.sku];
       })() || v.imageUrl || imgJoy,
-      link: (() => {
-        const map = {
-          'relax-kapas': '/book/kapas-relaxation',
-          'mental-escape-kapas': '/book/kapas-mental-escape',
-          'joy-play-kapas': '/book/kapas-joy-playfulness',
-          'mood-booster-kapas': '/book/kapas-mood-booster',
-          'private-boat-10pax-kapas': '/book/kapas-private-boat-10pax',
-          'private-boat-15pax-kapas': '/book/kapas-private-boat-15pax',
-          'private-boat-25pax-kapas': '/book/kapas-private-boat-25pax',
-          'private-boat-40pax-kapas': '/book/kapas-private-boat-40pax',
-          'private-package-10pax-kapas': '/book/kapas-private-package-10pax',
-          'private-package-15pax-kapas': '/book/kapas-private-package-15pax',
-          'private-package-25pax-kapas': '/book/kapas-private-package-25pax',
-          'private-package-40pax-kapas': '/book/kapas-private-package-40pax',
-        };
-        return map[v.sku] || '/kapas-island-day-trips';
-      })(),
+      link: getActivityLink(v.sku, v.island),
       buttonText: "Buy Now",
       description: v.description,
       // Parse features array safely
