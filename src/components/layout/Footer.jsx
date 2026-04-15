@@ -190,8 +190,8 @@ const Footer = () => {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/search">Search Activities</Link></li>
             <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/signin">Sign In</Link></li>
-            <li><Link to="/signup">Register Account</Link></li>
+            <li><Link to="/auth">Sign In</Link></li>
+            <li><Link to="/auth?mode=register">Register Account</Link></li>
           </ul>
         </div>
 

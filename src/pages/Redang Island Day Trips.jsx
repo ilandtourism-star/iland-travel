@@ -44,7 +44,7 @@ const RedangIslandDayTrips = () => {
                     'squid-jigging-redang': '/book/redang-squid-jigging-private',
                     'snorkeling-redang': '/book/redang-snorkeling-day-trip',
                     'skin-dive-redang': '/book/redang-skin-dive',
-                    'free-dive-redang': '/redang-island-day-trips'
+                    'free-dive-redang': '/book/redang-free-diving'
                 };
                 return map[v.sku] || '/redang-island-day-trips';
             })(),

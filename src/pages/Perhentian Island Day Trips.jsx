@@ -40,22 +40,21 @@ const PerhentianIslandDayTrips = () => {
             reviews: v.reviewCount,
             price: v.price,
             image: v.imageUrl || "/images/perhentian island/1.png",
-            link: v.sku === 'snorkeling-perhentian'
-                ? '/book/perhentian-snorkeling-day-trip'
-                : v.sku === 'skin-dive-perhentian'
-                    ? '/perhentian-island-day-trips' // Place holder for now
-                    : '/perhentian-island-day-trips',
+            link: (() => {
+                const map = {
+                    'snorkeling-perhentian': '/book/perhentian-snorkeling-day-trip',
+                    'skin-dive-perhentian': '/book/perhentian-learn-skindiving',
+                    'skin-dive-experience-perhentian': '/book/perhentian-skin-dive-experience',
+                    'free-dive-perhentian': '/book/perhentian-free-diving'
+                };
+                return map[v.sku] || '/perhentian-island-day-trips';
+            })(),
             buttonText: "Buy Now",
             description: v.description,
             features: v.features,
             isInSeason: v.isInSeason,
             badge: v.name.includes('Snorkeling') ? "Most Popular" : (v.sku === 'skin-dive-perhentian' || v.sku === 'skin-dive-experience-perhentian' || v.sku === 'free-dive-perhentian' ? "Premium Experience" : null),
-            hideButton: v.sku === 'skin-dive-perhentian',
-            hidePrice: v.sku === 'skin-dive-perhentian',
-            packages: v.sku === 'skin-dive-perhentian' ? [
-                { label: "With Equipment Rental", price: "260.00", link: "/book/learn-skindiving", icon: "fas fa-mask" },
-                { label: "Without Equipment", price: "220.00", link: "/book/learn-skindiving-no-eq", icon: "fas fa-user-alt" }
-            ] : []
+            packages: []
         }));
 
         // --- MANUAL ADDITION ---
@@ -67,7 +66,7 @@ const PerhentianIslandDayTrips = () => {
             reviews: 24,
             price: 25,
             image: "/images/Private Boat Trip/21.png",
-            link: "/perhentian-island-day-trips",
+            link: "/checkout",
             buttonText: "Buy Now",
             description: "Experience the full splendor of the Perhentian Islands with our premier taxi boat services. We offer comprehensive island-wide exploration, taking you to every hidden corner and scenic vista to ensure you witness the true, untouched beauty of this tropical paradise.",
             isTaxiBoat: true,

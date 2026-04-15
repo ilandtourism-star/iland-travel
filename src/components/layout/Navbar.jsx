@@ -14,6 +14,9 @@ const Navbar = () => {
 
       <nav className="auth-nav">
         <div className="auth-links">
+          <Link to="/kapas-island-day-trips" className="btn btn-text nav-item">Kapas</Link>
+          <Link to="/redang-island-day-trips" className="btn btn-text nav-item">Redang</Link>
+          <Link to="/perhentian-island-day-trips" className="btn btn-text nav-item">Perhentian</Link>
           <Link to="/about" className="btn btn-text nav-item-about">About Us</Link>
           <Link to="/auth" className="btn signin-btn nav-item-signin">Sign In</Link>
           <Link 
