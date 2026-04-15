@@ -237,6 +237,8 @@ const MainRoutes = () => (
       <Route path="/redang-snorkeling-details" element={<RedangSnorkeling />} />
       <Route path="/book/redang-snorkeling-day-trip" element={<UniversalBookingCalendar apiEndpoint="snorkeling-redang" nextStepRoute="/contact-details/1-snorkeling-redang" defaultPrice="100.00" defaultTitle="1. Day Trip Snorkeling (All-In)" />} />
       <Route path="/contact-details/1-snorkeling-redang" element={<UniversalContactDetails />} />
+      <Route path="/book/redang-skin-dive" element={<UniversalBookingCalendar apiEndpoint="skin-dive-redang" nextStepRoute="/contact-details/2-skin-dive-redang" defaultPrice="250.00" defaultTitle="2. REDANG SKIN DIVE EXPERIENCE" />} />
+      <Route path="/contact-details/2-skin-dive-redang" element={<UniversalContactDetails />} />
       <Route path="/redang-island-packages" element={<RedangPackages />} />
 
       {/* PULAU PERHENTIAN */}
