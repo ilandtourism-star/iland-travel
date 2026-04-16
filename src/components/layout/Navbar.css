@@ -1,0 +1,95 @@
+.main-header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1100;
+    padding: 0 40px;
+    height: 70px;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.company-name {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #1ABC9C;
+    letter-spacing: -0.5px;
+}
+
+.auth-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Hamburger Icon Styles */
+.mobile-menu-btn {
+    display: none;
+    font-size: 1.5rem;
+    color: #1ABC9C;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+@media (max-width: 1024px) {
+    .main-header {
+        padding: 0 20px;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .auth-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 24px;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        transform: translateY(-150%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        border-top: 1px solid #f0f0f0;
+    }
+
+    .auth-links.menu-open {
+        transform: translateY(0);
+    }
+
+    .nav-item, .nav-item-about, .nav-item-signin {
+        width: 100%;
+        text-align: center;
+        padding: 12px 0 !important;
+        font-size: 1.1rem !important;
+    }
+
+    .nav-item-create {
+        width: 100%;
+        padding: 15px 0 !important;
+        font-size: 1.1rem !important;
+    }
+}
