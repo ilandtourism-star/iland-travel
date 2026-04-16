@@ -13,6 +13,7 @@ import Home from './pages/Home';
 import SearchResults from './pages/SearchResults';
 import UniversalBookingCalendar from './pages/shared/UniversalBookingCalendar';
 import UniversalContactDetails from './pages/shared/UniversalContactDetails';
+import NotFound from './pages/NotFound';
 
 import PrivateBoatInKapasDetails from './pages/Private Boat in Kapas Island Details';
 import SquidJiggingDetails from './pages/Squid Jigging Activities Details';
@@ -270,7 +271,7 @@ const MainRoutes = () => (
       <Route path="/stay-safe" element={<StaySafe />} />
 
       {/* 404 */}
-      <Route path="*" element={<div className="p-5">Page Not Found</div>} />
+      <Route path="*" element={<NotFound />} />
     </Route>
   </Routes>
 );

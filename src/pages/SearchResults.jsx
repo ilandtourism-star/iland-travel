@@ -12,6 +12,7 @@ import imgExclusive from '../assets/images/Private Boat Package/makan.png';
 
 import { useVacations } from '../hooks/useVacations';
 import { getActivityLink } from '../utils/activityLinks';
+import SEO from '../components/common/SEO';
 
 const SearchResults = () => {
     const { vacations, loading, error } = useVacations(null, null);
@@ -62,6 +63,10 @@ const SearchResults = () => {
 
     return (
         <div className="home-container search-results-page">
+            <SEO 
+                title={query ? `Search results for "${query}" | iland` : "Search Activities | iland"}
+                description={query ? `Explore the best island activities matching "${query}".` : "Find and book the best island activities in Malaysia."}
+            />
             {/* Search Bar in Results Page */}
             <div className="search-container">
                 <input

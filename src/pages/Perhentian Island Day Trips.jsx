@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useVacations } from '../hooks/useVacations';
 import { useDebounce } from '../hooks/useDebounce';
 import { getActivityLink } from '../utils/activityLinks';
+import SEO from '../components/common/SEO';
 
 // --- Components ---
 import ActivityCard from '../components/common/ActivityCard';
@@ -122,6 +123,12 @@ const PerhentianIslandDayTrips = () => {
 
     return (
         <div className="perhentian-page-body">
+
+            <SEO 
+                title="Perhentian Island Day Trips | Hidden Gems & Snorkeling"
+                description="Explore the best day trips and snorkeling adventures in Perhentian Island. From secret caves to police wrecks, discover the untouched beauty of the islands."
+                canonical="/perhentian-island-day-trips"
+            />
 
             {/* --- HERO / SEARCH SECTION --- */}
             <div className="hero-section">
