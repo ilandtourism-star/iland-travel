@@ -14,6 +14,9 @@ import redangSnorkelImg from '../assets/images/Redang island/snorkeling2.png';
 import perhentianSnorkelImg from '../assets/images/perhentian island/snorkeling.png';
 
 // --- Components ---
+import ActivityCard from '../components/common/ActivityCard';
+import SEO from '../components/common/SEO';
+import OceanFactCard from '../components/common/OceanFactCard';
 import { getActivityLink } from '../utils/activityLinks';
 
 // Helper Map for images
