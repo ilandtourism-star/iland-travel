@@ -18,6 +18,7 @@ import ActivityCard from '../components/common/ActivityCard';
 import SEO from '../components/common/SEO';
 import OceanFactCard from '../components/common/OceanFactCard';
 import { getActivityLink } from '../utils/activityLinks';
+import { fomoBookings, wallOfFameData, wofTitles } from '../data/homeData';
 
 // Helper Map for images
 const imageMap = {
@@ -351,7 +352,7 @@ const Home = () => {
                 </div>
 
                 <div className="wof-scroll-container">
-                    {wallOfFameData.map((group, groupIdx) => (
+                    {(wallOfFameData || []).map((group, groupIdx) => (
                         <div key={groupIdx} className="wof-island-group">
                             <div className="wof-island-header">
                                 <h3 className="wof-island-name">{group.island}</h3>
@@ -373,9 +374,9 @@ const Home = () => {
                                     <div className="wof-user-avatar">{user.initials}</div>
                                     <div className="wof-user-details">
                                         <p className="wof-user-name">{user.name}</p>
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                             <p className="wof-user-trips">{user.trips} Trips</p>
-                                            <span className={`wof-user-title title-${i + 1}`}>{wofTitles[i]}</span>
+                                            <span className={`wof-user-title title-${i + 1}`}>{wofTitles?.[i] || "Traveler"}</span>
                                         </div>
                                         <div style={{ fontSize: '0.75rem', color: '#94a3b8', fontStyle: 'italic', marginTop: '6px', paddingTop: '6px', borderTop: '1px solid rgba(255,255,255,0.1)', lineHeight: '1.3' }}>"{user.tale}"</div>
                                     </div>
