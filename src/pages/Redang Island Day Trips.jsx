@@ -38,6 +38,7 @@ const RedangIslandDayTrips = () => {
             title: v.name,
             rating: v.rating,
             reviews: v.reviewCount,
+            price: v.price,
             image: v.imageUrl || (v.sku.includes('snorkeling') ? "/images/Redang island/redang_snorkeling_all_in.png" : "/images/Squid Jigging/1.png"),
             link: getActivityLink(v.sku, v.island),
             buttonText: "Buy Now",
