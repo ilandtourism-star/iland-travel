@@ -37,11 +37,11 @@ const SnorkelingKapas = () => {
   };
 
   if (loading) {
-    return <div style={{ textAlign: 'center', padding: '100px', fontSize: '18px', color: '#64748b' }}>Memuatkan Pakej Snorkeling...</div>;
+    return <div style={{ textAlign: 'center', padding: '100px', fontSize: '18px', color: '#64748b' }}>Loading Snorkeling Packages...</div>;
   }
 
   if (error) {
-    return <div style={{ textAlign: 'center', padding: '100px', color: 'red' }}>Ralat: {error}</div>;
+    return <div style={{ textAlign: 'center', padding: '100px', color: 'red' }}>Error: {error}</div>;
   }
 
   return (
@@ -69,7 +69,7 @@ const SnorkelingKapas = () => {
       <div className="container">
         {filteredVacations.length === 0 && searchQuery && (
           <p style={{ textAlign: 'center', color: '#64748b', margin: '40px 0' }}>
-            Tiada pakej dijumpai untuk "{searchQuery}"
+            No packages found for "{searchQuery}"
           </p>
         )}
         <div className="activities-grid" style={{

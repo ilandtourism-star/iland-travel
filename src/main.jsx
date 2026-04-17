@@ -35,22 +35,22 @@ class ErrorBoundary extends React.Component {
           alignItems: 'center'
         }}>
           <div style={{ fontSize: '64px', marginBottom: '20px' }}>🏝️</div>
-          <h1 style={{ color: '#2a2a2e', fontSize: '28px', marginBottom: '16px' }}>Ops, sesuatu yang tidak dijangka berlaku!</h1>
+          <h1 style={{ color: '#2a2a2e', fontSize: '28px', marginBottom: '16px' }}>Oops, something unexpected happened!</h1>
           <p style={{ color: '#737373', fontSize: '16px', maxWidth: '500px', lineHeight: '1.6', marginBottom: '32px' }}>
-            Jangan risau, sistem keselamatan kami telah menangkap ralat ini. Cuba segarkan (refresh) halaman atau kembali ke laman utama.
+            Don't worry, our safety system has caught this error. Try refreshing the page or returning home.
           </p>
           <div style={{ display: 'flex', gap: '16px' }}>
             <button
               onClick={() => window.location.reload()}
               style={{ padding: '12px 24px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', fontWeight: 600, cursor: 'pointer' }}
             >
-              Segarkan Halaman
+              Refresh Page
             </button>
             <button
               onClick={() => window.location.href = '/'}
               style={{ padding: '12px 24px', backgroundColor: '#f8f9fa', color: '#2a2a2e', border: '1px solid #dce0e4', borderRadius: '4px', fontWeight: 600, cursor: 'pointer' }}
             >
-              Kembali Ke Home
+              Return Home
             </button>
           </div>
           {process.env.NODE_ENV !== 'production' && (

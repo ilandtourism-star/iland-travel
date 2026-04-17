@@ -12,13 +12,13 @@ const PrivateBoatTrip = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
-  // Menggunakan ViewModel Hook
+  // Using ViewModel Hook
   const { vacations: data, loading, error } = useVacations('Kapas', null);
 
-  // Menggunakan Debounce untuk Live Filtering
+  // Using Debounce for Live Filtering
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
-  // Filter data mentah sebelum dikumpulkan (grouping)
+  // Filter raw data before grouping
   const filteredData = useMemo(() => {
     if (!debouncedSearchQuery.trim()) return data;
 

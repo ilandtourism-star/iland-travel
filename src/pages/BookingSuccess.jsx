@@ -53,10 +53,10 @@ const BookingSuccess = () => {
                 </div>
 
                 <h1 style={{ fontSize: '28px', fontWeight: '700', color: '#1e293b', marginBottom: '8px' }}>
-                    Tempahan Berjaya!
+                    Booking Successful!
                 </h1>
                 <p style={{ color: '#64748b', fontSize: '16px', marginBottom: '32px' }}>
-                    Terima kasih! Tempahan anda telah direkodkan. Sila semak emel anda untuk pengesahan lanjut.
+                    Thank you! Your booking has been recorded. Please check your email for further confirmation.
                 </p>
 
                 <div style={{
@@ -74,7 +74,7 @@ const BookingSuccess = () => {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
                         <Package size={18} color="#64748b" />
                         <div>
-                            <div style={{ fontSize: '12px', color: '#94a3b8' }}>Aktiviti</div>
+                            <div style={{ fontSize: '12px', color: '#94a3b8' }}>Activity</div>
                             <div style={{ fontSize: '15px', fontWeight: '600', color: '#334155' }}>{packageName}</div>
                         </div>
                     </div>
@@ -82,15 +82,15 @@ const BookingSuccess = () => {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
                         <Calendar size={18} color="#64748b" />
                         <div>
-                            <div style={{ fontSize: '12px', color: '#94a3b8' }}>Tarikh</div>
-                            <div style={{ fontSize: '15px', fontWeight: '600', color: '#334155' }}>{new Date(date).toLocaleDateString('ms-MY', { day: 'numeric', month: 'long', year: 'numeric' })}</div>
+                            <div style={{ fontSize: '12px', color: '#94a3b8' }}>Date</div>
+                            <div style={{ fontSize: '15px', fontWeight: '600', color: '#334155' }}>{new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</div>
                         </div>
                     </div>
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                         <Mail size={18} color="#64748b" />
                         <div style={{ fontSize: '14px', color: '#475569' }}>
-                            Pengesahan dihantar ke emel anda.
+                            Confirmation sent to your email.
                         </div>
                     </div>
                 </div>
@@ -112,9 +112,9 @@ const BookingSuccess = () => {
                             gap: '8px',
                             transition: 'all 0.2s'
                         }}
-                    >
-                        <Download size={18} /> Lihat Resit
-                    </button>
+                        >
+                            <Download size={18} /> View Receipt
+                        </button>
                     <button
                         onClick={() => navigate('/')}
                         style={{
@@ -132,12 +132,12 @@ const BookingSuccess = () => {
                             transition: 'all 0.2s'
                         }}
                     >
-                        <Home size={18} /> Laman Utama
+                        <Home size={18} /> Return to Home
                     </button>
                 </div>
 
                 <div style={{ marginTop: '32px', color: '#94a3b8', fontSize: '13px' }}>
-                    Ada soalan? Hubungi sokongan kami di <a href="mailto:support@illand.com" style={{ color: '#007bff', textDecoration: 'none' }}>support@illand.com</a>
+                    Any questions? Contact our support at <a href="mailto:support@illand.com" style={{ color: '#007bff', textDecoration: 'none' }}>support@illand.com</a>
                 </div>
             </div>
 

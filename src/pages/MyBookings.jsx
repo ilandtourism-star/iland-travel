@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { Search, Calendar, Users, Package, CheckCircle, Clock, XCircle, ArrowRight, Ticket } from 'lucide-react';
 
 const STATUS_CONFIG = {
-    confirmed: { label: 'Disahkan', icon: CheckCircle, color: '#059669', bg: '#d1fae5', border: '#6ee7b7' },
-    pending: { label: 'Menunggu', icon: Clock, color: '#d97706', bg: '#fef3c7', border: '#fcd34d' },
-    cancelled: { label: 'Dibatal', icon: XCircle, color: '#dc2626', bg: '#fee2e2', border: '#fca5a5' },
+    confirmed: { label: 'Confirmed', icon: CheckCircle, color: '#059669', bg: '#d1fae5', border: '#6ee7b7' },
+    pending: { label: 'Pending', icon: Clock, color: '#d97706', bg: '#fef3c7', border: '#fcd34d' },
+    cancelled: { label: 'Cancelled', icon: XCircle, color: '#dc2626', bg: '#fee2e2', border: '#fca5a5' },
 };
 
 const BookingCard = ({ booking, onViewInvoice }) => {
@@ -13,8 +13,8 @@ const BookingCard = ({ booking, onViewInvoice }) => {
     const StatusIcon = status.icon;
 
     const formattedDate = booking.date
-        ? new Date(booking.date).toLocaleDateString('ms-MY', { day: 'numeric', month: 'long', year: 'numeric' })
-        : 'Tarikh tidak ditetapkan';
+        ? new Date(booking.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+        : 'Date not set';
 
     return (
         <div style={{
@@ -39,7 +39,7 @@ const BookingCard = ({ booking, onViewInvoice }) => {
                     </div>
                     <div>
                         <div style={{ fontWeight: '700', fontSize: '15px', color: '#1e293b', lineHeight: 1.3 }}>
-                            {booking.packageName || 'Pakej Tidak Diketahui'}
+                            {booking.packageName || 'Unknown Package'}
                         </div>
                         <div style={{ fontSize: '12px', color: '#94a3b8', marginTop: '2px' }}>
                             ID: <span style={{ fontFamily: 'monospace', color: '#64748b', fontWeight: '600' }}>{booking.id}</span>
@@ -67,14 +67,14 @@ const BookingCard = ({ booking, onViewInvoice }) => {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#475569', fontSize: '14px' }}>
                     <Users size={15} color="#5392f9" />
-                    <span>{booking.adults || booking.pax} Dewasa{booking.children > 0 ? `, ${booking.children} Kanak` : ''}</span>
+                    <span>{booking.adults || booking.pax} Adults{booking.children > 0 ? `, ${booking.children} Children` : ''}</span>
                 </div>
             </div>
 
             {/* Price + Action */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '12px', borderTop: '1px solid #f1f5f9' }}>
                 <div>
-                    <div style={{ fontSize: '12px', color: '#94a3b8' }}>Jumlah Bayaran</div>
+                    <div style={{ fontSize: '12px', color: '#94a3b8' }}>Total Amount</div>
                     <div style={{ fontSize: '20px', fontWeight: '800', color: '#1e293b' }}>
                         RM {booking.totalPrice}
                     </div>
@@ -92,7 +92,7 @@ const BookingCard = ({ booking, onViewInvoice }) => {
                     onMouseLeave={e => e.currentTarget.style.opacity = '1'}
                 >
                     <Ticket size={14} />
-                    Lihat Resit
+                    View Receipt
                     <ArrowRight size={13} />
                 </button>
             </div>
@@ -162,10 +162,10 @@ const MyBookings = () => {
             if (data.success) {
                 dispatch({ type: 'SEARCH_SUCCESS', payload: data.bookings });
             } else {
-                dispatch({ type: 'SEARCH_FAILURE', payload: data.message || 'Tiada tempahan dijumpai.' });
+                dispatch({ type: 'SEARCH_FAILURE', payload: data.message || 'No bookings found.' });
             }
         } catch (err) {
-            dispatch({ type: 'SEARCH_FAILURE', payload: 'Ralat rangkaian. Pastikan server berjalan.' });
+            dispatch({ type: 'SEARCH_FAILURE', payload: 'Network error. Please ensure the server is running.' });
         }
     };
 
@@ -179,10 +179,10 @@ const MyBookings = () => {
                 color: '#fff',
             }}>
                 <h1 style={{ fontSize: '2rem', fontWeight: '800', margin: '0 0 8px', letterSpacing: '-0.5px' }}>
-                    Semak Status Tempahan
+                    Check Booking Status
                 </h1>
                 <p style={{ margin: 0, opacity: 0.85, fontSize: '15px' }}>
-                    Masukkan ID Tempahan atau emel anda untuk melihat status tempahan anda.
+                    Enter your Booking ID or email to view your booking status.
                 </p>
             </div>
 
@@ -197,8 +197,8 @@ const MyBookings = () => {
                     {/* Toggle */}
                     <div style={{ display: 'flex', background: '#f1f5f9', borderRadius: '12px', padding: '4px', marginBottom: '20px' }}>
                         {[
-                            { value: 'id', label: '🔖 ID Tempahan' },
-                            { value: 'email', label: '✉️ Emel' }
+                            { value: 'id', label: '🔖 Booking ID' },
+                            { value: 'email', label: '✉️ Email' }
                         ].map(opt => (
                             <button
                                 key={opt.value}
@@ -221,7 +221,7 @@ const MyBookings = () => {
                             <Search size={16} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
                             <input
                                 type={searchType === 'email' ? 'email' : 'text'}
-                                placeholder={searchType === 'id' ? 'Contoh: k5dnhb5vi' : 'Contoh: email@example.com'}
+                                placeholder={searchType === 'id' ? 'Example: k5dnhb5vi' : 'Example: email@example.com'}
                                 value={query}
                                 onChange={e => setQuery(e.target.value)}
                                 style={{
@@ -247,7 +247,7 @@ const MyBookings = () => {
                                 whiteSpace: 'nowrap', transition: 'opacity 0.2s',
                             }}
                         >
-                            {state.loading ? '...' : 'CARI'}
+                            {state.loading ? '...' : 'SEARCH'}
                         </button>
                     </form>
 
@@ -268,7 +268,7 @@ const MyBookings = () => {
             {state.results && (
                 <div style={{ maxWidth: '700px', margin: '32px auto 0', padding: '0 20px' }}>
                     <div style={{ marginBottom: '16px', fontSize: '14px', color: '#64748b', fontWeight: '600' }}>
-                        {state.results.length} tempahan dijumpai
+                        {state.results.length} bookings found
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                         {state.results.map(booking => (

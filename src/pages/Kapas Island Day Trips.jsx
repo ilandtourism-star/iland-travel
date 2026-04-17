@@ -126,8 +126,8 @@ const KapasIslandDayTrips = () => {
   // --- LOGIC ---
 
   // Handle Loading & Error States
-  if (loading) return <div className="island-page-loading">Memuatkan Pakej Kapas...</div>;
-  if (error) return <div className="island-page-error">Ralat: {error}</div>;
+  if (loading) return <div className="island-page-loading">Loading Kapas Packages...</div>;
+  if (error) return <div className="island-page-error">Error: {error}</div>;
 
   return (
     <div className="kapas-page-body">
@@ -156,7 +156,7 @@ const KapasIslandDayTrips = () => {
         <aside className="sidebar">
           <div className="sidebar-map-card">
             <iframe
-              src="https://www.google.com/maps?q=Jeti%20Marang%20Terengganu&output=embed"
+              src="https://www.google.com/maps?q=5.2043828,103.2078479&z=17&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}

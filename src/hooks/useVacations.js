@@ -27,7 +27,7 @@ const vacationsReducer = (state, action) => {
 };
 
 /**
- * Custom Hook sebagai ViewModel untuk mengambil data percutian.
+ * Custom Hook as ViewModel for fetching vacation data.
  * Centralizes data fetching logic, loading states, and error handling using useReducer.
  */
 export const useVacations = (island, category) => {

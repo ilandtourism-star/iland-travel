@@ -8,13 +8,13 @@ const SquidJigging = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
-  // Menggunakan ViewModel Hook
+  // Using ViewModel Hook
   const { vacations: packages, loading, error } = useVacations(null, 'squid_jigging');
 
-  // Menggunakan Debounce untuk Live Filtering
+  // Using Debounce for Live Filtering
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
-  // Logik filtering secara live (Debounced)
+  // Live filtering logic (Debounced)
   const filteredPackages = useMemo(() => {
     if (!debouncedSearchQuery.trim()) return packages;
 
@@ -32,9 +32,9 @@ const SquidJigging = () => {
     }
   };
 
-  if (loading) return <div style={{ textAlign: 'center', padding: '100px', fontSize: '18px', color: '#64748b' }}>Memuatkan Aktiviti Candat Sotong...</div>;
+  if (loading) return <div style={{ textAlign: 'center', padding: '100px', fontSize: '18px', color: '#64748b' }}>Loading Squid Jigging Activities...</div>;
 
-  if (error) return <div style={{ textAlign: 'center', padding: '100px', color: 'red' }}>Ralat: {error}</div>;
+  if (error) return <div style={{ textAlign: 'center', padding: '100px', color: 'red' }}>Error: {error}</div>;
 
   return (
     <main>
@@ -56,7 +56,7 @@ const SquidJigging = () => {
       <div className="container">
         {filteredPackages.length === 0 && searchQuery && (
           <p style={{ textAlign: 'center', color: '#64748b', margin: '40px 0' }}>
-            Tiada aktiviti dijumpai untuk "{searchQuery}"
+            No activities found for "{searchQuery}"
           </p>
         )}
         <div className="activities-grid" style={{

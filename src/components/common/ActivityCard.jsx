@@ -449,7 +449,7 @@ const ActivityCard = ({
                 {locationOptions.length > 0 && (
                   <>
                     <div className="select-wrapper">
-                      <label style={{ display: 'block', fontSize: '0.7rem', color: '#64748b', fontWeight: '700', marginBottom: '4px' }}>DARI (FROM)</label>
+                      <label style={{ display: 'block', fontSize: '0.7rem', color: '#64748b', fontWeight: '700', marginBottom: '4px' }}>FROM</label>
                       <select
                         value={fromLocation}
                         onChange={(e) => setFromLocation(e.target.value)}
@@ -460,7 +460,7 @@ const ActivityCard = ({
                     </div>
 
                     <div className="select-wrapper">
-                      <label style={{ display: 'block', fontSize: '0.7rem', color: '#64748b', fontWeight: '700', marginBottom: '4px' }}>KE (TO)</label>
+                      <label style={{ display: 'block', fontSize: '0.7rem', color: '#64748b', fontWeight: '700', marginBottom: '4px' }}>TO</label>
                       <select
                         value={toLocation}
                         onChange={(e) => setToLocation(e.target.value)}
@@ -474,7 +474,7 @@ const ActivityCard = ({
 
                 {timeOptions.length > 0 && (
                   <div className="select-wrapper" style={{ gridColumn: locationOptions.length > 0 ? 'span 1' : 'span 3' }}>
-                    <label style={{ display: 'block', fontSize: '0.7rem', color: '#64748b', fontWeight: '700', marginBottom: '4px' }}>MASA (TIME)</label>
+                    <label style={{ display: 'block', fontSize: '0.7rem', color: '#64748b', fontWeight: '700', marginBottom: '4px' }}>TIME</label>
                     <select
                       value={selectedTime}
                       onChange={(e) => setSelectedTime(e.target.value)}

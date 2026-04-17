@@ -28,12 +28,12 @@ const SeasonNotifyForm = ({ sku, title }) => {
                 setEmail('');
             } else {
                 setStatus('error');
-                setMessage(data.message || 'Ralat berlaku. Sila cuba lagi.');
+                setMessage(data.message || 'An error occurred. Please try again.');
             }
         } catch (err) {
             console.error('Season Listener error:', err);
             setStatus('error');
-            setMessage('Maaf, ralat rangkaian. Sila cuba lagi kemudian.');
+            setMessage('Sorry, network error. Please try again later.');
         }
     };
 
@@ -72,13 +72,13 @@ const SeasonNotifyForm = ({ sku, title }) => {
                 lineHeight: '1.4'
             }}>
                 <i className="fas fa-calendar-times" style={{ color: '#ef4444', marginRight: '5px' }}></i>
-                Aktiviti ini sedang ditutup (Luar Musim). Tinggalkan emel anda untuk kami hubungi apabila ia kembali dibuka.
+                This activity is currently closed (Off-Season). Leave your email and we'll notify you when it reopens.
             </p>
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '8px' }}>
                 <input
                     type="email"
-                    placeholder="Emel anda..."
+                    placeholder="Your email..."
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -106,7 +106,7 @@ const SeasonNotifyForm = ({ sku, title }) => {
                         transition: 'background 0.2s'
                     }}
                 >
-                    {status === 'loading' ? '...' : 'HANTAR'}
+                    {status === 'loading' ? '...' : 'SEND'}
                 </button>
             </form>
             {status === 'error' && (

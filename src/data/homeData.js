@@ -61,7 +61,7 @@ export const fomoBookings = [
 
 export const wallOfFameData = [
     {
-        island: "Pulau Kapas",
+        island: "Kapas Island",
         date: "Feb 2026",
         users: [
             { name: "Ahmad Zaki", initials: "AZ", trips: 12, tale: "Found a hidden sea turtle resting spot on Trip #3." },
@@ -70,7 +70,7 @@ export const wallOfFameData = [
         ]
     },
     {
-        island: "Pulau Redang",
+        island: "Redang Island",
         date: "Feb 2026",
         users: [
             { name: "James Bond", initials: "JB", trips: 15, tale: "Caught a 2kg giant squid during a heavy storm." },
@@ -79,7 +79,7 @@ export const wallOfFameData = [
         ]
     },
     {
-        island: "Pulau Perhentian",
+        island: "Perhentian Island",
         date: "Feb 2026",
         users: [
             { name: "Steve Irwin", initials: "SI", trips: 20, tale: "Swam with a rare dugong early in the morning." },

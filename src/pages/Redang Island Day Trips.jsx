@@ -59,8 +59,8 @@ const RedangIslandDayTrips = () => {
     // --- LOGIC ---
 
     // Handle Loading & Error States
-    if (loading) return <div className="island-page-loading">Memuatkan Pakej Redang...</div>;
-    if (error) return <div className="island-page-error">Ralat: {error}</div>;
+    if (loading) return <div className="island-page-loading">Loading Redang Packages...</div>;
+    if (error) return <div className="island-page-error">Error: {error}</div>;
 
     return (
         <div className="redang-page-body">

@@ -38,7 +38,7 @@ const SignInOrCreateAccount = () => {
             else navigate('/');
         } else {
             console.error("Login Failed Detail:", result);
-            toast.error('Gagal: ' + result.message);
+            toast.error('Failed: ' + result.message);
         }
         setLoading(false);
     };
@@ -55,7 +55,7 @@ const SignInOrCreateAccount = () => {
             // Use 'email' state as username/email field
             const result = await authService.login(email, password);
             if (result.success) {
-                toast.success(result.message || 'Login Berjaya!');
+                toast.success(result.message || 'Login Successful!');
                 localStorage.setItem('user', JSON.stringify(result.user));
                 const user = result.user;
 
@@ -67,17 +67,17 @@ const SignInOrCreateAccount = () => {
                     else navigate('/');
                 }
             } else {
-                toast.error(result.message || 'Login Gagal');
+                toast.error(result.message || 'Login Failed');
             }
         } else {
             // REGISTER LOGIC
             const result = await authService.register(username, email, password);
             if (result.success) {
-                toast.success(result.message || 'Pendaftaran Berjaya! Anda telah log masuk.');
+                toast.success(result.message || 'Registration Successful! You have been logged in.');
                 localStorage.setItem('user', JSON.stringify(result.user));
                 navigate('/');
             } else {
-                toast.error(result.message || 'Pendaftaran Gagal');
+                toast.error(result.message || 'Registration Failed');
             }
         }
         setLoading(false);

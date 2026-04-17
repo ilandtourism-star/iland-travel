@@ -5,8 +5,8 @@ const StaySafe = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Email dihantar:", email);
-        // Tambah logik API atau navigasi ke halaman seterusnya di sini
+        console.log("Email sent:", email);
+        // Add API logic or next page navigation here
     };
 
     return (

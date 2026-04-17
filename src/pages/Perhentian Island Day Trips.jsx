@@ -108,7 +108,7 @@ const PerhentianIslandDayTrips = () => {
     if (loading) {
         return (
             <div className="island-page-loading">
-                <i className="fas fa-spinner fa-spin"></i> Memuatkan Pakej Perhentian...
+                <i className="fas fa-spinner fa-spin"></i> Loading Perhentian Packages...
             </div>
         );
     }
@@ -116,7 +116,7 @@ const PerhentianIslandDayTrips = () => {
     if (error) {
         return (
             <div className="island-page-error">
-                <i className="fas fa-exclamation-triangle"></i> Ralat: {error}
+                <i className="fas fa-exclamation-triangle"></i> Error: {error}
             </div>
         );
     }

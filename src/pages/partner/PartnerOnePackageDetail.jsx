@@ -21,8 +21,8 @@ const PartnerOnePackageDetail = () => {
         city: '',
         address: '',
         postcode: '',
-        lat: 5.2156, // Default to Marang Jetty area
-        lng: 103.2144
+        lat: 5.2043828, // Default to Marang Jetty area
+        lng: 103.2078479
     });
     const [searchQuery, setSearchQuery] = useState('');
     const [searching, setSearching] = useState(false);

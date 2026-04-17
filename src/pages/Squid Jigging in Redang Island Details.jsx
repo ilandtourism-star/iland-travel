@@ -33,11 +33,11 @@ const SquidJiggingRedang = () => {
   };
 
   if (loading) {
-    return <div style={{ textAlign: 'center', padding: '100px', fontSize: '18px', color: '#64748b' }}>Memuatkan Pakej Candat Sotong...</div>;
+    return <div style={{ textAlign: 'center', padding: '100px', fontSize: '18px', color: '#64748b' }}>Loading Squid Jigging Packages...</div>;
   }
 
   if (error) {
-    return <div style={{ textAlign: 'center', padding: '100px', color: 'red' }}>Ralat: {error}</div>;
+    return <div style={{ textAlign: 'center', padding: '100px', color: 'red' }}>Error: {error}</div>;
   }
 
   return (
