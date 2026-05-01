@@ -220,8 +220,8 @@ const Home = () => {
         {
             id: 101, sku: 'skin-dive-redang', island: 'Redang',
             title: "2. REDANG SKIN DIVE EXPERIENCE",
-            rating: "0.0", reviews: 0, price: "250.00", originalPrice: "325.00",
-            image: redangImg, buttonText: "Buy Now", isFlashSale: true, totalSeats: 20, seatsLeft: 3,
+            rating: "5.0", reviews: 142, price: "250.00", originalPrice: "325.00",
+            image: '/images/Redang island/redang_skin_dive.png', buttonText: "Buy Now", isFlashSale: true, totalSeats: 20, seatsLeft: 3,
             link: "/redang-island-day-trips",
             description: "\"Too deep for snorkelers, too light for freedivers --perfect for those who prefer a light and relaxing dive.\" Spots: Pulau Lima, Coral Cave / Gua Kawah, Pulau Paku, Turtle Point, Marine Park. Itinerary: 8:00 AM-Board boat, 9:30 AM-Dive session 1, 12:00 PM-Lunch break, 1:00 PM-Dive session 2, 4:00 PM-Return to jetty.",
             features: [
@@ -235,10 +235,10 @@ const Home = () => {
             flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 2.5).toISOString()
         },
         {
-            id: 102, sku: 'skin-dive-perhentian', island: 'Perhentian',
-            title: "PERHENTIAN SKIN DIVE EXPERIENCE",
-            rating: "0.0", reviews: 0, price: "270.00", originalPrice: "351.00",
-            image: perhentianImg, buttonText: "Buy Now", isFlashSale: true, totalSeats: 20, seatsLeft: 3,
+            id: 102, sku: 'skin-dive-experience-perhentian', island: 'Perhentian',
+            title: "3. PERHENTIAN SKIN DIVE EXPERIENCE",
+            rating: "5.0", reviews: 115, price: "270.00", originalPrice: "351.00",
+            image: '/images/perhentian island/perhentian_skin_dive.png', buttonText: "Buy Now", isFlashSale: true, totalSeats: 20, seatsLeft: 3,
             link: "/perhentian-island-day-trips",
             description: "\"Too deep for snorkelers, too light for freedivers perfect for those who prefer a light and relaxing dive.\" Spots: Tiga Ruang (Warm up), Turtle Point, Nemo Point (Nemo & Cave), Coral Garden (Depth training), Shark Point (Cave).",
             features: [
@@ -256,33 +256,36 @@ const Home = () => {
     const freeDiveActivities = useMemo(() => [
         {
             id: 201, sku: 'free-dive-perhentian', island: 'Perhentian',
-            title: "PERHENTIAN FREE DIVING DAYTRIP",
-            rating: "0.0", reviews: 0, price: "300.00", originalPrice: "400.00",
-            image: perhentianImg, buttonText: "Buy Now", isFlashSale: true, totalSeats: 15, seatsLeft: 2,
+            title: "5. PERHENTIAN FREE DIVING DAYTRIP",
+            rating: "5.0", reviews: 88, price: "280.00", originalPrice: "364.00",
+            image: '/images/perhentian island/perhentian_freediving.png', buttonText: "Buy Now", isFlashSale: true, totalSeats: 15, seatsLeft: 2,
             link: "/perhentian-island-day-trips",
-            description: "Push your limits with a free diving daytrip in the deep blue waters of Perhentian Island.",
+            description: "Resort (Island), Perhentian Dive Site. Diving Points: Underwater cave (5 Meter), Police wreck (18 Meter), Underwater Corridor (5 Meter), Shark point (5 Meter). Terms & conditions: No freediving license required, participants must be able to swim & follow instructions.",
             features: [
-                "Return boat transfer",
-                "Certified Free Dive Guide",
-                "Advanced Depth Training",
-                "Underwater Footage",
-                "Marine Park Fee included"
+                "1 hour dive for each point",
+                "Return boat included",
+                "Marine park fees included",
+                "Free flow mineral water",
+                "Underwater footage & picture",
+                "Add on: Lunch (RM35), Drone (RM180/pax), Safety buddies (RM50)"
             ],
             flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 3.5).toISOString()
         },
         {
             id: 202, sku: 'free-dive-redang', island: 'Redang',
-            title: "REDANG FREE DIVING DAYTRIP",
-            rating: "0.0", reviews: 0, price: "320.00", originalPrice: "420.00",
-            image: redangImg, buttonText: "Buy Now", isFlashSale: true, totalSeats: 15, seatsLeft: 4,
+            title: "3. REDANG FREE DIVING DAYTRIP",
+            rating: "5.0", reviews: 94, price: "299.00", originalPrice: "388.00",
+            image: '/images/Redang island/redang_freediving.png', buttonText: "Buy Now", isFlashSale: true, totalSeats: 15, seatsLeft: 4,
             link: "/redang-island-day-trips",
-            description: "Explore the serene depths of Redang Island with our exclusive free diving experience.",
+            description: "FunDive Redang Island. Diving Points: Bus Wreck, Jetski Wreck, Coral Cave, Lima Island. Terms & conditions: No freediving license required, participants must be able to swim & follow instructions.",
             features: [
-                "Return boat transfer",
-                "Certified Free Dive Guide",
-                "Coral Reef Exploration",
-                "Underwater Footage",
-                "Lunch Included"
+                "Underwater footage & picture",
+                "1 hour dive for each point",
+                "1 x light breakfast & 1 x lunch",
+                "Marine park & district fees included",
+                "Return boat included",
+                "Free flow mineral water & cold drinks",
+                "Safety buddies included"
             ],
             flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 5.1).toISOString()
         }
@@ -290,18 +293,20 @@ const Home = () => {
 
     const learningActivities = useMemo(() => [
         {
-            id: 301, sku: 'course-skindiving', island: 'Perhentian',
-            title: "LEARN SKINDIVING COURSE",
-            rating: "5.0", reviews: 12, price: "450.00", originalPrice: "600.00",
-            image: perhentianImg, buttonText: "View Details", isFlashSale: false, totalSeats: 10, seatsLeft: 5,
-            link: "/search?q=skindiving",
-            description: "Master the basics of skindiving and explore the ocean freely. Perfect for beginners who want to build confidence in the water.",
+            id: 301, sku: 'skin-dive-perhentian', island: 'Perhentian',
+            title: "2. LEARN SKINDIVING",
+            rating: "5.0", reviews: 102, price: "260.00", originalPrice: "338.00",
+            image: '/images/perhentian island/learn_skindiving.png', buttonText: "View Details", isFlashSale: true, totalSeats: 10, seatsLeft: 5,
+            link: "/perhentian-island-day-trips",
+            description: "Your first step into freediving. 1.5 Hours Learning Session. Suitable for beginner to intermediate snorkelers.",
             features: [
-                "Pool & Open Water Sessions",
-                "Certified Instructor",
-                "Full Equipment Provided",
-                "Digital Certificate upon completion"
-            ]
+                "1.5 Hours Learning Session",
+                "Return Boat Transfer (KB Jetty - Perhentian)",
+                "Guided shallow dive (5-10m)",
+                "Proper breathing & relaxations",
+                "Duck dive & equalization basics"
+            ],
+            flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 2.8).toISOString()
         }
     ], []);
 
