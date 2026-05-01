@@ -182,6 +182,22 @@ const ActivityCard = ({
     return () => window.removeEventListener('popstate', handlePopState);
   }, [isGalleryOpen, isBookingOpen, setSearchParams]);
 
+  // Handle Hash Scrolling
+  useEffect(() => {
+    if (window.location.hash === `#${entityId}`) {
+      const el = document.getElementById(entityId);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // Optional: Add a brief highlight effect
+          el.style.transition = 'box-shadow 0.5s ease';
+          el.style.boxShadow = '0 0 20px rgba(14, 165, 233, 0.6)';
+          setTimeout(() => el.style.boxShadow = 'none', 2000);
+        }, 300); // slight delay to ensure rendering is complete
+      }
+    }
+  }, [entityId, location.hash]);
+
   const handleNextStep = () => {
     if (isBooking && !selectedDate) {
       alert("Please select a date");
@@ -210,7 +226,7 @@ const ActivityCard = ({
 
   return (
     <>
-      <div className={`activity-card ${isBookingOpen ? 'booking-active' : ''}`} style={{ transition: 'all 0.3s ease', position: 'relative' }}>
+      <div id={entityId} className={`activity-card ${isBookingOpen ? 'booking-active' : ''}`} style={{ transition: 'all 0.3s ease', position: 'relative' }}>
         {badge && <div className="badge-top">{badge}</div>}
 
 
