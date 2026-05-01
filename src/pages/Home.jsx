@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { Link, useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 
 // --- Assets ---
@@ -216,6 +216,95 @@ const Home = () => {
         return () => clearTimeout(initialTimer);
     }, []);
 
+    const skinDiveActivities = useMemo(() => [
+        {
+            id: 101, sku: 'skin-dive-redang', island: 'Redang',
+            title: "2. REDANG SKIN DIVE EXPERIENCE",
+            rating: "0.0", reviews: 0, price: "250.00", originalPrice: "325.00",
+            image: redangImg, buttonText: "Buy Now", isFlashSale: true, totalSeats: 20, seatsLeft: 3,
+            link: "/redang-island-day-trips",
+            description: "\"Too deep for snorkelers, too light for freedivers --perfect for those who prefer a light and relaxing dive.\" Spots: Pulau Lima, Coral Cave / Gua Kawah, Pulau Paku, Turtle Point, Marine Park. Itinerary: 8:00 AM-Board boat, 9:30 AM-Dive session 1, 12:00 PM-Lunch break, 1:00 PM-Dive session 2, 4:00 PM-Return to jetty.",
+            features: [
+                "Return boat transfer",
+                "Guide / Safety Supervision",
+                "Basic Skin Dive Coaching",
+                "Lunch & Mineral Water",
+                "Underwater Footage (Personal Video)",
+                "Bring own mask/snorkel/fins (Weight & MP fee not included)"
+            ],
+            flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 2.5).toISOString()
+        },
+        {
+            id: 102, sku: 'skin-dive-perhentian', island: 'Perhentian',
+            title: "PERHENTIAN SKIN DIVE EXPERIENCE",
+            rating: "0.0", reviews: 0, price: "270.00", originalPrice: "351.00",
+            image: perhentianImg, buttonText: "Buy Now", isFlashSale: true, totalSeats: 20, seatsLeft: 3,
+            link: "/perhentian-island-day-trips",
+            description: "\"Too deep for snorkelers, too light for freedivers perfect for those who prefer a light and relaxing dive.\" Spots: Tiga Ruang (Warm up), Turtle Point, Nemo Point (Nemo & Cave), Coral Garden (Depth training), Shark Point (Cave).",
+            features: [
+                "Return boat transfer",
+                "Guide / Safety Supervision",
+                "Basic Skin Dive Coaching",
+                "Underwater Footage (Personal Video)",
+                "Marine Park Fee included",
+                "Bring your own mask/snorkel/fins (Weight & lunch not info/provided)"
+            ],
+            flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 4.2).toISOString()
+        }
+    ], []);
+
+    const freeDiveActivities = useMemo(() => [
+        {
+            id: 201, sku: 'free-dive-perhentian', island: 'Perhentian',
+            title: "PERHENTIAN FREE DIVING DAYTRIP",
+            rating: "0.0", reviews: 0, price: "300.00", originalPrice: "400.00",
+            image: perhentianImg, buttonText: "Buy Now", isFlashSale: true, totalSeats: 15, seatsLeft: 2,
+            link: "/perhentian-island-day-trips",
+            description: "Push your limits with a free diving daytrip in the deep blue waters of Perhentian Island.",
+            features: [
+                "Return boat transfer",
+                "Certified Free Dive Guide",
+                "Advanced Depth Training",
+                "Underwater Footage",
+                "Marine Park Fee included"
+            ],
+            flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 3.5).toISOString()
+        },
+        {
+            id: 202, sku: 'free-dive-redang', island: 'Redang',
+            title: "REDANG FREE DIVING DAYTRIP",
+            rating: "0.0", reviews: 0, price: "320.00", originalPrice: "420.00",
+            image: redangImg, buttonText: "Buy Now", isFlashSale: true, totalSeats: 15, seatsLeft: 4,
+            link: "/redang-island-day-trips",
+            description: "Explore the serene depths of Redang Island with our exclusive free diving experience.",
+            features: [
+                "Return boat transfer",
+                "Certified Free Dive Guide",
+                "Coral Reef Exploration",
+                "Underwater Footage",
+                "Lunch Included"
+            ],
+            flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 5.1).toISOString()
+        }
+    ], []);
+
+    const learningActivities = useMemo(() => [
+        {
+            id: 301, sku: 'course-skindiving', island: 'Perhentian',
+            title: "LEARN SKINDIVING COURSE",
+            rating: "5.0", reviews: 12, price: "450.00", originalPrice: "600.00",
+            image: perhentianImg, buttonText: "View Details", isFlashSale: false, totalSeats: 10, seatsLeft: 5,
+            link: "/search?q=skindiving",
+            description: "Master the basics of skindiving and explore the ocean freely. Perfect for beginners who want to build confidence in the water.",
+            features: [
+                "Pool & Open Water Sessions",
+                "Certified Instructor",
+                "Full Equipment Provided",
+                "Digital Certificate upon completion"
+            ]
+        }
+    ], []);
+
     // --- RENDERING ---
     return (
         <div className="home-container">
@@ -345,28 +434,9 @@ const Home = () => {
             <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
                 <h2 className="home-section-title">Top SKIN DIVE Packages</h2>
                 <div className="home-grid">
-                    <Link to="/perhentian-island-day-trips" className="home-card home-card-awe">
-                        <div className="home-image-container">
-                            <img src={perhentianImg} alt="Perhentian Skin Dive" className="home-image" style={{ transition: 'all 0.8s ease' }} />
-                            <div className="home-overlay"><span className="home-location-tag"><i className="fas fa-water"></i> Perhentian</span></div>
-                        </div>
-                        <div className="home-card-content">
-                            <h3 className="home-card-title">PERHENTIAN SKIN DIVE EXPERIENCE</h3>
-                            <p className="home-card-desc">Experience the thrill of skin diving in the beautiful waters of Perhentian Island.</p>
-                            <span className="home-button btn-awe-copy">View Details</span>
-                        </div>
-                    </Link>
-                    <Link to="/redang-island-day-trips" className="home-card home-card-awe">
-                        <div className="home-image-container">
-                            <img src={redangImg} alt="Redang Skin Dive" className="home-image" style={{ transition: 'all 0.8s ease' }} />
-                            <div className="home-overlay"><span className="home-location-tag"><i className="fas fa-water"></i> Redang</span></div>
-                        </div>
-                        <div className="home-card-content">
-                            <h3 className="home-card-title">REDANG SKIN DIVE EXPERIENCE</h3>
-                            <p className="home-card-desc">Discover the underwater wonders of Redang Island with our premium skin dive package.</p>
-                            <span className="home-button btn-awe-copy">View Details</span>
-                        </div>
-                    </Link>
+                    {skinDiveActivities.map(item => (
+                        <ActivityCard key={item.id} {...item} />
+                    ))}
                 </div>
             </div>
 
@@ -374,28 +444,9 @@ const Home = () => {
             <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
                 <h2 className="home-section-title">Top FREE DIVING DAYTRIP Packages</h2>
                 <div className="home-grid">
-                    <Link to="/perhentian-island-day-trips" className="home-card home-card-awe">
-                        <div className="home-image-container">
-                            <img src={perhentianImg} alt="Perhentian Free Diving" className="home-image" style={{ transition: 'all 0.8s ease' }} />
-                            <div className="home-overlay"><span className="home-location-tag"><i className="fas fa-water"></i> Perhentian</span></div>
-                        </div>
-                        <div className="home-card-content">
-                            <h3 className="home-card-title">PERHENTIAN FREE DIVING DAYTRIP</h3>
-                            <p className="home-card-desc">Push your limits with a free diving daytrip in the deep blue waters of Perhentian Island.</p>
-                            <span className="home-button btn-awe-copy">View Details</span>
-                        </div>
-                    </Link>
-                    <Link to="/redang-island-day-trips" className="home-card home-card-awe">
-                        <div className="home-image-container">
-                            <img src={redangImg} alt="Redang Free Diving" className="home-image" style={{ transition: 'all 0.8s ease' }} />
-                            <div className="home-overlay"><span className="home-location-tag"><i className="fas fa-water"></i> Redang</span></div>
-                        </div>
-                        <div className="home-card-content">
-                            <h3 className="home-card-title">REDANG FREE DIVING DAYTRIP</h3>
-                            <p className="home-card-desc">Explore the serene depths of Redang Island with our exclusive free diving experience.</p>
-                            <span className="home-button btn-awe-copy">View Details</span>
-                        </div>
-                    </Link>
+                    {freeDiveActivities.map(item => (
+                        <ActivityCard key={item.id} {...item} />
+                    ))}
                 </div>
             </div>
 
@@ -403,17 +454,9 @@ const Home = () => {
             <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
                 <h2 className="home-section-title">Learning</h2>
                 <div className="home-grid">
-                    <Link to="/search?q=skindiving" className="home-card home-card-awe">
-                        <div className="home-image-container">
-                            <img src={perhentianImg} alt="Learn Skindiving" className="home-image" style={{ transition: 'all 0.8s ease' }} />
-                            <div className="home-overlay"><span className="home-location-tag"><i className="fas fa-graduation-cap"></i> Course</span></div>
-                        </div>
-                        <div className="home-card-content">
-                            <h3 className="home-card-title">LEARN SKINDIVING</h3>
-                            <p className="home-card-desc">Master the basics of skindiving and explore the ocean freely.</p>
-                            <span className="home-button btn-awe-copy">View Details</span>
-                        </div>
-                    </Link>
+                    {learningActivities.map(item => (
+                        <ActivityCard key={item.id} {...item} />
+                    ))}
                 </div>
             </div>
 
