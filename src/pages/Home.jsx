@@ -341,6 +341,24 @@ const Home = () => {
                 </div>
             </div>
 
+            {/* --- LEARNING SECTION --- */}
+            <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
+                <h2 className="home-section-title">Learning</h2>
+                <div className="home-grid">
+                    <Link to="/search?q=skindiving" className="home-card home-card-awe">
+                        <div className="home-image-container">
+                            <img src={perhentianImg} alt="Learn Skindiving" className="home-image" style={{ transition: 'all 0.8s ease' }} />
+                            <div className="home-overlay"><span className="home-location-tag"><i className="fas fa-graduation-cap"></i> Course</span></div>
+                        </div>
+                        <div className="home-card-content">
+                            <h3 className="home-card-title">LEARN SKINDIVING</h3>
+                            <p className="home-card-desc">Master the basics of skindiving and explore the ocean freely.</p>
+                            <span className="home-button btn-awe-copy">View Details</span>
+                        </div>
+                    </Link>
+                </div>
+            </div>
+
             {/* --- WALL OF FAME SECTION --- */}
             <div className="wof-scroll-section" style={{ background: '#0f172a', padding: '30px 0', borderBottom: '1px solid rgba(0, 255, 255, 0.1)' }}>
                 <div className="home-wof-header">
