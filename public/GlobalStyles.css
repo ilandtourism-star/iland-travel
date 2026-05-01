@@ -1981,6 +1981,9 @@ input[type='checkbox'] {
     color: inherit;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #eee;
+    max-width: 380px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .home-card:hover {

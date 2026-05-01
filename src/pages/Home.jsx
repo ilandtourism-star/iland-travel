@@ -458,7 +458,7 @@ const Home = () => {
             {/* --- LEARNING SECTION --- */}
             <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
                 <h2 className="home-section-title">Learning</h2>
-                <div style={{ maxWidth: '450px', margin: '0 auto' }}>
+                <div className="home-grid">
                     {learningActivities.map(item => (
                         <ActivityCard key={item.id} {...item} />
                     ))}
