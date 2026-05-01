@@ -1965,15 +1965,8 @@ input[type='checkbox'] {
 
 .home-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 24px;
-    justify-content: center;
-}
-
-.home-grid .activity-card {
-    max-width: 380px;
-    width: 100%;
-    margin: 0 auto;
 }
 
 .home-card {
