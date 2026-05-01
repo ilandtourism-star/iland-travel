@@ -71,7 +71,7 @@ const Home = () => {
     const activities = initialActivitiesDynamic.map(act => ({
         ...act,
         image: imageMap[act.imageKey],
-        link: getActivityLink(act.sku, act.island),
+        link: `/${act.island.toLowerCase()}-island-day-trips#${act.sku}`,
         flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * (act.id === 1 ? 2.5 : act.id === 2 ? 4.2 : 1.8)).toISOString()
     }));
     const [dynamicActivities, setDynamicActivities] = useState(activities);
