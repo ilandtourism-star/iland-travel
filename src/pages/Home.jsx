@@ -219,17 +219,17 @@ const Home = () => {
     const skinDiveActivities = useMemo(() => [
         {
             id: 101, sku: 'skin-dive-redang', island: 'Redang',
-            title: "2. REDANG SKIN DIVE EXPERIENCE",
+            title: "REDANG SKIN DIVE EXPERIENCE",
             rating: "5.0", reviews: 142, price: "250.00", originalPrice: "325.00",
-            image: '/images/Redang island/redang_skin_dive.png', buttonText: "Buy Now", isFlashSale: true, totalSeats: 20, seatsLeft: 3,
+            image: '/images/Redang island/redang_skin_dive.png', buttonText: "View Details", isFlashSale: true, totalSeats: 20, seatsLeft: 3,
             link: "/redang-island-day-trips",
             flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 2.5).toISOString()
         },
         {
             id: 102, sku: 'skin-dive-experience-perhentian', island: 'Perhentian',
-            title: "3. PERHENTIAN SKIN DIVE EXPERIENCE",
+            title: "PERHENTIAN SKIN DIVE EXPERIENCE",
             rating: "5.0", reviews: 115, price: "270.00", originalPrice: "351.00",
-            image: '/images/perhentian island/perhentian_skin_dive.png', buttonText: "Buy Now", isFlashSale: true, totalSeats: 20, seatsLeft: 3,
+            image: '/images/perhentian island/perhentian_skin_dive.png', buttonText: "View Details", isFlashSale: true, totalSeats: 20, seatsLeft: 3,
             link: "/perhentian-island-day-trips",
             flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 4.2).toISOString()
         }
@@ -238,17 +238,17 @@ const Home = () => {
     const freeDiveActivities = useMemo(() => [
         {
             id: 201, sku: 'free-dive-perhentian', island: 'Perhentian',
-            title: "5. PERHENTIAN FREE DIVING DAYTRIP",
+            title: "PERHENTIAN FREE DIVING DAYTRIP",
             rating: "5.0", reviews: 88, price: "280.00", originalPrice: "364.00",
-            image: '/images/perhentian island/perhentian_freediving.png', buttonText: "Buy Now", isFlashSale: true, totalSeats: 15, seatsLeft: 2,
+            image: '/images/perhentian island/perhentian_freediving.png', buttonText: "View Details", isFlashSale: true, totalSeats: 15, seatsLeft: 2,
             link: "/perhentian-island-day-trips",
             flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 3.5).toISOString()
         },
         {
             id: 202, sku: 'free-dive-redang', island: 'Redang',
-            title: "3. REDANG FREE DIVING DAYTRIP",
+            title: "REDANG FREE DIVING DAYTRIP",
             rating: "5.0", reviews: 94, price: "299.00", originalPrice: "388.00",
-            image: '/images/Redang island/redang_freediving.png', buttonText: "Buy Now", isFlashSale: true, totalSeats: 15, seatsLeft: 4,
+            image: '/images/Redang island/redang_freediving.png', buttonText: "View Details", isFlashSale: true, totalSeats: 15, seatsLeft: 4,
             link: "/redang-island-day-trips",
             flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 5.1).toISOString()
         }
@@ -257,7 +257,7 @@ const Home = () => {
     const learningActivities = useMemo(() => [
         {
             id: 301, sku: 'skin-dive-perhentian', island: 'Perhentian',
-            title: "2. LEARN SKINDIVING",
+            title: "LEARN SKINDIVING",
             rating: "5.0", reviews: 102, price: "260.00", originalPrice: "338.00",
             image: '/images/perhentian island/learn_skindiving.png', buttonText: "View Details", isFlashSale: true, totalSeats: 10, seatsLeft: 5,
             link: "/perhentian-island-day-trips",
