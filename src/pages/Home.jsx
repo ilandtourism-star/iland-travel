@@ -341,6 +341,64 @@ const Home = () => {
                 </div>
             </div>
 
+            {/* --- SKIN DIVE SECTION --- */}
+            <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
+                <h2 className="home-section-title">Top SKIN DIVE Packages</h2>
+                <div className="home-grid">
+                    <Link to="/perhentian-island-day-trips" className="home-card home-card-awe">
+                        <div className="home-image-container">
+                            <img src={perhentianImg} alt="Perhentian Skin Dive" className="home-image" style={{ transition: 'all 0.8s ease' }} />
+                            <div className="home-overlay"><span className="home-location-tag"><i className="fas fa-water"></i> Perhentian</span></div>
+                        </div>
+                        <div className="home-card-content">
+                            <h3 className="home-card-title">PERHENTIAN SKIN DIVE EXPERIENCE</h3>
+                            <p className="home-card-desc">Experience the thrill of skin diving in the beautiful waters of Perhentian Island.</p>
+                            <span className="home-button btn-awe-copy">View Details</span>
+                        </div>
+                    </Link>
+                    <Link to="/redang-island-day-trips" className="home-card home-card-awe">
+                        <div className="home-image-container">
+                            <img src={redangImg} alt="Redang Skin Dive" className="home-image" style={{ transition: 'all 0.8s ease' }} />
+                            <div className="home-overlay"><span className="home-location-tag"><i className="fas fa-water"></i> Redang</span></div>
+                        </div>
+                        <div className="home-card-content">
+                            <h3 className="home-card-title">REDANG SKIN DIVE EXPERIENCE</h3>
+                            <p className="home-card-desc">Discover the underwater wonders of Redang Island with our premium skin dive package.</p>
+                            <span className="home-button btn-awe-copy">View Details</span>
+                        </div>
+                    </Link>
+                </div>
+            </div>
+
+            {/* --- FREE DIVING SECTION --- */}
+            <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
+                <h2 className="home-section-title">Top FREE DIVING DAYTRIP Packages</h2>
+                <div className="home-grid">
+                    <Link to="/perhentian-island-day-trips" className="home-card home-card-awe">
+                        <div className="home-image-container">
+                            <img src={perhentianImg} alt="Perhentian Free Diving" className="home-image" style={{ transition: 'all 0.8s ease' }} />
+                            <div className="home-overlay"><span className="home-location-tag"><i className="fas fa-water"></i> Perhentian</span></div>
+                        </div>
+                        <div className="home-card-content">
+                            <h3 className="home-card-title">PERHENTIAN FREE DIVING DAYTRIP</h3>
+                            <p className="home-card-desc">Push your limits with a free diving daytrip in the deep blue waters of Perhentian Island.</p>
+                            <span className="home-button btn-awe-copy">View Details</span>
+                        </div>
+                    </Link>
+                    <Link to="/redang-island-day-trips" className="home-card home-card-awe">
+                        <div className="home-image-container">
+                            <img src={redangImg} alt="Redang Free Diving" className="home-image" style={{ transition: 'all 0.8s ease' }} />
+                            <div className="home-overlay"><span className="home-location-tag"><i className="fas fa-water"></i> Redang</span></div>
+                        </div>
+                        <div className="home-card-content">
+                            <h3 className="home-card-title">REDANG FREE DIVING DAYTRIP</h3>
+                            <p className="home-card-desc">Explore the serene depths of Redang Island with our exclusive free diving experience.</p>
+                            <span className="home-button btn-awe-copy">View Details</span>
+                        </div>
+                    </Link>
+                </div>
+            </div>
+
             {/* --- LEARNING SECTION --- */}
             <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
                 <h2 className="home-section-title">Learning</h2>
