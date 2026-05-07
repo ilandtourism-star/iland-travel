@@ -333,7 +333,7 @@ Peta Lokasi: ${mapLink}
                             </div>
 
                             <button type="submit" className="btn-continue" style={{ backgroundColor: '#25D366' }}>
-                                Continue to WhatsApp <i className="fab fa-whatsapp" style={{ fontSize: '1.2em', marginLeft: '8px' }}></i>
+                                Continue to payment at WhatsApp <i className="fab fa-whatsapp" style={{ fontSize: '1.2em', marginLeft: '8px' }}></i>
                             </button>
                         </form>
                     </div>
