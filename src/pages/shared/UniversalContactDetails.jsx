@@ -132,13 +132,22 @@ const UniversalContactDetails = () => {
     }
     if (!Array.isArray(features)) features = [];
 
-    // Inject custom features
+    // Inject custom features for all packages
     let customFeatures = [...features];
-    if (vacation_sku === 'snorkeling-redang') {
-        if (!customFeatures.some(f => f.text.includes('8.00am-4.00pm'))) {
-            customFeatures.push({ icon: 'fas fa-clock', text: 'Time : 8.00am-4.00pm' });
-            customFeatures.push({ icon: 'fas fa-map-marker-alt', text: 'Pick up jetty : Merang Waterfront Jetty' });
+    if (!customFeatures.some(f => f.text.includes('Time :') || f.text.includes('Pick up jetty'))) {
+        let timeText = 'Time : 8.00am-4.00pm';
+        const isSquidJigging = packageData?.category === 'squid_jigging' || (packageData?.name || initialTitle).toLowerCase().includes('squid');
+        if (isSquidJigging) {
+            timeText = 'Time : 5.00pm-6.00am';
         }
+        customFeatures.push({ icon: 'fas fa-clock', text: timeText });
+        
+        const islandName = (packageData?.island || '').toLowerCase();
+        let jettyName = 'Merang Waterfront Jetty';
+        if (islandName === 'kapas') jettyName = 'Jeti Marang';
+        else if (islandName === 'perhentian') jettyName = 'Kuala Besut Jetty';
+        
+        customFeatures.push({ icon: 'fas fa-map-marker-alt', text: `Pick up jetty : ${jettyName}` });
     }
 
     return (
