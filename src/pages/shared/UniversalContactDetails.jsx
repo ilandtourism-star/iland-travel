@@ -317,7 +317,7 @@ Peta Lokasi: ${mapLink}`;
                     <div className="summary-card sticky">
                         <div className="summary-cover" style={{ backgroundImage: `url(${image})` }}>
                             <div className="summary-overlay">
-                                <span className="location-tag"><i className="fas fa-map-marker-alt"></i> {packageData?.island} Island</span>
+                                <span className="location-tag"><i className="fas fa-map-marker-alt"></i> {renderJettyName}</span>
                             </div>
                         </div>
 
