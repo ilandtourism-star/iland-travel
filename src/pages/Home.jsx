@@ -302,35 +302,6 @@ const Home = () => {
             {/* --- MAIN CONTENT --- */}
             <div className="home-content-wrapper">
 
-                {/* Weather Widget */}
-                <div className="home-weather-widget-container">
-                    <div className="home-weather-inner">
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                            <div className="weather-icon-container"><i className="fas fa-water"></i></div>
-                            <div>
-                                <h3 className="weather-text-header">East Coast Sea Conditions</h3>
-                                <p className="weather-text-sub">Live Tide & Weather Advisory</p>
-                            </div>
-                        </div>
-                        <div className="weather-info-group">
-                            <div className="weather-info-item">
-                                <p className="weather-info-label">Current Wave</p>
-                                <p className="weather-info-value weather-info-value-calm"><i className="fas fa-check-circle"></i> Calm (0.5m)</p>
-                            </div>
-                            <div className="weather-desktop-only weather-info-item">
-                                <p className="weather-info-label">Visibility</p>
-                                <p className="weather-info-value weather-info-value-high"><i className="fas fa-eye"></i> High (15m+)</p>
-                            </div>
-                            <div className="weather-info-item">
-                                <p className="weather-info-label">Verdict</p>
-                                <span className="weather-verdict-badge">Perfect for Island Trips!</span>
-                            </div>
-                        </div>
-                        <button onClick={() => alert("Copied to clipboard!")} className="weather-share-btn-cta">
-                            <i className="fas fa-share-alt"></i> Share Status
-                        </button>
-                    </div>
-                </div>
 
                 {/* Island Destinations */}
                 <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
@@ -390,6 +361,36 @@ const Home = () => {
                     {learningActivities.map(item => (
                         <ActivityCard key={item.id} {...item} />
                     ))}
+                </div>
+            </div>
+
+            {/* --- WEATHER WIDGET SECTION (Moved) --- */}
+            <div className="home-weather-widget-container" style={{ marginBottom: '60px', padding: '0 5%' }}>
+                <div className="home-weather-inner">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                        <div className="weather-icon-container"><i className="fas fa-water"></i></div>
+                        <div>
+                            <h3 className="weather-text-header">East Coast Sea Conditions</h3>
+                            <p className="weather-text-sub">Live Tide & Weather Advisory</p>
+                        </div>
+                    </div>
+                    <div className="weather-info-group">
+                        <div className="weather-info-item">
+                            <p className="weather-info-label">Current Wave</p>
+                            <p className="weather-info-value weather-info-value-calm"><i className="fas fa-check-circle"></i> Calm (0.5m)</p>
+                        </div>
+                        <div className="weather-desktop-only weather-info-item">
+                            <p className="weather-info-label">Visibility</p>
+                            <p className="weather-info-value weather-info-value-high"><i className="fas fa-eye"></i> High (15m+)</p>
+                        </div>
+                        <div className="weather-info-item">
+                            <p className="weather-info-label">Verdict</p>
+                            <span className="weather-verdict-badge">Perfect for Island Trips!</span>
+                        </div>
+                    </div>
+                    <button onClick={() => alert("Copied to clipboard!")} className="weather-share-btn-cta">
+                        <i className="fas fa-share-alt"></i> Share Status
+                    </button>
                 </div>
             </div>
 
