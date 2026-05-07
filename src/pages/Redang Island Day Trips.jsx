@@ -33,20 +33,28 @@ const RedangIslandDayTrips = () => {
         }
 
         // Transform data for ActivityCard
-        return filtered.map(v => ({
-            sku: v.sku,
-            title: v.name,
-            rating: v.rating,
-            reviews: v.reviewCount,
-            price: v.price,
-            image: v.imageUrl || (v.sku.includes('snorkeling') ? "/images/Redang island/redang_snorkeling_all_in.png" : "/images/Squid Jigging/1.png"),
-            link: getActivityLink(v.sku, v.island),
-            buttonText: "Buy Now",
-            description: v.description,
-            features: v.features,
-            isInSeason: v.isInSeason,
-            badge: v.sku.includes('snorkeling') ? "Most Popular" : (v.sku === 'skin-dive-redang' || v.sku === 'free-dive-redang' ? "Premium Experience" : null)
-        }));
+        return filtered.map(v => {
+            let customFeatures = [...(v.features || [])];
+            if (v.sku === 'snorkeling-redang') {
+                customFeatures.push({ icon: 'fas fa-clock', text: 'Time : 8.00am-4.00pm' });
+                customFeatures.push({ icon: 'fas fa-map-marker-alt', text: 'Pick up jetty : Merang Waterfront Jetty' });
+            }
+
+            return {
+                sku: v.sku,
+                title: v.name,
+                rating: v.rating,
+                reviews: v.reviewCount,
+                price: v.price,
+                image: v.imageUrl || (v.sku.includes('snorkeling') ? "/images/Redang island/redang_snorkeling_all_in.png" : "/images/Squid Jigging/1.png"),
+                link: getActivityLink(v.sku, v.island),
+                buttonText: "Buy Now",
+                description: v.description,
+                features: customFeatures,
+                isInSeason: v.isInSeason,
+                badge: v.sku.includes('snorkeling') ? "Most Popular" : (v.sku === 'skin-dive-redang' || v.sku === 'free-dive-redang' ? "Premium Experience" : null)
+            };
+        });
     }, [data, debouncedSearchQuery]);
 
     const handleSearch = (e) => {
