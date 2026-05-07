@@ -216,24 +216,6 @@ const Home = () => {
         return () => clearTimeout(initialTimer);
     }, []);
 
-    const skinDiveActivities = useMemo(() => [
-        {
-            id: 101, sku: 'skin-dive-redang', island: 'Redang',
-            title: "REDANG SKIN DIVE EXPERIENCE",
-            rating: "5.0", reviews: 142, price: "250.00", originalPrice: "325.00",
-            image: '/images/Redang island/redang_skin_dive.png', buttonText: "View Details", isFlashSale: true, totalSeats: 20, seatsLeft: 3,
-            link: "/redang-island-day-trips#skin-dive-redang",
-            flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 2.5).toISOString()
-        },
-        {
-            id: 102, sku: 'skin-dive-experience-perhentian', island: 'Perhentian',
-            title: "PERHENTIAN SKIN DIVE EXPERIENCE",
-            rating: "5.0", reviews: 115, price: "270.00", originalPrice: "351.00",
-            image: '/images/perhentian island/perhentian_skin_dive.png', buttonText: "View Details", isFlashSale: true, totalSeats: 20, seatsLeft: 3,
-            link: "/perhentian-island-day-trips#skin-dive-experience-perhentian",
-            flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 4.2).toISOString()
-        }
-    ], []);
 
     const freeDiveActivities = useMemo(() => [
         {
@@ -390,15 +372,6 @@ const Home = () => {
                 </div>
             </div>
 
-            {/* --- SKIN DIVE SECTION --- */}
-            <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
-                <h2 className="home-section-title">Top SKIN DIVE Packages</h2>
-                <div className="home-grid">
-                    {skinDiveActivities.map(item => (
-                        <ActivityCard key={item.id} {...item} />
-                    ))}
-                </div>
-            </div>
 
             {/* --- FREE DIVING SECTION --- */}
             <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
