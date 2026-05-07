@@ -150,6 +150,12 @@ Peta Lokasi: ${mapLink}`;
     }
     if (!Array.isArray(features)) features = [];
 
+    // Determine Jetty Name for UI rendering
+    const displayIslandName = (packageData?.island || '').toLowerCase();
+    let renderJettyName = 'Merang Waterfront Jetty';
+    if (displayIslandName === 'kapas') renderJettyName = 'Jeti Marang';
+    else if (displayIslandName === 'perhentian') renderJettyName = 'Kuala Besut Jetty';
+
     // Inject custom features for all packages
     let customFeatures = [...features];
     if (!customFeatures.some(f => f.text.includes('Time :') || f.text.includes('Pick up jetty'))) {
@@ -159,13 +165,7 @@ Peta Lokasi: ${mapLink}`;
             timeText = 'Time : 5.00pm-6.00am';
         }
         customFeatures.push({ icon: 'fas fa-clock', text: timeText });
-        
-        const islandName = (packageData?.island || '').toLowerCase();
-        let jettyName = 'Merang Waterfront Jetty';
-        if (islandName === 'kapas') jettyName = 'Jeti Marang';
-        else if (islandName === 'perhentian') jettyName = 'Kuala Besut Jetty';
-        
-        customFeatures.push({ icon: 'fas fa-map-marker-alt', text: `Pick up jetty : ${jettyName}` });
+        customFeatures.push({ icon: 'fas fa-map-marker-alt', text: `Pick up jetty : ${renderJettyName}` });
     }
 
     return (
@@ -382,7 +382,7 @@ Peta Lokasi: ${mapLink}`;
                             <div className="location-map" style={{ marginTop: '20px', borderRadius: '10px', overflow: 'hidden' }}>
                                 <h4><i className="fas fa-map-marked-alt"></i> Departure Location</h4>
                                 <iframe 
-                                    src={`https://www.google.com/maps?q=${encodeURIComponent(jettyName)}&output=embed`} 
+                                    src={`https://www.google.com/maps?q=${encodeURIComponent(renderJettyName)}&output=embed`} 
                                     width="100%" 
                                     height="200" 
                                     style={{ border: 0, marginTop: '10px', borderRadius: '8px' }} 
