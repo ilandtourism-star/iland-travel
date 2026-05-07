@@ -196,6 +196,21 @@ Peta Lokasi: ${mapLink}
                             <p className="subtitle">Confirmation will be sent to the email provided below.</p>
                         </div>
 
+                        <div className="location-map" style={{ marginBottom: '25px', borderRadius: '10px', overflow: 'hidden' }}>
+                            <h4 style={{ margin: '0 0 10px 0', fontSize: '1rem', color: '#1e293b' }}>
+                                <i className="fas fa-map-marked-alt" style={{ color: '#0ea5e9' }}></i> Departure Location
+                            </h4>
+                            <iframe 
+                                src={`https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`} 
+                                width="100%" 
+                                height="200" 
+                                style={{ border: 0, borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }} 
+                                allowFullScreen="" 
+                                loading="lazy"
+                                title="Departure Jetty Map">
+                            </iframe>
+                        </div>
+
                         <form action="/api/v1/booking" method="POST" onSubmit={handleSubmit} className="premium-form">
                             <div className="form-row">
                                 <div className="input-group">
@@ -390,19 +405,6 @@ Peta Lokasi: ${mapLink}
                                         <small className="taxes">Includes taxes & fees</small>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div className="location-map" style={{ marginTop: '20px', borderRadius: '10px', overflow: 'hidden' }}>
-                                <h4><i className="fas fa-map-marked-alt"></i> Departure Location</h4>
-                                <iframe 
-                                    src={`https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`} 
-                                    width="100%" 
-                                    height="200" 
-                                    style={{ border: 0, marginTop: '10px', borderRadius: '8px' }} 
-                                    allowFullScreen="" 
-                                    loading="lazy"
-                                    title="Departure Jetty Map">
-                                </iframe>
                             </div>
                         </div>
                     </div>
