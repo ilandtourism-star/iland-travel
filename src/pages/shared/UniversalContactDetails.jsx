@@ -360,6 +360,19 @@ const UniversalContactDetails = () => {
                                     </div>
                                 </div>
                             </div>
+
+                            <div className="location-map" style={{ marginTop: '20px', borderRadius: '10px', overflow: 'hidden' }}>
+                                <h4><i className="fas fa-map-marked-alt"></i> Departure Location</h4>
+                                <iframe 
+                                    src={`https://www.google.com/maps?q=${encodeURIComponent(jettyName)}&output=embed`} 
+                                    width="100%" 
+                                    height="200" 
+                                    style={{ border: 0, marginTop: '10px', borderRadius: '8px' }} 
+                                    allowFullScreen="" 
+                                    loading="lazy"
+                                    title="Departure Jetty Map">
+                                </iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
