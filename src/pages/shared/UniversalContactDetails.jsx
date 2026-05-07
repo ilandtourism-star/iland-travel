@@ -132,6 +132,15 @@ const UniversalContactDetails = () => {
     }
     if (!Array.isArray(features)) features = [];
 
+    // Inject custom features
+    let customFeatures = [...features];
+    if (vacation_sku === 'snorkeling-redang') {
+        if (!customFeatures.some(f => f.text.includes('8.00am-4.00pm'))) {
+            customFeatures.push({ icon: 'fas fa-clock', text: 'Time : 8.00am-4.00pm' });
+            customFeatures.push({ icon: 'fas fa-map-marker-alt', text: 'Pick up jetty : Merang Waterfront Jetty' });
+        }
+    }
+
     return (
         <div className="premium-checkout-page">
             <div className="checkout-container">
@@ -330,11 +339,11 @@ const UniversalContactDetails = () => {
                                 </div>
                             )}
 
-                            {features.length > 0 && (
+                            {customFeatures.length > 0 && (
                                 <div className="inclusions">
                                     <h4><i className="fas fa-box-open"></i> Package Includes:</h4>
                                     <ul>
-                                        {features.map((f, i) => (
+                                        {customFeatures.map((f, i) => (
                                             <li key={i}><i className={f.icon || 'fas fa-check text-green'}></i> {f.text}</li>
                                         ))}
                                     </ul>
