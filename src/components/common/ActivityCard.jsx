@@ -165,11 +165,7 @@ const ActivityCard = ({
       }
     } else {
       // Navigate to details page
-      if (link && link.startsWith('http')) {
-        window.open(link, '_blank', 'noopener,noreferrer');
-      } else {
-        navigate(link);
-      }
+      navigate(link);
     }
   };
 
