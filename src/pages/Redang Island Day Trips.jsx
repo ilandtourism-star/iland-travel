@@ -35,8 +35,12 @@ const RedangIslandDayTrips = () => {
         // Transform data for ActivityCard
         return filtered.map(v => {
             let customFeatures = [...(v.features || [])];
-            if (v.sku === 'snorkeling-redang') {
-                customFeatures.push({ icon: 'fas fa-clock', text: 'Time : 8.00am-4.00pm' });
+            if (!customFeatures.some(f => f.text.includes('Time :') || f.text.includes('Pick up jetty'))) {
+                let timeText = 'Time : 8.00am-4.00pm';
+                if (v.category === 'squid_jigging' || (v.name || '').toLowerCase().includes('squid')) {
+                    timeText = 'Time : 5.00pm-6.00am';
+                }
+                customFeatures.push({ icon: 'fas fa-clock', text: timeText });
                 customFeatures.push({ icon: 'fas fa-map-marker-alt', text: 'Pick up jetty : Merang Waterfront Jetty' });
             }
 
