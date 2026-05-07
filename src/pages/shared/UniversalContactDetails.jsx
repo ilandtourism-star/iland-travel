@@ -71,11 +71,15 @@ const UniversalContactDetails = () => {
 
         const endpoint = e.currentTarget.action;
         const pax = (Number(adultCount) || 0) + (Number(childCount) || 0);
+        const title = packageData?.name || initialTitle;
+        const dateStr = selectedDate && !isNaN(new Date(selectedDate).getTime()) 
+            ? new Date(selectedDate).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' }) 
+            : 'Not selected';
 
         const bookingPayload = {
             firstName: `${formData.firstname} ${formData.lastname}`,
             email: formData.email,
-            packageName: packageData?.name || initialTitle,
+            packageName: title,
             vacation_sku: vacation_sku,
             date: selectedDate ? new Date(selectedDate).toISOString() : null,
             adults: Number(adultCount),
@@ -84,33 +88,47 @@ const UniversalContactDetails = () => {
             totalPrice: totalPrice
         };
 
+        // Determine Jetty for WhatsApp message
+        const islandName = (packageData?.island || '').toLowerCase();
+        let jettyName = 'Merang Waterfront Jetty';
+        if (islandName === 'kapas') jettyName = 'Jeti Marang';
+        else if (islandName === 'perhentian') jettyName = 'Kuala Besut Jetty';
+        
+        const mapLink = `https://www.google.com/maps?q=${encodeURIComponent(jettyName)}`;
+
+        const whatsappMessage = 
+`Hi ILand Travel, saya ingin membuat tempahan:
+
+*BUTIRAN PAKEJ*
+Pakej: ${title}
+Tarikh: ${dateStr}
+Bilangan Pax: ${adultCount} Dewasa${childCount > 0 ? `, ${childCount} Kanak-kanak` : ''}
+Jumlah Harga: RM ${totalPrice}
+
+*BUTIRAN PELANGGAN*
+Nama: ${formData.firstname} ${formData.lastname}
+Email: ${formData.email}
+No. Tel: ${formData.code}${formData.mobile}
+
+*LOKASI BERLEPAS*
+Jeti: ${jettyName}
+Peta Lokasi: ${mapLink}`;
+
+        const whatsappUrl = `https://wa.me/60147081346?text=${encodeURIComponent(whatsappMessage)}`;
+
         try {
-            const response = await secureFetch(endpoint, {
+            // Attempt to save to backend silently
+            await secureFetch(endpoint, {
                 method: 'POST',
                 body: JSON.stringify(bookingPayload)
             });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                addToast('Maklumat Disimpan!', 'success');
-                navigate('/checkout', {
-                    state: {
-                        bookingId: data.booking.id,
-                        packageName: packageData?.name || initialTitle,
-                        date: selectedDate,
-                        pax: pax,
-                        totalPrice: totalPrice,
-                        vacation_sku: vacation_sku
-                    }
-                });
-            } else {
-                addToast(data.message || 'Tempahan Gagal. Sila cuba lagi.', 'error');
-            }
         } catch (err) {
-            console.error("Booking Error:", err);
-            addToast('Ralat Rangkaian. Sila pastikan server dibuka.', 'error');
+            console.error("Backend save bypassed:", err);
         }
+
+        // Always redirect to WhatsApp to ensure user completes the booking
+        addToast('Menghubungkan ke WhatsApp...', 'success');
+        window.location.href = whatsappUrl;
     };
 
     const title = packageData?.name || initialTitle;
@@ -286,8 +304,8 @@ const UniversalContactDetails = () => {
                                 <div className="badge"><i className="fas fa-tag text-red"></i> Best Price Guarantee</div>
                             </div>
 
-                            <button type="submit" className="btn-continue">
-                                Continue to Payment <i className="fas fa-arrow-right"></i>
+                            <button type="submit" className="btn-continue" style={{ backgroundColor: '#25D366' }}>
+                                Continue to WhatsApp <i className="fab fa-whatsapp" style={{ fontSize: '1.2em', marginLeft: '8px' }}></i>
                             </button>
                         </form>
                     </div>
