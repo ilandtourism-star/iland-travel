@@ -22,7 +22,7 @@ const RedangIslandDayTrips = () => {
     const activities = useMemo(() => {
         if (!data) return [];
 
-        let filtered = data;
+        let filtered = data.filter(v => v.sku !== 'skin-dive-redang');
 
         if (debouncedSearchQuery.trim()) {
             const query = debouncedSearchQuery.toLowerCase();
