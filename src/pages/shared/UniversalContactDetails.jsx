@@ -279,19 +279,6 @@ const UniversalContactDetails = () => {
                                 </div>
                             </div>
 
-                            {/* Arrival Time Section */}
-                            <div className="arrival-section">
-                                <h3><i className="fas fa-clock"></i> Let us know your arrival time</h3>
-                                <div className="custom-select-wrapper">
-                                    <select id="arrival_time" className="premium-select">
-                                        <option>I don't know yet</option>
-                                        <option>08:00 AM - 09:00 AM</option>
-                                        <option>09:00 AM - 10:00 AM</option>
-                                        <option>10:00 AM - 11:00 AM</option>
-                                    </select>
-                                    <i className="fas fa-chevron-down select-icon"></i>
-                                </div>
-                            </div>
 
                             <div className="trust-badges">
                                 <div className="badge"><i className="fas fa-lock text-green"></i> Secure Checkout</div>
