@@ -110,7 +110,6 @@ const UniversalContactDetails = () => {
 Pakej: ${title}
 Tarikh: ${dateStr}
 Bilangan Pax: ${adultCount} Dewasa${childCount > 0 ? `, ${childCount} Kanak-kanak` : ''}
-Jumlah Harga: RM ${totalPrice}
 
 *BUTIRAN PELANGGAN*
 Nama: ${formData.firstname} ${formData.lastname}
@@ -119,7 +118,9 @@ No. Tel: ${formData.code}${formData.mobile}
 
 *LOKASI BERLEPAS*
 Jeti: ${jettyName}
-Peta Lokasi: ${mapLink}`;
+Peta Lokasi: ${mapLink}
+
+🔴 *JUMLAH KESELURUHAN: RM ${totalPrice}* 🔴`;
 
         const whatsappUrl = `https://wa.me/60147081346?text=${encodeURIComponent(whatsappMessage)}`;
 
