@@ -91,10 +91,17 @@ const UniversalContactDetails = () => {
         // Determine Jetty for WhatsApp message
         const islandName = (packageData?.island || '').toLowerCase();
         let jettyName = 'Merang Waterfront Jetty';
-        if (islandName === 'kapas') jettyName = 'Jeti Marang';
-        else if (islandName === 'perhentian') jettyName = 'Kuala Besut Jetty';
+        let mapQuery = 'Merang Waterfront Jetty Terengganu';
+
+        if (islandName === 'kapas') {
+            jettyName = 'Jeti Marang';
+            mapQuery = 'Jeti Marang Terengganu';
+        } else if (islandName === 'perhentian') {
+            jettyName = 'Kuala Besut Jetty';
+            mapQuery = 'Kuala Besut Jetty Terengganu';
+        }
         
-        const mapLink = `https://www.google.com/maps?q=${encodeURIComponent(jettyName)}`;
+        const mapLink = `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}`;
 
         const whatsappMessage = 
 `Hi ILand Travel, saya ingin membuat tempahan:
