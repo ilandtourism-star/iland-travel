@@ -73,7 +73,7 @@ const UniversalContactDetails = () => {
         const pax = (Number(adultCount) || 0) + (Number(childCount) || 0);
         const title = packageData?.name || initialTitle;
         const dateStr = selectedDate && !isNaN(new Date(selectedDate).getTime()) 
-            ? new Date(selectedDate).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' }) 
+            ? new Date(selectedDate).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }) 
             : 'Not selected';
 
         const bookingPayload = {
@@ -101,12 +101,19 @@ const UniversalContactDetails = () => {
             mapLink = `https://www.google.com/maps?q=${encodeURIComponent('Kuala Besut Jetty Terengganu')}`;
         }
 
+        let timeText = '8.00am-4.00pm';
+        const isSquidJigging = packageData?.category === 'squid_jigging' || (title).toLowerCase().includes('squid');
+        if (isSquidJigging) {
+            timeText = '5.00pm-6.00am';
+        }
+
         const whatsappMessage = 
 `Hi ILand Travel, saya ingin membuat tempahan:
 
 *BUTIRAN PAKEJ*
 Pakej: ${title}
 Tarikh: ${dateStr}
+Masa Berlepas: ${timeText}
 Bilangan Pax: ${adultCount} Dewasa${childCount > 0 ? `, ${childCount} Kanak-kanak` : ''}
 
 *BUTIRAN PELANGGAN*
@@ -359,7 +366,7 @@ Peta Lokasi: ${mapLink}
                                         <span className="label">Date</span>
                                         <span className="value">
                                             {selectedDate && !isNaN(new Date(selectedDate).getTime())
-                                                ? new Date(selectedDate).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })
+                                                ? new Date(selectedDate).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })
                                                 : 'Not selected'}
                                         </span>
                                     </div>
