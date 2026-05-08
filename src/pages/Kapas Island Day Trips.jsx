@@ -81,17 +81,23 @@ const KapasIslandDayTrips = () => {
       description: v.description,
       // Parse features array safely
       features: (() => {
+        let parsedFeatures = [];
         try {
-          return typeof v.features === 'string' ? JSON.parse(v.features) : (v.features || [
+          parsedFeatures = typeof v.features === 'string' ? JSON.parse(v.features) : (v.features || [
             "Include Snorkeling Equipment & Life Jacket",
             "Return Boat Transfer Included"
           ]);
         } catch (e) {
-          return [
+          parsedFeatures = [
             "Include Snorkeling Equipment & Life Jacket",
             "Return Boat Transfer Included"
           ];
         }
+        return [
+          ...parsedFeatures,
+          { icon: 'fas fa-clock', text: 'Time : 8.30am' },
+          { icon: 'fas fa-map-marker-alt', text: 'Pick up jetty : Marang Jetty' }
+        ];
       })(),
       isInSeason: v.isInSeason,
       badge: v.sku.includes('joy') ? "Most Popular" : v.sku.includes('package') ? "PREMIUM" : null
