@@ -114,6 +114,7 @@ const UniversalBookingCalendar = ({
 
     const price = (packageData && packageData.price) ? packageData.price : defaultPrice;
     const title = (packageData && packageData.name) ? packageData.name : defaultTitle;
+    const isPrivateBoat = apiEndpoint && (apiEndpoint.includes('private-boat') || apiEndpoint.includes('private-package'));
 
     let calculatedTotal;
     if (packageData && packageData.childPrice) {
@@ -179,7 +180,7 @@ const UniversalBookingCalendar = ({
 
                         <div className="booking-grid">
 
-                            <div className="calendar-section">
+                            <div className="calendar-section" style={{ gridColumn: isPrivateBoat ? '1 / -1' : undefined }}>
                                 <label className="section-label">Select date</label>
                                 <CalendarWidget
                                     selectedDate={selectedDate}
@@ -187,63 +188,65 @@ const UniversalBookingCalendar = ({
                                 />
                             </div>
 
-                            <div className="traveler-section">
-                                <label className="section-label">Travelers</label>
-                                {remainingSlots !== null ? (
-                                    <p style={{
-                                        fontSize: '13px',
-                                        color: remainingSlots < 5 ? '#e53e3e' : '#059669',
-                                        fontWeight: 600,
-                                        marginBottom: '8px'
-                                    }}>
-                                        {loadingSlots ? 'Menyemak...' : `${remainingSlots} slot kosong lagi`}
-                                    </p>
-                                ) : (
-                                    maxPax && <p className="min-pax-label">Kapasiti Bot: {maxPax} pax</p>
-                                )}
+                            {!isPrivateBoat && (
+                                <div className="traveler-section">
+                                    <label className="section-label">Travelers</label>
+                                    {remainingSlots !== null ? (
+                                        <p style={{
+                                            fontSize: '13px',
+                                            color: remainingSlots < 5 ? '#e53e3e' : '#059669',
+                                            fontWeight: 600,
+                                            marginBottom: '8px'
+                                        }}>
+                                            {loadingSlots ? 'Menyemak...' : `${remainingSlots} slot kosong lagi`}
+                                        </p>
+                                    ) : (
+                                        maxPax && <p className="min-pax-label">Kapasiti Bot: {maxPax} pax</p>
+                                    )}
 
-                                <div className="counter-row">
-                                    <span>Adult {packageData?.childPrice ? `- RM${packageData.price}` : '(ages 13-99)'}</span>
-                                    <div className="counter-control">
-                                        <button
-                                            className="round-btn"
-                                            onClick={() => setAdultCount(Math.max(minAdults, adultCount - 1))}
-                                        >-</button>
-                                        <span>{adultCount}</span>
-                                        <button
-                                            className="round-btn"
-                                            onClick={() => {
-                                                const currentTotal = adultCount + childCount;
-                                                const limit = remainingSlots !== null ? remainingSlots : maxPax;
-                                                if (!limit || currentTotal < limit) {
-                                                    setAdultCount(adultCount + 1);
-                                                }
-                                            }}
-                                        >+</button>
+                                    <div className="counter-row">
+                                        <span>Adult {packageData?.childPrice ? `- RM${packageData.price}` : '(ages 13-99)'}</span>
+                                        <div className="counter-control">
+                                            <button
+                                                className="round-btn"
+                                                onClick={() => setAdultCount(Math.max(minAdults, adultCount - 1))}
+                                            >-</button>
+                                            <span>{adultCount}</span>
+                                            <button
+                                                className="round-btn"
+                                                onClick={() => {
+                                                    const currentTotal = adultCount + childCount;
+                                                    const limit = remainingSlots !== null ? remainingSlots : maxPax;
+                                                    if (!limit || currentTotal < limit) {
+                                                        setAdultCount(adultCount + 1);
+                                                    }
+                                                }}
+                                            >+</button>
+                                        </div>
+                                    </div>
+
+                                    <div className="counter-row">
+                                        <span>Child {packageData?.childPrice ? `- RM${packageData.childPrice}` : '(ages 3-12)'}</span>
+                                        <div className="counter-control">
+                                            <button
+                                                className="round-btn"
+                                                onClick={() => setChildCount(Math.max(0, childCount - 1))}
+                                            >-</button>
+                                            <span>{childCount}</span>
+                                            <button
+                                                className="round-btn"
+                                                onClick={() => {
+                                                    const currentTotal = adultCount + childCount;
+                                                    const limit = remainingSlots !== null ? remainingSlots : maxPax;
+                                                    if (!limit || currentTotal < limit) {
+                                                        setChildCount(childCount + 1);
+                                                    }
+                                                }}
+                                            >+</button>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div className="counter-row">
-                                    <span>Child {packageData?.childPrice ? `- RM${packageData.childPrice}` : '(ages 3-12)'}</span>
-                                    <div className="counter-control">
-                                        <button
-                                            className="round-btn"
-                                            onClick={() => setChildCount(Math.max(0, childCount - 1))}
-                                        >-</button>
-                                        <span>{childCount}</span>
-                                        <button
-                                            className="round-btn"
-                                            onClick={() => {
-                                                const currentTotal = adultCount + childCount;
-                                                const limit = remainingSlots !== null ? remainingSlots : maxPax;
-                                                if (!limit || currentTotal < limit) {
-                                                    setChildCount(childCount + 1);
-                                                }
-                                            }}
-                                        >+</button>
-                                    </div>
-                                </div>
-                            </div>
+                            )}
                         </div>
 
                         <div className="booking-footer">
