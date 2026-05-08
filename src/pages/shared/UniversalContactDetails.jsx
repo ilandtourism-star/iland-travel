@@ -103,7 +103,9 @@ const UniversalContactDetails = () => {
 
         let timeText = '8.00am-4.00pm';
         const isSquidJigging = packageData?.category === 'squid_jigging' || (title).toLowerCase().includes('squid');
-        if (isSquidJigging) {
+        if (islandName === 'kapas') {
+            timeText = '8.30am';
+        } else if (isSquidJigging) {
             timeText = '5.00pm-6.00am';
         }
 
@@ -181,7 +183,9 @@ Location Map: ${mapLink}
     if (!customFeatures.some(f => f.text.includes('Time :') || f.text.includes('Pick up jetty'))) {
         let timeText = 'Time : 8.00am-4.00pm';
         const isSquidJigging = packageData?.category === 'squid_jigging' || (packageData?.name || initialTitle).toLowerCase().includes('squid');
-        if (isSquidJigging) {
+        if (displayIslandName === 'kapas') {
+            timeText = 'Time : 8.30am';
+        } else if (isSquidJigging) {
             timeText = 'Time : 5.00pm-6.00am';
         }
         customFeatures.push({ icon: 'fas fa-clock', text: timeText });
