@@ -129,7 +129,7 @@ Location Map: ${mapLink}
 
 🔴 *TOTAL AMOUNT: RM ${totalPrice}* 🔴`;
 
-        const whatsappUrl = `https://wa.me/60147081346?text=${encodeURIComponent(whatsappMessage)}`;
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=60147081346&text=${encodeURIComponent(whatsappMessage)}`;
 
         try {
             // Attempt to save to backend silently
