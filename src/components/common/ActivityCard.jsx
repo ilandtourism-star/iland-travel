@@ -416,7 +416,7 @@ const ActivityCard = ({
           {packages.length > 0 && (
             <div className="package-options">
               <h4>Package Options:</h4>
-              <ul className="features-list">
+              <ul className="features-list" style={{ maxHeight: '250px', overflowY: 'auto', paddingRight: '5px' }}>
                 {packages.map((pkg, idx) => (
                   <li key={idx} style={{ marginBottom: '15px', borderBottom: idx !== packages.length - 1 ? '1px dashed #e2e8f0' : 'none', paddingBottom: '15px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%' }}>
