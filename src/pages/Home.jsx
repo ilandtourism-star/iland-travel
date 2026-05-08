@@ -303,34 +303,7 @@ const Home = () => {
             <div className="home-content-wrapper">
 
 
-                {/* Island Destinations */}
-                <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
-                    <h2 className="home-section-title">Popular Islands</h2>
-                    <div className="home-grid">
-                        {[
-                            { id: 'kapas', name: 'Kapas Island', img: kapasImg, loc: 'Terengganu', desc: 'Crystal clear waters perfect for swimming & snorkeling.', path: '/kapas-island-day-trips', tags: [{ label: 'Snorkeling', link: '/kapas-snorkeling-details' }, { label: 'Private Boat', link: '/kapas-private-boat-details' }], btn: 'Activities List' },
-                            { id: 'redang', name: 'Redang Island', img: redangImg, loc: 'Terengganu', desc: 'White sandy beaches and thriving marine parks.', path: '/redang-island-day-trips', tags: [{ label: 'Snorkeling', link: '/redang-snorkeling-details' }, { label: 'Squid Jigging', link: '/redang-squid-jigging-details' }], btn: 'Activities List' },
-                            { id: 'perhentian', name: 'Perhentian Island', img: perhentianImg, loc: 'Terengganu', desc: 'A paradise for backpackers and nature lovers.', path: '/perhentian-island-day-trips', tags: [{ label: 'Snorkeling', link: '/perhentian-snorkeling-details' }], btn: 'Activities List' }
-                        ].map(island => (
-                            <Link key={island.id} to={island.path} className="home-card home-card-awe">
-                                <div className="home-image-container">
-                                    <img src={island.img} alt={island.name} className="home-image" style={{ transition: 'all 0.8s ease' }} />
-                                    <div className="home-overlay"><span className="home-location-tag"><i className="fas fa-map-marker-alt"></i> {island.loc}</span></div>
-                                </div>
-                                <div className="home-card-content">
-                                    <h3 className="home-card-title">{island.name}</h3>
-                                    <p className="home-card-desc">{island.desc}</p>
-                                    <div className="home-tag-container">
-                                        {island.tags.map((tag, idx) => (
-                                            <Link key={idx} to={tag.link} className="home-tag-link" onClick={e => e.stopPropagation()}>{tag.label}</Link>
-                                        ))}
-                                    </div>
-                                    <span className="home-button btn-awe-copy">{island.btn}</span>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-                </div>
+
 
                 {/* Snorkeling Packages */}
                 <div className="home-section" style={{ padding: '0' }}>
@@ -360,6 +333,35 @@ const Home = () => {
                 <div className="home-grid">
                     {learningActivities.map(item => (
                         <ActivityCard key={item.id} {...item} />
+                    ))}
+                </div>
+            </div>
+
+            {/* Island Destinations */}
+            <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
+                <h2 className="home-section-title">Popular Islands</h2>
+                <div className="home-grid">
+                    {[
+                        { id: 'kapas', name: 'Kapas Island', img: kapasImg, loc: 'Terengganu', desc: 'Crystal clear waters perfect for swimming & snorkeling.', path: '/kapas-island-day-trips', tags: [{ label: 'Snorkeling', link: '/kapas-snorkeling-details' }, { label: 'Private Boat', link: '/kapas-private-boat-details' }], btn: 'Activities List' },
+                        { id: 'redang', name: 'Redang Island', img: redangImg, loc: 'Terengganu', desc: 'White sandy beaches and thriving marine parks.', path: '/redang-island-day-trips', tags: [{ label: 'Snorkeling', link: '/redang-snorkeling-details' }, { label: 'Squid Jigging', link: '/redang-squid-jigging-details' }], btn: 'Activities List' },
+                        { id: 'perhentian', name: 'Perhentian Island', img: perhentianImg, loc: 'Terengganu', desc: 'A paradise for backpackers and nature lovers.', path: '/perhentian-island-day-trips', tags: [{ label: 'Snorkeling', link: '/perhentian-snorkeling-details' }], btn: 'Activities List' }
+                    ].map(island => (
+                        <Link key={island.id} to={island.path} className="home-card home-card-awe">
+                            <div className="home-image-container">
+                                <img src={island.img} alt={island.name} className="home-image" style={{ transition: 'all 0.8s ease' }} />
+                                <div className="home-overlay"><span className="home-location-tag"><i className="fas fa-map-marker-alt"></i> {island.loc}</span></div>
+                            </div>
+                            <div className="home-card-content">
+                                <h3 className="home-card-title">{island.name}</h3>
+                                <p className="home-card-desc">{island.desc}</p>
+                                <div className="home-tag-container">
+                                    {island.tags.map((tag, idx) => (
+                                        <Link key={idx} to={tag.link} className="home-tag-link" onClick={e => e.stopPropagation()}>{tag.label}</Link>
+                                    ))}
+                                </div>
+                                <span className="home-button btn-awe-copy">{island.btn}</span>
+                            </div>
+                        </Link>
                     ))}
                 </div>
             </div>
