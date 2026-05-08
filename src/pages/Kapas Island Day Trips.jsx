@@ -126,6 +126,7 @@ const KapasIslandDayTrips = () => {
         link: getActivityLink(baseTrip.sku, baseTrip.island),
         buttonText: "Buy Now",
         hideButton: true, // Hide main button since we have package buttons
+        hidePrice: true, // Hide main starting price since we have package prices
         description: "Experience Kapas Island exclusively with your own group. Choose your boat size.",
         features: [
           "PRIVATE BOAT TRANSFER",
@@ -235,7 +236,8 @@ const KapasIslandDayTrips = () => {
               <ActivityCard
                 key={index}
                 {...activity}
-                hideButton={false}
+                hideButton={activity.hideButton || false}
+                hidePrice={activity.hidePrice || false}
               />
             ))}
           </div>
