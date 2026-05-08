@@ -54,12 +54,15 @@ const KapasIslandDayTrips = () => {
 
     // Transform data for ActivityCard if needed
     const privateBoatTrips = [];
+    const privateBoatPackages = [];
     const regularActivities = [];
 
     filtered.forEach(v => {
       // Group "Private Boat Trip" items together
       if (v.name && v.name.includes('Private Boat Trip')) {
         privateBoatTrips.push(v);
+      } else if (v.name && v.name.includes('Private Boat Package')) {
+        privateBoatPackages.push(v);
       } else {
         regularActivities.push(v);
       }
@@ -138,6 +141,52 @@ const KapasIslandDayTrips = () => {
         isInSeason: baseTrip.isInSeason,
         badge: "PREMIUM",
         packages: privateBoatTrips.map(pb => {
+          let label = pb.name;
+          const match = pb.name.match(/\((max \d+pax)\)/i);
+          if (match) {
+            label = match[1];
+            // Capitalize 'Max'
+            label = label.charAt(0).toUpperCase() + label.slice(1);
+          }
+          return {
+            label: label,
+            price: pb.price,
+            link: getActivityLink(pb.sku, pb.island),
+            icon: "fas fa-ship"
+          };
+        })
+      });
+    }
+
+    if (privateBoatPackages.length > 0) {
+      privateBoatPackages.sort((a, b) => a.price - b.price);
+      const basePkg = privateBoatPackages[0];
+      
+      mappedData.push({
+        sku: 'combined-private-boat-package',
+        title: "6. Private Boat Package",
+        rating: basePkg.rating,
+        reviews: basePkg.reviewCount,
+        price: basePkg.price,
+        image: imgPkg10,
+        images: [imgPkg10, imgPkg15, imgPkg25, imgPkg40],
+        link: getActivityLink(basePkg.sku, basePkg.island),
+        buttonText: "Buy Now",
+        hideButton: true, // Hide main button since we have package buttons
+        hidePrice: true, // Hide main starting price since we have package prices
+        description: "An all-inclusive private boat experience with meals, drinks, and multiple snorkeling points.",
+        features: [
+          "PRIVATE BOAT TRANSFER",
+          "ALL ACTIVITIES & EQUIPMENT",
+          "UNLIMITED COLD DRINK",
+          "FREE MEALS",
+          "MORE THAN 1 SNORKELING POINTS",
+          { icon: 'fas fa-clock', text: 'Time : 8.30am' },
+          { icon: 'fas fa-map-marker-alt', text: 'Pick up jetty : Marang Jetty' }
+        ],
+        isInSeason: basePkg.isInSeason,
+        badge: "PREMIUM",
+        packages: privateBoatPackages.map(pb => {
           let label = pb.name;
           const match = pb.name.match(/\((max \d+pax)\)/i);
           if (match) {
