@@ -108,24 +108,24 @@ const UniversalContactDetails = () => {
         }
 
         const whatsappMessage = 
-`Hi ILand Travel, saya ingin membuat tempahan:
+`Hi ILand Travel, I would like to make a booking:
 
-*BUTIRAN PAKEJ*
-Pakej: ${title}
-Tarikh: ${dateStr}
-Masa Berlepas: ${timeText}
-Bilangan Pax: ${adultCount} Dewasa${childCount > 0 ? `, ${childCount} Kanak-kanak` : ''}
+*PACKAGE DETAILS*
+Package: ${title}
+Date: ${dateStr}
+Departure Time: ${timeText}
+No. of Pax: ${adultCount} Adult${adultCount > 1 ? 's' : ''}${childCount > 0 ? `, ${childCount} Child${childCount > 1 ? 'ren' : ''}` : ''}
 
-*BUTIRAN PELANGGAN*
-Nama: ${formData.firstname} ${formData.lastname}
+*CUSTOMER DETAILS*
+Name: ${formData.firstname} ${formData.lastname}
 Email: ${formData.email}
-No. Tel: ${formData.code}${formData.mobile}
+Phone No: ${formData.code}${formData.mobile}
 
-*LOKASI BERLEPAS*
-Jeti: ${jettyName}
-Peta Lokasi: ${mapLink}
+*DEPARTURE LOCATION*
+Jetty: ${jettyName}
+Location Map: ${mapLink}
 
-🔴 *JUMLAH KESELURUHAN: RM ${totalPrice}* 🔴`;
+🔴 *TOTAL AMOUNT: RM ${totalPrice}* 🔴`;
 
         const whatsappUrl = `https://wa.me/60147081346?text=${encodeURIComponent(whatsappMessage)}`;
 
