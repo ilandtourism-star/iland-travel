@@ -261,17 +261,27 @@ const KapasIslandDayTrips = () => {
       {/* --- VIEW --- */}
       <div className="main-container">
         <aside className="sidebar">
-          <div className="sidebar-map-card">
+          <div className="sidebar-map-card" style={{ paddingBottom: '15px' }}>
             <iframe
               src="https://www.google.com/maps?q=5.2043828,103.2078479&z=17&output=embed"
               width="100%"
-              height="100%"
-              style={{ border: 0 }}
+              height="200"
+              style={{ border: 0, borderRadius: '8px' }}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="Jeti Marang Location"
             ></iframe>
+            <div style={{ textAlign: 'center', marginTop: '10px' }}>
+              <a 
+                href="https://share.google/UlRcnyzikneNgOefM" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{ fontSize: '0.9rem', color: '#0ea5e9', fontWeight: 'bold', textDecoration: 'none' }}
+              >
+                <i className="fas fa-external-link-alt"></i> Open in Google Maps
+              </a>
+            </div>
           </div>
         </aside>
 

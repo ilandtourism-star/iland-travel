@@ -95,7 +95,7 @@ const UniversalContactDetails = () => {
 
         if (islandName === 'kapas') {
             jettyName = 'Jeti Marang';
-            mapLink = `https://www.google.com/maps?q=${encodeURIComponent('Jeti Marang Terengganu')}`;
+            mapLink = `https://share.google/UlRcnyzikneNgOefM`;
         } else if (islandName === 'perhentian') {
             jettyName = 'Kuala Besut Jetty';
             mapLink = `https://www.google.com/maps?q=${encodeURIComponent('Kuala Besut Jetty Terengganu')}`;
@@ -348,6 +348,16 @@ Location Map: ${mapLink}
                                 loading="lazy"
                                 title="Departure Jetty Map">
                             </iframe>
+                            {displayIslandName === 'kapas' && (
+                                <a 
+                                    href="https://share.google/UlRcnyzikneNgOefM" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    style={{ display: 'inline-block', marginTop: '10px', fontSize: '0.9rem', color: '#0ea5e9', fontWeight: 'bold', textDecoration: 'none' }}
+                                >
+                                    <i className="fas fa-external-link-alt"></i> Open in Google Maps
+                                </a>
+                            )}
                         </div>
                     </div>
                     <p className="terms-agreement">By proceeding, you agree to ILand's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.</p>
