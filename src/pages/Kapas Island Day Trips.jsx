@@ -53,7 +53,19 @@ const KapasIslandDayTrips = () => {
     }
 
     // Transform data for ActivityCard if needed
-    const mappedData = filtered.map(v => ({
+    const privateBoatTrips = [];
+    const regularActivities = [];
+
+    filtered.forEach(v => {
+      // Group "Private Boat Trip" items together
+      if (v.name && v.name.includes('Private Boat Trip')) {
+        privateBoatTrips.push(v);
+      } else {
+        regularActivities.push(v);
+      }
+    });
+
+    const mappedData = regularActivities.map(v => ({
       sku: v.sku,
       title: v.name,
       rating: v.rating,
@@ -65,10 +77,6 @@ const KapasIslandDayTrips = () => {
           'mental-escape-kapas': imgMental,
           'joy-play-kapas': imgJoy,
           'mood-booster-kapas': imgMood,
-          'private-boat-10pax-kapas': imgBoat10,
-          'private-boat-15pax-kapas': imgBoat15,
-          'private-boat-25pax-kapas': imgBoat25,
-          'private-boat-40pax-kapas': imgBoat40,
           'private-package-10pax-kapas': imgPkg10,
           'private-package-15pax-kapas': imgPkg15,
           'private-package-25pax-kapas': imgPkg25,
@@ -102,6 +110,49 @@ const KapasIslandDayTrips = () => {
       isInSeason: v.isInSeason,
       badge: v.sku.includes('joy') ? "Most Popular" : v.sku.includes('package') ? "PREMIUM" : null
     }));
+
+    if (privateBoatTrips.length > 0) {
+      privateBoatTrips.sort((a, b) => a.price - b.price);
+      const baseTrip = privateBoatTrips[0];
+      
+      mappedData.push({
+        sku: 'combined-private-boat-trip',
+        title: "5. Private Boat Trip",
+        rating: baseTrip.rating,
+        reviews: baseTrip.reviewCount,
+        price: baseTrip.price,
+        image: imgBoat10,
+        images: [imgBoat10, imgBoat15, imgBoat25, imgBoat40],
+        link: getActivityLink(baseTrip.sku, baseTrip.island),
+        buttonText: "Buy Now",
+        hideButton: true, // Hide main button since we have package buttons
+        description: "Experience Kapas Island exclusively with your own group. Choose your boat size.",
+        features: [
+          "PRIVATE BOAT TRANSFER",
+          "SNORKELING EQUIPMENT FULLDAY",
+          "LIFE JACKET FULLDAY",
+          { icon: 'fas fa-clock', text: 'Time : 8.30am' },
+          { icon: 'fas fa-map-marker-alt', text: 'Pick up jetty : Marang Jetty' }
+        ],
+        isInSeason: baseTrip.isInSeason,
+        badge: "PREMIUM",
+        packages: privateBoatTrips.map(pb => {
+          let label = pb.name;
+          const match = pb.name.match(/\((max \d+pax)\)/i);
+          if (match) {
+            label = match[1];
+            // Capitalize 'Max'
+            label = label.charAt(0).toUpperCase() + label.slice(1);
+          }
+          return {
+            label: label,
+            price: pb.price,
+            link: getActivityLink(pb.sku, pb.island),
+            icon: "fas fa-ship"
+          };
+        })
+      });
+    }
 
     // Sort by package number (e.g., "1. Relaxation" -> 1) then by price
     return mappedData.sort((a, b) => {
