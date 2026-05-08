@@ -203,20 +203,7 @@ Peta Lokasi: ${mapLink}
                             <p className="subtitle">Confirmation will be sent to the email provided below.</p>
                         </div>
 
-                        <div className="location-map" style={{ marginBottom: '25px', borderRadius: '10px', overflow: 'hidden' }}>
-                            <h4 style={{ margin: '0 0 10px 0', fontSize: '1rem', color: '#1e293b' }}>
-                                <i className="fas fa-map-marked-alt" style={{ color: '#0ea5e9' }}></i> Departure Location
-                            </h4>
-                            <iframe 
-                                src={`https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`} 
-                                width="100%" 
-                                height="200" 
-                                style={{ border: 0, borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }} 
-                                allowFullScreen="" 
-                                loading="lazy"
-                                title="Departure Jetty Map">
-                            </iframe>
-                        </div>
+
 
                         <form action="/api/v1/booking" method="POST" onSubmit={handleSubmit} className="premium-form">
                             <div className="form-row">
@@ -343,6 +330,21 @@ Peta Lokasi: ${mapLink}
                                 Continue to payment at WhatsApp <i className="fab fa-whatsapp" style={{ fontSize: '1.2em', marginLeft: '8px' }}></i>
                             </button>
                         </form>
+
+                        <div className="location-map" style={{ marginTop: '25px', borderRadius: '10px', overflow: 'hidden' }}>
+                            <h4 style={{ margin: '0 0 10px 0', fontSize: '1rem', color: '#1e293b' }}>
+                                <i className="fas fa-map-marked-alt" style={{ color: '#0ea5e9' }}></i> Departure Location
+                            </h4>
+                            <iframe 
+                                src={`https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`} 
+                                width="100%" 
+                                height="200" 
+                                style={{ border: 0, borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }} 
+                                allowFullScreen="" 
+                                loading="lazy"
+                                title="Departure Jetty Map">
+                            </iframe>
+                        </div>
                     </div>
                     <p className="terms-agreement">By proceeding, you agree to ILand's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.</p>
                 </div>
