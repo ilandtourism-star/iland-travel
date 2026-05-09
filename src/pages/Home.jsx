@@ -219,20 +219,20 @@ const Home = () => {
 
     const freeDiveActivities = useMemo(() => [
         {
-            id: 201, sku: 'free-dive-perhentian', island: 'Perhentian',
-            title: "PERHENTIAN FREE DIVING DAYTRIP",
-            rating: "5.0", reviews: 88, price: "280.00", originalPrice: "364.00",
-            image: '/images/perhentian island/perhentian_freediving.png', buttonText: "View Details", isFlashSale: true, totalSeats: 15, seatsLeft: 2,
-            link: "/perhentian-island-day-trips#free-dive-perhentian",
-            flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 3.5).toISOString()
-        },
-        {
             id: 202, sku: 'free-dive-redang', island: 'Redang',
             title: "REDANG FREE DIVING DAYTRIP",
             rating: "5.0", reviews: 94, price: "299.00", originalPrice: "388.00",
             image: '/images/Redang island/redang_freediving.png', buttonText: "View Details", isFlashSale: true, totalSeats: 15, seatsLeft: 4,
             link: "/redang-island-day-trips#free-dive-redang",
             flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 5.1).toISOString()
+        },
+        {
+            id: 201, sku: 'free-dive-perhentian', island: 'Perhentian',
+            title: "PERHENTIAN FREE DIVING DAYTRIP",
+            rating: "5.0", reviews: 88, price: "280.00", originalPrice: "364.00",
+            image: '/images/perhentian island/perhentian_freediving.png', buttonText: "View Details", isFlashSale: true, totalSeats: 15, seatsLeft: 2,
+            link: "/perhentian-island-day-trips#free-dive-perhentian",
+            flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 3.5).toISOString()
         }
     ], []);
 
