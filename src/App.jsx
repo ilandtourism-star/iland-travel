@@ -240,7 +240,7 @@ const MainRoutes = () => (
       <Route path="/contact-details/1-snorkeling-redang" element={<UniversalContactDetails />} />
       <Route path="/book/redang-skin-dive" element={<UniversalBookingCalendar apiEndpoint="skin-dive-redang" nextStepRoute="/contact-details/2-skin-dive-redang" defaultPrice="250.00" defaultTitle="2. REDANG SKIN DIVE EXPERIENCE" />} />
       <Route path="/contact-details/2-skin-dive-redang" element={<UniversalContactDetails />} />
-      <Route path="/book/redang-free-diving" element={<UniversalBookingCalendar apiEndpoint="free-dive-redang" nextStepRoute="/contact-details/3-free-dive-redang" defaultPrice="299.00" defaultTitle="3. REDANG FREE DIVING DAYTRIP" />} />
+      <Route path="/book/redang-free-diving" element={<UniversalBookingCalendar apiEndpoint="free-dive-redang" nextStepRoute="/contact-details/3-free-dive-redang" defaultPrice="299.00" defaultTitle="3. REDANG FREE DIVING DAYTRIP" allowedDaysOfWeek={[0, 6]} />} />
       <Route path="/contact-details/3-free-dive-redang" element={<UniversalContactDetails />} />
       <Route path="/redang-island-packages" element={<RedangPackages />} />
 
