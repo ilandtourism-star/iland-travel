@@ -165,7 +165,11 @@ const ActivityCard = ({
       }
     } else {
       // Navigate to details page
-      navigate(link);
+      if (link && link.startsWith('http')) {
+        window.open(link, '_blank', 'noopener,noreferrer');
+      } else {
+        navigate(link);
+      }
     }
   };
 
