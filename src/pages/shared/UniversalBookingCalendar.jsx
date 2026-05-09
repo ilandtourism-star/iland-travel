@@ -5,7 +5,7 @@ import { secureFetch } from '../../lib/api';
 import boatImage from '../../assets/images/Private Boat Trip/1.png';
 
 // Sub-component for Calendar Widget (Monthly Grid)
-const CalendarWidget = ({ onSelect, selectedDate }) => {
+const CalendarWidget = ({ onSelect, selectedDate, allowedDaysOfWeek = null }) => {
     const [currentDate, setCurrentDate] = useState(new Date());
 
     const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
@@ -49,14 +49,16 @@ const CalendarWidget = ({ onSelect, selectedDate }) => {
 
                     const isSelected = selectedDate && d.toDateString() === selectedDate.toDateString();
                     const isPast = d < today;
-                    const isDisabled = isPast;
+                    const isAllowedDay = allowedDaysOfWeek ? allowedDaysOfWeek.includes(d.getDay()) : true;
+                    const isDisabled = isPast || !isAllowedDay;
 
                     return (
                         <span
                             key={index}
                             onClick={() => !isDisabled && onSelect(d)}
                             className={`cal-date-cell ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`}
-                            title={isPast ? 'Date passed' : ''}
+                            title={isPast ? 'Date passed' : !isAllowedDay ? 'Not available on this day' : ''}
+                            style={{ opacity: isDisabled ? 0.4 : 1, cursor: isDisabled ? 'not-allowed' : 'pointer' }}
                         >
                             {d.getDate()}
                         </span>
@@ -73,7 +75,8 @@ const UniversalBookingCalendar = ({
     defaultTitle,
     maxPax,
     nextStepRoute,
-    minAdults = 1
+    minAdults = 1,
+    allowedDaysOfWeek = null
 }) => {
     const { error } = useToast();
     const navigate = useNavigate();
@@ -185,6 +188,7 @@ const UniversalBookingCalendar = ({
                                 <CalendarWidget
                                     selectedDate={selectedDate}
                                     onSelect={setSelectedDate}
+                                    allowedDaysOfWeek={allowedDaysOfWeek}
                                 />
                             </div>
 

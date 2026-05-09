@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CalendarWidget = ({ onSelect, selectedDate }) => {
+const CalendarWidget = ({ onSelect, selectedDate, allowedDaysOfWeek = null }) => {
     const [currentDate, setCurrentDate] = useState(new Date());
 
     const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
@@ -36,11 +36,13 @@ const CalendarWidget = ({ onSelect, selectedDate }) => {
                 {days.map((d, index) => {
                     if (!d) return <span key={`empty-${index}`}></span>;
                     const isSelected = selectedDate && d.toDateString() === selectedDate.toDateString();
+                    const isAllowed = allowedDaysOfWeek ? allowedDaysOfWeek.includes(d.getDay()) : true;
                     return (
                         <span
                             key={index}
-                            onClick={() => onSelect(d)}
-                            className={`cal-date-cell ${isSelected ? 'selected' : ''}`}
+                            onClick={() => isAllowed && onSelect(d)}
+                            className={`cal-date-cell ${isSelected ? 'selected' : ''} ${!isAllowed ? 'disabled' : ''}`}
+                            style={{ opacity: isAllowed ? 1 : 0.3, cursor: isAllowed ? 'pointer' : 'not-allowed' }}
                         >
                             {d.getDate()}
                         </span>
