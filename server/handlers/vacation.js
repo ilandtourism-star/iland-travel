@@ -318,25 +318,6 @@ const seedVacations = () => {
                 ])
             },
             {
-                sku: 'skin-dive-experience-perhentian',
-                name: '3. PERHENTIAN SKIN DIVE EXPERIENCE',
-                description: '"Too deep for snorkelers, too light for freedivers perfect for those who prefer a light and relaxing dive." Spots: Tiga Ruang (Warm up), Turtle Point, Nemo Point (Nemo & Cave), Coral Garden (Depth training), Shark Point (Cave).',
-                price: 27000,
-                childPrice: null,
-                island: 'Perhentian',
-                category: 'snorkeling',
-                is_in_season: 1,
-                imageUrl: '/images/perhentian island/perhentian_skin_dive.png',
-                features: JSON.stringify([
-                    { icon: "fas fa-ship", text: "Return boat transfer" },
-                    { icon: "fas fa-user-shield", text: "Guide / Safety Supervision" },
-                    { icon: "fas fa-chalkboard-teacher", text: "Basic Skin Dive Coaching" },
-                    { icon: "fas fa-video", text: "Underwater Footage (Personal Video)" },
-                    { icon: "fas fa-id-card", text: "Marine Park Fee included" },
-                    { icon: "fas fa-exclamation-triangle", text: "Bring your own mask/snorkel/fins (Weight & lunch not info/provided)" }
-                ])
-            },
-            {
                 sku: 'free-dive-perhentian',
                 name: '5. PERHENTIAN FREE DIVING DAYTRIP',
                 description: 'Resort (Island), Perhentian Dive Site. Diving Points: Underwater cave (5 Meter), Police wreck (18 Meter), Underwater Corridor (5 Meter), Shark point (5 Meter). Terms & conditions: No freediving license required, participants must be able to swim & follow instructions.',

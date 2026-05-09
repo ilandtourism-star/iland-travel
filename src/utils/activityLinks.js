@@ -28,7 +28,6 @@ export const getActivityLink = (sku, island) => {
         // Perhentian Island
         'snorkeling-perhentian': '/book/perhentian-snorkeling-day-trip',
         'skin-dive-perhentian': '/book/perhentian-learn-skindiving',
-        'skin-dive-experience-perhentian': '/book/perhentian-skin-dive-experience',
         'free-dive-perhentian': '/book/perhentian-free-diving',
         'private-boat-perhentian': '/checkout' // Taxi boat default link
     };
