@@ -132,8 +132,8 @@ Location Map: ${mapLink}
         const safeWhatsappMessage = whatsappMessage.replace(/&/g, 'and');
         let whatsappUrl = `https://api.whatsapp.com/send?phone=60147081346&text=${encodeURIComponent(safeWhatsappMessage)}`;
 
-        // Custom redirect for Redang Free Diving
-        if (vacation_sku === 'free-dive-redang') {
+        // Custom redirect for Redang and Perhentian Free Diving
+        if (vacation_sku === 'free-dive-redang' || vacation_sku === 'free-dive-perhentian') {
             whatsappUrl = 'https://chat.whatsapp.com/IXE7Q3JSr4u8Za5ECrtuxa';
         }
 
