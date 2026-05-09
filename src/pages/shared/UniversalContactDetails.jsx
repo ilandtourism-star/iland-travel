@@ -152,17 +152,17 @@ Location Map: ${mapLink}
         if (isGroupChat) {
             try {
                 await navigator.clipboard.writeText(whatsappMessage);
-                addToast('Maklumat tempahan disalin! Sila "Paste" dalam Group WhatsApp.', 'success');
+                addToast('Booking details copied! Please paste it into the WhatsApp Group.', 'success');
             } catch (err) {
                 console.error("Failed to copy text: ", err);
-                addToast('Sila salin maklumat anda dan hantar ke Group WhatsApp.', 'success');
+                addToast('Please copy your details and send them to the WhatsApp Group.', 'success');
             }
             setTimeout(() => {
                 window.location.href = whatsappUrl;
             }, 2000);
         } else {
             // Always redirect to WhatsApp to ensure user completes the booking
-            addToast('Menghubungkan ke WhatsApp...', 'success');
+            addToast('Connecting to WhatsApp...', 'success');
             window.location.href = whatsappUrl;
         }
     };
