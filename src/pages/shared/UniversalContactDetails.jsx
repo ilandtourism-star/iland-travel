@@ -130,7 +130,12 @@ Location Map: ${mapLink}
 🔴 *TOTAL AMOUNT: RM ${totalPrice}* 🔴`;
 
         const safeWhatsappMessage = whatsappMessage.replace(/&/g, 'and');
-        const whatsappUrl = `https://api.whatsapp.com/send?phone=60147081346&text=${encodeURIComponent(safeWhatsappMessage)}`;
+        let whatsappUrl = `https://api.whatsapp.com/send?phone=60147081346&text=${encodeURIComponent(safeWhatsappMessage)}`;
+
+        // Custom redirect for Redang Free Diving
+        if (vacation_sku === 'free-dive-redang') {
+            whatsappUrl = 'https://chat.whatsapp.com/IXE7Q3JSr4u8Za5ECrtuxa';
+        }
 
         try {
             // Attempt to save to backend silently
