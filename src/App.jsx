@@ -249,7 +249,7 @@ const MainRoutes = () => (
       <Route path="/perhentian-snorkeling-details" element={<SnorkelingPerhentian />} />
       <Route path="/book/perhentian-snorkeling-day-trip" element={<UniversalBookingCalendar apiEndpoint="snorkeling-perhentian" nextStepRoute="/contact-details/1-snorkeling-perhentian" defaultPrice="80.00" defaultTitle="1. Day Trip Snorkeling" />} />
       <Route path="/contact-details/1-snorkeling-perhentian" element={<UniversalContactDetails />} />
-      <Route path="/book/perhentian-learn-skindiving" element={<UniversalBookingCalendar apiEndpoint="skin-dive-perhentian" nextStepRoute="/contact-details/2-skin-dive-perhentian" defaultPrice="260.00" defaultTitle="2. LEARN SKINDIVING" />} />
+      <Route path="/book/perhentian-learn-skindiving" element={<UniversalBookingCalendar apiEndpoint="skin-dive-perhentian" nextStepRoute="/contact-details/2-skin-dive-perhentian" defaultPrice="260.00" defaultTitle="2. LEARN SKINDIVING" allowedDaysOfWeek={[0, 6]} />} />
       <Route path="/contact-details/2-skin-dive-perhentian" element={<UniversalContactDetails />} />
       <Route path="/book/perhentian-skin-dive-experience" element={<UniversalBookingCalendar apiEndpoint="skin-dive-experience-perhentian" nextStepRoute="/contact-details/3-skin-dive-perhentian" defaultPrice="270.00" defaultTitle="3. PERHENTIAN SKIN DIVE EXPERIENCE" />} />
       <Route path="/contact-details/3-skin-dive-perhentian" element={<UniversalContactDetails />} />
