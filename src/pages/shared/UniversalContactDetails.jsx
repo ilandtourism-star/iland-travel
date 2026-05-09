@@ -95,7 +95,7 @@ const UniversalContactDetails = () => {
 
         if (islandName === 'kapas') {
             jettyName = 'Jeti Marang';
-            mapLink = `https://share.google/UlRcnyzikneNgOefM`;
+            mapLink = `https://maps.app.goo.gl/ZBBPpGgvBBVtnwbC7`;
         } else if (islandName === 'perhentian') {
             jettyName = 'Kuala Besut Jetty';
             mapLink = `https://www.google.com/maps?q=${encodeURIComponent('Kuala Besut Jetty Terengganu')}`;
@@ -351,7 +351,7 @@ Location Map: ${mapLink}
                             </iframe>
                             {displayIslandName === 'kapas' && (
                                 <a 
-                                    href="https://share.google/UlRcnyzikneNgOefM" 
+                                    href="https://maps.app.goo.gl/ZBBPpGgvBBVtnwbC7" 
                                     target="_blank" 
                                     rel="noopener noreferrer"
                                     style={{ display: 'inline-block', marginTop: '10px', fontSize: '0.9rem', color: '#0ea5e9', fontWeight: 'bold', textDecoration: 'none' }}
