@@ -137,6 +137,9 @@ Location Map: ${mapLink}
         if (vacation_sku === 'free-dive-redang' || vacation_sku === 'free-dive-perhentian') {
             whatsappUrl = 'https://chat.whatsapp.com/IXE7Q3JSr4u8Za5ECrtuxa';
             isGroupChat = true;
+        } else if (vacation_sku === 'skin-dive-perhentian') {
+            whatsappUrl = 'https://chat.whatsapp.com/Fx1f8MlvJpt2aienR71d9i';
+            isGroupChat = true;
         }
 
         try {
@@ -394,6 +397,14 @@ Location Map: ${mapLink}
                         </div>
 
                         <div className="summary-body">
+                            {renderJettyName === 'Merang Waterfront Jetty' && (
+                                <div style={{ marginBottom: '15px', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', border: '1px solid #e2e8f0' }}>
+                                    <div style={{ padding: '8px 12px', backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0', fontSize: '0.8rem', fontWeight: 'bold', color: '#475569', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                        <i className="fas fa-ship" style={{ color: '#0ea5e9' }}></i> Departure: Merang Waterfront Jetty
+                                    </div>
+                                    <img src="/images/merang_jetty.png" alt="Merang Waterfront Jetty" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
+                                </div>
+                            )}
                             <h3 className="package-title">{title}</h3>
 
                             <div className="summary-details">
