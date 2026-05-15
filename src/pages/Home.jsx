@@ -50,7 +50,7 @@ const Home = () => {
     const initialActivitiesDynamic = [
         {
             id: 1, sku: 'joy-play-kapas', island: 'Kapas',
-            title: "Snorkeling and island hopping in Kapas Island",
+            title: "Snorkeling and Island Hopping in Kapas Island",
             rating: "5.0", reviews: 200, price: "69.00", originalPrice: "89.00",
             imageKey: 'kapasSnorkelImg', buttonText: "View Details", isFlashSale: true, totalSeats: 20, seatsLeft: 3
         },
@@ -220,7 +220,7 @@ const Home = () => {
     const freeDiveActivities = useMemo(() => [
         {
             id: 202, sku: 'free-dive-redang', island: 'Redang',
-            title: "REDANG FREEDIVING DAYTRIP BUDDY",
+            title: "Redang Freediving Daytrip Buddy",
             rating: "5.0", reviews: 94, price: "299.00", originalPrice: "388.00",
             image: '/images/Redang island/redang_freediving.png', buttonText: "View Details", isFlashSale: true, totalSeats: 15, seatsLeft: 4,
             link: "/redang-island-day-trips#free-dive-redang",
@@ -228,7 +228,7 @@ const Home = () => {
         },
         {
             id: 201, sku: 'free-dive-perhentian', island: 'Perhentian',
-            title: "PERHENTIAN FREE DIVING DAYTRIP BUDDY",
+            title: "Perhentian Free Diving Daytrip Buddy",
             rating: "5.0", reviews: 88, price: "280.00", originalPrice: "364.00",
             image: '/images/perhentian island/perhentian_freediving.png', buttonText: "View Details", isFlashSale: true, totalSeats: 15, seatsLeft: 2,
             link: "/perhentian-island-day-trips#free-dive-perhentian",
@@ -239,7 +239,7 @@ const Home = () => {
     const learningActivities = useMemo(() => [
         {
             id: 301, sku: 'skin-dive-perhentian', island: 'Perhentian',
-            title: "LEARN SKINDIVING",
+            title: "Learn Skindiving",
             rating: "5.0", reviews: 102, price: "260.00", originalPrice: "338.00",
             image: '/images/perhentian island/learn_skindiving.png', buttonText: "View Details", isFlashSale: true, totalSeats: 10, seatsLeft: 5,
             link: "/perhentian-island-day-trips#skin-dive-perhentian",
@@ -319,7 +319,7 @@ const Home = () => {
 
             {/* --- FREE DIVING SECTION --- */}
             <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
-                <h2 className="home-section-title">Top FREE DIVING DAYTRIP Packages</h2>
+                <h2 className="home-section-title">Top Free Diving Daytrip Packages</h2>
                 <div className="home-grid">
                     {freeDiveActivities.map(item => (
                         <ActivityCard key={item.id} {...item} />

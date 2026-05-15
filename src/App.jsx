@@ -238,9 +238,9 @@ const MainRoutes = () => (
       <Route path="/redang-snorkeling-details" element={<RedangSnorkeling />} />
       <Route path="/book/redang-snorkeling-day-trip" element={<UniversalBookingCalendar apiEndpoint="snorkeling-redang" nextStepRoute="/contact-details/1-snorkeling-redang" defaultPrice="100.00" defaultTitle="1. Day Trip Snorkeling (All-In)" />} />
       <Route path="/contact-details/1-snorkeling-redang" element={<UniversalContactDetails />} />
-      <Route path="/book/redang-skin-dive" element={<UniversalBookingCalendar apiEndpoint="skin-dive-redang" nextStepRoute="/contact-details/2-skin-dive-redang" defaultPrice="250.00" defaultTitle="2. REDANG SKIN DIVE EXPERIENCE" />} />
+      <Route path="/book/redang-skin-dive" element={<UniversalBookingCalendar apiEndpoint="skin-dive-redang" nextStepRoute="/contact-details/2-skin-dive-redang" defaultPrice="250.00" defaultTitle="2. Redang Skin Dive Experience" />} />
       <Route path="/contact-details/2-skin-dive-redang" element={<UniversalContactDetails />} />
-      <Route path="/book/redang-free-diving" element={<UniversalBookingCalendar apiEndpoint="free-dive-redang" nextStepRoute="/contact-details/3-free-dive-redang" defaultPrice="299.00" defaultTitle="3. REDANG FREEDIVING DAYTRIP BUDDY" allowedDaysOfWeek={[0, 6]} />} />
+      <Route path="/book/redang-free-diving" element={<UniversalBookingCalendar apiEndpoint="free-dive-redang" nextStepRoute="/contact-details/3-free-dive-redang" defaultPrice="299.00" defaultTitle="3. Redang Freediving Daytrip Buddy" allowedDaysOfWeek={[0, 6]} />} />
       <Route path="/contact-details/3-free-dive-redang" element={<UniversalContactDetails />} />
       <Route path="/redang-island-packages" element={<RedangPackages />} />
 
@@ -249,9 +249,9 @@ const MainRoutes = () => (
       <Route path="/perhentian-snorkeling-details" element={<SnorkelingPerhentian />} />
       <Route path="/book/perhentian-snorkeling-day-trip" element={<UniversalBookingCalendar apiEndpoint="snorkeling-perhentian" nextStepRoute="/contact-details/1-snorkeling-perhentian" defaultPrice="80.00" defaultTitle="1. Day Trip Snorkeling" />} />
       <Route path="/contact-details/1-snorkeling-perhentian" element={<UniversalContactDetails />} />
-      <Route path="/book/perhentian-learn-skindiving" element={<UniversalBookingCalendar apiEndpoint="skin-dive-perhentian" nextStepRoute="/contact-details/2-skin-dive-perhentian" defaultPrice="260.00" defaultTitle="2. LEARN SKINDIVING" allowedDaysOfWeek={[0, 6]} />} />
+      <Route path="/book/perhentian-learn-skindiving" element={<UniversalBookingCalendar apiEndpoint="skin-dive-perhentian" nextStepRoute="/contact-details/2-skin-dive-perhentian" defaultPrice="260.00" defaultTitle="2. Learn Skindiving" allowedDaysOfWeek={[0, 6]} />} />
       <Route path="/contact-details/2-skin-dive-perhentian" element={<UniversalContactDetails />} />
-      <Route path="/book/perhentian-free-diving" element={<UniversalBookingCalendar apiEndpoint="free-dive-perhentian" nextStepRoute="/contact-details/5-free-dive-perhentian" defaultPrice="280.00" defaultTitle="5. PERHENTIAN FREE DIVING DAYTRIP BUDDY" allowedDaysOfWeek={[0, 6]} />} />
+      <Route path="/book/perhentian-free-diving" element={<UniversalBookingCalendar apiEndpoint="free-dive-perhentian" nextStepRoute="/contact-details/5-free-dive-perhentian" defaultPrice="280.00" defaultTitle="5. Perhentian Free Diving Daytrip Buddy" allowedDaysOfWeek={[0, 6]} />} />
       <Route path="/contact-details/5-free-dive-perhentian" element={<UniversalContactDetails />} />
 
 
