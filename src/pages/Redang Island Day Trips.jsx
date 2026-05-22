@@ -41,7 +41,7 @@ const RedangIslandDayTrips = () => {
                     timeText = 'Time : 5.00pm-6.00am';
                 }
                 customFeatures.push({ icon: 'fas fa-clock', text: timeText });
-                customFeatures.push({ icon: 'fas fa-map-marker-alt', text: 'Pick up jetty : Merang Waterfront Jetty' });
+                customFeatures.push({ icon: 'fas fa-map-marker-alt', text: 'Pick up jetty : Neill Boat Services Jetty' });
             }
 
             return {
@@ -101,14 +101,14 @@ const RedangIslandDayTrips = () => {
                 <aside className="sidebar">
                     <div className="sidebar-map-card">
                         <iframe
-                            src="https://www.google.com/maps?q=Merang%20Waterfront%20Jetty%20Terengganu&output=embed"
+                            src="https://www.google.com/maps?q=Neill%20Boat%20Services%20Jetty&output=embed"
                             width="100%"
                             height="100%"
                             style={{ border: 0 }}
                             allowFullScreen=""
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
-                            title="Merang Waterfront Jetty Location"
+                            title="Neill Boat Services Jetty Location"
                         ></iframe>
                     </div>
                 </aside>

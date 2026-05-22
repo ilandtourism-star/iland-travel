@@ -90,8 +90,8 @@ const UniversalContactDetails = () => {
 
         // Determine Jetty for WhatsApp message
         const islandName = (packageData?.island || '').toLowerCase();
-        let jettyName = 'Merang Waterfront Jetty';
-        let mapLink = 'https://maps.app.goo.gl/aSisuK5B9DZ6K6E88'; // Exact map link provided by user
+        let jettyName = 'Neill Boat Services Jetty';
+        let mapLink = 'https://maps.app.goo.gl/Y8QCaj8N1TJx2Y9w5?g_st=atm'; // Exact map link provided by user
 
         if (islandName === 'kapas') {
             jettyName = 'Jeti Marang';
@@ -191,8 +191,8 @@ Location Map: ${mapLink}
 
     // Determine Jetty Name for UI rendering
     const displayIslandName = (packageData?.island || '').toLowerCase();
-    let renderJettyName = 'Merang Waterfront Jetty';
-    let mapQuery = 'Merang Waterfront Jetty Terengganu';
+    let renderJettyName = 'Neill Boat Services Jetty';
+    let mapQuery = 'Neill Boat Services Jetty';
     
     if (displayIslandName === 'kapas') {
         renderJettyName = 'Jeti Marang';
@@ -397,12 +397,12 @@ Location Map: ${mapLink}
                         </div>
 
                         <div className="summary-body">
-                            {renderJettyName === 'Merang Waterfront Jetty' && (
+                            {renderJettyName === 'Neill Boat Services Jetty' && (
                                 <div style={{ marginBottom: '15px', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', border: '1px solid #e2e8f0' }}>
                                     <div style={{ padding: '8px 12px', backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0', fontSize: '0.8rem', fontWeight: 'bold', color: '#475569', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                        <i className="fas fa-ship" style={{ color: '#0ea5e9' }}></i> Departure: Merang Waterfront Jetty
+                                        <i className="fas fa-ship" style={{ color: '#0ea5e9' }}></i> Departure: Neill Boat Services Jetty
                                     </div>
-                                    <img src="/images/merang_jetty.png" alt="Merang Waterfront Jetty" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
+                                    <img src="/images/merang_jetty.png" alt="Neill Boat Services Jetty" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
                                 </div>
                             )}
                             <h3 className="package-title">{title}</h3>
