@@ -22,7 +22,7 @@ const seedVacations = () => {
                 imageUrl: '/images/kapas island/1. Relaxation Package/1.png',
                 features: JSON.stringify([
                     "BOT PERGI BALIK",
-                    "➤ AKTIVITI BEBAS",
+                    "AKTIVITI BEBAS",
                     "FREE & EASY",
                     "TOILET (AWAM)",
                     "SURAU (AWAM)",
@@ -40,10 +40,10 @@ const seedVacations = () => {
                 is_in_season: 1,
                 imageUrl: '/images/kapas island/2. Mental Escape/1.png',
                 features: JSON.stringify([
-                    "➤ BOT PERGI BALIK",
+                    "BOT PERGI BALIK",
                     "AKTIVITI BEBAS",
                     "FREE & EASY",
-                    "➤ TOILET (AWAM)",
+                    "TOILET (AWAM)",
                     "SURAU (AWAM)",
                     "HIKING BUKIT SINGA (1 HOUR)"
                 ])
@@ -60,10 +60,10 @@ const seedVacations = () => {
                 imageUrl: '/images/kapas island/3. Joy & Playfulness (Top Pick!)/2.png',
                 features: JSON.stringify([
                     "BOT PERGI BALIK",
-                    "➤ AKTIVITI BEBAS",
+                    "AKTIVITI BEBAS",
                     "FREE & EASY",
-                    "➤ TOILET (AWAM)",
-                    "➤ SURAU (AWAM)",
+                    "TOILET (AWAM)",
+                    "SURAU (AWAM)",
                     "HIKING BUKIT SINGA (1 HOUR)",
                     "SNORKELING (TAMAN LAUT)",
                     "+ EQUIPMENT (2 HOURS)"
@@ -87,7 +87,7 @@ const seedVacations = () => {
                     "SURAU (AWAM)",
                     "HIKING BUKIT SINGA (1 HOUR)",
                     "SNORKELING (TAMAN LAUT) + EQUIPMENT (2 HOURS)",
-                    "➤ LUNCH BOX"
+                    "LUNCH BOX"
                 ])
             },
             {
