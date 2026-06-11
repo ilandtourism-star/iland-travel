@@ -14,67 +14,80 @@ const seedVacations = () => {
                 sku: 'relax-kapas',
                 name: '1. Relaxation (island hopping only)',
                 description: '',
-                price: 4900,
-                childPrice: 3900,
+                price: 6000,
+                childPrice: 4000,
                 island: 'Kapas',
                 category: 'snorkeling',
                 is_in_season: 1,
                 imageUrl: '/images/kapas island/1. Relaxation Package/1.png',
                 features: JSON.stringify([
-                    { icon: "fas fa-ship", text: "BOAT TRANSFER" },
-                    { icon: "fas fa-vest", text: "LIFE JACKET" },
-                    { icon: "fas fa-umbrella-beach", text: "FREE DAN EASY" }
+                    "BOT PERGI BALIK",
+                    "➤ AKTIVITI BEBAS",
+                    "FREE & EASY",
+                    "TOILET (AWAM)",
+                    "SURAU (AWAM)",
+                    "SNORKELING (TAMAN LAUT) + EQUIPMENT (2 HOURS)"
                 ])
             },
             {
                 sku: 'mental-escape-kapas',
                 name: '2. Mental Escape',
                 description: '',
-                price: 5900,
+                price: 6000,
+                childPrice: 4000,
                 island: 'Kapas',
                 category: 'snorkeling',
                 is_in_season: 1,
                 imageUrl: '/images/kapas island/2. Mental Escape/1.png',
                 features: JSON.stringify([
-                    { icon: "fas fa-mask", text: "Snorkeling Gear" },
-                    { icon: "fas fa-ship", text: "Boat Transfer" },
-                    { icon: "fas fa-vest", text: "LIFE JACKET (FULL DAY)" }
+                    "➤ BOT PERGI BALIK",
+                    "AKTIVITI BEBAS",
+                    "FREE & EASY",
+                    "➤ TOILET (AWAM)",
+                    "SURAU (AWAM)",
+                    "HIKING BUKIT SINGA (1 HOUR)"
                 ])
             },
             {
                 sku: 'joy-play-kapas',
                 name: '3. Joy & Playfulness',
                 description: '',
-                price: 6900,
-                childPrice: 5900,
+                price: 7000,
+                childPrice: 5000,
                 island: 'Kapas',
                 category: 'snorkeling',
                 is_in_season: 1,
                 imageUrl: '/images/kapas island/3. Joy & Playfulness (Top Pick!)/2.png',
                 features: JSON.stringify([
-                    { icon: "fas fa-fish", text: "Marine Park Trip" },
-                    { icon: "fas fa-vest", text: "LIFE JACKET (FULL DAY)" },
-                    { icon: "fas fa-mask", text: "SNORKELING EQUIPMENT (FULL DAY)" },
-                    { icon: "fas fa-ship", text: "BOAT TRANSFER" }
+                    "BOT PERGI BALIK",
+                    "➤ AKTIVITI BEBAS",
+                    "FREE & EASY",
+                    "➤ TOILET (AWAM)",
+                    "➤ SURAU (AWAM)",
+                    "HIKING BUKIT SINGA (1 HOUR)",
+                    "SNORKELING (TAMAN LAUT)",
+                    "+ EQUIPMENT (2 HOURS)"
                 ])
             },
             {
                 sku: 'mood-booster-kapas',
                 name: '4. Mood Booster',
                 description: '',
-                price: 10900,
-                childPrice: 9900,
+                price: 8000,
+                childPrice: 6000,
                 island: 'Kapas',
                 category: 'snorkeling',
                 is_in_season: 1,
                 imageUrl: '/images/kapas island/4. Mood Booster/6.png',
                 features: JSON.stringify([
-                    { icon: "fas fa-map-marked-alt", text: "ISLAND TOUR" },
-                    { icon: "fas fa-hiking", text: "HIKING BUKIT SINGA" },
-                    { icon: "fas fa-fish", text: "TRIP MARINE PARK POINT" },
-                    { icon: "fas fa-mask", text: "SNORKELING EQUIPMENT (FULL DAY)" },
-                    { icon: "fas fa-vest", text: "LIFE JACKET (FULL DAY)" },
-                    { icon: "fas fa-ship", text: "BOAT TRANSFER" }
+                    "BOT PERGI BALIK",
+                    "AKTIVITI BEBAS",
+                    "FREE & EASY",
+                    "TOILET (AWAM)",
+                    "SURAU (AWAM)",
+                    "HIKING BUKIT SINGA (1 HOUR)",
+                    "SNORKELING (TAMAN LAUT) + EQUIPMENT (2 HOURS)",
+                    "➤ LUNCH BOX"
                 ])
             },
             {
@@ -535,4 +548,3 @@ exports.updateCapacityApi = async (req, res) => {
         res.status(404).json({ message: 'Aktiviti tidak ditemui.' });
     }
 }
-

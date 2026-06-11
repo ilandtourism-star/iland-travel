@@ -90,13 +90,7 @@ const KapasIslandDayTrips = () => {
       link: getActivityLink(v.sku, v.island),
       buttonText: "Buy Now",
       description: v.description,
-      features: [
-        "RETURN BOAT TRANSFER",
-        "FREE & EASY ACTIVITIES",
-        "PUBLIC TOILET",
-        "PUBLIC PRAYER ROOM",
-        "SNORKELING (MARINE PARK) + EQUIPMENT (2 HOURS)"
-      ],
+      features: v.features,
       isInSeason: v.isInSeason,
       badge: v.sku.includes('joy') ? "Most Popular" : v.sku.includes('package') ? "PREMIUM" : null
     }));
