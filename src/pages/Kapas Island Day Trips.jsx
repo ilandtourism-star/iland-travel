@@ -9,7 +9,6 @@ import { getActivityLink } from '../utils/activityLinks';
 
 // --- IMAGES ---
 import imgRelax from '../assets/images/kapas island/1. Relaxation Package/1.png';
-import imgPakejAPoster from '../assets/images/kapas island/1. Relaxation Package/poster.png'; // Gambar poster baru
 import imgMental from '../assets/images/kapas island/2. Mental Escape/1.png';
 import imgJoy from '../assets/images/kapas island/3. Joy & Playfulness (Top Pick!)/2.png';
 import imgMood from '../assets/images/kapas island/4. Mood Booster/6.png';
@@ -77,7 +76,7 @@ const KapasIslandDayTrips = () => {
       price: v.price,
       image: (() => {
         const imageMap = {
-          'relax-kapas': imgPakejAPoster,
+          'relax-kapas': 'https://images.unsplash.com/photo-1590523740928-a8d3a1a30a23?q=80&w=800&auto=format&fit=crop',
           'mental-escape-kapas': imgMental,
           'joy-play-kapas': imgJoy,
           'mood-booster-kapas': imgMood,
