@@ -91,13 +91,11 @@ const KapasIslandDayTrips = () => {
       buttonText: "Buy Now",
       description: v.description,
       features: [
-        "INCLUDE:",
-        "BOT PERGI BALIK",
-        "➤ AKTIVITI BEBAS",
-        "FREE & EASY",
-        "TOILET (AWAM)",
-        "SURAU (AWAM)",
-        "SNORKELING (TAMAN LAUT) + EQUIPMENT (2 HOURS)"
+        "RETURN BOAT TRANSFER",
+        "FREE & EASY ACTIVITIES",
+        "PUBLIC TOILET",
+        "PUBLIC PRAYER ROOM",
+        "SNORKELING (MARINE PARK) + EQUIPMENT (2 HOURS)"
       ],
       isInSeason: v.isInSeason,
       badge: v.sku.includes('joy') ? "Most Popular" : v.sku.includes('package') ? "PREMIUM" : null
