@@ -10,7 +10,7 @@ import { getActivityLink } from '../utils/activityLinks';
 // --- IMAGES ---
 import imgRelax from '../assets/images/kapas island/1. Relaxation Package/1.png';
 import imgPakejAGemini from '../assets/images/kapas island/Gemini_Generated_Image_9ww1859ww1859ww1.png';
-import imgMental from '../assets/images/kapas island/2. Mental Escape/1.png';
+import imgMental from '../assets/images/kapas island/Gemini_Generated_Image_cqydjgcqydjgcqyd.png';
 import imgJoy from '../assets/images/kapas island/3. Joy & Playfulness (Top Pick!)/2.png';
 import imgMood from '../assets/images/kapas island/4. Mood Booster/6.png';
 // Private Boats
