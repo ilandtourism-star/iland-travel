@@ -70,7 +70,7 @@ const KapasIslandDayTrips = () => {
 
     const mappedData = regularActivities.map(v => ({
       sku: v.sku,
-      title: v.name,
+      title: v.sku === 'relax-kapas' ? 'PAKEJ A' : v.sku === 'mental-escape-kapas' ? 'PAKEJ B' : v.sku === 'joy-play-kapas' ? 'PAKEJ C' : v.sku === 'mood-booster-kapas' ? 'PAKEJ D' : v.name,
       rating: v.rating,
       reviews: v.reviewCount,
       price: v.price,
