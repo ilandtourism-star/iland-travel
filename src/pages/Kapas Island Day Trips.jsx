@@ -101,95 +101,95 @@ const KapasIslandDayTrips = () => {
       badge: v.sku.includes('joy') ? "Most Popular" : v.sku.includes('package') ? "PREMIUM" : null
     }));
 
-    if (privateBoatTrips.length > 0) {
-      privateBoatTrips.sort((a, b) => a.price - b.price);
-      const baseTrip = privateBoatTrips[0];
+    // if (privateBoatTrips.length > 0) {
+    //   privateBoatTrips.sort((a, b) => a.price - b.price);
+    //   const baseTrip = privateBoatTrips[0];
       
-      mappedData.push({
-        sku: 'combined-private-boat-trip',
-        title: "5. Private Boat Trip",
-        rating: baseTrip.rating,
-        reviews: baseTrip.reviewCount,
-        price: baseTrip.price,
-        image: imgBoat10,
-        images: [imgBoat10, imgBoat15, imgBoat25, imgBoat40],
-        link: getActivityLink(baseTrip.sku, baseTrip.island),
-        buttonText: "Buy Now",
-        hideButton: true, // Hide main button since we have package buttons
-        hidePrice: true, // Hide main starting price since we have package prices
-        description: "Experience Kapas Island exclusively with your own group. Choose your boat size.",
-        features: [
-          "PRIVATE BOAT TRANSFER",
-          "SNORKELING EQUIPMENT FULLDAY",
-          "LIFE JACKET FULLDAY",
-          { icon: 'fas fa-clock', text: 'Time : 8.30am' },
-          { icon: 'fas fa-map-marker-alt', text: 'Pick up jetty : Marang Jetty' }
-        ],
-        isInSeason: baseTrip.isInSeason,
-        badge: "PREMIUM",
-        packages: privateBoatTrips.map(pb => {
-          let label = pb.name;
-          const match = pb.name.match(/\((max \d+pax)\)/i);
-          if (match) {
-            label = match[1];
-            // Capitalize 'Max'
-            label = label.charAt(0).toUpperCase() + label.slice(1);
-          }
-          return {
-            label: label,
-            price: pb.price,
-            link: getActivityLink(pb.sku, pb.island),
-            icon: "fas fa-ship"
-          };
-        })
-      });
-    }
+    //   mappedData.push({
+    //     sku: 'combined-private-boat-trip',
+    //     title: "5. Private Boat Trip",
+    //     rating: baseTrip.rating,
+    //     reviews: baseTrip.reviewCount,
+    //     price: baseTrip.price,
+    //     image: imgBoat10,
+    //     images: [imgBoat10, imgBoat15, imgBoat25, imgBoat40],
+    //     link: getActivityLink(baseTrip.sku, baseTrip.island),
+    //     buttonText: "Buy Now",
+    //     hideButton: true, // Hide main button since we have package buttons
+    //     hidePrice: true, // Hide main starting price since we have package prices
+    //     description: "Experience Kapas Island exclusively with your own group. Choose your boat size.",
+    //     features: [
+    //       "PRIVATE BOAT TRANSFER",
+    //       "SNORKELING EQUIPMENT FULLDAY",
+    //       "LIFE JACKET FULLDAY",
+    //       { icon: 'fas fa-clock', text: 'Time : 8.30am' },
+    //       { icon: 'fas fa-map-marker-alt', text: 'Pick up jetty : Marang Jetty' }
+    //     ],
+    //     isInSeason: baseTrip.isInSeason,
+    //     badge: "PREMIUM",
+    //     packages: privateBoatTrips.map(pb => {
+    //       let label = pb.name;
+    //       const match = pb.name.match(/\((max \d+pax)\)/i);
+    //       if (match) {
+    //         label = match[1];
+    //         // Capitalize 'Max'
+    //         label = label.charAt(0).toUpperCase() + label.slice(1);
+    //       }
+    //       return {
+    //         label: label,
+    //         price: pb.price,
+    //         link: getActivityLink(pb.sku, pb.island),
+    //         icon: "fas fa-ship"
+    //       };
+    //     })
+    //   });
+    // }
 
-    if (privateBoatPackages.length > 0) {
-      privateBoatPackages.sort((a, b) => a.price - b.price);
-      const basePkg = privateBoatPackages[0];
+    // if (privateBoatPackages.length > 0) {
+    //   privateBoatPackages.sort((a, b) => a.price - b.price);
+    //   const basePkg = privateBoatPackages[0];
       
-      mappedData.push({
-        sku: 'combined-private-boat-package',
-        title: "6. Private Boat Package",
-        rating: basePkg.rating,
-        reviews: basePkg.reviewCount,
-        price: basePkg.price,
-        image: imgPkg10,
-        images: [imgPkg10, imgPkg15, imgPkg25, imgPkg40],
-        link: getActivityLink(basePkg.sku, basePkg.island),
-        buttonText: "Buy Now",
-        hideButton: true, // Hide main button since we have package buttons
-        hidePrice: true, // Hide main starting price since we have package prices
-        description: "An all-inclusive private boat experience with meals, drinks, and multiple snorkeling points.",
-        features: [
-          "PRIVATE BOAT TRANSFER",
-          "ALL ACTIVITIES & EQUIPMENT",
-          "UNLIMITED COLD DRINK",
-          "FREE MEALS",
-          "MORE THAN 1 SNORKELING POINTS",
-          { icon: 'fas fa-clock', text: 'Time : 8.30am' },
-          { icon: 'fas fa-map-marker-alt', text: 'Pick up jetty : Marang Jetty' }
-        ],
-        isInSeason: basePkg.isInSeason,
-        badge: "PREMIUM",
-        packages: privateBoatPackages.map(pb => {
-          let label = pb.name;
-          const match = pb.name.match(/\((max \d+pax)\)/i);
-          if (match) {
-            label = match[1];
-            // Capitalize 'Max'
-            label = label.charAt(0).toUpperCase() + label.slice(1);
-          }
-          return {
-            label: label,
-            price: pb.price,
-            link: getActivityLink(pb.sku, pb.island),
-            icon: "fas fa-ship"
-          };
-        })
-      });
-    }
+    //   mappedData.push({
+    //     sku: 'combined-private-boat-package',
+    //     title: "6. Private Boat Package",
+    //     rating: basePkg.rating,
+    //     reviews: basePkg.reviewCount,
+    //     price: basePkg.price,
+    //     image: imgPkg10,
+    //     images: [imgPkg10, imgPkg15, imgPkg25, imgPkg40],
+    //     link: getActivityLink(basePkg.sku, basePkg.island),
+    //     buttonText: "Buy Now",
+    //     hideButton: true, // Hide main button since we have package buttons
+    //     hidePrice: true, // Hide main starting price since we have package prices
+    //     description: "An all-inclusive private boat experience with meals, drinks, and multiple snorkeling points.",
+    //     features: [
+    //       "PRIVATE BOAT TRANSFER",
+    //       "ALL ACTIVITIES & EQUIPMENT",
+    //       "UNLIMITED COLD DRINK",
+    //       "FREE MEALS",
+    //       "MORE THAN 1 SNORKELING POINTS",
+    //       { icon: 'fas fa-clock', text: 'Time : 8.30am' },
+    //       { icon: 'fas fa-map-marker-alt', text: 'Pick up jetty : Marang Jetty' }
+    //     ],
+    //     isInSeason: basePkg.isInSeason,
+    //     badge: "PREMIUM",
+    //     packages: privateBoatPackages.map(pb => {
+    //       let label = pb.name;
+    //       const match = pb.name.match(/\((max \d+pax)\)/i);
+    //       if (match) {
+    //         label = match[1];
+    //         // Capitalize 'Max'
+    //         label = label.charAt(0).toUpperCase() + label.slice(1);
+    //       }
+    //       return {
+    //         label: label,
+    //         price: pb.price,
+    //         link: getActivityLink(pb.sku, pb.island),
+    //         icon: "fas fa-ship"
+    //       };
+    //     })
+    //   });
+    // }
 
     // Sort by package number (e.g., "1. Relaxation" -> 1) then by price
     return mappedData.sort((a, b) => {
