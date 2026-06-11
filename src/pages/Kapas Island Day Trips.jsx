@@ -285,6 +285,11 @@ const KapasIslandDayTrips = () => {
           <div className="info-box">
             <h2>Activity Details & Locations</h2>
             <dl className="info-list">
+              <dt><i className="fas fa-clipboard-list"></i> Jadual Perjalanan Pagi</dt>
+              <dd>8.00 am - Berada di Jeti Marang Kaunter 1 Makcik Gemuk</dd>
+              <dd>8.30 am - Bertolak ke Pulau Kapas</dd>
+              <dd>8.45 am - Tiba di Pulau Kapas</dd>
+
               <dt><i className="fas fa-clock"></i> Return Schedule</dt>
               <dd>Return trips to Marang Jetty usually start as early as 1:30 PM and depart every hour thereafter.</dd>
 

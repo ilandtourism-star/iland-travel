@@ -51,7 +51,7 @@ const Home = () => {
         {
             id: 1, sku: 'joy-play-kapas', island: 'Kapas',
             title: "Snorkeling in Kapas Island",
-            rating: "5.0", reviews: 200, price: "69.00", originalPrice: "89.00",
+            rating: "5.0", reviews: 200, price: "60.00", originalPrice: "89.00",
             imageKey: 'kapasSnorkelImg', buttonText: "View Details", isFlashSale: true, totalSeats: 20, seatsLeft: 3
         },
         {
