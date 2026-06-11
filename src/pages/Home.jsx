@@ -50,7 +50,7 @@ const Home = () => {
     const initialActivitiesDynamic = [
         {
             id: 1, sku: 'joy-play-kapas', island: 'Kapas',
-            title: "Snorkeling and Island Hopping in Kapas Island",
+            title: "Snorkeling in Kapas Island",
             rating: "5.0", reviews: 200, price: "69.00", originalPrice: "89.00",
             imageKey: 'kapasSnorkelImg', buttonText: "View Details", isFlashSale: true, totalSeats: 20, seatsLeft: 3
         },
