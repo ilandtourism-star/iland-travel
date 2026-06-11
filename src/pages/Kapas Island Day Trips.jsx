@@ -8,21 +8,11 @@ import SEO from '../components/common/SEO';
 import { getActivityLink } from '../utils/activityLinks';
 
 // --- IMAGES ---
-import imgRelax from '../assets/images/kapas island/1. Relaxation Package/1.png';
-import imgPakejAGemini from '../assets/images/kapas island/Gemini_Generated_Image_yas8yfyas8yfyas8.png';
-import imgMental from '../assets/images/kapas island/Gemini_Generated_Image_cqydjgcqydjgcqyd.png';
-import imgJoy from '../assets/images/kapas island/Gemini_Generated_Image_user_pakej_c.png';
-import imgMood from '../assets/images/kapas island/4. Mood Booster/6.png';
-// Private Boats
-import imgBoat10 from '../assets/images/Private Boat Trip/1.png';
-import imgBoat15 from '../assets/images/Private Boat Trip/2.png';
-import imgBoat25 from '../assets/images/Private Boat Trip/3.png';
-import imgBoat40 from '../assets/images/Private Boat Trip/4.png';
-// Private Packages
-import imgPkg10 from '../assets/images/Private Boat Package/1.png';
-import imgPkg15 from '../assets/images/Private Boat Package/2.png';
-import imgPkg25 from '../assets/images/Private Boat Package/3.png';
-import imgPkg40 from '../assets/images/Private Boat Package/makan.png';
+import imgPakejA from '../assets/images/kapas island/1. Relaxation Package/snorkeling.png';
+import imgPakejB from '../assets/images/kapas island/2. Mental Escape/island.png';
+import imgPakejC from '../assets/images/kapas island/3. Joy & Playfulness (Top Pick!)/beach.png';
+import imgPakejD from '../assets/images/kapas island/4. Mood Booster/resort.png';
+
 
 const KapasIslandDayTrips = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -77,17 +67,17 @@ const KapasIslandDayTrips = () => {
       price: v.price,
       image: (() => {
         const imageMap = {
-          'relax-kapas': imgPakejAGemini,
-          'mental-escape-kapas': imgMental,
-          'joy-play-kapas': imgJoy,
-          'mood-booster-kapas': imgMood,
+          'relax-kapas': imgPakejA,
+          'mental-escape-kapas': imgPakejB,
+          'joy-play-kapas': imgPakejC,
+          'mood-booster-kapas': imgPakejD,
           'private-package-10pax-kapas': imgPkg10,
           'private-package-15pax-kapas': imgPkg15,
           'private-package-25pax-kapas': imgPkg25,
           'private-package-40pax-kapas': imgPkg40,
         };
         return imageMap[v.sku];
-      })() || v.imageUrl || imgJoy,
+      })() || v.imageUrl || imgPakejA,
       link: getActivityLink(v.sku, v.island),
       buttonText: "Buy Now",
       description: v.description,
