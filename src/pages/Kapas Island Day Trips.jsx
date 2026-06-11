@@ -71,10 +71,10 @@ const KapasIslandDayTrips = () => {
           'mental-escape-kapas': imgPakejB,
           'joy-play-kapas': imgPakejC,
           'mood-booster-kapas': imgPakejD,
-          'private-package-10pax-kapas': imgPkg10,
-          'private-package-15pax-kapas': imgPkg15,
-          'private-package-25pax-kapas': imgPkg25,
-          'private-package-40pax-kapas': imgPkg40,
+          // 'private-package-10pax-kapas': imgPkg10,
+          // 'private-package-15pax-kapas': imgPkg15,
+          // 'private-package-25pax-kapas': imgPkg25,
+          // 'private-package-40pax-kapas': imgPkg40,
         };
         return imageMap[v.sku];
       })() || v.imageUrl || imgPakejA,
