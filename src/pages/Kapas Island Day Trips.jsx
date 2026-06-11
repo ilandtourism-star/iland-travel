@@ -8,10 +8,10 @@ import SEO from '../components/common/SEO';
 import { getActivityLink } from '../utils/activityLinks';
 
 // --- IMAGES ---
-import imgPakejA from '../assets/images/kapas island/1. Relaxation Package/snorkeling.png';
-import imgPakejB from '../assets/images/kapas island/2. Mental Escape/island.png';
-import imgPakejC from '../assets/images/kapas island/3. Joy & Playfulness (Top Pick!)/beach.png';
-import imgPakejD from '../assets/images/kapas island/4. Mood Booster/resort.png';
+import imgPakejA from '../assets/images/kapas island/1. Relaxation Package/1.png';
+import imgPakejB from '../assets/images/kapas island/2. Mental Escape/2.png';
+import imgPakejC from '../assets/images/kapas island/3. Joy & Playfulness (Top Pick!)/7.png';
+import imgPakejD from '../assets/images/kapas island/4. Mood Booster/7.png';
 
 
 const KapasIslandDayTrips = () => {
