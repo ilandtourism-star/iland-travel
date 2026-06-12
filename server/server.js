@@ -233,11 +233,11 @@ app.get('*', (req, res) => {
 });
 
 if (credentials.key && credentials.cert) {
-  https.createServer(credentials, app).listen(port, () => {
-    console.log(`Pelayan HTTPS sedang berjalan di https://localhost:${port}`);
+  https.createServer(credentials, app).listen(port, '0.0.0.0', () => {
+    console.log(`Pelayan HTTPS sedang berjalan di port ${port}`);
   });
 } else {
-  app.listen(port, () => {
-    console.log(`Pelayan HTTP sedang berjalan di http://localhost:${port} (Sijil SSL tidak dijumpai)`);
+  app.listen(port, '0.0.0.0', () => {
+    console.log(`Pelayan HTTP sedang berjalan di port ${port} (Sijil SSL tidak dijumpai)`);
   });
 }

@@ -9,9 +9,9 @@ import homeHero from '../assets/images/home-hero.png';
 import clipperShipImg from '../assets/images/clipper-ship-elite.png';
 
 // Snorkeling Images
-import kapasSnorkelImg from '../assets/images/kapas island/snorkeling.png';
-import redangSnorkelImg from '../assets/images/Redang island/snorkeling2.png';
-import perhentianSnorkelImg from '../assets/images/perhentian island/snorkeling.png';
+import kapasSnorkelImg from '../assets/images/Kapas Island/snorkeling.png';
+import redangSnorkelImg from '../assets/images/Redang Island/snorkeling2.png';
+import perhentianSnorkelImg from '../assets/images/Perhentian Island/snorkeling.png';
 
 // --- Components ---
 import ActivityCard from '../components/common/ActivityCard';
