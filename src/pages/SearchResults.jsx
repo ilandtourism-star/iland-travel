@@ -44,20 +44,34 @@ const SearchResults = () => {
     };
 
     // Transformation Logic
-    const allActivities = vacations.map(v => ({
-        sku: v.sku,
-        title: v.name,
-        rating: v.rating,
-        reviews: v.reviewCount,
-        price: v.price,
-        image: v.imageUrl || "/images/perhentian island/1.png",
-        link: getActivityLink(v.sku, v.island),
-        buttonText: "Buy Now",
-        features: v.features ? v.features.map(f => 
-            typeof f === 'string' ? translateFeature(f) : { ...f, text: translateFeature(f.text) }
-        ) : [],
-        badge: v.name.includes('Snorkeling') ? "Best Seller" : (v.category === 'boat_trip_exclusive' ? "PREMIUM" : null)
-    }));
+    const allActivities = vacations.map(v => {
+        // Tetapkan gambar gantian (fallback image)
+        let fallbackImage = "/images/perhentian island/1.png";
+        
+        if (v.island === 'Kapas') {
+            if (v.sku === 'relax-kapas') fallbackImage = imgRelax;
+            else if (v.sku === 'mental-escape-kapas') fallbackImage = imgMental;
+            else if (v.sku === 'joy-play-kapas') fallbackImage = imgJoy;
+            else if (v.sku === 'mood-booster-kapas') fallbackImage = imgMood;
+            else if (v.category === 'boat_trip_family' || v.name.includes('Private Boat Trip')) fallbackImage = imgPrivateTrip;
+            else if (v.category === 'boat_trip_exclusive' || v.name.includes('Private Boat Package')) fallbackImage = imgExclusive;
+        }
+
+        return {
+            sku: v.sku,
+            title: v.name,
+            rating: v.rating,
+            reviews: v.reviewCount,
+            price: v.price,
+            image: v.imageUrl || fallbackImage,
+            link: getActivityLink(v.sku, v.island),
+            buttonText: "Buy Now",
+            features: v.features ? v.features.map(f => 
+                typeof f === 'string' ? translateFeature(f) : { ...f, text: translateFeature(f.text) }
+            ) : [],
+            badge: v.name.includes('Snorkeling') ? "Best Seller" : (v.category === 'boat_trip_exclusive' ? "PREMIUM" : null)
+        };
+    });
 
     useEffect(() => {
         if (query) {
