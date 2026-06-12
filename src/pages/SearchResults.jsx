@@ -32,6 +32,17 @@ const SearchResults = () => {
         navigate(`/search?q=${encodeURIComponent(searchTerm)}`);
     };
 
+    const translateFeature = (text) => {
+        if (!text) return text;
+        return text
+          .replace(/BOT PERGI BALIK/gi, 'RETURN BOAT TRANSFER')
+          .replace(/AKTIVITI BEBAS/gi, 'FREE ACTIVITY')
+          .replace(/TOILET \(AWAM\)/gi, 'PUBLIC TOILET')
+          .replace(/SURAU \(AWAM\)/gi, 'PUBLIC PRAYER ROOM')
+          .replace(/SNORKELING \(TAMAN LAUT\)/gi, 'MARINE PARK SNORKELING')
+          .replace(/HIKING BUKIT SINGA/gi, 'LION HILL HIKING');
+    };
+
     // Transformation Logic
     const allActivities = vacations.map(v => ({
         sku: v.sku,
@@ -42,7 +53,9 @@ const SearchResults = () => {
         image: v.imageUrl || "/images/perhentian island/1.png",
         link: getActivityLink(v.sku, v.island),
         buttonText: "Buy Now",
-        features: v.features,
+        features: v.features ? v.features.map(f => 
+            typeof f === 'string' ? translateFeature(f) : { ...f, text: translateFeature(f.text) }
+        ) : [],
         badge: v.name.includes('Snorkeling') ? "Best Seller" : (v.category === 'boat_trip_exclusive' ? "PREMIUM" : null)
     }));
 

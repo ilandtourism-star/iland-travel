@@ -24,6 +24,17 @@ const KapasIslandDayTrips = () => {
   // Menggunakan Debounce untuk Live Filtering
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
+  const translateFeature = (text) => {
+    if (!text) return text;
+    return text
+      .replace(/BOT PERGI BALIK/gi, 'RETURN BOAT TRANSFER')
+      .replace(/AKTIVITI BEBAS/gi, 'FREE ACTIVITY')
+      .replace(/TOILET \(AWAM\)/gi, 'PUBLIC TOILET')
+      .replace(/SURAU \(AWAM\)/gi, 'PUBLIC PRAYER ROOM')
+      .replace(/SNORKELING \(TAMAN LAUT\)/gi, 'MARINE PARK SNORKELING')
+      .replace(/HIKING BUKIT SINGA/gi, 'LION HILL HIKING');
+  };
+
   // Ambil data yang berkaitan sahaja (snorkeling & private-boat)
   const activities = useMemo(() => {
     if (!data) return [];
@@ -77,7 +88,9 @@ const KapasIslandDayTrips = () => {
       link: getActivityLink(v.sku, v.island),
       buttonText: "Buy Now",
       description: v.description,
-      features: v.features,
+      features: v.features ? v.features.map(f => 
+        typeof f === 'string' ? translateFeature(f) : { ...f, text: translateFeature(f.text) }
+      ) : [],
       isInSeason: v.isInSeason,
       badge: v.sku.includes('joy') ? "Most Popular" : v.sku.includes('package') ? "PREMIUM" : null
     }));
