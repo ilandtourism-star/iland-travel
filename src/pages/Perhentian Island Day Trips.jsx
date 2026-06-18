@@ -159,17 +159,27 @@ const PerhentianIslandDayTrips = () => {
 
                 {/* Side Navigation / Info */}
                 <aside className="sidebar">
-                    <div className="sidebar-map-card">
+                    <div className="sidebar-map-card" style={{ paddingBottom: '15px' }}>
                         <iframe
                             src="https://www.google.com/maps?q=Kuala%20Besut%20Jetty%20Terengganu&output=embed"
                             width="100%"
-                            height="100%"
-                            style={{ border: 0 }}
+                            height="200"
+                            style={{ border: 0, borderRadius: '8px' }}
                             allowFullScreen=""
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
                             title="Kuala Besut Jetty Location"
                         ></iframe>
+                        <div style={{ textAlign: 'center', marginTop: '10px' }}>
+                            <a 
+                                href="https://maps.app.goo.gl/2RZzhZzwjjVVT1PPA" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                style={{ fontSize: '0.9rem', color: '#0ea5e9', fontWeight: 'bold', textDecoration: 'none' }}
+                            >
+                                <i className="fas fa-external-link-alt"></i> Open in Google Maps
+                            </a>
+                        </div>
                     </div>
                 </aside>
 
