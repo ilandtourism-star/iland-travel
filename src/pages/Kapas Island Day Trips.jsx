@@ -255,7 +255,7 @@ const KapasIslandDayTrips = () => {
             ></iframe>
             <div style={{ textAlign: 'center', marginTop: '10px' }}>
               <a 
-                href="https://maps.app.goo.gl/ZBBPpGgvBBVtnwbC7" 
+                href="https://maps.app.goo.gl/quj28JZiH8yqFKcX9" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 style={{ fontSize: '0.9rem', color: '#0ea5e9', fontWeight: 'bold', textDecoration: 'none' }}
