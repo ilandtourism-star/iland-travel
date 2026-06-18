@@ -48,7 +48,7 @@ const PerhentianIslandDayTrips = () => {
                 rating: v.rating,
                 reviews: v.reviewCount,
                 price: v.price,
-                image: v.imageUrl || "/images/perhentian island/1.png",
+                image: v.sku === 'snorkeling-perhentian' ? '/images/perhentian island/baru.png' : (v.imageUrl || "/images/perhentian island/1.png"),
                 link: getActivityLink(v.sku, v.island),
                 buttonText: "Buy Now",
                 description: v.description,

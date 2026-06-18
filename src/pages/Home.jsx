@@ -11,7 +11,7 @@ import clipperShipImg from '../assets/images/clipper-ship-elite.png';
 // Snorkeling Images
 import kapasSnorkelImg from '../assets/images/kapas island/snorkeling.png';
 import redangSnorkelImg from '../assets/images/Redang island/snorkeling2.png';
-import perhentianSnorkelImg from '../assets/images/perhentian island/snorkeling.png';
+import perhentianSnorkelImg from '../assets/images/perhentian island/baru.png';
 
 // --- Components ---
 import ActivityCard from '../components/common/ActivityCard';
