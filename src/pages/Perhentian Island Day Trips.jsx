@@ -44,7 +44,7 @@ const PerhentianIslandDayTrips = () => {
 
             return {
                 sku: v.sku,
-                title: v.name,
+                title: v.sku === 'free-dive-perhentian' ? 'NAMA BARU ANDA DI SINI' : v.name,
                 rating: v.rating,
                 reviews: v.reviewCount,
                 price: v.price,
