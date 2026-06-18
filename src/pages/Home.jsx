@@ -228,7 +228,7 @@ const Home = () => {
         },
         {
             id: 201, sku: 'free-dive-perhentian', island: 'Perhentian',
-            title: "NAMA BARU ANDA DI SINI",
+            title: "3. PERHENTIAN FREE DIVING DAYTRIP",
             rating: "5.0", reviews: 88, price: "280.00", originalPrice: "364.00",
             image: '/images/perhentian island/perhentian_freediving.png', buttonText: "View Details", isFlashSale: true, totalSeats: 15, seatsLeft: 2,
             link: "/perhentian-island-day-trips#free-dive-perhentian",
