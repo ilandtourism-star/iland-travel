@@ -208,9 +208,10 @@ Location Map: ${mapLink}
 
     // Inject custom features for all packages
     let customFeatures = [...features];
-    if (!customFeatures.some(f => f.text.includes('Time :') || f.text.includes('Pick up jetty'))) {
+    if (!customFeatures.some(f => f && typeof f.text === 'string' && (f.text.includes('Time :') || f.text.includes('Pick up jetty')))) {
         let timeText = 'Time : 8.00am-4.00pm';
-        const isSquidJigging = packageData?.category === 'squid_jigging' || (packageData?.name || initialTitle).toLowerCase().includes('squid');
+        const titleStr = packageData?.name || initialTitle || '';
+        const isSquidJigging = packageData?.category === 'squid_jigging' || titleStr.toLowerCase().includes('squid');
         if (displayIslandName === 'kapas') {
             timeText = 'Time : 8.30am';
         } else if (isSquidJigging) {
