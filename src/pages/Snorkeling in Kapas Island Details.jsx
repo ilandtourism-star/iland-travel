@@ -6,7 +6,7 @@ import { useDebounce } from '../hooks/useDebounce';
 import SEO from '../components/common/SEO';
 
 // Import images directly (kept for fallback)
-import imgSnorkeling from '../assets/images/kapas island/snorkeling baru.jpg';
+import imgSnorkeling from '../assets/images/kapas island/snorkeling baru.png';
 
 const SnorkelingKapas = () => {
   const [searchQuery, setSearchQuery] = useState('');
