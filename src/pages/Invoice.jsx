@@ -5,6 +5,7 @@ import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 
 import { secureFetch } from '../lib/api';
+import { getDisplayPackageName } from '../utils/activityLinks';
 
 const invoiceReducer = (state, action) => {
     switch (action.type) {
@@ -277,7 +278,7 @@ const Invoice = () => {
                             <tbody>
                                 <tr>
                                     <td style={{ padding: '24px 8px', borderBottom: '1px solid #e2e8f0' }}>
-                                        <div style={{ fontWeight: '700', color: '#0f172a', fontSize: '16px', marginBottom: '8px' }}>{booking.packageName}</div>
+                                        <div style={{ fontWeight: '700', color: '#0f172a', fontSize: '16px', marginBottom: '8px' }}>{getDisplayPackageName(booking.vacation_sku, booking.packageName)}</div>
                                         <div style={{ fontSize: '13px', color: '#64748b', display: 'flex', flexDirection: 'column', gap: '4px' }}>
                                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><MapPin size={14} /> Activity Location / Boarding Point</div>
                                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Calendar size={14} /> Scheduled for {new Date(booking.date).toLocaleDateString()}</div>

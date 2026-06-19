@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { CreditCard, Banknote, Wallet, ShieldCheck, ChevronRight, Lock } from 'lucide-react';
+import { getDisplayPackageName } from '../utils/activityLinks';
 
 const Checkout = () => {
     const location = useLocation();
@@ -148,7 +149,7 @@ const Checkout = () => {
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                             <div>
                                 <div style={{ fontSize: '12px', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Package</div>
-                                <div style={{ fontSize: '15px', fontWeight: '600', color: '#1e293b' }}>{packageName}</div>
+                                <div style={{ fontSize: '15px', fontWeight: '600', color: '#1e293b' }}>{getDisplayPackageName(vacation_sku, packageName)}</div>
                             </div>
 
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>

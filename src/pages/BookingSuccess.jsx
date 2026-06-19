@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { CheckCircle, Home, Mail, Calendar, Package, Download } from 'lucide-react';
+import { getDisplayPackageName } from '../utils/activityLinks';
 import ReviewSection from '../components/ReviewSection';
 
 const BookingSuccess = () => {
@@ -75,7 +76,7 @@ const BookingSuccess = () => {
                         <Package size={18} color="#64748b" />
                         <div>
                             <div style={{ fontSize: '12px', color: '#94a3b8' }}>Activity</div>
-                            <div style={{ fontSize: '15px', fontWeight: '600', color: '#334155' }}>{packageName}</div>
+                            <div style={{ fontSize: '15px', fontWeight: '600', color: '#334155' }}>{getDisplayPackageName(vacation_sku, packageName)}</div>
                         </div>
                     </div>
 

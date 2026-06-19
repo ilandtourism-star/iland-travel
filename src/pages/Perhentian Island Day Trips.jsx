@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 // --- Custom Hooks ---
 import { useVacations } from '../hooks/useVacations';
 import { useDebounce } from '../hooks/useDebounce';
-import { getActivityLink } from '../utils/activityLinks';
+import { getActivityLink, getDisplayPackageName } from '../utils/activityLinks';
 import SEO from '../components/common/SEO';
 
 // --- Components ---
@@ -44,7 +44,7 @@ const PerhentianIslandDayTrips = () => {
 
             return {
                 sku: v.sku,
-                title: v.name,
+                title: getDisplayPackageName(v.sku, v.name),
                 rating: v.rating,
                 reviews: v.reviewCount,
                 price: v.price,
@@ -63,7 +63,7 @@ const PerhentianIslandDayTrips = () => {
         // Menambah 1 lagi aktiviti secara manual (contoh: Private Boat)
         const manualActivity = {
             sku: 'private-boat-perhentian',
-            title: "6. taxi boat",
+            title: getDisplayPackageName('private-boat-perhentian', '6. taxi boat'),
             rating: 5.0,
             reviews: 24,
             price: 25,

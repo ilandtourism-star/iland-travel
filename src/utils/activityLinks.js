@@ -49,3 +49,53 @@ export const getIslandPageLink = (island) => {
     };
     return map[island] || '/';
 };
+
+/**
+ * Maps package SKUs to clean package names (e.g., PACKAGE A, PACKAGE B).
+ */
+export const getDisplayPackageName = (sku, defaultTitle = '') => {
+    const map = {
+        // Kapas Island
+        'relax-kapas': 'PACKAGE A',
+        'mental-escape-kapas': 'PACKAGE B',
+        'joy-play-kapas': 'PACKAGE C',
+        'mood-booster-kapas': 'PACKAGE D',
+        'private-boat-10pax-kapas': 'PACKAGE E',
+        'private-boat-15pax-kapas': 'PACKAGE F',
+        'private-boat-25pax-kapas': 'PACKAGE G',
+        'private-boat-40pax-kapas': 'PACKAGE H',
+        'private-package-10pax-kapas': 'PACKAGE I',
+        'private-package-15pax-kapas': 'PACKAGE J',
+        'private-package-25pax-kapas': 'PACKAGE K',
+        'private-package-40pax-kapas': 'PACKAGE L',
+
+        // Redang Island
+        'snorkeling-redang': 'PACKAGE A',
+        'skin-dive-redang': 'PACKAGE B',
+        'free-dive-redang': 'PACKAGE C',
+        'squid-jigging-redang': 'PACKAGE D',
+
+        // Perhentian Island
+        'snorkeling-perhentian': 'PACKAGE A',
+        'skin-dive-perhentian': 'PACKAGE B',
+        'free-dive-perhentian': 'PACKAGE C',
+        'private-boat-perhentian': 'PACKAGE D'
+    };
+
+    if (sku && map[sku]) {
+        return map[sku];
+    }
+
+    // Fallback parsing: extract number from title string if available
+    const nameToParse = defaultTitle || '';
+    const match = nameToParse.match(/^(\d+)\./);
+    if (match) {
+        const num = parseInt(match[1], 10);
+        if (num >= 1 && num <= 26) {
+            return `PACKAGE ${String.fromCharCode(64 + num)}`;
+        }
+    }
+
+    return defaultTitle || 'PACKAGE';
+};
+

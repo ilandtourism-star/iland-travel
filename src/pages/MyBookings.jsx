@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, Calendar, Users, Package, CheckCircle, Clock, XCircle, ArrowRight, Ticket } from 'lucide-react';
+import { getDisplayPackageName } from '../utils/activityLinks';
 
 const STATUS_CONFIG = {
     confirmed: { label: 'Confirmed', icon: CheckCircle, color: '#059669', bg: '#d1fae5', border: '#6ee7b7' },
@@ -39,7 +40,7 @@ const BookingCard = ({ booking, onViewInvoice }) => {
                     </div>
                     <div>
                         <div style={{ fontWeight: '700', fontSize: '15px', color: '#1e293b', lineHeight: 1.3 }}>
-                            {booking.packageName || 'Unknown Package'}
+                            {getDisplayPackageName(booking.vacation_sku, booking.packageName || 'Unknown Package')}
                         </div>
                         <div style={{ fontSize: '12px', color: '#94a3b8', marginTop: '2px' }}>
                             ID: <span style={{ fontFamily: 'monospace', color: '#64748b', fontWeight: '600' }}>{booking.id}</span>

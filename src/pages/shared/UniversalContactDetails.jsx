@@ -4,6 +4,7 @@ import { useToast } from '../../components/common/Toast';
 import { secureFetch } from '../../lib/api';
 import { countries } from '../../lib/countries';
 import { useRef } from 'react';
+import { getDisplayPackageName } from '../../utils/activityLinks';
 
 const UniversalContactDetails = () => {
     const { addToast } = useToast();
@@ -71,7 +72,7 @@ const UniversalContactDetails = () => {
 
         const endpoint = e.currentTarget.action;
         const pax = (Number(adultCount) || 0) + (Number(childCount) || 0);
-        const title = packageData?.name || initialTitle;
+        const title = getDisplayPackageName(vacation_sku, packageData?.name || initialTitle);
         const parsedDate = selectedDate ? new Date(selectedDate) : null;
         const isValidDate = parsedDate && !isNaN(parsedDate.getTime());
 
@@ -174,7 +175,7 @@ Location Map: ${mapLink}
         }
     };
 
-    const title = packageData?.name || initialTitle;
+    const title = getDisplayPackageName(vacation_sku, packageData?.name || initialTitle);
     const image = packageData?.imageUrl || 'https://via.placeholder.com/150';
     const description = packageData?.description || '';
 

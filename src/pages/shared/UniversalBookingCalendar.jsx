@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useToast } from '../../components/common/Toast';
 import { secureFetch } from '../../lib/api';
 import boatImage from '../../assets/images/Private Boat Trip/1.png';
+import { getDisplayPackageName } from '../../utils/activityLinks';
 
 // Sub-component for Calendar Widget (Monthly Grid)
 const CalendarWidget = ({ onSelect, selectedDate, allowedDaysOfWeek = null }) => {
@@ -116,7 +117,8 @@ const UniversalBookingCalendar = ({
     }, [apiEndpoint, selectedDate]);
 
     const price = (packageData && packageData.price) ? packageData.price : defaultPrice;
-    const title = (packageData && packageData.name) ? packageData.name : defaultTitle;
+    const rawTitle = (packageData && packageData.name) ? packageData.name : defaultTitle;
+    const title = getDisplayPackageName(apiEndpoint, rawTitle);
     const isPrivateBoat = apiEndpoint && (apiEndpoint.includes('private-boat') || apiEndpoint.includes('private-package'));
 
     let calculatedTotal;

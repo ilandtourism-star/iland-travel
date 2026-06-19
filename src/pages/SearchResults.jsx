@@ -11,7 +11,7 @@ import imgPrivateTrip from '../assets/images/Private Boat Trip/21.png';
 import imgExclusive from '../assets/images/Private Boat Package/makan.png';
 
 import { useVacations } from '../hooks/useVacations';
-import { getActivityLink } from '../utils/activityLinks';
+import { getActivityLink, getDisplayPackageName } from '../utils/activityLinks';
 import SEO from '../components/common/SEO';
 
 const SearchResults = () => {
@@ -59,7 +59,7 @@ const SearchResults = () => {
 
         return {
             sku: v.sku,
-            title: v.name,
+            title: getDisplayPackageName(v.sku, v.name),
             rating: v.rating,
             reviews: v.reviewCount,
             price: v.price,

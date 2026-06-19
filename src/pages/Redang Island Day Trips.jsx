@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import ActivityCard from '../components/common/ActivityCard';
 import { useVacations } from '../hooks/useVacations';
 import { useDebounce } from '../hooks/useDebounce';
-import { getActivityLink } from '../utils/activityLinks';
+import { getActivityLink, getDisplayPackageName } from '../utils/activityLinks';
 import SEO from '../components/common/SEO';
 
 
@@ -46,7 +46,7 @@ const RedangIslandDayTrips = () => {
 
             return {
                 sku: v.sku,
-                title: v.name,
+                title: getDisplayPackageName(v.sku, v.name),
                 rating: v.rating,
                 reviews: v.reviewCount,
                 price: v.price,
