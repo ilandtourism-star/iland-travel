@@ -2,7 +2,7 @@ const db = require('../db');
 
 const newActivity = {
     sku: 'free-dive-perhentian',
-    name: '5. PERHENTIAN FREE DIVING DAYTRIP',
+    name: 'PERHENTIAN FREE DIVING DAYTRIP',
     description: 'Resort (Island), Perhentian Dive Site. Diving Points: Underwater cave (5 Meter), Police wreck (18 Meter), Underwater Corridor (5 Meter), Shark point (5 Meter). Terms & conditions: No freediving license required, participants must be able to swim & follow instructions.',
     price: 28000,
     childPrice: null,

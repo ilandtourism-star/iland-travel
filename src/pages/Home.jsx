@@ -11,7 +11,6 @@ import clipperShipImg from '../assets/images/clipper-ship-elite.png';
 // Snorkeling Images
 import kapasSnorkelImg from '../assets/images/kapas island/snorkeling.png';
 import redangSnorkelImg from '../assets/images/Redang island/snorkeling2.png';
-import perhentianSnorkelImg from '../assets/images/perhentian island/baru.png';
 
 // --- Components ---
 import ActivityCard from '../components/common/ActivityCard';
@@ -24,7 +23,7 @@ import { fomoBookings, wallOfFameData, wofTitles } from '../data/homeData';
 const imageMap = {
     kapasSnorkelImg,
     redangSnorkelImg,
-    perhentianSnorkelImg
+    perhentianSnorkelImg: "/images/perhentian island/baru.png"
 };
 
 const Home = () => {
@@ -228,7 +227,7 @@ const Home = () => {
         },
         {
             id: 201, sku: 'free-dive-perhentian', island: 'Perhentian',
-            title: "3. PERHENTIAN FREE DIVING DAYTRIP",
+            title: "PERHENTIAN FREE DIVING DAYTRIP",
             rating: "5.0", reviews: 88, price: "280.00", originalPrice: "364.00",
             image: '/images/perhentian island/perhentian_freediving.png', buttonText: "View Details", isFlashSale: true, totalSeats: 15, seatsLeft: 2,
             link: "/perhentian-island-day-trips#free-dive-perhentian",
