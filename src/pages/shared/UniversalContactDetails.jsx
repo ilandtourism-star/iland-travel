@@ -72,8 +72,11 @@ const UniversalContactDetails = () => {
         const endpoint = e.currentTarget.action;
         const pax = (Number(adultCount) || 0) + (Number(childCount) || 0);
         const title = packageData?.name || initialTitle;
-        const dateStr = selectedDate && !isNaN(new Date(selectedDate).getTime()) 
-            ? new Date(selectedDate).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }) 
+        const parsedDate = selectedDate ? new Date(selectedDate) : null;
+        const isValidDate = parsedDate && !isNaN(parsedDate.getTime());
+
+        const dateStr = isValidDate 
+            ? parsedDate.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }) 
             : 'Not selected';
 
         const bookingPayload = {
@@ -81,7 +84,7 @@ const UniversalContactDetails = () => {
             email: formData.email,
             packageName: title,
             vacation_sku: vacation_sku,
-            date: selectedDate ? new Date(selectedDate).toISOString() : null,
+            date: isValidDate ? parsedDate.toISOString() : null,
             adults: Number(adultCount),
             children: Number(childCount),
             pax: pax,
@@ -102,7 +105,8 @@ const UniversalContactDetails = () => {
         }
 
         let timeText = '8.00am-4.00pm';
-        const isSquidJigging = packageData?.category === 'squid_jigging' || (title).toLowerCase().includes('squid');
+        const titleStr = title || '';
+        const isSquidJigging = packageData?.category === 'squid_jigging' || titleStr.toLowerCase().includes('squid');
         if (islandName === 'kapas') {
             timeText = '8.30am';
         } else if (isSquidJigging) {
