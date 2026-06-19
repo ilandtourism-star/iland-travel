@@ -6,6 +6,20 @@ import { countries } from '../../lib/countries';
 import { useRef } from 'react';
 import { getDisplayPackageName } from '../../utils/activityLinks';
 
+const translateFeature = (text) => {
+    if (!text) return text;
+    return text
+        .replace(/BOT PERGI BALIK/gi, 'RETURN BOAT TRANSFER')
+        .replace(/BOAT TRANSFER/gi, 'RETURN BOAT TRANSFER')
+        .replace(/AKTIVITI BEBAS/gi, 'FREE ACTIVITY')
+        .replace(/TOILET \(AWAM\)/gi, 'PUBLIC TOILET')
+        .replace(/SURAU \(AWAM\)/gi, 'PUBLIC PRAYER ROOM')
+        .replace(/SNORKELING \(TAMAN LAUT\)/gi, 'MARINE PARK SNORKELING')
+        .replace(/HIKING BUKIT SINGA/gi, 'LION HILL HIKING')
+        .replace(/FREE DAN EASY/gi, 'FREE & EASY')
+        .replace(/FREE AND EASY/gi, 'FREE & EASY');
+};
+
 const UniversalContactDetails = () => {
     const { addToast } = useToast();
     const navigate = useNavigate();
@@ -192,7 +206,18 @@ Location Map: ${mapLink}
     } catch (e) {
         console.error("Error parsing features:", e);
     }
-    if (!Array.isArray(features)) features = [];
+    if (!Array.isArray(features)) {
+        features = [];
+    } else {
+        features = features.map(f => {
+            if (typeof f === 'string') {
+                return { icon: 'fas fa-check text-green', text: translateFeature(f) };
+            } else if (f && typeof f.text === 'string') {
+                return { ...f, text: translateFeature(f.text) };
+            }
+            return f;
+        });
+    }
 
     // Determine Jetty Name for UI rendering
     const displayIslandName = (packageData?.island || '').toLowerCase();
