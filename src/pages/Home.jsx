@@ -266,16 +266,7 @@ const Home = () => {
                 </div>
             )}
 
-            {recentBooking && (
-                <div className="home-booking-toast">
-                    <div className="home-toast-icon"><i className="fas fa-bell"></i></div>
-                    <div className="home-toast-details">
-                        <p style={{ margin: 0, fontSize: '0.85rem', fontWeight: 'bold' }}>{recentBooking.name}</p>
-                        <p style={{ margin: 0, fontSize: '0.75rem', color: '#666' }}>Booked {recentBooking.act} <span style={{ color: '#ef4444', fontWeight: 'bold' }}>2 mins ago!</span></p>
-                    </div>
-                    <button onClick={() => setRecentBooking(null)} className="home-toast-close" title="Dismiss"><i className="fas fa-times"></i></button>
-                </div>
-            )}
+
 
             {/* --- HERO SECTION --- */}
             <div className="home-hero-section" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${homeHero})` }}>
