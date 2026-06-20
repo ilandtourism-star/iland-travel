@@ -7,7 +7,7 @@ try {
     const updateSkin = db.prepare(`UPDATE vacations SET name = '2. REDANG SKIN DIVE EXPERIENCE' WHERE sku = 'skin-dive-redang'`);
     updateSkin.run();
 
-    const updateFree = db.prepare(`UPDATE vacations SET name = '3. REDANG FREE DIVING DAYTRIP' WHERE sku = 'free-dive-redang'`);
+    const updateFree = db.prepare(`UPDATE vacations SET name = '2. REDANG FREE DIVING DAYTRIP' WHERE sku = 'free-dive-redang'`);
     updateFree.run();
 
     console.log('✅ Activities successfully reordered!');
