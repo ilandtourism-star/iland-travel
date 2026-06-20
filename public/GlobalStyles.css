@@ -3713,15 +3713,35 @@ select.premium-select:hover:not(:focus) {
     }
 }
 
-/* Adjust home-hero-title font size for mobile devices */
+/* Adjust home titles font size and spacing for mobile devices */
 @media (max-width: 768px) {
     .home-hero-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+    .home-section-title, .home-wof-title {
+        font-size: 1.5rem;
     }
 }
 
 @media (max-width: 480px) {
     .home-hero-title {
-        font-size: 1.6rem;
+        font-size: 1.1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .home-section-title {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .home-wof-title {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
