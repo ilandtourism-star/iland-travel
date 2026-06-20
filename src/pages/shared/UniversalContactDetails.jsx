@@ -470,7 +470,18 @@ Location Map: ${mapLink}
                                 <div className="detail-item">
                                     <i className="far fa-calendar-alt"></i>
                                     <div>
-                                        <span className="label">Date</span>
+                                        <span className="label">CHECK IN=</span>
+                                        <span className="value">
+                                            {selectedDate && !isNaN(new Date(selectedDate).getTime())
+                                                ? new Date(selectedDate).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })
+                                                : 'Not selected'}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="detail-item">
+                                    <i className="far fa-calendar-alt"></i>
+                                    <div>
+                                        <span className="label">CHECK OUT=</span>
                                         <span className="value">
                                             {selectedDate && !isNaN(new Date(selectedDate).getTime())
                                                 ? new Date(selectedDate).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })
