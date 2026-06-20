@@ -233,7 +233,11 @@ Location Map: ${mapLink}
         mapQuery = 'Jeti Marang Terengganu';
     } else if (displayIslandName === 'perhentian') {
         renderJettyName = 'Kuala Besut Jetty';
-        mapQuery = 'Kuala Besut Jetty Terengganu';
+        if (vacation_sku === 'snorkeling-perhentian') {
+            mapQuery = 'PERHENTIAN DHIA TRAVEL & TOURS SDN. BHD.';
+        } else {
+            mapQuery = 'Kuala Besut Jetty Terengganu';
+        }
     }
 
     // Inject custom features for all packages
