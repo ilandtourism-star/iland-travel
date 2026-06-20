@@ -3941,22 +3941,64 @@ select.premium-select:hover:not(:focus) {
         text-overflow: ellipsis;
     }
     
-    /* Perfect Card alignment for mobile */
+    /* Ultra-Compact & Professional Card alignment for mobile */
     .home-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 10px; /* Reduced gap between cards */
     }
+    
     .package-card,
     .activity-card,
     .home-card {
-        padding: 12px;
-        margin-bottom: 12px;
+        padding: 10px !important; /* Tighter internal padding */
+        margin-bottom: 10px !important; /* Tighter external margin */
+        border-radius: 8px !important; /* Slightly sharper, more professional corners */
+        border: 1px solid #e2e8f0; /* Crisp thin border */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Very subtle professional shadow */
     }
+    
     .card-img-container,
     .card-image-wrapper,
     .home-image-container {
-        height: 180px !important; /* Uniform height specifically for mobile */
-        margin: -12px -12px 12px -12px;
+        height: 160px !important; /* Proportional compact height */
+        margin: -10px -10px 10px -10px !important; /* Pull image exactly to edge of 10px padding */
+        border-radius: 8px 8px 0 0 !important;
         overflow: hidden;
+    }
+
+    /* Tighten content spacing inside the cards */
+    .card-content {
+        padding: 0 !important;
+    }
+    
+    .card-title, .home-card-title {
+        font-size: 1.05rem !important;
+        margin-bottom: 6px !important;
+        line-height: 1.2 !important;
+    }
+    
+    .star-rating {
+        margin-bottom: 6px !important;
+        font-size: 0.8rem;
+    }
+    
+    .features-list {
+        margin-bottom: 8px !important;
+        gap: 4px !important;
+    }
+    
+    .features-list li {
+        padding: 2px 0 !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .price-section {
+        margin-top: 8px !important;
+        padding-top: 8px !important;
+    }
+    
+    .btn-awe-primary, .btn-awe-copy, .btn-awe-outline {
+        padding: 8px 12px !important;
+        font-size: 0.85rem !important;
     }
 }
