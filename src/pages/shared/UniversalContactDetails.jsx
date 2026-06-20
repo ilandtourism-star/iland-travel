@@ -116,8 +116,8 @@ const UniversalContactDetails = () => {
             mapLink = `https://maps.app.goo.gl/gWk2bPYLuN4ABpE27?g_st=atm`;
         } else if (islandName === 'perhentian') {
             jettyName = 'Kuala Besut Jetty';
-            if (vacation_sku === '1-snorkeling-perhentian') {
-                mapLink = 'https://maps.app.goo.gl/8gKdv8J24ZCkJkq77';
+            if (vacation_sku === 'snorkeling-perhentian') {
+                mapLink = 'https://maps.app.goo.gl/CcsZ3ANBRDfkkRkG9';
             } else {
                 mapLink = `https://www.google.com/maps?q=${encodeURIComponent('Kuala Besut Jetty Terengganu')}`;
             }
@@ -445,9 +445,9 @@ Location Map: ${mapLink}
                                     <i className="fas fa-external-link-alt"></i> Open in Google Maps
                                 </a>
                             )}
-                            {vacation_sku === '1-snorkeling-perhentian' && (
+                            {vacation_sku === 'snorkeling-perhentian' && (
                                 <a 
-                                    href="https://maps.app.goo.gl/8gKdv8J24ZCkJkq77" 
+                                    href="https://maps.app.goo.gl/CcsZ3ANBRDfkkRkG9" 
                                     target="_blank" 
                                     rel="noopener noreferrer"
                                     style={{ display: 'inline-block', marginTop: '10px', fontSize: '0.9rem', color: '#0ea5e9', fontWeight: 'bold', textDecoration: 'none' }}
