@@ -76,24 +76,11 @@ export const getDisplayPackageName = (sku, defaultTitle = '') => {
         'squid-jigging-redang': 'PACKAGE D',
 
         // Perhentian Island
-        'snorkeling-perhentian': 'PACKAGE A',
-        'skin-dive-perhentian': 'PACKAGE B',
-        'free-dive-perhentian': 'PACKAGE C',
-        'private-boat-perhentian': 'PACKAGE D'
+        // (Removed to use original names)
     };
 
     if (sku && map[sku]) {
         return map[sku];
-    }
-
-    // Fallback parsing: extract number from title string if available
-    const nameToParse = defaultTitle || '';
-    const match = nameToParse.match(/^(\d+)\./);
-    if (match) {
-        const num = parseInt(match[1], 10);
-        if (num >= 1 && num <= 26) {
-            return `PACKAGE ${String.fromCharCode(64 + num)}`;
-        }
     }
 
     return defaultTitle || 'PACKAGE';
