@@ -3691,3 +3691,24 @@ select.premium-select:hover:not(:focus) {
     color: #64748b;
     border: 1px dashed #cbd5e1;
 }
+
+/* Adjust backup mobile number font size for mobile devices */
+@media (max-width: 768px) {
+    .premium-form label[for="backup_mobile_number"] {
+        font-size: 0.8rem;
+    }
+    .premium-form input:focus~label[for="backup_mobile_number"],
+    .premium-form input:not(:placeholder-shown)~label[for="backup_mobile_number"] {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .premium-form label[for="backup_mobile_number"] {
+        font-size: 0.75rem;
+    }
+    .premium-form input:focus~label[for="backup_mobile_number"],
+    .premium-form input:not(:placeholder-shown)~label[for="backup_mobile_number"] {
+        font-size: 0.6rem;
+    }
+}
