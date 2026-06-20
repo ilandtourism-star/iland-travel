@@ -116,7 +116,11 @@ const UniversalContactDetails = () => {
             mapLink = `https://maps.app.goo.gl/gWk2bPYLuN4ABpE27?g_st=atm`;
         } else if (islandName === 'perhentian') {
             jettyName = 'Kuala Besut Jetty';
-            mapLink = `https://www.google.com/maps?q=${encodeURIComponent('Kuala Besut Jetty Terengganu')}`;
+            if (vacation_sku === '1-snorkeling-perhentian') {
+                mapLink = 'https://maps.app.goo.gl/8gKdv8J24ZCkJkq77';
+            } else {
+                mapLink = `https://www.google.com/maps?q=${encodeURIComponent('Kuala Besut Jetty Terengganu')}`;
+            }
         }
 
         let timeText = '8.00am-4.00pm';
@@ -434,6 +438,16 @@ Location Map: ${mapLink}
                             {displayIslandName === 'kapas' && (
                                 <a 
                                     href="https://maps.app.goo.gl/gWk2bPYLuN4ABpE27?g_st=atm" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    style={{ display: 'inline-block', marginTop: '10px', fontSize: '0.9rem', color: '#0ea5e9', fontWeight: 'bold', textDecoration: 'none' }}
+                                >
+                                    <i className="fas fa-external-link-alt"></i> Open in Google Maps
+                                </a>
+                            )}
+                            {vacation_sku === '1-snorkeling-perhentian' && (
+                                <a 
+                                    href="https://maps.app.goo.gl/8gKdv8J24ZCkJkq77" 
                                     target="_blank" 
                                     rel="noopener noreferrer"
                                     style={{ display: 'inline-block', marginTop: '10px', fontSize: '0.9rem', color: '#0ea5e9', fontWeight: 'bold', textDecoration: 'none' }}
