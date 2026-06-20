@@ -306,7 +306,7 @@ const Home = () => {
 
                 {/* Snorkeling Packages */}
                 <div className="home-section" style={{ padding: '0' }}>
-                    <h2 className="home-section-title">Top Snorkeling and Island Hopping Packages</h2>
+                    <h2 className="home-section-title">Top Snorkeling</h2>
                     <div className="home-grid">
                         {dynamicActivities.map(item => (
                             <ActivityCard key={item.id} {...item} />
