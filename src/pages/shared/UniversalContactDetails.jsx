@@ -38,7 +38,7 @@ const UniversalContactDetails = () => {
 
     const [packageData, setPackageData] = useState(null);
     const [formData, setFormData] = useState({
-        firstname: '', lastname: '', email: '', country: '', code: '+60', mobile: ''
+        firstname: '', lastname: '', email: '', country: '', code: '+60', mobile: '', backupCode: '+60', backupMobile: ''
     });
     const [showCountryDropdown, setShowCountryDropdown] = useState(false);
     const [countrySearch, setCountrySearch] = useState('');
@@ -140,7 +140,7 @@ No. of Pax: ${adultCount} Adult${adultCount > 1 ? 's' : ''}${childCount > 0 ? `,
 *CUSTOMER DETAILS*
 Name: ${formData.firstname} ${formData.lastname}
 Email: ${formData.email}
-Phone No: ${formData.code}${formData.mobile}
+Phone No: ${formData.code}${formData.mobile}${formData.backupMobile ? `\nBackup Phone No: ${formData.backupCode}${formData.backupMobile}` : ''}
 
 *DEPARTURE LOCATION*
 Jetty: ${jettyName}
@@ -259,7 +259,7 @@ Location Map: ${mapLink}
                     <div className="checkout-card">
                         <div className="card-header">
                             <h2>Contact Details</h2>
-                            <p className="subtitle">Confirmation will be sent to the email provided below.</p>
+                            <p className="subtitle">Confirmation will be sent to the Contact provided below.</p>
                         </div>
 
 
@@ -374,6 +374,34 @@ Location Map: ${mapLink}
                                         required
                                     />
                                     <label htmlFor="mobile_number">Mobile Number</label>
+                                    <i className="fas fa-phone input-icon"></i>
+                                </div>
+                            </div>
+
+                            <div className="form-row phone-row">
+                                <div className="input-group code-group">
+                                    <input
+                                        type="text"
+                                        name="backupCode"
+                                        id="backup_country_code"
+                                        autoComplete="tel-country-code"
+                                        placeholder=" "
+                                        onChange={handleChange}
+                                        value={formData.backupCode}
+                                    />
+                                    <label htmlFor="backup_country_code">Code</label>
+                                </div>
+                                <div className="input-group number-group">
+                                    <input
+                                        type="tel"
+                                        name="backupMobile"
+                                        id="backup_mobile_number"
+                                        autoComplete="tel-national"
+                                        placeholder=" "
+                                        onChange={handleChange}
+                                        value={formData.backupMobile}
+                                    />
+                                    <label htmlFor="backup_mobile_number">BACKUP Mobile Number (Optional)</label>
                                     <i className="fas fa-phone input-icon"></i>
                                 </div>
                             </div>
