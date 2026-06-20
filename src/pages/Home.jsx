@@ -281,9 +281,8 @@ const Home = () => {
             <div className="home-hero-section" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${homeHero})` }}>
                 <div className="home-hero-content">
                     <h1 className="home-hero-title">
-                        {isMonday ? "Monday Blues? Plan Your Escape." : "Discover Malaysia's Hidden Gems"}
+                        {isMonday ? "Monday Blues? Plan Your Escape." : "Experience the best island activities."}
                     </h1>
-                    <p className="home-hero-subtitle">Experience the best island activities: Snorkeling, Squid Jigging, and Private Boat Trips.</p>
 
                     <div className="search-container home-search-wrapper">
                         <input

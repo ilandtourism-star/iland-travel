@@ -3712,3 +3712,16 @@ select.premium-select:hover:not(:focus) {
         font-size: 0.6rem;
     }
 }
+
+/* Adjust home-hero-title font size for mobile devices */
+@media (max-width: 768px) {
+    .home-hero-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-hero-title {
+        font-size: 1.6rem;
+    }
+}
