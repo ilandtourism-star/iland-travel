@@ -44,7 +44,7 @@ const Home = () => {
     // --- State: Environmental Triggers & FOMO ---
     const [isHotDay, setIsHotDay] = useState(false);
     const [isMonday, setIsMonday] = useState(false);
-    const [recentBooking, setRecentBooking] = useState(null);
+
 
     // --- State: Activities & Flash Sales ---
     const initialActivitiesDynamic = [
@@ -204,16 +204,6 @@ const Home = () => {
 
         // Monday Logic
         setIsMonday(new Date().getDay() === 1);
-
-        // FOMO Toasts Logic
-        const showToast = () => {
-            const randomUser = fomoBookings[Math.floor(Math.random() * fomoBookings.length)];
-            setRecentBooking(randomUser);
-            setTimeout(() => setRecentBooking(null), 5000);
-            setTimeout(showToast, Math.floor(Math.random() * 15000) + 15000);
-        };
-        const initialTimer = setTimeout(showToast, 10000);
-        return () => clearTimeout(initialTimer);
     }, []);
 
 
