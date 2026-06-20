@@ -298,7 +298,7 @@ const Home = () => {
 
 
             {/* --- FREE DIVING SECTION --- */}
-            <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
+            <div className="home-section" style={{ padding: '0', marginBottom: '30px' }}>
                 <h2 className="home-section-title">Top Free Diving Daytrip Packages</h2>
                 <div className="home-grid">
                     {freeDiveActivities.map(item => (
@@ -308,7 +308,7 @@ const Home = () => {
             </div>
 
             {/* --- LEARNING SECTION --- */}
-            <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
+            <div className="home-section" style={{ padding: '0', marginBottom: '30px' }}>
                 <h2 className="home-section-title">Learning</h2>
                 <div className="home-grid">
                     {learningActivities.map(item => (
@@ -318,7 +318,7 @@ const Home = () => {
             </div>
 
             {/* Island Destinations */}
-            <div className="home-section" style={{ padding: '0', marginBottom: '60px' }}>
+            <div className="home-section" style={{ padding: '0', marginBottom: '30px' }}>
                 <h2 className="home-section-title">Popular Islands</h2>
                 <div className="home-grid">
                     {[
@@ -347,7 +347,7 @@ const Home = () => {
             </div>
 
             {/* --- WEATHER WIDGET SECTION (Moved) --- */}
-            <div className="home-weather-widget-container" style={{ marginBottom: '60px', padding: '0 5%' }}>
+            <div className="home-weather-widget-container" style={{ marginBottom: '30px', padding: '0 5%' }}>
                 <div className="home-weather-inner">
                     <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                         <div className="weather-icon-container"><i className="fas fa-water"></i></div>

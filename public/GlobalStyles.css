@@ -3947,13 +3947,16 @@ select.premium-select:hover:not(:focus) {
         gap: 16px;
     }
     .package-card,
-    .activity-card {
-        padding: 15px;
+    .activity-card,
+    .home-card {
+        padding: 12px;
+        margin-bottom: 12px;
     }
     .card-img-container,
-    .card-image-wrapper {
-        height: 200px; /* Uniform height specifically for mobile */
-        margin: -15px -15px 15px -15px;
+    .card-image-wrapper,
+    .home-image-container {
+        height: 180px !important; /* Uniform height specifically for mobile */
+        margin: -12px -12px 12px -12px;
         overflow: hidden;
     }
 }
