@@ -19,7 +19,7 @@ const Navbar = () => {
       <div className="nav-container">
         <Link to="/" className="logo-container">
           <img src={logo} alt="Iland Logo" className="logo-img" width="30" height="30" />
-          <span className="company-name">Iland</span>
+          <span className="company-name">ilaand</span>
         </Link>
 
         {/* Mobile Menu Button */}
