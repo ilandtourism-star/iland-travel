@@ -315,9 +315,10 @@ input:focus {
 
 .card-img-container,
 .card-image-wrapper {
-    height: 200px;
+    height: 250px;
     margin: -20px -20px 15px -20px;
     position: relative;
+    overflow: hidden;
     overflow: hidden;
 }
 
@@ -3732,6 +3733,201 @@ select.premium-select:hover:not(:focus) {
     }
     .home-section-title {
         font-size: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    gap: 20px;
+}
+.weather-icon-container {
+    background: #0ea5e9;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(14,165,233,0.4);
+    flex-shrink: 0;
+}
+.weather-text-header {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #38bdf8;
+    font-weight: bold;
+}
+.weather-text-sub {
+    margin: 4px 0 0 0;
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+.weather-info-group {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.weather-info-item {
+    text-align: center;
+}
+@media (max-width: 991px) {
+    .weather-desktop-only {
+        display: none;
+    }
+}
+.weather-info-label {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.weather-info-value {
+    margin: 5px 0 0 0;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.weather-info-value-calm { color: #22c55e; }
+.weather-info-value-high { color: #38bdf8; }
+
+.weather-verdict-badge {
+    display: inline-block;
+    margin-top: 5px;
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border: 1px solid rgba(34,197,94,0.4);
+}
+.weather-share-btn-cta {
+    background: #0ea5e9;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(14,165,233,0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.weather-share-btn-cta:hover {
+    background: #0284c7;
+    transform: translateY(-2px);
+}
+
+/* Wall of Fame Header */
+.home-wof-header {
+    padding: 0 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+}
+.home-wof-title {
+    color: white;
+    font-size: 1.2rem;
+    margin: 0;
+}
+.home-wof-desc {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.85rem;
+    margin: 5px 0 20px;
+}
+.home-wof-share-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   ISLAND PAGES UTILITY CLASSES (Refactored from inline)
+   ========================================================================== */
+.island-page-loading {
+    text-align: center;
+    padding: 100px;
+    font-size: 1.1rem;
+    color: #64748b;
+    background: white;
+    margin: 20px;
+    border-radius: 12px;
+}
+.island-page-error {
+    text-align: center;
+    padding: 100px;
+    color: #ef4444;
+    background: #fef2f2;
+    margin: 20px;
+    border-radius: 12px;
+    border: 1px solid #fee2e2;
+}
+.sidebar-map-card {
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    background: white;
+    height: 250px;
+    border-radius: 12px;
+}
+
+.search-results-page {
+    padding-top: 100px;
+    min-height: 80vh;
+}
+
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    background: #f8fafc;
+    border-radius: 12px;
+    margin: 20px 0;
+    color: #64748b;
+    border: 1px dashed #cbd5e1;
+}
+
+/* Adjust backup mobile number font size for mobile devices */
+@media (max-width: 768px) {
+    .premium-form label[for="backup_mobile_number"] {
+        font-size: 0.8rem;
+    }
+    .premium-form input:focus~label[for="backup_mobile_number"],
+    .premium-form input:not(:placeholder-shown)~label[for="backup_mobile_number"] {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .premium-form label[for="backup_mobile_number"] {
+        font-size: 0.75rem;
+    }
+    .premium-form input:focus~label[for="backup_mobile_number"],
+    .premium-form input:not(:placeholder-shown)~label[for="backup_mobile_number"] {
+        font-size: 0.6rem;
+    }
+}
+
+/* Adjust home titles font size and spacing for mobile devices */
+@media (max-width: 768px) {
+    .home-hero-title {
+        font-size: 1.8rem;
+    }
+    .home-section-title, .home-wof-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-hero-title {
+        font-size: 1.1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .home-section-title {
+        font-size: 1rem;
         margin-bottom: 20px;
         white-space: nowrap;
         overflow: hidden;
@@ -3743,5 +3939,21 @@ select.premium-select:hover:not(:focus) {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+    
+    /* Perfect Card alignment for mobile */
+    .home-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .package-card,
+    .activity-card {
+        padding: 15px;
+    }
+    .card-img-container,
+    .card-image-wrapper {
+        height: 200px; /* Uniform height specifically for mobile */
+        margin: -15px -15px 15px -15px;
+        overflow: hidden;
     }
 }

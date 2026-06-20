@@ -257,7 +257,7 @@ const ActivityCard = ({
         )}
 
         {/* 1. Bahagian Gambar - Clickable for Gallery */}
-        <div className="card-image-wrapper" onClick={openGallery} style={{ cursor: 'pointer', display: 'flex', justifyContent: 'center', backgroundColor: '#f8f9fa', position: 'relative', height: '250px', flexShrink: 0 }}>
+        <div className="card-image-wrapper" onClick={openGallery} style={{ cursor: 'pointer', display: 'flex', justifyContent: 'center', backgroundColor: '#f8f9fa', position: 'relative', flexShrink: 0 }}>
           <img src={image} alt={title} loading="lazy" className="card-image" style={{ objectFit: 'cover', objectPosition: 'center 75%', width: '100%', height: '100%' }} />
           {/* Optional: Add an icon or overlay to indicate it's a gallery */}
           {galleryImages.length > 1 && (
