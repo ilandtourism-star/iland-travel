@@ -443,7 +443,7 @@ const PartnerActivityListing = () => {
 
             {/* Simple Footer */}
             < footer className="listings-footer" >
-                <p>&copy; 2025 Iland. All rights reserved.</p>
+                <p>&copy; 2025 ilaand. All rights reserved.</p>
                 <div className="listings-footer-links">
                     <a href="/terms" style={{ color: '#5392f9', textDecoration: 'none' }}>Terms of Use</a>
                     <a href="/privacy" style={{ color: '#5392f9', textDecoration: 'none' }}>Privacy Policy</a>

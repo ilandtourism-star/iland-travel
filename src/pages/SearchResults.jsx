@@ -37,9 +37,9 @@ const SearchResults = () => {
         return text
           .replace(/BOT PERGI BALIK/gi, 'RETURN BOAT TRANSFER')
           .replace(/AKTIVITI BEBAS/gi, 'FREE ACTIVITY')
-          .replace(/TOILET \(AWAM\)/gi, 'PUBLIC TOILET')
-          .replace(/SURAU \(AWAM\)/gi, 'PUBLIC PRAYER ROOM')
-          .replace(/SNORKELING \(TAMAN LAUT\)/gi, 'MARINE PARK SNORKELING')
+          .replace(/TOILET | ilaand(AWAM| ilaand)/gi, 'PUBLIC TOILET')
+          .replace(/SURAU | ilaand(AWAM| ilaand)/gi, 'PUBLIC PRAYER ROOM')
+          .replace(/SNORKELING | ilaand(TAMAN LAUT| ilaand)/gi, 'MARINE PARK SNORKELING')
           .replace(/HIKING BUKIT SINGA/gi, 'LION HILL HIKING');
     };
 
@@ -91,7 +91,7 @@ const SearchResults = () => {
     return (
         <div className="home-container search-results-page">
             <SEO 
-                title={query ? `Search results for "${query}" | iland` : "Search Activities | iland"}
+                title={query ? `Search results for "${query}" | ilaand` : "Search Activities | ilaand"}
                 description={query ? `Explore the best island activities matching "${query}".` : "Find and book the best island activities in Malaysia."}
             />
             {/* Search Bar in Results Page */}

@@ -170,7 +170,7 @@ const Footer = () => {
       <div className="footer-content">
         {/* Column 1: Brand & Intro */}
         <div className="footer-section">
-          <Link to="/" className="footer-logo">ILAND</Link>
+          <Link to="/" className="footer-logo">ILAAND</Link>
           <p>
             Your primary gateway to island paradises in Terengganu. We provide the best
             boat services and tour packages for an unforgettable vacation experience.
@@ -220,7 +220,7 @@ const Footer = () => {
             </li>
             <li>
               <i className="fas fa-envelope"></i>
-              <span>ilandtourism@gmail.com</span>
+              <span>ilaandtourism@gmail.com</span>
             </li>
             <li>
               <i className="fas fa-clock"></i>
@@ -231,7 +231,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; {currentYear} Iland Tourism. All Rights Reserved.</p>
+        <p>&copy; {currentYear} ilaand Tourism. All Rights Reserved.</p>
         <div style={{ display: 'flex', gap: '20px' }}>
           <Link to="/terms" style={{ color: '#888888', fontSize: '0.85rem' }}>Terms & Conditions</Link>
           <Link to="/privacy" style={{ color: '#888888', fontSize: '0.85rem' }}>Privacy Policy</Link>

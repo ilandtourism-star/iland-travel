@@ -41,8 +41,8 @@ const PartnerNavbar = () => {
                 {/* Brand Logo */}
                 <Link to="/partner/activity-listing" className="partner-logo-link">
                     <div className="partner-logo-box">
-                        <img src={logo} alt="Iland Logo" style={{ height: '24px' }} />
-                        <span className="partner-platform-name">Iland Partner</span>
+                        <img src={logo} alt="ilaand Logo" style={{ height: '24px' }} />
+                        <span className="partner-platform-name">ilaand Partner</span>
                     </div>
                 </Link>
 

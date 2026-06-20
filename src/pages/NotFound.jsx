@@ -15,7 +15,7 @@ const NotFound = () => {
             fontFamily: 'Poppins, sans-serif'
         }}>
             <SEO 
-                title="Page Not Found | iland"
+                title="Page Not Found | ilaand"
                 description="The island you are looking for has drifted away. Let's get you back to shore."
             />
 

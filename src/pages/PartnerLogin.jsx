@@ -62,7 +62,7 @@ const PartnerLogin = () => {
                         <i className="fas fa-anchor" style={{ color: 'white', fontSize: '24px' }}></i>
                     </div>
                     <h1 style={{ fontSize: '1.6rem', fontWeight: '700', color: '#1a202c', margin: '0 0 8px' }}>
-                        iland Partner Portal
+                        ilaand Partner Portal
                     </h1>
                     <p style={{ color: '#718096', margin: 0, fontSize: '0.95rem' }}>
                         Log masuk untuk mengurus aktiviti anda

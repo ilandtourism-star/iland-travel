@@ -3,7 +3,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 const SEO = ({ title, description, canonical, type = 'website' }) => {
-    const siteTitle = 'iland - Island Activities Booking';
+    const siteTitle = 'ilaand - Island Activities Booking';
     const siteUrl = 'https://iland-app.com'; // Gantikan dengan domain sebenar nanti
 
     const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;

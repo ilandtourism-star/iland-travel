@@ -169,7 +169,7 @@ const OceanFactCard = () => {
 
     const handleShare = (platform) => {
         const shareUrl = window.location.href;
-        const shareText = `Did you know: "${fact}"\n\n- Brought to you by iland, explore our secret oceans today!`;
+        const shareText = `Did you know: "${fact}"| ilaandn| ilaandn- Brought to you by iland, explore our secret oceans today!`;
 
         let url = '';
         switch (platform) {
@@ -218,7 +218,7 @@ const OceanFactCard = () => {
             ctx.fillStyle = '#0ea5e9';
             ctx.font = 'bold 28px "Segoe UI", Arial, sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('ILAND OCEAN FACT', 300, 60);
+            ctx.fillText('ILAAND OCEAN FACT', 300, 60);
 
             // Load Image
             const img = new Image();

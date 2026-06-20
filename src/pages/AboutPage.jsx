@@ -30,14 +30,14 @@ const AboutPage = () => {
                         That night, sitting under the fading stars by the beach, we made a promise: <strong>We never want another traveler to be fooled or disappointed again.</strong>
                     </p>
                     <div className="origin-quote">
-                        "From that ruined vacation, <strong>iland</strong> was born. We swore to scout, filter, and only guide you to secret marine locations that are actually worth your money. We are not a regular travel agency; we are your personal 'Ocean Navigators' ensuring your story ends with awe, not regret."
+                        "From that ruined vacation, <strong>ilaand</strong> was born. We swore to scout, filter, and only guide you to secret marine locations that are actually worth your money. We are not a regular travel agency; we are your personal 'Ocean Navigators' ensuring your story ends with awe, not regret."
                     </div>
                 </section>
 
                 <section className="about-section">
                     <h2><i className="fas fa-fish"></i> Not Just Snorkeling: The 'Secret Inhabitants'</h2>
                     <p>
-                        At <strong>iland</strong>, we believe the ocean is not a fake aquarium, but a bustling city. Unlucky tourists are usually dragged to see the 'rooftops' of dead reefs.
+                        At <strong>ilaand</strong>, we believe the ocean is not a fake aquarium, but a bustling city. Unlucky tourists are usually dragged to see the 'rooftops' of dead reefs.
                     </p>
                     <p>
                         But with iland, you hold the keys. We navigate you past the tourist traps, straight into the 'secret alleys' of marine architecture. With us, you don't just swim—you hunt for the elusive Clownfish hiding in swaying anemones, or spot Seahorses blending perfectly into the coral. This is the ultimate 'Insider' experience for true ocean explorers.

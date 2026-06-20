@@ -10,7 +10,7 @@ const PartnerLayout = () => {
                 <Outlet />
             </div>
             <div className="partner-footer">
-                <p>&copy; 2025 Iland Platform. All rights reserved.</p>
+                <p>&copy; 2025 ilaand Platform. All rights reserved.</p>
             </div>
         </div>
     );

@@ -94,7 +94,7 @@ const Invoice = () => {
             const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
 
             pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-            pdf.save(`ILAND_Invoice_${bookingId || 'booking'}.pdf`);
+            pdf.save(`ILAAND_Invoice_${bookingId || 'booking'}.pdf`);
         } catch (error) {
             console.error("Error generating PDF:", error);
             alert("Failed to generate PDF. Please use the Print option as an alternative.");
@@ -189,10 +189,10 @@ const Invoice = () => {
                     <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
                             <div style={{ width: '40px', height: '40px', backgroundColor: 'white', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0f172a', fontWeight: '900', fontSize: '20px' }}>I</div>
-                            <h1 style={{ fontSize: '32px', fontWeight: '800', margin: 0, letterSpacing: '-0.02em', color: 'white' }}>ILAND</h1>
+                            <h1 style={{ fontSize: '32px', fontWeight: '800', margin: 0, letterSpacing: '-0.02em', color: 'white' }}>ILAAND</h1>
                         </div>
                         <p style={{ opacity: 0.8, margin: 0, fontSize: '14px', lineHeight: '1.6' }}>
-                            Iland Travel & Tours Sdn Bhd<br />
+                            ilaand Travel & Tours Sdn Bhd<br />
                             Jeti Marang, 21600 Marang<br />
                             Terengganu, Malaysia
                         </p>

@@ -44,7 +44,7 @@ const ActivityCard = ({
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Helper to slugify IDs for URL stability
-  const slugify = (text) => text?.toString().toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-') || '';
+  const slugify = (text) => text?.toString().toLowerCase().trim().replace(/| ilaands+/g, '-').replace(/[^| ilaandw-]+/g, '').replace(/--+/g, '-') || '';
   const entityId = slugify(sku || title);
 
   const isGalleryOpen = searchParams.get('modal') === 'gallery' && searchParams.get('id') === entityId;
@@ -623,7 +623,7 @@ const ActivityCard = ({
                         doc.setTextColor(100, 116, 139);
                         doc.text("Ready for the real adventure? Book your secret escape at www.iland.com", 105, 285, null, null, "center");
 
-                        doc.save("iland-Survival-Guide.pdf");
+                        doc.save("ilaand-Survival-Guide.pdf");
                       } catch (e) {
                         alert("Failed to generate PDF. Make sure you are connected to the internet!");
                         console.error(e);

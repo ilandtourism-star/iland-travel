@@ -611,7 +611,7 @@ const AdminDashboard = () => {
                             Memaparkan {filteredBookings.length} daripada {totalBookings} tempahan
                         </p>
                         <p style={{ fontSize: '11px', color: '#cbd5e1', margin: 0 }}>
-                            iland Admin v1.0
+                            ilaand Admin v1.0
                         </p>
                     </div>
                 </div>

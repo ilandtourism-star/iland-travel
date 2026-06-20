@@ -182,7 +182,7 @@ const Home = () => {
 
     const handleShare = (platform) => {
         const shareUrl = window.location.href;
-        const shareText = "Check out the Wall of Fame on Iland! Malaysia's top travelers are here.";
+        const shareText = "Check out the Wall of Fame on ilaand! Malaysia's top travelers are here.";
         let url = '';
         switch (platform) {
             case 'whatsapp': url = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`; break;
