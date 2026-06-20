@@ -401,7 +401,7 @@ Location Map: ${mapLink}
                                         onChange={handleChange}
                                         value={formData.backupMobile}
                                     />
-                                    <label htmlFor="backup_mobile_number">BACKUP Mobile Number (Optional)</label>
+                                    <label htmlFor="backup_mobile_number">Backup Mobile Number (Optional)</label>
                                     <i className="fas fa-phone input-icon"></i>
                                 </div>
                             </div>
