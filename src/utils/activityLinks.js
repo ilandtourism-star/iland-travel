@@ -56,18 +56,18 @@ export const getIslandPageLink = (island) => {
 export const getDisplayPackageName = (sku, defaultTitle = '') => {
     const map = {
         // Kapas Island
-        'relax-kapas': 'PACKAGE A',
-        'mental-escape-kapas': 'PACKAGE B',
-        'joy-play-kapas': 'PACKAGE C',
-        'mood-booster-kapas': 'PACKAGE D',
-        'private-boat-10pax-kapas': 'PACKAGE E',
-        'private-boat-15pax-kapas': 'PACKAGE F',
-        'private-boat-25pax-kapas': 'PACKAGE G',
-        'private-boat-40pax-kapas': 'PACKAGE H',
-        'private-package-10pax-kapas': 'PACKAGE I',
-        'private-package-15pax-kapas': 'PACKAGE J',
-        'private-package-25pax-kapas': 'PACKAGE K',
-        'private-package-40pax-kapas': 'PACKAGE L',
+        'relax-kapas': 'PACKAGE A DAY TRIP KAPAS',
+        'mental-escape-kapas': 'PACKAGE B DAY TRIP KAPAS',
+        'joy-play-kapas': 'PACKAGE C DAY TRIP KAPAS',
+        'mood-booster-kapas': 'PACKAGE D DAY TRIP KAPAS',
+        'private-boat-10pax-kapas': 'PACKAGE E DAY TRIP KAPAS',
+        'private-boat-15pax-kapas': 'PACKAGE F DAY TRIP KAPAS',
+        'private-boat-25pax-kapas': 'PACKAGE G DAY TRIP KAPAS',
+        'private-boat-40pax-kapas': 'PACKAGE H DAY TRIP KAPAS',
+        'private-package-10pax-kapas': 'PACKAGE I DAY TRIP KAPAS',
+        'private-package-15pax-kapas': 'PACKAGE J DAY TRIP KAPAS',
+        'private-package-25pax-kapas': 'PACKAGE K DAY TRIP KAPAS',
+        'private-package-40pax-kapas': 'PACKAGE L DAY TRIP KAPAS',
 
         // Redang Island
         'snorkeling-redang': 'PACKAGE A',
