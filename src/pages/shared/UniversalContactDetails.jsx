@@ -38,7 +38,7 @@ const UniversalContactDetails = () => {
 
     const [packageData, setPackageData] = useState(null);
     const [formData, setFormData] = useState({
-        firstname: '', lastname: '', email: '', country: '', code: '+60', mobile: '', backupCode: '+60', backupMobile: ''
+        firstname: '', lastname: '', email: '', country: 'Malaysia', code: '+60', mobile: '', backupCode: '+60', backupMobile: ''
     });
     const [showCountryDropdown, setShowCountryDropdown] = useState(false);
     const [countrySearch, setCountrySearch] = useState('');
@@ -72,7 +72,7 @@ const UniversalContactDetails = () => {
     };
 
     const handleCountrySelect = (c) => {
-        setFormData({ ...formData, country: c.name, code: c.dial_code });
+        setFormData({ ...formData, country: c.name, code: c.dial_code, backupCode: c.dial_code });
         setShowCountryDropdown(false);
         setCountrySearch('');
     };
