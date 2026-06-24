@@ -9,7 +9,7 @@ const newActivity = {
     island: 'Perhentian',
     category: 'snorkeling',
     is_in_season: 1,
-    imageUrl: '/images/perhentian island/perhentian_freediving.png',
+    imageUrl: '/images/perhentian island/perhentian_freediving.jpg',
     features: JSON.stringify([
         { icon: "fas fa-clock", text: "1 hour dive for each point" },
         { icon: "fas fa-ship", text: "Return boat included" },

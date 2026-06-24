@@ -9,7 +9,7 @@ const newActivity = {
     island: 'Redang',
     category: 'snorkeling',
     is_in_season: 1,
-    imageUrl: '/images/Redang island/redang_freediving.png',
+    imageUrl: '/images/Redang island/redang_freediving.jpg',
     features: JSON.stringify([
         { icon: "fas fa-video", text: "Underwater footage & picture" },
         { icon: "fas fa-clock", text: "1 hour dive for each point" },
