@@ -9,7 +9,7 @@ const newActivity = {
     island: 'Perhentian',
     category: 'snorkeling',
     is_in_season: 1,
-    imageUrl: '/images/perhentian island/learn_skindiving.png',
+    imageUrl: '/images/perhentian island/learn_skindiving.jpg',
     features: JSON.stringify([
         { icon: "fas fa-clock", text: "1.5 Hours Learning Session" },
         { icon: "fas fa-ship", text: "Return Boat Transfer (KB Jetty - Perhentian)" },

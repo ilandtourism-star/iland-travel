@@ -231,7 +231,7 @@ const Home = () => {
             id: 301, sku: 'skin-dive-perhentian', island: 'Perhentian',
             title: "Learn Skindiving",
             rating: "5.0", reviews: 102, price: "260.00", originalPrice: "338.00",
-            image: '/images/perhentian island/learn_skindiving.png', buttonText: "View Details", isFlashSale: true, totalSeats: 10, seatsLeft: 5,
+            image: '/images/perhentian island/learn_skindiving.jpg', buttonText: "View Details", isFlashSale: true, totalSeats: 10, seatsLeft: 5,
             link: "/perhentian-island-day-trips#skin-dive-perhentian",
             flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 2.8).toISOString()
         }
