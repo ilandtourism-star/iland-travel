@@ -19,19 +19,19 @@ import PrivateBoatInKapasDetails from './pages/Private Boat in Kapas Island Deta
 import SquidJiggingDetails from './pages/Squid Jigging Activities Details';
 
 
-import SnorkelingKapas from './pages/Snorkeling in Kapas Island Details';
+import SnorkelingKapas from './pages/Kapas Island Snorkeling Day Trip Details';
 import KapasSearchPage from './pages/Kapas Island Day Trips';
 
 import RedangSearchPage from './pages/Redang Island Day Trips';
 
-import RedangSnorkeling from './pages/Snorkeling in Redang Island Details';
+import RedangSnorkeling from './pages/Redang Island Snorkeling Day Trip Details';
 import RedangSquidJigging from './pages/Squid Jigging in Redang Island Details';
 import PerhentianSearchPage from './pages/Perhentian Island Day Trips';
 
 import AboutPage from './pages/AboutPage';
 import RedangPackages from './pages/Redang Island Packages';
 import SnorkelingActivities from './pages/Snorkeling Activities';
-import SnorkelingPerhentian from './pages/Snorkeling in Perhentian Island Details';
+import SnorkelingPerhentian from './pages/Perhentian Island Snorkeling Day Trip Details';
 import SignIn from './pages/Control system';
 import SignInOrCreateAccount from './pages/Sign in or create an account';
 import BookingSuccess from './pages/BookingSuccess';

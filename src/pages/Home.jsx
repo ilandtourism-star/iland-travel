@@ -50,19 +50,19 @@ const Home = () => {
     const initialActivitiesDynamic = [
         {
             id: 1, sku: 'joy-play-kapas', island: 'Kapas',
-            title: "Snorkeling in Kapas Island",
+            title: "Kapas Island Snorkeling Day Trip",
             rating: "5.0", reviews: 200, price: "60.00", originalPrice: "89.00",
             imageKey: 'kapasSnorkelImg', buttonText: "View Details", isFlashSale: true, totalSeats: 20, seatsLeft: 3
         },
         {
             id: 2, sku: 'snorkeling-redang', island: 'Redang',
-            title: "Snorkeling in Redang Island",
+            title: "Redang Island Snorkeling Day Trip",
             rating: "5.0", reviews: 250, price: "120.00", originalPrice: "160.00",
             imageKey: 'redangSnorkelImg', buttonText: "View Details", isFlashSale: true, totalSeats: 25, seatsLeft: 5
         },
         {
             id: 3, sku: 'snorkeling-perhentian', island: 'Perhentian',
-            title: "Snorkeling in Perhentian Island",
+            title: "Perhentian Island Snorkeling Day Trip",
             rating: "4.8", reviews: 156, price: "100.00", originalPrice: "135.00",
             imageKey: 'perhentianSnorkelImg', buttonText: "View Details", isFlashSale: true, totalSeats: 15, seatsLeft: 2
         },

@@ -9,7 +9,7 @@ const PartnerNavbar = () => {
 
     const mockProperties = [
         "All activities",
-        "Snorkeling in Kapas",
+        "Kapas Island Snorkeling Day Trip",
         "Squid Jigging",
         "Sunset Cruise",
         "Island Hopping A",

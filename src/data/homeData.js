@@ -24,7 +24,7 @@ export const initialActivities = [
     },
     {
         id: 2,
-        title: "Snorkeling in Redang Island",
+        title: "Redang Island Snorkeling Day Trip",
         rating: "5.0",
         reviews: 250,
         price: "100.00",
@@ -38,7 +38,7 @@ export const initialActivities = [
     },
     {
         id: 3,
-        title: "Snorkeling in Perhentian Island",
+        title: "Perhentian Island Snorkeling Day Trip",
         rating: "4.0",
         reviews: 85,
         price: "80.00",

@@ -18,9 +18,9 @@ const Snorkeling = () => {
   };
 
   const activities = [
-    { id: 1, title: "Snorkeling in Kapas Island", rating: "4.5", reviews: 120, price: "49.00", image: kapasImg },
-    { id: 2, title: "Snorkeling in Redang Island", rating: "5.0", reviews: 250, price: "100.00", image: redangImg },
-    { id: 3, title: "Snorkeling in Perhentian Island", rating: "4.0", reviews: 85, price: "80.00", image: perhentianImg },
+    { id: 1, title: "Kapas Island Snorkeling Day Trip", rating: "4.5", reviews: 120, price: "49.00", image: kapasImg },
+    { id: 2, title: "Redang Island Snorkeling Day Trip", rating: "5.0", reviews: 250, price: "100.00", image: redangImg },
+    { id: 3, title: "Perhentian Island Snorkeling Day Trip", rating: "4.0", reviews: 85, price: "80.00", image: perhentianImg },
   ];
 
   return (

@@ -11,9 +11,9 @@ const AdminFlashSaleManager = () => {
 
     // Default settings if nothing in localStorage
     const defaultSettings = [
-        { id: 1, title: "Snorkeling in Kapas Island", isFlashSale: true, price: "49.00", originalPrice: "89.00", hours: 2.5, seatsLeft: 3 },
-        { id: 2, title: "Snorkeling in Redang Island", isFlashSale: true, price: "100.00", originalPrice: "160.00", hours: 4.2, seatsLeft: 5 },
-        { id: 3, title: "Snorkeling in Perhentian Island", isFlashSale: true, price: "80.00", originalPrice: "135.00", hours: 1.8, seatsLeft: 2 },
+        { id: 1, title: "Kapas Island Snorkeling Day Trip", isFlashSale: true, price: "49.00", originalPrice: "89.00", hours: 2.5, seatsLeft: 3 },
+        { id: 2, title: "Redang Island Snorkeling Day Trip", isFlashSale: true, price: "100.00", originalPrice: "160.00", hours: 4.2, seatsLeft: 5 },
+        { id: 3, title: "Perhentian Island Snorkeling Day Trip", isFlashSale: true, price: "80.00", originalPrice: "135.00", hours: 1.8, seatsLeft: 2 },
     ];
 
     const [flashSales, setFlashSales] = useState([]);
