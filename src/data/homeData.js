@@ -10,7 +10,7 @@
 export const initialActivities = [
     {
         id: 1,
-        title: "Snorkeling and island hopping in Kapas Island",
+        title: "Kapas Island Skindiving and Snorkeling Day Trips",
         rating: "4.5",
         reviews: 120,
         price: "49.00",
@@ -24,7 +24,7 @@ export const initialActivities = [
     },
     {
         id: 2,
-        title: "Redang Island Snorkeling Day Trip",
+        title: "Redang Island Skindiving and Snorkeling Day Trips",
         rating: "5.0",
         reviews: 250,
         price: "100.00",
@@ -38,7 +38,7 @@ export const initialActivities = [
     },
     {
         id: 3,
-        title: "Perhentian Island Snorkeling Day Trip",
+        title: "Perhentian Island Skindiving and Snorkeling Day Trips",
         rating: "4.0",
         reviews: 85,
         price: "80.00",

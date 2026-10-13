@@ -55,7 +55,7 @@ const SnorkelingRedang = () => {
           <button className="search-btn" onClick={handleSearch}>SEARCH</button>
         </div>
       </div>
-      <h1 className="page-title" style={{ textAlign: 'center', margin: '20px 0' }}>Redang Island Snorkeling Day Trip Details</h1>
+      <h1 className="page-title" style={{ textAlign: 'center', margin: '20px 0' }}>Redang Island Skindiving and Snorkeling Day Trips Details</h1>
 
       <div className="container">
         {filteredVacations.length === 0 && searchQuery && (

@@ -47,7 +47,7 @@ const SnorkelingKapas = () => {
   return (
     <main>
       <SEO
-        title="Kapas Island Snorkeling Day Trip"
+        title="Kapas Island Skindiving and Snorkeling Day Trips"
         description="Explore top snorkeling spots in Kapas Island. Crystal clear waters, vibrant coral reefs, and affordable packages."
         canonical="/kapas-snorkeling-details"
       />
@@ -64,7 +64,7 @@ const SnorkelingKapas = () => {
           <button className="search-btn" onClick={handleSearch}>SEARCH</button>
         </div>
       </div>
-      <h1 className="page-title" style={{ textAlign: 'center', margin: '20px 0' }}>Kapas Island Snorkeling Day Trip Details</h1>
+      <h1 className="page-title" style={{ textAlign: 'center', margin: '20px 0' }}>Kapas Island Skindiving and Snorkeling Day Trips Details</h1>
 
       <div className="container">
         {filteredVacations.length === 0 && searchQuery && (

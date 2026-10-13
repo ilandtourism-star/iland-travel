@@ -251,7 +251,7 @@ const MainRoutes = () => (
       <Route path="/contact-details/1-snorkeling-perhentian" element={<UniversalContactDetails />} />
       <Route path="/book/perhentian-learn-skindiving" element={<UniversalBookingCalendar apiEndpoint="skin-dive-perhentian" nextStepRoute="/contact-details/2-skin-dive-perhentian" defaultPrice="260.00" defaultTitle="2. Learn Skindiving" allowedDaysOfWeek={[0, 6]} />} />
       <Route path="/contact-details/2-skin-dive-perhentian" element={<UniversalContactDetails />} />
-      <Route path="/book/perhentian-free-diving" element={<UniversalBookingCalendar apiEndpoint="free-dive-perhentian" nextStepRoute="/contact-details/5-free-dive-perhentian" defaultPrice="280.00" defaultTitle="PERHENTIAN FREE DIVING DAYTRIP" allowedDaysOfWeek={[0, 6]} />} />
+      <Route path="/book/perhentian-free-diving" element={<UniversalBookingCalendar apiEndpoint="free-dive-perhentian" nextStepRoute="/contact-details/5-free-dive-perhentian" defaultPrice="280.00" defaultTitle="3. PERHENTIAN FREE DIVING DAYTRIP" allowedDaysOfWeek={[0, 6]} />} />
       <Route path="/contact-details/5-free-dive-perhentian" element={<UniversalContactDetails />} />
 
 
