@@ -70,7 +70,7 @@ export const getDisplayPackageName = (sku, defaultTitle = '') => {
         'private-package-40pax-kapas': 'PACKAGE L',
 
         // Redang Island
-        'free-dive-redang': '2. REDANG FREE DIVING DAYTRIP',
+        'free-dive-redang': '3. Redang Freediving Trip – 2 Days, 1 Night',
 
         // Perhentian Island
         // (Removed to use original names)

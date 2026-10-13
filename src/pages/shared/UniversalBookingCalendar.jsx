@@ -122,9 +122,10 @@ const UniversalBookingCalendar = ({
     const isPrivateBoat = apiEndpoint && (apiEndpoint.includes('private-boat') || apiEndpoint.includes('private-package'));
 
     let calculatedTotal;
-    if (packageData && packageData.childPrice) {
+    if (!isPrivateBoat) {
         // Per Person Calculation
-        calculatedTotal = (adultCount * parseFloat(price)) + (childCount * parseFloat(packageData.childPrice));
+        const childP = (packageData && packageData.childPrice) ? parseFloat(packageData.childPrice) : 0;
+        calculatedTotal = (adultCount * parseFloat(price)) + (childCount * childP);
     } else {
         // Per Boat Calculation
         calculatedTotal = parseFloat(price);
