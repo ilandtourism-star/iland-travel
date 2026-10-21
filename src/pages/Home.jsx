@@ -210,7 +210,7 @@ const Home = () => {
     const freeDiveActivities = useMemo(() => [
         {
             id: 202, sku: 'free-dive-redang', island: 'Redang',
-            title: "Redang Freediving Daytrip Buddy",
+            title: "Redang Freediving Daytrip",
             rating: "5.0", reviews: 94, price: "299.00", originalPrice: "388.00",
             image: '/images/Redang island/redang_freediving.jpg', buttonText: "View Details", isFlashSale: true, totalSeats: 15, seatsLeft: 4,
             link: "/redang-island-day-trips#free-dive-redang",
