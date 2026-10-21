@@ -2,9 +2,9 @@ const db = require('../db');
 
 const newActivity = {
     sku: 'free-dive-redang',
-    name: '3. Redang Freediving Trip – 2 Days, 1 Night',
+    name: '4. REDANG FREE DIVING DAYTRIP',
     description: 'FunDive Redang Island. Diving Points: Bus Wreck, Jetski Wreck, Coral Cave, Lima Island. Terms & conditions: No freediving license required, participants must be able to swim & follow instructions.',
-    price: 55000,
+    price: 29900,
     childPrice: null,
     island: 'Redang',
     category: 'snorkeling',
