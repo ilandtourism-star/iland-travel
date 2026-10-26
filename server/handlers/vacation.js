@@ -276,7 +276,7 @@ const seedVacations = () => {
             },
             {
                 sku: 'free-dive-redang',
-                name: '3. REDANG FREE DIVING DAYTRIP',
+                name: '2. REDANG FREE DIVING DAYTRIP',
                 description: 'FunDive Redang Island. Diving Points: Bus Wreck, Jetski Wreck, Coral Cave, Lima Island. Terms & conditions: No freediving license required, participants must be able to swim & follow instructions.',
                 price: 29900,
                 childPrice: null,
@@ -291,7 +291,9 @@ const seedVacations = () => {
                     { icon: "fas fa-id-card", text: "Marine park & district fees included" },
                     { icon: "fas fa-ship", text: "Return boat included" },
                     { icon: "fas fa-bottle-water", text: "Free flow mineral water & cold drinks" },
-                    { icon: "fas fa-user-shield", text: "Safety buddies included" }
+                    { icon: "fas fa-user-shield", text: "Safety buddies included" },
+                    { icon: "fas fa-clock", text: "Time : 8.00am-4.00pm" },
+                    { icon: "fas fa-map-marker-alt", text: "Pick up jetty : Neill Boat Services Jetty" }
                 ])
             },
             {

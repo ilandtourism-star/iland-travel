@@ -25,6 +25,7 @@ import KapasSearchPage from './pages/Kapas Island Day Trips';
 import RedangSearchPage from './pages/Redang Island Day Trips';
 
 import RedangSnorkeling from './pages/Redang Island Snorkeling Day Trip Details';
+import RedangFreeDiving from './pages/Redang Island Free Diving Day Trip Details';
 import RedangSquidJigging from './pages/Squid Jigging in Redang Island Details';
 import PerhentianSearchPage from './pages/Perhentian Island Day Trips';
 
@@ -238,9 +239,12 @@ const MainRoutes = () => (
       <Route path="/redang-snorkeling-details" element={<RedangSnorkeling />} />
       <Route path="/book/redang-snorkeling-day-trip" element={<UniversalBookingCalendar apiEndpoint="snorkeling-redang" nextStepRoute="/contact-details/1-snorkeling-redang" defaultPrice="100.00" defaultTitle="1. Day Trip Snorkeling (All-In)" />} />
       <Route path="/contact-details/1-snorkeling-redang" element={<UniversalContactDetails />} />
+      <Route path="/redang-freediving-details" element={<RedangFreeDiving />} />
+      <Route path="/redang-free-diving-details" element={<RedangFreeDiving />} />
+      <Route path="/2. Redang Free Diving Daytrip Places (Redang Island)" element={<RedangFreeDiving />} />
       <Route path="/book/redang-skin-dive" element={<UniversalBookingCalendar apiEndpoint="skin-dive-redang" nextStepRoute="/contact-details/2-skin-dive-redang" defaultPrice="250.00" defaultTitle="2. Redang Skin Dive Experience" />} />
       <Route path="/contact-details/2-skin-dive-redang" element={<UniversalContactDetails />} />
-      <Route path="/book/redang-free-diving" element={<UniversalBookingCalendar apiEndpoint="free-dive-redang" nextStepRoute="/contact-details/3-free-dive-redang" defaultPrice="299.00" defaultTitle="3. Redang Freediving Daytrip" allowedDaysOfWeek={[0, 6]} />} />
+      <Route path="/book/redang-free-diving" element={<UniversalBookingCalendar apiEndpoint="free-dive-redang" nextStepRoute="/contact-details/3-free-dive-redang" defaultPrice="299.00" defaultTitle="2. REDANG FREE DIVING DAYTRIP" allowedDaysOfWeek={[0, 6]} />} />
       <Route path="/contact-details/3-free-dive-redang" element={<UniversalContactDetails />} />
       <Route path="/redang-island-packages" element={<RedangPackages />} />
 

@@ -71,6 +71,8 @@
     "dev:private-boat-in-kapas-island-details": "vite --open \"/Private Boat in Kapas Island Details\"",
     "dev:private-boat-package-in-kapas-island-ticket": "vite --open \"/Private Boat Package in Kapas Island Ticket\"",
     "dev:private-boat-trip-in-kapas-island-ticket": "vite --open \"/Private Boat Trip in Kapas Island Ticket\"",
+    "dev:2-redang-free-diving-daytrip": "vite --open /redang-freediving-details",
+    "dev:redang-freediving-details": "vite --open /redang-freediving-details",
     "dev:redang-island-day-trips": "vite --open \"/Redang Island Day Trips\"",
     "dev:redang-island-packages": "vite --open \"/Redang Island Packages\"",
     "dev:searchresults": "vite --open \"/SearchResults\"",
