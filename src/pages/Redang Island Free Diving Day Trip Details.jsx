@@ -19,7 +19,7 @@ const RedangFreeDivingDetails = () => {
   const freeDivingActivity = useMemo(() => {
     const defaultData = {
       sku: 'free-dive-redang',
-      title: '2. REDANG FREE DIVING DAYTRIP',
+      title: 'REDANG FREE DIVING DAYTRIP',
       rating: 0.0,
       reviews: 0,
       price: 299,
@@ -80,7 +80,7 @@ const RedangFreeDivingDetails = () => {
   return (
     <main className="redang-freediving-page">
       <SEO
-        title="2. REDANG FREE DIVING DAYTRIP | iland"
+        title="REDANG FREE DIVING DAYTRIP | iland"
         description="FunDive Redang Island. Diving Points: Bus Wreck, Jetski Wreck, Coral Cave, Lima Island. No freediving license required, participants must be able to swim & follow instructions."
         canonical="/redang-freediving-details"
       />
@@ -100,7 +100,7 @@ const RedangFreeDivingDetails = () => {
       </div>
 
       <h1 className="page-title" style={{ textAlign: 'center', margin: '24px 0 10px 0', fontSize: '1.8rem', fontWeight: 'bold', color: '#0f172a' }}>
-        2. REDANG FREE DIVING DAYTRIP
+        REDANG FREE DIVING DAYTRIP
       </h1>
       <p style={{ textAlign: 'center', color: '#64748b', marginBottom: '25px', fontSize: '1rem' }}>
         Redang Island Dedicated Freediving Experience

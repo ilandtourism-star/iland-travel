@@ -276,7 +276,7 @@ const seedVacations = () => {
             },
             {
                 sku: 'free-dive-redang',
-                name: '2. REDANG FREE DIVING DAYTRIP',
+                name: 'REDANG FREE DIVING DAYTRIP',
                 description: 'FunDive Redang Island. Diving Points: Bus Wreck, Jetski Wreck, Coral Cave, Lima Island. Terms & conditions: No freediving license required, participants must be able to swim & follow instructions.',
                 price: 29900,
                 childPrice: null,
