@@ -153,17 +153,7 @@ Location Map: ${mapLink}
 🔴 *TOTAL AMOUNT: RM ${totalPrice}* 🔴`;
 
         const safeWhatsappMessage = whatsappMessage.replace(/&/g, 'and');
-        let whatsappUrl = `https://api.whatsapp.com/send?phone=60147081346&text=${encodeURIComponent(safeWhatsappMessage)}`;
-
-        let isGroupChat = false;
-        // Custom redirect for Redang and Perhentian Free Diving
-        if (vacation_sku === 'free-dive-redang' || vacation_sku === 'free-dive-perhentian') {
-            whatsappUrl = 'https://chat.whatsapp.com/IXE7Q3JSr4u8Za5ECrtuxa';
-            isGroupChat = true;
-        } else if (vacation_sku === 'skin-dive-perhentian') {
-            whatsappUrl = 'https://chat.whatsapp.com/Fx1f8MlvJpt2aienR71d9i';
-            isGroupChat = true;
-        }
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=60147081346&text=${encodeURIComponent(safeWhatsappMessage)}`;
 
         try {
             // Attempt to save to backend silently
@@ -175,22 +165,9 @@ Location Map: ${mapLink}
             console.error("Backend save bypassed:", err);
         }
 
-        if (isGroupChat) {
-            try {
-                await navigator.clipboard.writeText(whatsappMessage);
-                addToast('Booking details copied! Please paste it into the WhatsApp Group.', 'success');
-            } catch (err) {
-                console.error("Failed to copy text: ", err);
-                addToast('Please copy your details and send them to the WhatsApp Group.', 'success');
-            }
-            setTimeout(() => {
-                window.location.href = whatsappUrl;
-            }, 2000);
-        } else {
-            // Always redirect to WhatsApp to ensure user completes the booking
-            addToast('Connecting to WhatsApp...', 'success');
-            window.location.href = whatsappUrl;
-        }
+        // Always redirect to WhatsApp to ensure user completes the booking
+        addToast('Connecting to WhatsApp...', 'success');
+        window.location.href = whatsappUrl;
     };
 
     const title = getDisplayPackageName(vacation_sku, packageData?.name || initialTitle);
