@@ -23,7 +23,7 @@ const PerhentianIslandDayTrips = () => {
     const activities = useMemo(() => {
         if (!data) return [];
 
-        let filtered = data;
+        let filtered = data.filter(v => v.sku !== 'free-dive-perhentian');
 
         // Apply Search Filter
         if (debouncedSearchQuery.trim()) {

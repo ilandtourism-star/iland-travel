@@ -67,6 +67,7 @@
     "dev:partnerspots": "vite --open \"/PartnerSpots\"",
     "dev:partnersurcharges": "vite --open \"/PartnerSurcharges\"",
     "dev:partnersquidjigging": "vite --open \"/PartnerSquidJigging\"",
+    "dev:perhentian-freediving-details": "vite --open /perhentian-freediving-details",
     "dev:perhentian-island-day-trips": "vite --open \"/Perhentian Island Day Trips\"",
     "dev:private-boat-in-kapas-island-details": "vite --open \"/Private Boat in Kapas Island Details\"",
     "dev:private-boat-package-in-kapas-island-ticket": "vite --open \"/Private Boat Package in Kapas Island Ticket\"",

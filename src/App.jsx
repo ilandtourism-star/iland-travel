@@ -33,6 +33,7 @@ import AboutPage from './pages/AboutPage';
 import RedangPackages from './pages/Redang Island Packages';
 import SnorkelingActivities from './pages/Snorkeling Activities';
 import SnorkelingPerhentian from './pages/Perhentian Island Snorkeling Day Trip Details';
+import PerhentianFreeDiving from './pages/Perhentian Island Free Diving Day Trip Details';
 import SignIn from './pages/Control system';
 import SignInOrCreateAccount from './pages/Sign in or create an account';
 import BookingSuccess from './pages/BookingSuccess';
@@ -251,6 +252,9 @@ const MainRoutes = () => (
       {/* PULAU PERHENTIAN */}
       <Route path="/perhentian-island-day-trips" element={<PerhentianSearchPage />} />
       <Route path="/perhentian-snorkeling-details" element={<SnorkelingPerhentian />} />
+      <Route path="/perhentian-freediving-details" element={<PerhentianFreeDiving />} />
+      <Route path="/perhentian-free-diving-details" element={<PerhentianFreeDiving />} />
+      <Route path="/Perhentian Free Diving Daytrip Places (Perhentian Island)" element={<PerhentianFreeDiving />} />
       <Route path="/book/perhentian-snorkeling-day-trip" element={<UniversalBookingCalendar apiEndpoint="snorkeling-perhentian" nextStepRoute="/contact-details/1-snorkeling-perhentian" defaultPrice="80.00" defaultTitle="1. Day Trip Snorkeling" />} />
       <Route path="/contact-details/1-snorkeling-perhentian" element={<UniversalContactDetails />} />
       <Route path="/book/perhentian-learn-skindiving" element={<UniversalBookingCalendar apiEndpoint="skin-dive-perhentian" nextStepRoute="/contact-details/2-skin-dive-perhentian" defaultPrice="260.00" defaultTitle="2. Learn Skindiving" allowedDaysOfWeek={[0, 6]} />} />

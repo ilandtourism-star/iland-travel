@@ -219,9 +219,9 @@ const Home = () => {
         {
             id: 201, sku: 'free-dive-perhentian', island: 'Perhentian',
             title: "PERHENTIAN FREE DIVING DAYTRIP",
-            rating: "5.0", reviews: 88, price: "280.00", originalPrice: "364.00",
+            rating: "0.0", reviews: 0, price: "280.00", originalPrice: "364.00",
             image: '/images/perhentian island/perhentian_freediving.jpg', buttonText: "View Details", isFlashSale: true, totalSeats: 15, seatsLeft: 2,
-            link: "/perhentian-island-day-trips#free-dive-perhentian",
+            link: "/perhentian-freediving-details",
             flashSaleEndTime: new Date(Date.now() + 1000 * 60 * 60 * 3.5).toISOString()
         }
     ], []);
@@ -324,7 +324,7 @@ const Home = () => {
                     {[
                         { id: 'kapas', name: 'Kapas Island', img: kapasImg, loc: 'Terengganu', desc: 'Crystal clear waters perfect for swimming & snorkeling.', path: '/kapas-island-day-trips', tags: [{ label: 'Snorkeling', link: '/kapas-snorkeling-details' }, { label: 'Private Boat', link: '/kapas-private-boat-details' }], btn: 'Activities List' },
                         { id: 'redang', name: 'Redang Island', img: redangImg, loc: 'Terengganu', desc: 'White sandy beaches and thriving marine parks.', path: '/redang-island-day-trips', tags: [{ label: 'Snorkeling', link: '/redang-snorkeling-details' }, { label: 'Free Diving', link: '/redang-freediving-details' }, { label: 'Squid Jigging', link: '/redang-squid-jigging-details' }], btn: 'Activities List' },
-                        { id: 'perhentian', name: 'Perhentian Island', img: perhentianImg, loc: 'Terengganu', desc: 'A paradise for backpackers and nature lovers.', path: '/perhentian-island-day-trips', tags: [{ label: 'Snorkeling', link: '/perhentian-snorkeling-details' }], btn: 'Activities List' }
+                        { id: 'perhentian', name: 'Perhentian Island', img: perhentianImg, loc: 'Terengganu', desc: 'A paradise for backpackers and nature lovers.', path: '/perhentian-island-day-trips', tags: [{ label: 'Snorkeling', link: '/perhentian-snorkeling-details' }, { label: 'Free Diving', link: '/perhentian-freediving-details' }], btn: 'Activities List' }
                     ].map(island => (
                         <Link key={island.id} to={island.path} className="home-card home-card-awe">
                             <div className="home-image-container">

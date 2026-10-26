@@ -16,10 +16,11 @@ const SnorkelingPerhentian = () => {
 
   // Logik filtering secara live (Debounced)
   const filteredVacations = useMemo(() => {
-    if (!debouncedSearchQuery.trim()) return vacations;
+    const baseList = vacations.filter(pkg => pkg.sku !== 'free-dive-perhentian');
+    if (!debouncedSearchQuery.trim()) return baseList;
 
     const query = debouncedSearchQuery.toLowerCase();
-    return vacations.filter(pkg =>
+    return baseList.filter(pkg =>
       pkg.name.toLowerCase().includes(query) ||
       pkg.description?.toLowerCase().includes(query)
     );
