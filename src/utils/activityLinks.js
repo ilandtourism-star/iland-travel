@@ -73,7 +73,7 @@ export const getDisplayPackageName = (sku, defaultTitle = '') => {
         'free-dive-redang': 'REDANG FREE DIVING DAYTRIP',
 
         // Perhentian Island
-        // (Removed to use original names)
+        'skin-dive-perhentian': 'LEARN SKINDIVING'
     };
 
     if (sku && map[sku]) {

@@ -229,7 +229,7 @@ const Home = () => {
     const learningActivities = useMemo(() => [
         {
             id: 301, sku: 'skin-dive-perhentian', island: 'Perhentian',
-            title: "2. LEARN SKINDIVING",
+            title: "LEARN SKINDIVING",
             rating: "0.0", reviews: 0, price: "260.00", originalPrice: "338.00",
             image: '/images/perhentian island/learn_skindiving.jpg', buttonText: "View Details", isFlashSale: true, totalSeats: 10, seatsLeft: 5,
             link: "/perhentian-skindiving-details",

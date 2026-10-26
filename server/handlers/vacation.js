@@ -316,7 +316,7 @@ const seedVacations = () => {
             },
             {
                 sku: 'skin-dive-perhentian',
-                name: '2. LEARN SKINDIVING',
+                name: 'LEARN SKINDIVING',
                 description: 'Your first step into freediving. 1.5 Hours Learning Session. Suitable for beginner to intermediate snorkelers.',
                 price: 26000,
                 childPrice: null,

@@ -15,11 +15,11 @@ const PerhentianLearnSkindivingDetails = () => {
   // Debounce for live search
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
-  // Default exact specifications for 2. LEARN SKINDIVING
+  // Default exact specifications for LEARN SKINDIVING
   const skindivingActivity = useMemo(() => {
     const defaultData = {
       sku: 'skin-dive-perhentian',
-      title: '2. LEARN SKINDIVING',
+      title: 'LEARN SKINDIVING',
       rating: 0.0,
       reviews: 0,
       price: 260,
@@ -78,7 +78,7 @@ const PerhentianLearnSkindivingDetails = () => {
   return (
     <main className="perhentian-skindiving-page">
       <SEO
-        title="2. LEARN SKINDIVING | iland"
+        title="LEARN SKINDIVING | iland"
         description="Your first step into freediving. 1.5 Hours Learning Session in Perhentian Island. Suitable for beginner to intermediate snorkelers."
         canonical="/perhentian-skindiving-details"
       />
@@ -98,7 +98,7 @@ const PerhentianLearnSkindivingDetails = () => {
       </div>
 
       <h1 className="page-title" style={{ textAlign: 'center', margin: '24px 0 10px 0', fontSize: '1.8rem', fontWeight: 'bold', color: '#0f172a' }}>
-        2. LEARN SKINDIVING
+        LEARN SKINDIVING
       </h1>
       <p style={{ textAlign: 'center', color: '#64748b', marginBottom: '25px', fontSize: '1rem' }}>
         Perhentian Island Dedicated Skindiving Learning Session
